@@ -4,31 +4,36 @@ using UnityEngine;
 
 public class Note : MonoBehaviour
 {
-    //public ParticleSystem ParticleSystem;
-    private Rigidbody _rigid;
-
     private bool _isMiss;
     private float _lifeTime;
-    private float _noteSpeed = 6f;
     private ParticleSystem _particle;
+    private float _noteDistance = 5;
+    private float _musicBpm = 72;
+    private float _noteSpeed;
+    private double _curDsp;
     protected void Awake()
     {
-        _rigid = GetComponent<Rigidbody>();
         _particle = Resources.Load<ParticleSystem>("Blood Splash");
     }
 
     private void Start()
     {
-        _rigid.velocity = new Vector3(0, 0, -_noteSpeed);
         _particle.Stop();
+        _noteSpeed = _noteDistance / (60 / _musicBpm);
+        _curDsp = AudioSettings.dspTime;
     }
-    void Update()
+
+    private void Update()
     {
-        if(_isMiss) _lifeTime += Time.deltaTime;
+        if (_isMiss) _lifeTime += Time.deltaTime;
         if (_lifeTime > 2)
         {
             Destroy(gameObject);
         }
+
+        transform.position = new Vector3(transform.position.x, transform.position.y, 
+            transform.position.z - ((float)(AudioSettings.dspTime - _curDsp) * _noteSpeed));
+        _curDsp = AudioSettings.dspTime;
     }
 
     private void OnDestroy()
@@ -43,6 +48,7 @@ public class Note : MonoBehaviour
         if (other.CompareTag("Line"))
         {
             _isMiss = true;
+            Destroy(gameObject);
         }
     }
 }

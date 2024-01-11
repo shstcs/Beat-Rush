@@ -5,20 +5,28 @@ using UnityEngine;
 
 public class NoteManager : MonoBehaviour
 {
-    [SerializeField] private GameObject _notePrefab;
+    private GameObject[] _sheet1;
+    private int _curBar = 1;
+    private List<GameObject> _sheet1Instant;
+    //private AudioSource music1;
+    //TODO: 음악 실행하는 메서드 만들기
+
+    private void Awake()
+    {
+        //_sheet1 = Resources.LoadAll<GameObject>("Sheet1");
+    }
 
     private void Start()
     {
-        //StartCoroutine(CreateNotes());
+        //GameObject go = Instantiate(_sheet1[1]);
+        //go.transform.position = new Vector3(-2, 1, 10);
+        //go = Instantiate(_sheet1[2]);
+        //go.transform.position = new Vector3(-2, 1, 50);
     }
 
-    private IEnumerator CreateNotes()
+    private void Update()
     {
-        while (true)
-        {
-            Instantiate(_notePrefab);
-            _notePrefab.transform.position = new Vector3(0, 1, 10);
-            yield return new WaitForSeconds(.835f);
-        }
+        
     }
+
 }
