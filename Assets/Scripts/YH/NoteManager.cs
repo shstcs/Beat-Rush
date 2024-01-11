@@ -9,7 +9,7 @@ public class NoteManager : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(CreateNotes());
+        //StartCoroutine(CreateNotes());
     }
 
     private IEnumerator CreateNotes()
