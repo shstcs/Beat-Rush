@@ -10,6 +10,11 @@ public class NoteManager : MonoBehaviour
     private GameObject _bar;
     public AudioSource music1;          //TODO : 나중에 private으로 바꾸고 매니저를 통해 접근할 예정.
 
+    [Range(-2f, 2f)]
+    public float latency = 0f;
+    [Range(0f, 0.1f)]
+    public float instantiateDelay = 0.085f;
+
     private void Awake()
     {
         _sheet1 = Resources.LoadAll<GameObject>("Sheet1");
@@ -22,15 +27,15 @@ public class NoteManager : MonoBehaviour
 
     private IEnumerator CreateNote()
     {
-        while(_curBar < _sheet1.Length)
+        while (_curBar < _sheet1.Length)
         {
             _bar = Instantiate(_sheet1[_curBar]);
-            _bar.transform.position = new Vector3(- 2, 0, 42.5f);
+            _bar.transform.position = new Vector3(-2, 0, 42.5f + latency);
             _curBar++;
-            yield return new WaitForSecondsRealtime(6.666f);        //한 마디에 노트 8개 X 1개당 시간 = 60 / 72(bpm) 
+            yield return new WaitForSecondsRealtime(6.66f - instantiateDelay);        //한 마디에 노트 8개 X 1개당 시간 = 60 / 72(bpm) - 인스턴스 딜레이(추정)
         }
 
-        yield return new WaitForSecondsRealtime(6.666f);
+        yield return new WaitForSecondsRealtime(6.66f);
         StartCoroutine(VolumeDown());       //스테이지 끝나면 볼륨 다운
     }
 
