@@ -10,8 +10,8 @@ public class StartNote : Note
         if (other.CompareTag("Line"))
         {
             _music.Play();
+            //TODO: 노트 매니저에 접근해서 음악 재생
             Destroy(gameObject);
         }
     }
-
 }
