@@ -10,11 +10,13 @@ public class Note : MonoBehaviour
     private float _musicBpm = 72;
     private float _noteSpeed;
     private double _curDsp;
+    private ObjectPool _pool;
 
     private Color _curColor;
     protected void Awake()
     {
         _particle = Resources.Load<ParticleSystem>("Blood Splash");
+        //_pool = GameObject.Find("ObjectPool").GetComponent<ObjectPool>();
     }
 
     private void Start()
@@ -29,7 +31,7 @@ public class Note : MonoBehaviour
         // 놓친 노트 파괴
         if (transform.position.z < -15)
         {
-            Destroy(gameObject);
+            BreakNote();
             // TODO : 플레이어 피격 설정
         }
 
@@ -46,10 +48,12 @@ public class Note : MonoBehaviour
         }
     }
 
-    private void OnDestroy()
+    public void BreakNote()
     {
         ParticleSystem _destroyParticle = Instantiate(_particle);
         _destroyParticle.transform.position = transform.position;
         _particle.Play();
+        //_pool.ReturnToPool(gameObject);
+        gameObject.SetActive(false);
     }
 }

@@ -10,7 +10,6 @@ public class Managers : MonoBehaviour
 
     private static Managers _instance;
     private static bool _initialized;
-
     public static Managers Instance 
     { 
         get
