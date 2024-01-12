@@ -5,6 +5,7 @@
       "depth": 0,
       "source": "builtin",
       "dependencies": {}
+    },
     "com.unity.addressables": {
       "version": "1.21.19",
       "depth": 0,
