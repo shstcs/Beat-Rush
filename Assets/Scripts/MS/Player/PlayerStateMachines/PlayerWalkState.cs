@@ -28,4 +28,10 @@ public class PlayerWalkState : PlayerBaseState
         stateMachine.ChangeState(stateMachine.RunState);
     }
 
+    public override void Update()
+    {
+        base.Update();
+
+        CheckAttacking();
+    }
 }
