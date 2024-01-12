@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Note : MonoBehaviour
 {
-    private bool _isMiss;
-    private float _lifeTime;
     private ParticleSystem _particle;
     private float _noteDistance = 5;
     private float _musicBpm = 72;
@@ -25,8 +23,7 @@ public class Note : MonoBehaviour
 
     private void Update()
     {
-        if (_isMiss) _lifeTime += Time.deltaTime;
-        if (_lifeTime > 2)
+        if (transform.position.z < -15)
         {
             Destroy(gameObject);
         }
@@ -41,14 +38,5 @@ public class Note : MonoBehaviour
         ParticleSystem _destroyParticle = Instantiate(_particle);
         _destroyParticle.transform.position = transform.position;
         _particle.Play();
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Line"))
-        {
-            _isMiss = true;
-            Destroy(gameObject);
-        }
     }
 }
