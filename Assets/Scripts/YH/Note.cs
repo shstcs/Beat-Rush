@@ -6,6 +6,7 @@ public class Note : MonoBehaviour
 {
     private ParticleSystem _particle;
     private float _noteDistance = 5;
+    // TODO : 매니저 생기면 bpm도 거기서 가져오는 걸로.
     private float _musicBpm = 72;
     private float _noteSpeed;
     private double _curDsp;

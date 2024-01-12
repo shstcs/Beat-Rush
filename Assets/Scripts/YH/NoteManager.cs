@@ -10,10 +10,12 @@ public class NoteManager : MonoBehaviour
     private GameObject _bar;
     public AudioSource music1;          //TODO : 나중에 private으로 바꾸고 매니저를 통해 접근할 예정.
 
-    [Range(-2f, 2f)]
+    [Range(0f, 5f)]
     public float latency = 0f;
-    [Range(0f, 0.1f)]
+    [Range(0f, 0.2f)]
     public float instantiateDelay = 0.085f;
+    private float _bpm = 72;
+
 
     private void Awake()
     {
@@ -30,9 +32,9 @@ public class NoteManager : MonoBehaviour
         while (_curBar < _sheet1.Length)
         {
             _bar = Instantiate(_sheet1[_curBar]);
-            _bar.transform.position = new Vector3(-2, 0, 42.5f + latency);
+            _bar.transform.position = new Vector3(-2, 0, 40f + latency);
             _curBar++;
-            yield return new WaitForSecondsRealtime(6.66f - instantiateDelay);        //한 마디에 노트 8개 X 1개당 시간 = 60 / 72(bpm) - 인스턴스 딜레이(추정)
+            yield return new WaitForSecondsRealtime((float)(8 * 60 / _bpm) - instantiateDelay);        //한 마디에 노트 8개 X 1개당 시간 = 60 / 72(bpm) - 인스턴스 딜레이(추정)
         }
 
         yield return new WaitForSecondsRealtime(6.66f);
