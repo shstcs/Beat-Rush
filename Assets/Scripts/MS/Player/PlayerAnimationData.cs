@@ -12,11 +12,15 @@ public class PlayerAnimationData
     [SerializeField] private string runParameterName = "Run";
 
     [SerializeField] private string attackParameterName = "@Attack";
+    [SerializeField] private string ComboParameterName = "Combo";
+    [SerializeField] private string ComboAttackParameterName = "ComboAttack";
 
     public int IdleParameterHash { get; private set; }
     public int WalkParameterHash { get; private set; }
     public int RunParameterHash { get; private set; }
     public int AttackParameterHash { get; private set; }
+    public int ComboParameterHash { get; private set; }
+    public int ComboAttackParameterHash { get; private set; }
 
     public void Initialize()
     {
@@ -26,5 +30,7 @@ public class PlayerAnimationData
         RunParameterHash = Animator.StringToHash(runParameterName);
 
         AttackParameterHash = Animator.StringToHash(attackParameterName);
+        ComboParameterHash = Animator.StringToHash(ComboParameterName);
+        ComboAttackParameterHash = Animator.StringToHash(ComboAttackParameterName);
     }
 }

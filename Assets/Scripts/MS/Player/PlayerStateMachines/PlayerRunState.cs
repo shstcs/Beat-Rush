@@ -20,4 +20,10 @@ public class PlayerRunState : PlayerBaseState
         base.Exit();
         StopAnimation(stateMachine.Player.AnimationData.RunParameterHash);
     }
+    public override void Update()
+    {
+        base.Update();
+
+        CheckAttacking();
+    }
 }
