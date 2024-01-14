@@ -11,11 +11,11 @@ public class Managers : MonoBehaviour
     private static Managers _instance;
     private static bool _initialized;
 
-    public static Managers Instance 
-    { 
+    public static Managers Instance
+    {
         get
         {
-            if(!_initialized)
+            if (!_initialized)
             {
                 _initialized = true;
                 Init();
@@ -25,14 +25,14 @@ public class Managers : MonoBehaviour
     }
     protected static void Init()
     {
-        if(_instance == null)
+        if (_instance == null)
         {
             _instance = (Managers)FindObjectOfType(typeof(Managers));
 
-            if(_instance == null )
+            if (_instance == null)
             {
                 GameObject gameObject = new GameObject { name = "@Managers" };
-                if(gameObject.GetComponent<Managers>() == null)
+                if (gameObject.GetComponent<Managers>() == null)
                 {
                     _instance = gameObject.AddComponent<Managers>();
                 }
@@ -41,9 +41,13 @@ public class Managers : MonoBehaviour
         }
     }
     #endregion
-    #region UnityAction
-    public UnityAction OnStageStart;
-    public UnityAction OnStageEnd;
-    public UnityAction OnKeyGet;
+    #region Fields
+    private UIManager _ui = new();
+    private GameManager _game = new();
+    private ResourceManager _resource = new();
+
+    public static UIManager UI => Instance?._ui;
+    public static GameManager Game => Instance?._game;
+    public static ResourceManager Resource => Instance?._resource;
     #endregion
 }
