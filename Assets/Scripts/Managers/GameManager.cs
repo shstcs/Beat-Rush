@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class GameManager : Managers
+public class GameManager : MonoBehaviour
 {
-    private void Awake()
-    {
-        Init();
-    }
+    #region UnityAction
+    public UnityAction OnStageStart;
+    public UnityAction OnStageEnd;
+    public UnityAction OnKeyGet;
+    #endregion
     #region Methods
     public void CallStageStart()
     {

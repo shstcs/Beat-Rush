@@ -2,15 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIManager : Managers
+public class UIManager : MonoBehaviour
 {
-    private void Awake()
-    {
-        Init();
-    }
     private void Start()
     {
-        OnStageStart += SetHUD;
+        Managers.Game.OnStageStart += SetHUD;
     }
 
     public void SetHUD()
