@@ -21,7 +21,7 @@ public class Line : MonoBehaviour
         if (colliders.Length > 0)
         {
             Debug.Log("Overlab");
-            Destroy(colliders[0].gameObject);
+            colliders[0].GetComponent<Note>().BreakNote();
         }
         else Debug.Log("no Collider");
     }

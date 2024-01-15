@@ -1,9 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Managers : MonoBehaviour
 {
@@ -24,15 +23,15 @@ public class Managers : MonoBehaviour
             return _instance;
         }
     }
-    private static void Init()
+    protected static void Init()
     {
         if (_instance == null)
         {
-            GameObject gameObject = GameObject.Find("@Managers");
+            _instance = (Managers)FindObjectOfType(typeof(Managers));
 
-            if (gameObject == null)
+            if (_instance == null)
             {
-                gameObject = new GameObject { name = "@Managers" };
+                GameObject gameObject = new GameObject { name = "@Managers" };
                 if (gameObject.GetComponent<Managers>() == null)
                 {
                     _instance = gameObject.AddComponent<Managers>();
@@ -43,12 +42,20 @@ public class Managers : MonoBehaviour
     }
     #endregion
     #region Fields
-    private ResourceManager _resource = new();
-    private GameManager _game = new();
     private UIManager _ui = new();
+    private GameManager _game = new();
+    private ResourceManager _resource = new();
+    private ObjectPool _pool = new();
 
     public static UIManager UI => Instance?._ui;
     public static GameManager Game => Instance?._game;
     public static ResourceManager Resource => Instance?._resource;
+    public static ObjectPool Pool
+    {
+        get { return Instance._pool; }
+        set { Instance._pool = value; }
+    }
     #endregion
+
+
 }
