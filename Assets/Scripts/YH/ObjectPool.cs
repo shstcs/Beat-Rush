@@ -1,44 +1,41 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class ObjectPool : MonoBehaviour
 {
-    [System.Serializable]
-    public struct Pool
-    {
-        public GameObject prefab;
-        public int poolSize;
-    }
+    private GameObject _notePrefab;
+    public int poolSize = 50;
 
-    public List<Pool> pools;
-    public Queue<GameObject> poolQueue;
+    public Queue<GameObject> poolQueue = new Queue<GameObject>();
 
     private void Awake()
     {
-        poolQueue = new Queue<GameObject>();
-        foreach (var pool in pools)
+        Managers.Pool = this;
+    }
+    public void SetPool()
+    {
+        _notePrefab = Resources.Load<GameObject>("Ghost");
+        for (int i = 0; i < poolSize; i++)
         {
-            for (int i = 0; i < pool.poolSize; i++)
-                         {
-                GameObject obj = Instantiate(pool.prefab);
-                obj.transform.SetParent(transform);
-                obj.SetActive(false);
-                poolQueue.Enqueue(obj);
-            }
+            GameObject obj = Instantiate(_notePrefab);
+            obj.transform.SetParent(transform);
+            obj.SetActive(false);
+            poolQueue.Enqueue(obj);
         }
     }
 
     public GameObject SpawnFromPool()
     {
-        GameObject obj = poolQueue.Dequeue();
-        poolQueue.Enqueue(obj);
-        return obj;
+        if (poolQueue.Count > 0)
+        {
+            GameObject obj = poolQueue.Dequeue();
+            obj.SetActive(false );
+            poolQueue.Enqueue(obj);
+            obj.SetActive(true);
+            return obj;
+        }
+        else return null;
     }
-    
-    public void ReturnToPool(GameObject obj)
-    {
-        poolQueue.Enqueue(obj);
-    }
-
 }

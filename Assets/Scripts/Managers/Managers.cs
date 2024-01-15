@@ -45,9 +45,17 @@ public class Managers : MonoBehaviour
     private UIManager _ui = new();
     private GameManager _game = new();
     private ResourceManager _resource = new();
+    private ObjectPool _pool = new();
 
     public static UIManager UI => Instance?._ui;
     public static GameManager Game => Instance?._game;
     public static ResourceManager Resource => Instance?._resource;
+    public static ObjectPool Pool
+    {
+        get { return Instance._pool; }
+        set { Instance._pool = value; }
+    }
     #endregion
+
+
 }

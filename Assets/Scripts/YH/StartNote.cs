@@ -12,7 +12,7 @@ public class StartNote : Note
         if (other.CompareTag("Line"))
         {
             _music.PlayDelayed(20 * (60 / _bpm) / 5);  // 노트와의 거리 20 * 1m 당 속도
-            BreakNote();
+            Destroy(gameObject);
         }
     }
 }
