@@ -1,16 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UIElements.Experimental;
 
-public class UIManager : MonoBehaviour
+public class UIManager
 {
-    private void Start()
+    public UIManager()
     {
-        Managers.Game.OnStageStart += SetHUD;
+        Managers.Game.OnStageStart += SetStageHUD;
+        Managers.Game.OnGameStart += SetStartHUD;
+        Managers.Game.OnMapStart += SetMapHUD;
     }
 
-    public void SetHUD()
+    private void SetStageHUD()
     {
-        //hud 府家胶 肺靛 棺 UI积己
+        Managers.Resource.Load<GameObject>($"UI_Stage.prefab");
+    }
+    private void SetStartHUD()
+    {
+        Managers.Resource.Load<GameObject>($"UI_Start.prefab");
+    }
+    private void SetMapHUD()
+    {
+        Managers.Resource.Load<GameObject>($"UI_Map.prefab");
     }
 }

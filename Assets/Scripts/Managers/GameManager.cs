@@ -6,11 +6,23 @@ using UnityEngine.Events;
 public class GameManager : MonoBehaviour
 {
     #region UnityAction
+    [Header ("Events")]
+    public UnityAction OnGameStart;
+    public UnityAction OnGameOver;
+    public UnityAction OnMapStart;
     public UnityAction OnStageStart;
     public UnityAction OnStageEnd;
-    public UnityAction OnKeyGet;
     #endregion
+
     #region Methods
+    protected virtual void OnEnable()
+    {
+        CallGameStart();
+    }
+    public void CallGameStart()
+    {
+        OnGameStart?.Invoke();
+    }
     public void CallStageStart()
     {
         OnStageStart?.Invoke();
@@ -19,9 +31,6 @@ public class GameManager : MonoBehaviour
     {
         OnStageEnd?.Invoke();
     }
-    public void CallKeyGet()
-    {
-        OnKeyGet?.Invoke();
-    }
     #endregion
+
 }
