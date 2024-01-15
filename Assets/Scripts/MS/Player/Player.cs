@@ -47,4 +47,9 @@ public class Player : MonoBehaviour
     {
         _stateMachine.PhysicsUpdate();
     }
+
+    public void Rotate(Transform targetTransform)
+    {
+        transform.LookAt(targetTransform);
+    }
 }

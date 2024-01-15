@@ -6,11 +6,27 @@ using UnityEngine.Events;
 public class GameManager : MonoBehaviour
 {
     #region UnityAction
+    [Header ("Events")]
+    public UnityAction OnGameStart;
+    public UnityAction OnGameOver;
+    public UnityAction OnMapStart;
     public UnityAction OnStageStart;
     public UnityAction OnStageEnd;
-    public UnityAction OnKeyGet;
+    #endregion
+    #region Fields
+    public int Combo { get; private set; }
+    public int Score { get; private set; }
+    //private int bestScore;
     #endregion
     #region Methods
+    protected virtual void OnEnable()
+    {
+        CallGameStart();
+    }
+    public void CallGameStart()
+    {
+        OnGameStart?.Invoke();
+    }
     public void CallStageStart()
     {
         OnStageStart?.Invoke();
@@ -18,10 +34,6 @@ public class GameManager : MonoBehaviour
     public void CallStageEnd()
     {
         OnStageEnd?.Invoke();
-    }
-    public void CallKeyGet()
-    {
-        OnKeyGet?.Invoke();
     }
     #endregion
 }
