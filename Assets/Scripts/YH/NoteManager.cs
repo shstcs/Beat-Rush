@@ -64,7 +64,7 @@ public class NoteManager : MonoBehaviour
                 float zPos = (float)_sheet[i]["zValue"];
                 //note.GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.black;
 
-                note.transform.position = new Vector3(xPos - 2, 1, zPos + 42.5f);
+                note.transform.position = new Vector3(xPos + 140, 4, zPos + 42.5f);
             }
         }
     }
