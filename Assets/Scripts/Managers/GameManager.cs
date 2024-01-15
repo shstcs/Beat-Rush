@@ -13,7 +13,11 @@ public class GameManager : MonoBehaviour
     public UnityAction OnStageStart;
     public UnityAction OnStageEnd;
     #endregion
-
+    #region Fields
+    public int Combo { get; private set; }
+    public int Score { get; private set; }
+    //private int bestScore;
+    #endregion
     #region Methods
     protected virtual void OnEnable()
     {
@@ -32,5 +36,4 @@ public class GameManager : MonoBehaviour
         OnStageEnd?.Invoke();
     }
     #endregion
-
 }
