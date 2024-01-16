@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class Managers : MonoBehaviour
 {
@@ -51,7 +52,12 @@ public class Managers : MonoBehaviour
     [SerializeField] public TextMeshProUGUI ClearScore;
     [SerializeField] public TextMeshProUGUI ScoreText;
     [SerializeField] public TextMeshProUGUI ComboText;
-
+    [SerializeField] public Player player;
+    [SerializeField] public Image HpBar;
+    [SerializeField] public Image SkillBar;
+    private float maxskill;
+    public float currentHealth;
+    public float currentskill;
     public static UIManager UI => Instance?._ui;
     public static GameManager Game => Instance?._game;
     public static ResourceManager Resource => Instance?._resource;
@@ -60,10 +66,18 @@ public class Managers : MonoBehaviour
         get { return Instance._pool; }
         set { Instance._pool = value; }
     }
+    private void Start()
+    {
+        maxskill = 100.0f;
+        currentHealth = player.Data.StateData.MaxHealth;
+        currentskill = 0.0f;
+    }
     private void Update()
     {
         ScoreText.text = Game.Score.ToString();
         ComboText.text = Game.Combo.ToString();
+        HpBar.fillAmount = currentHealth / player.Data.StateData.MaxHealth;
+        SkillBar.fillAmount = currentskill / maxskill;
     }
     public void SetClearPanel()
     {

@@ -27,6 +27,7 @@ public class Note : MonoBehaviour
         {
             Managers.Game.Combo = 0;
             BreakNote();
+            Managers.Instance.currentHealth -= 1;
             // TODO : 플레이어 피격 설정
         }
         else

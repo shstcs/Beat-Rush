@@ -26,6 +26,8 @@ public class Line : MonoBehaviour
             colliders[0].GetComponent<Note>().BreakNote();
             Managers.Game.Combo++;
             Managers.Game.AddScore((distance < 0.4 ? 50 : 30) + Managers.Game.Combo);     //판정에 따라 점수 다름
+            if(Managers.Instance.currentskill < 100.0f)
+                Managers.Instance.currentskill += 10;
             Debug.Log(Managers.Game.Combo + " " + Managers.Game.Score);
         }
     }
