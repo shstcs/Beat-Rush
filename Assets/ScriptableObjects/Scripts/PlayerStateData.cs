@@ -7,7 +7,7 @@ using UnityEngine;
 public class PlayerStateData
 {
     [field: Header("StateData")]
-    [field: SerializeField] public float Level { get; private set; } = 1f;
-    [field: SerializeField][field: Range(0f, 10f)] public float MaxHealth { get; private set; } = 10f;
-    [field: SerializeField][field: Range(0f, 100f)] public float SkillGauge { get; private set; } = 0f;
+    [field: SerializeField] public int Level = 1;
+    [field: SerializeField][field: Range(0f, 10f)] public int Health = 10;
+    [field: SerializeField][field: Range(0f, 100f)] public int SkillGauge = 0;
 }

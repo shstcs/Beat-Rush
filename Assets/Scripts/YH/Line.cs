@@ -6,7 +6,9 @@ using UnityEngine;
 public class Line : MonoBehaviour
 {
     public LayerMask noteLayer;
-    public GameObject Player;
+
+    [SerializeField]
+    private Player player;
 
     void Update()
     {
@@ -21,13 +23,13 @@ public class Line : MonoBehaviour
         Collider[] colliders = Physics.OverlapBox(transform.position, new Vector3(10, 5, 0.01f) / 2, Quaternion.identity, noteLayer);
         if (colliders.Length > 0)
         {
-            Player.GetComponent<Player>().Rotate(colliders[0].transform);
+            player.Rotate(colliders[0].transform);
             float distance = Mathf.Abs(transform.position.z - colliders[0].transform.position.z);
             colliders[0].GetComponent<Note>().BreakNote();
             Managers.Game.Combo++;
             Managers.Game.AddScore((distance < 0.4 ? 50 : 30) + Managers.Game.Combo);     //판정에 따라 점수 다름
-            if(Managers.Instance.currentskill < 100.0f)
-                Managers.Instance.currentskill += 10;
+            if(player.CurrentStateData.SkillGauge < 100.0f)
+                player.CurrentStateData.SkillGauge += 10;
             Debug.Log(Managers.Game.Combo + " " + Managers.Game.Score);
         }
     }

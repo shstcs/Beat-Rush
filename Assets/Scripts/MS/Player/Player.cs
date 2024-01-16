@@ -19,6 +19,8 @@ public class Player : MonoBehaviour
 
     private PlayerStateMachine _stateMachine;
 
+    public PlayerStateData CurrentStateData;
+    
     private void Awake()
     {
         AnimationData.Initialize();
@@ -35,8 +37,9 @@ public class Player : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         _stateMachine.ChangeState(_stateMachine.IdleState);
+        InitStat();
     }
-
+    
     private void Update()
     {
         _stateMachine.HandleInput();
@@ -51,5 +54,20 @@ public class Player : MonoBehaviour
     public void Rotate(Transform targetTransform)
     {
         transform.LookAt(targetTransform);
+    }
+
+    private void InitStat()
+    {
+        CurrentStateData.Level = Data.StateData.Level;
+        CurrentStateData.Health = Data.StateData.Health;
+        CurrentStateData.SkillGauge = Data.StateData.SkillGauge;
+    }
+
+    public void ChangeHealth(int amount)
+    {
+        CurrentStateData.Health += amount;
+        Debug.Log(CurrentStateData.Health);
+        if (CurrentStateData.Health <= 0)
+            Managers.Game.CallStageEnd();
     }
 }

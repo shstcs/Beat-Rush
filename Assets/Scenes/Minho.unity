@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.019319532, g: 0.014620377, b: 0.010034227, a: 1}
+  m_IndirectSpecularColor: {r: 0.019319497, g: 0.01462037, b: 0.010034224, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -439,6 +439,18 @@ Transform:
   - {fileID: 227995984}
   m_Father: {fileID: 2084035646}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &49530422 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8248845988496182575, guid: e1c34b202832ee84885de4bd859fb17a,
+    type: 3}
+  m_PrefabInstance: {fileID: 521472378}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &55841957
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2449,12 +2461,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 599147775}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &605273245 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8182464500701605721, guid: 1e565d58ea83821469048f08eb726392,
+--- !u!114 &605273246 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3166890190606636313, guid: 1e565d58ea83821469048f08eb726392,
     type: 3}
   m_PrefabInstance: {fileID: 1107139246}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8fba4d154d82934380f9b977a4c08fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &609715714
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3241,6 +3259,11 @@ MonoBehaviour:
   ClearScore: {fileID: 2144445126}
   ScoreText: {fileID: 104598412}
   ComboText: {fileID: 1601303586}
+  player: {fileID: 605273246}
+  HpBar: {fileID: 2011572490}
+  SkillBar: {fileID: 49530422}
+  currentHealth: 0
+  currentskill: 0
 --- !u!4 &736455161
 Transform:
   m_ObjectHideFlags: 0
@@ -8942,7 +8965,7 @@ MonoBehaviour:
   noteLayer:
     serializedVersion: 2
     m_Bits: 64
-  Player: {fileID: 605273245}
+  player: {fileID: 605273246}
 --- !u!65 &1741435304
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10591,6 +10614,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2004285845}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2011572490 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1413753132468239979, guid: e1c34b202832ee84885de4bd859fb17a,
+    type: 3}
+  m_PrefabInstance: {fileID: 521472378}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2048269733
 PrefabInstance:
   m_ObjectHideFlags: 0
