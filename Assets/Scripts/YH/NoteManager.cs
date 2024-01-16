@@ -17,11 +17,11 @@ public class NoteManager : MonoBehaviour
     private void Awake()
     {
         _sheet = CSVReader.Read("test");
-        _notePool = Managers.Pool;
     }
 
     private void Start()
     {
+        _notePool = Managers.Pool;
         _notePool.SetPool();
         StartCoroutine(CreateNote());
     }
