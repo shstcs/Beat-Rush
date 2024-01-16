@@ -56,6 +56,4 @@ public class Managers : MonoBehaviour
         set { Instance._pool = value; }
     }
     #endregion
-
-
 }
