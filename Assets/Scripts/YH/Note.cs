@@ -21,14 +21,14 @@ public class Note : MonoBehaviour
         _particle.Stop();
         _noteSpeed = _noteDistance / (60 / _musicBpm);
         _curDsp = AudioSettings.dspTime;
-        //gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.red;
     }
 
     private void Update()
     {
         // 놓친 노트 파괴
-        if (transform.position.z < -15)
+        if (gameObject.transform.position.z < 8)
         {
+            Managers.Game.Combo = 0;
             BreakNote();
             // TODO : 플레이어 피격 설정
         }
@@ -38,18 +38,7 @@ public class Note : MonoBehaviour
             transform.position = new Vector3(transform.position.x, transform.position.y,
             transform.position.z - ((float)(AudioSettings.dspTime - _curDsp) * _noteSpeed));
             _curDsp = AudioSettings.dspTime;
-
-            //노트 타이밍 가시화
-            //if (transform.position.z < 4 && transform.position.z > 0)
-            //{
-            //    if(GetComponent<MeshRenderer>()==null)
-            //    {
-            //        _curColor = gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.color;
-            //        gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.Lerp(_curColor, Color.red, 4f * Time.deltaTime);
-            //    }
-            //}
         }
-        
     }
 
     private void OnEnable()

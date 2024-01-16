@@ -22,9 +22,12 @@ public class Line : MonoBehaviour
         if (colliders.Length > 0)
         {
             Player.GetComponent<Player>().Rotate(colliders[0].transform);
-            Debug.Log("Overlab");
+            float distance = Mathf.Abs(transform.position.z - colliders[0].transform.position.z);
+            Debug.Log(distance > 0.5f ? "Bad" : "Good");
             colliders[0].GetComponent<Note>().BreakNote();
+            Managers.Game.Combo++;
+            Managers.Game.AddScore(20);     //임시 노트 점수
+            Debug.Log(Managers.Game.Combo + " " + Managers.Game.Score);
         }
-        else Debug.Log("no Collider");
     }
 }
