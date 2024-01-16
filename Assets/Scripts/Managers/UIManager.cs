@@ -5,9 +5,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements.Experimental;
 
-public class UIManager
+public class UIManager:MonoBehaviour
 {
-    public UIManager()
+    public void Init()
     {
         Managers.Game.OnStageStart += SetStageHUD;
         Managers.Game.OnGameStart += SetStartHUD;
@@ -16,14 +16,14 @@ public class UIManager
 
     private void SetStageHUD()
     {
-        Managers.Resource.Load<GameObject>($"UI_Stage.prefab");
+        Instantiate(Managers.Resource.Load<GameObject>($"UI_Stage.prefab"));
     }
     private void SetStartHUD()
     {
-        Managers.Resource.Load<GameObject>($"UI_Start.prefab");
+        Instantiate(Managers.Resource.Load<GameObject>($"UI_Start.prefab"));
     }
     private void SetMapHUD()
     {
-        Managers.Resource.Load<GameObject>($"UI_Map.prefab");
+        Instantiate(Managers.Resource.Load<GameObject>($"UI_Map.prefab"));
     }
 }

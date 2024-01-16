@@ -44,6 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84d1dddf74f38a148bf6ef2536ce2071, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  music1: {fileID: 0}
-  latency: 2.5
-  instantiateDelay: 0
+  _soundManager: {fileID: 0}
+  latency: 1
