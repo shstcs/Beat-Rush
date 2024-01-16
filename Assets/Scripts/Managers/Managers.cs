@@ -69,20 +69,21 @@ public class Managers : MonoBehaviour
     private void Start()
     {
         maxskill = 100.0f;
-        currentHealth = player.Data.StateData.MaxHealth;
-        currentskill = 0.0f;
+        //currentHealth = player.Data.StateData.Health;
+        //currentskill = 0.0f;
     }
     private void Update()
     {
         ScoreText.text = Game.Score.ToString();
         ComboText.text = Game.Combo.ToString();
-        HpBar.fillAmount = currentHealth / player.Data.StateData.MaxHealth;
-        SkillBar.fillAmount = currentskill / maxskill;
+        HpBar.fillAmount = (float)player.CurrentStateData.Health / player.Data.StateData.Health;
+        SkillBar.fillAmount = (float)player.CurrentStateData.SkillGauge / maxskill;
     }
     public void SetClearPanel()
     {
         ClearPanel.SetActive(true);
         ClearScore.text = Game.Score.ToString();
+        Time.timeScale = 0f;
     }
     #endregion
 }

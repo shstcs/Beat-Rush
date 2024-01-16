@@ -8,6 +8,9 @@ public class Note : MonoBehaviour
     private float _noteDistance = 5;
     private float _noteSpeed;
     private double _curDsp;
+
+    [SerializeField]
+    private Player player;
     protected void Awake()
     {
         _particle = Resources.Load<ParticleSystem>("Blood Splash");
@@ -27,7 +30,7 @@ public class Note : MonoBehaviour
         {
             Managers.Game.Combo = 0;
             BreakNote();
-            Managers.Instance.currentHealth -= 1;
+            GameObject.Find("Player").GetComponent<Player>().ChangeHealth(-1);
             // TODO : 플레이어 피격 설정
         }
         else
