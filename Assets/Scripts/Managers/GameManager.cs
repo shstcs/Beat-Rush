@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     public int Combo { get; set; }
     public int Score { get; private set; }
     public float bpm = 72;
+    public GameType GameType = GameType.Main;
     //private int bestScore;
     #endregion
     #region Methods

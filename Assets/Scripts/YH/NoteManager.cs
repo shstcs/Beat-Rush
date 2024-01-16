@@ -7,7 +7,7 @@ public class NoteManager : MonoBehaviour
 {
     private List<Dictionary<string, object>> _sheet;
     private int _curBar = 1;
-    [SerializeField] private SoundManager _soundManager;          //TODO : ³ªÁß¿¡ privateÀ¸·Î ¹Ù²Ù°í ¸Å´ÏÀú¸¦ ÅëÇØ Á¢±ÙÇÒ ¿¹Á¤.
+    [SerializeField] private SoundManager _soundManager;          //TODO : ï¿½ï¿½ï¿½ß¿ï¿½ privateï¿½ï¿½ï¿½ï¿½ ï¿½Ù²Ù°ï¿½ ï¿½Å´ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
     private ObjectPool _notePool;         
 
     [Range(0f, 2f)]
@@ -21,6 +21,7 @@ public class NoteManager : MonoBehaviour
 
     private void Start()
     {
+        Managers.Game.GameType = GameType.Play;
         _notePool = Managers.Pool;
         _notePool.SetPool();
         StartCoroutine(CreateNote());
@@ -33,11 +34,11 @@ public class NoteManager : MonoBehaviour
         {
             SetNotes(_curBar);
             _curBar++;
-            yield return new WaitForSeconds((float)(8 * 60 / Managers.Game.bpm));        //ÇÑ ¸¶µð¿¡ ³ëÆ® 8°³ X 1°³´ç ½Ã°£ = 60 / 72(bpm)
+            yield return new WaitForSeconds((float)(8 * 60 / Managers.Game.bpm));        //ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ® 8ï¿½ï¿½ X 1ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ = 60 / 72(bpm)
         }
 
         yield return new WaitForSeconds((float)(8 * 60 / Managers.Game.bpm));
-        StartCoroutine(_soundManager.VolumeDown());       //½ºÅ×ÀÌÁö ³¡³ª¸é º¼·ý ´Ù¿î
+        StartCoroutine(_soundManager.VolumeDown());       //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ù¿ï¿½
     }
 
     private void SetNotes(int current)
