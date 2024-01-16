@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     #region Fields
     public int Combo { get; set; }
     public int Score { get; private set; }
+    public float bpm = 72;
     //private int bestScore;
     #endregion
     #region Methods

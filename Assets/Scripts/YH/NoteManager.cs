@@ -7,14 +7,11 @@ public class NoteManager : MonoBehaviour
 {
     private List<Dictionary<string, object>> _sheet;
     private int _curBar = 1;
-    public AudioSource music1;          //TODO : 나중에 private으로 바꾸고 매니저를 통해 접근할 예정.
+    [SerializeField] private SoundManager _soundManager;          //TODO : 나중에 private으로 바꾸고 매니저를 통해 접근할 예정.
     private ObjectPool _notePool;         
 
-    [Range(0f, 5f)]
-    public float latency = 0f;
-    [Range(0f, 0.2f)]
-    public float instantiateDelay = 0f;
-    private float _bpm = 72;
+    [Range(0f, 2f)]
+    public float latency = 0.8f;
 
 
     private void Awake()
@@ -31,26 +28,16 @@ public class NoteManager : MonoBehaviour
 
     private IEnumerator CreateNote()
     {
+        yield return new WaitForSeconds(latency);
         while (_curBar < 18)
         {
             SetNotes(_curBar);
             _curBar++;
-            yield return new WaitForSeconds((float)(8 * 60 / _bpm) - instantiateDelay);        //한 마디에 노트 8개 X 1개당 시간 = 60 / 72(bpm) - 인스턴스 딜레이(추정)
+            yield return new WaitForSeconds((float)(8 * 60 / Managers.Game.bpm));        //한 마디에 노트 8개 X 1개당 시간 = 60 / 72(bpm)
         }
 
-        yield return new WaitForSeconds(6.66f);
-        StartCoroutine(VolumeDown());       //스테이지 끝나면 볼륨 다운
-    }
-
-    private IEnumerator VolumeDown()
-    {
-        while (music1.volume > 0)
-        {
-            music1.volume -= Time.deltaTime / 4;        // 4초에 걸쳐 줄어들도록
-            Debug.Log("Volume Down");
-            yield return null;
-        }
-        //TODO : 스테이지 종료 액션 콜백
+        yield return new WaitForSeconds((float)(8 * 60 / Managers.Game.bpm));
+        StartCoroutine(_soundManager.VolumeDown());       //스테이지 끝나면 볼륨 다운
     }
 
     private void SetNotes(int current)

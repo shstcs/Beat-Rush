@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.0068231025, g: 0.0063012303, b: 0.004249582, a: 1}
+  m_IndirectSpecularColor: {r: 0.019319532, g: 0.014620377, b: 0.010034227, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2361,12 +2361,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 677059283}
   m_PrefabAsset: {fileID: 0}
---- !u!82 &681371390 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 3892400451923343191, guid: 3dac3f76587ac5d44885df4a832b6c24,
+--- !u!114 &681371392 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2521008484147880911, guid: 3dac3f76587ac5d44885df4a832b6c24,
     type: 3}
   m_PrefabInstance: {fileID: 788405918}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2951040fd293ae243b571c445956b6ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &684040794
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7328,9 +7334,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7047253107889205718, guid: 62456bc59fd89d645bed05796e024ee2,
         type: 3}
-      propertyPath: music1
+      propertyPath: _soundManager
       value: 
-      objectReference: {fileID: 681371390}
+      objectReference: {fileID: 681371392}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7633,7 +7639,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 142.5233, y: 4.1941, z: 10.3}
-  m_LocalScale: {x: 12.962994, y: 0.6682, z: 0.099999994}
+  m_LocalScale: {x: 12.962994, y: 0.1, z: 0.01}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -8530,13 +8536,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1934572156}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.1327444, y: -0.26207405, z: 0.054210685, w: 0.9543361}
+  m_LocalRotation: {x: -0.1063374, y: -0.24951568, z: 0.061393935, w: 0.96055454}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: -13, y: -31.88, z: 10.23}
+  m_LocalEulerAnglesHint: {x: -10, y: -30, z: 10}
 --- !u!114 &1934572159
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8842,9 +8848,9 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4664146650046850857, guid: 8ed83921e7530de418e36e9a50b0839b,
         type: 3}
-      propertyPath: _music
+      propertyPath: _soundManager
       value: 
-      objectReference: {fileID: 681371390}
+      objectReference: {fileID: 681371392}
     - target: {fileID: 5839551738469604196, guid: 8ed83921e7530de418e36e9a50b0839b,
         type: 3}
       propertyPath: m_Name
