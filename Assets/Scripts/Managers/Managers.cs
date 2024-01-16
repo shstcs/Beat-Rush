@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -46,6 +47,10 @@ public class Managers : MonoBehaviour
     private GameManager _game = new();
     private ResourceManager _resource = new();
     private ObjectPool _pool = new();
+    [SerializeField] public GameObject ClearPanel;
+    [SerializeField] public TextMeshProUGUI ClearScore;
+    [SerializeField] public TextMeshProUGUI ScoreText;
+    [SerializeField] public TextMeshProUGUI ComboText;
 
     public static UIManager UI => Instance?._ui;
     public static GameManager Game => Instance?._game;
@@ -54,6 +59,16 @@ public class Managers : MonoBehaviour
     {
         get { return Instance._pool; }
         set { Instance._pool = value; }
+    }
+    private void Update()
+    {
+        ScoreText.text = Game.Score.ToString();
+        ComboText.text = Game.Combo.ToString();
+    }
+    public void SetClearPanel()
+    {
+        ClearPanel.SetActive(true);
+        ClearScore.text = Game.Score.ToString();
     }
     #endregion
 }

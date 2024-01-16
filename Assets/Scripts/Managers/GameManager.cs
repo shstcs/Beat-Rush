@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour
     public void CallStageEnd()
     {
         OnStageEnd?.Invoke();
+        Managers.Instance.SetClearPanel();
     }
     public void AddScore(int score)
     {
