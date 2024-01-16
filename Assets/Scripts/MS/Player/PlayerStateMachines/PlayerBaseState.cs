@@ -9,11 +9,13 @@ public class PlayerBaseState : IState
 {
     protected PlayerStateMachine stateMachine;
     protected readonly PlayerBaseData baseData;
+    private GameManager _gameManager;
 
     public PlayerBaseState(PlayerStateMachine playerStateMachine)
     {
         stateMachine = playerStateMachine;
         baseData = stateMachine.Player.Data.BaseData;
+        _gameManager = Managers.Game;
     }
 
     public virtual void Enter()
@@ -36,6 +38,8 @@ public class PlayerBaseState : IState
 
     public virtual void Update()
     {
+        if (_gameManager.GameType == GameType.Play)
+            stateMachine.MoveInput = Vector2.zero;
         Move();
     }
 

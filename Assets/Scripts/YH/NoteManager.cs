@@ -22,6 +22,7 @@ public class NoteManager : MonoBehaviour
 
     private void Start()
     {
+        Managers.Game.GameType = GameType.Play;
         _notePool.SetPool();
         StartCoroutine(CreateNote());
     }
