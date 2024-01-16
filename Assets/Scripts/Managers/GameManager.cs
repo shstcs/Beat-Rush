@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     public UnityAction OnStageEnd;
     #endregion
     #region Fields
-    public int Combo { get; private set; }
+    public int Combo { get; set; }
     public int Score { get; private set; }
     //private int bestScore;
     #endregion
@@ -34,6 +34,10 @@ public class GameManager : MonoBehaviour
     public void CallStageEnd()
     {
         OnStageEnd?.Invoke();
+    }
+    public void AddScore(int score)
+    {
+        Score += score;
     }
     #endregion
 }
