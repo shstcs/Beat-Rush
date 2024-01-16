@@ -9,8 +9,6 @@ public class Note : MonoBehaviour
     private float _noteSpeed;
     private double _curDsp;
 
-    [SerializeField]
-    private Player player;
     protected void Awake()
     {
         _particle = Resources.Load<ParticleSystem>("Blood Splash");
@@ -25,20 +23,23 @@ public class Note : MonoBehaviour
 
     private void Update()
     {
-        // 놓친 노트 파괴
-        if (gameObject.transform.position.z < 8)
+        if(Time.timeScale > 0)
         {
-            Managers.Game.Combo = 0;
-            BreakNote();
-            GameObject.Find("Player").GetComponent<Player>().ChangeHealth(-1);
-            // TODO : 플레이어 피격 설정
-        }
-        else
-        {
-            // 노트 이동
-            transform.position = new Vector3(transform.position.x, transform.position.y,
-            transform.position.z - ((float)(AudioSettings.dspTime - _curDsp) * _noteSpeed));
-            _curDsp = AudioSettings.dspTime;
+            // 놓친 노트 파괴
+            if (gameObject.transform.position.z < 8)
+            {
+                Managers.Game.Combo = 0;
+                BreakNote();
+                Managers.Player.ChangeHealth(-1);
+                // TODO : 플레이어 피격 설정
+            }
+            else
+            {
+                // 노트 이동
+                transform.position = new Vector3(transform.position.x, transform.position.y,
+                transform.position.z - ((float)(AudioSettings.dspTime - _curDsp) * _noteSpeed));
+                _curDsp = AudioSettings.dspTime;
+            }
         }
     }
 

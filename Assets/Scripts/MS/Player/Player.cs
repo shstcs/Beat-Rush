@@ -23,6 +23,7 @@ public class Player : MonoBehaviour
     
     private void Awake()
     {
+        Managers.Player = this;
         AnimationData.Initialize();
 
         Rigidbody = GetComponent<Rigidbody>();

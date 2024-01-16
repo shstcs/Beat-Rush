@@ -48,11 +48,11 @@ public class Managers : MonoBehaviour
     private GameManager _game = new();
     private ResourceManager _resource = new();
     private ObjectPool _pool = new();
+    private Player _player = new();
     [SerializeField] public GameObject ClearPanel;
     [SerializeField] public TextMeshProUGUI ClearScore;
     [SerializeField] public TextMeshProUGUI ScoreText;
     [SerializeField] public TextMeshProUGUI ComboText;
-    [SerializeField] public Player player;
     [SerializeField] public Image HpBar;
     [SerializeField] public Image SkillBar;
     private float maxskill;
@@ -66,6 +66,11 @@ public class Managers : MonoBehaviour
         get { return Instance._pool; }
         set { Instance._pool = value; }
     }
+    public static Player Player
+    {
+        get { return Instance._player; }
+        set { Instance._player = value; }
+    }
     private void Start()
     {
         maxskill = 100.0f;
@@ -76,8 +81,8 @@ public class Managers : MonoBehaviour
     {
         ScoreText.text = Game.Score.ToString();
         ComboText.text = Game.Combo.ToString();
-        HpBar.fillAmount = (float)player.CurrentStateData.Health / player.Data.StateData.Health;
-        SkillBar.fillAmount = (float)player.CurrentStateData.SkillGauge / maxskill;
+        HpBar.fillAmount = (float)Player.CurrentStateData.Health / Player.Data.StateData.Health;
+        SkillBar.fillAmount = (float)Player.CurrentStateData.SkillGauge / maxskill;
     }
     public void SetClearPanel()
     {
