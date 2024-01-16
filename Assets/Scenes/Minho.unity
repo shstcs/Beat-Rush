@@ -4158,6 +4158,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: -8.651601
       objectReference: {fileID: 0}
+    - target: {fileID: 5469963960599978601, guid: 1e565d58ea83821469048f08eb726392,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 142.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5469963960599978601, guid: 1e565d58ea83821469048f08eb726392,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.78
+      objectReference: {fileID: 0}
+    - target: {fileID: 5469963960599978601, guid: 1e565d58ea83821469048f08eb726392,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 9.04
+      objectReference: {fileID: 0}
     - target: {fileID: 5693674076476081591, guid: 1e565d58ea83821469048f08eb726392,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -7632,6 +7647,7 @@ MonoBehaviour:
   noteLayer:
     serializedVersion: 2
     m_Bits: 64
+  Player: {fileID: 0}
 --- !u!65 &1741435304
 BoxCollider:
   m_ObjectHideFlags: 0
