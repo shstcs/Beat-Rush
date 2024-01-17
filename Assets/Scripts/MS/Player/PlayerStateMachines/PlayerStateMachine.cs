@@ -11,12 +11,14 @@ public class PlayerStateMachine : StateMachine
     public PlayerRunState RunState { get;}
 
     public PlayerComboAttackState ComboAttackState { get;}
+    public PlayerDeathState deathState { get;}
     public Vector2 MoveInput { get; set; }
     public float MoveSpeed { get; private set; }
     public float RotationDamping { get; private set; }
     public float MoveSpeedModifier { get; set; } = 1f;
     
     public bool IsAttacking { get; set; }
+    public bool IsDie { get; set; }
     public int ComboIndex { get; set; }
     public Transform MainCameraTransform { get; set; }
 
@@ -28,6 +30,8 @@ public class PlayerStateMachine : StateMachine
         RunState = new PlayerRunState(this);
 
         ComboAttackState = new PlayerComboAttackState(this);
+
+        deathState = new PlayerDeathState(this);
 
 
         MainCameraTransform = Camera.main.transform;

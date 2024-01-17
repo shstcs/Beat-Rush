@@ -132,8 +132,6 @@ public class PlayerBaseState : IState
 
     #endregion
 
-
-
     #region Attack
 
     protected virtual void OnAttackPerformed(InputAction.CallbackContext context)
@@ -152,6 +150,11 @@ public class PlayerBaseState : IState
     }
 
     #endregion
+
+    protected virtual void OnDeath()
+    {
+        stateMachine.ChangeState(stateMachine.deathState);
+    }
 
     private void Rotate(Vector3 moveDir)
     {
@@ -198,6 +201,15 @@ public class PlayerBaseState : IState
         if (stateMachine.IsAttacking)
         {
             OnAttack();
+            return;
+        }
+    }
+
+    protected void CheckDie()
+    {
+        if (stateMachine.IsDie)
+        {
+            OnDeath();
             return;
         }
     }

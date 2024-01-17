@@ -32,6 +32,8 @@ public class PlayerWalkState : PlayerBaseState
     {
         base.Update();
 
+        CheckDie();
+
         CheckAttacking();
     }
 }

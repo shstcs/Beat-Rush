@@ -24,6 +24,8 @@ public class PlayerRunState : PlayerBaseState
     {
         base.Update();
 
+        CheckDie();
+
         CheckAttacking();
     }
 }

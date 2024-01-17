@@ -23,5 +23,12 @@ public class PlayerAttackState : PlayerBaseState
         StopAnimation(stateMachine.Player.AnimationData.AttackParameterHash);
     }
 
+    public override void Update()
+    {
+        base.Update();
+
+        CheckDie();
+    }
+
 }
 
