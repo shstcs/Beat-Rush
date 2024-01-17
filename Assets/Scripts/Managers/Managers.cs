@@ -88,7 +88,7 @@ public class Managers : MonoBehaviour
     {
         ClearPanel.SetActive(true);
         ClearScore.text = Game.Score.ToString();
-        Time.timeScale = 0f;
+        //Time.timeScale = 0f;
     }
     #endregion
 }
