@@ -26,6 +26,6 @@ public class PlayerRunState : PlayerBaseState
 
         CheckDie();
 
-        CheckAttacking();
+        //CheckAttacking();
     }
 }
