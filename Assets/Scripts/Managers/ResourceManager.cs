@@ -48,7 +48,7 @@ public class ResourceManager : MonoBehaviour
 
     public void LoadAllAsync<T>(string label, Action<string, int, int> callback) where T : UnityEngine.Object
     {
-        var operation = Addressables.LoadResourceLocationsAsync("PreLoads", typeof(T));
+        var operation = Addressables.LoadResourceLocationsAsync(label, typeof(T));
 
         operation.Completed += op =>
         {

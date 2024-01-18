@@ -36,13 +36,12 @@ public class Line : MonoBehaviour
             float distance = Mathf.Abs(transform.position.z - colliders[0].transform.position.z);   //������ ���� ���� ���
             Managers.Game.Combo++;
             Managers.Game.AddScore((distance < 0.4 ? 50 : 30) + Managers.Game.Combo);     //������ ���� ���� �ٸ�
+
+            // Skill
             if(Managers.Player.CurrentStateData.SkillGauge < 100)
                 Managers.Player.CurrentStateData.SkillGauge += 10;
-            if(Managers.Player.CurrentStateData.SkillGauge >= 100)
-            {
-                Managers.Player.CurrentStateData.SkillGauge = 0;
-                Managers.Player.Skill();
-            }
+
+            Debug.Log(Managers.Game.Combo + " " + Managers.Game.Score);
         }
     }
 }

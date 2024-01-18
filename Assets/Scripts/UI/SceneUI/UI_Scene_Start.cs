@@ -7,7 +7,7 @@ public class UI_Scene_Start : MonoBehaviour
 {
     private void Start()
     {
-        Managers.Resource.LoadAllAsync<UnityEngine.Object>("Preloads", (key, count, totalCount) =>
+        Managers.Resource.LoadAllAsync<UnityEngine.Object>("PreLoads", (key, count, totalCount) =>
         {
             if (count >= totalCount)
             {
