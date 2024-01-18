@@ -28,13 +28,11 @@ public class Line : MonoBehaviour
             colliders[0].GetComponent<Note>().BreakNote();
             Managers.Game.Combo++;
             Managers.Game.AddScore((distance < 0.4 ? 50 : 30) + Managers.Game.Combo);     //������ ���� ���� �ٸ�
+
+            // Skill
             if(Managers.Player.CurrentStateData.SkillGauge < 100)
                 Managers.Player.CurrentStateData.SkillGauge += 10;
-            if(Managers.Player.CurrentStateData.SkillGauge >= 100)
-            {
-                Managers.Player.CurrentStateData.SkillGauge = 0;
-                Managers.Player.Skill();
-            }
+
             Debug.Log(Managers.Game.Combo + " " + Managers.Game.Score);
         }
     }

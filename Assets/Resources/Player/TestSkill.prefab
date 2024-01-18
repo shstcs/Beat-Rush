@@ -147,6 +147,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillPrecision: 100
+  speed: 10
+  distance: 30
   targetLayerMask:
     serializedVersion: 2
     m_Bits: 64

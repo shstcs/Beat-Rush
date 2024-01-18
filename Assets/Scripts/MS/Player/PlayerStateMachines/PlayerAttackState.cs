@@ -13,7 +13,11 @@ public class PlayerAttackState : PlayerBaseState
         stateMachine.MoveSpeedModifier = 0f;
         base.Enter();
 
+        stateMachine.Player.Animator.SetTrigger(stateMachine.Player.AnimationData.AttackTriggerParameterHash);
+        stateMachine.Player.SwordEffect.Play();
+
         StartAnimation(stateMachine.Player.AnimationData.AttackParameterHash);
+        
     }
 
     public override void Exit()

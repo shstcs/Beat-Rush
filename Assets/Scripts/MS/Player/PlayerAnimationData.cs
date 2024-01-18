@@ -12,6 +12,7 @@ public class PlayerAnimationData
     [SerializeField] private string runParameterName = "Run";
 
     [SerializeField] private string attackParameterName = "@Attack";
+    [SerializeField] private string attackTriggerParameterName = "Attack";
     [SerializeField] private string ComboParameterName = "Combo";
     [SerializeField] private string ComboAttackParameterName = "ComboAttack";
 
@@ -22,6 +23,7 @@ public class PlayerAnimationData
     public int WalkParameterHash { get; private set; }
     public int RunParameterHash { get; private set; }
     public int AttackParameterHash { get; private set; }
+    public int AttackTriggerParameterHash { get; private set; }
     public int ComboParameterHash { get; private set; }
     public int ComboAttackParameterHash { get; private set; }
     public int DeathParameterHash { get; private set; }
@@ -35,6 +37,7 @@ public class PlayerAnimationData
         RunParameterHash = Animator.StringToHash(runParameterName);
 
         AttackParameterHash = Animator.StringToHash(attackParameterName);
+        AttackTriggerParameterHash = Animator.StringToHash(attackTriggerParameterName);
         ComboParameterHash = Animator.StringToHash(ComboParameterName);
         ComboAttackParameterHash = Animator.StringToHash(ComboAttackParameterName);
 
