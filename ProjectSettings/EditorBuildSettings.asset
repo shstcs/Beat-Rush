@@ -8,6 +8,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/YH-TestScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/StartUI_Test_Scene.unity
+    guid: b902b76068559e84f996147342c803f5
+  - enabled: 1
+    path: Assets/Scenes/LobbyUI_Test_Scene.unity
+    guid: 14c60998becbf8d41aed1f35a1eda267
+  - enabled: 1
+    path: Assets/Scenes/StageUI_Test_Scene.unity
+    guid: f0da1da9115bf124d8fe8c7e84bef3f2
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 671cb65ba2af1e1478a5ad03b511f07e,
       type: 2}

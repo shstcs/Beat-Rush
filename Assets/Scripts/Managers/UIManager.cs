@@ -7,11 +7,20 @@ using UnityEngine.UIElements.Experimental;
 
 public class UIManager:MonoBehaviour
 {
-    public void Init()
+    public void SetUI()
     {
-        Managers.Game.OnStageStart += SetStageHUD;
-        Managers.Game.OnGameStart += SetStartHUD;
-        Managers.Game.OnMapStart += SetMapHUD;
+        if (SceneManager.GetActiveScene().name == "StartUI_Test_Scene")
+        {
+            SetStartHUD();
+        }
+        else if (SceneManager.GetActiveScene().name == "StageUI_Test_Scene")
+        {
+            SetStageHUD();
+        }
+        else if (SceneManager.GetActiveScene().name == "LobbyUI_Test_Scene")
+        {
+            SetMapHUD();
+        }
     }
 
     private void SetStageHUD()
@@ -24,6 +33,6 @@ public class UIManager:MonoBehaviour
     }
     private void SetMapHUD()
     {
-        Instantiate(Managers.Resource.Load<GameObject>($"UI_Map.prefab"));
+        Instantiate(Managers.Resource.Load<GameObject>($"UI_Lobby.prefab"));
     }
 }

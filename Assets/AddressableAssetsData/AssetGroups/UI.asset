@@ -18,7 +18,7 @@ MonoBehaviour:
   m_GUID: 0d8ece33fda15c94f90439023065e22f
   m_SerializeEntries:
   - m_GUID: 60bd7862a53235b4e8ef312fdabd730e
-    m_Address: UI_Map.prefab
+    m_Address: UI_Lobby.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - PreLoads
