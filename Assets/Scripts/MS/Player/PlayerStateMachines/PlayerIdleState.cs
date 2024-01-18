@@ -26,6 +26,8 @@ public class PlayerIdleState : PlayerBaseState
     {
         base.Update();
 
+        CheckDie();
+
         CheckAttacking();
 
         if (stateMachine.MoveInput != Vector2.zero)

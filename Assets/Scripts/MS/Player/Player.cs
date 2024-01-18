@@ -19,7 +19,10 @@ public class Player : MonoBehaviour
 
     private PlayerStateMachine _stateMachine;
 
+    [HideInInspector]
     public PlayerStateData CurrentStateData;
+
+    public GameObject SkillPrefab;
     
     private void Awake()
     {
@@ -69,6 +72,26 @@ public class Player : MonoBehaviour
         CurrentStateData.Health += amount;
         Debug.Log(CurrentStateData.Health);
         if (CurrentStateData.Health <= 0)
-            Managers.Game.CallStageEnd();
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        _stateMachine.IsDie = true;
+        Managers.Game.CallStageEnd();
+    }
+
+    public bool IsDie()
+    {
+        return _stateMachine.IsDie;
+    }
+
+    public void Skill()
+    {
+        var pos = gameObject.transform.position + new Vector3(0f, 0f, 3f);
+        Instantiate(SkillPrefab, pos, Quaternion.identity);
+        Animator.SetTrigger(AnimationData.SkillParameterHash);
     }
 }

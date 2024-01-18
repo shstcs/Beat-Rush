@@ -9,8 +9,11 @@ public class Line : MonoBehaviour
 
     void Update()
     {
+        
         if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Z))
         {
+            if (Managers.Player.IsDie()) return;
+
             CheckNotes();
         }
     }
@@ -24,9 +27,14 @@ public class Line : MonoBehaviour
             float distance = Mathf.Abs(transform.position.z - colliders[0].transform.position.z);
             colliders[0].GetComponent<Note>().BreakNote();
             Managers.Game.Combo++;
-            Managers.Game.AddScore((distance < 0.4 ? 50 : 30) + Managers.Game.Combo);     //ÆÇÁ¤¿¡ µû¶ó Á¡¼ö ´Ù¸§
-            if(Managers.Player.CurrentStateData.SkillGauge < 100.0f)
+            Managers.Game.AddScore((distance < 0.4 ? 50 : 30) + Managers.Game.Combo);     //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ù¸ï¿½
+            if(Managers.Player.CurrentStateData.SkillGauge < 100)
                 Managers.Player.CurrentStateData.SkillGauge += 10;
+            if(Managers.Player.CurrentStateData.SkillGauge >= 100)
+            {
+                Managers.Player.CurrentStateData.SkillGauge = 0;
+                Managers.Player.Skill();
+            }
             Debug.Log(Managers.Game.Combo + " " + Managers.Game.Score);
         }
     }
