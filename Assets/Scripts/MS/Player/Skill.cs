@@ -33,7 +33,7 @@ public class Skill : MonoBehaviour
         {
             objLocalScale.x += 9f / skillPrecision;
             transform.localScale = objLocalScale;
-            yield return new WaitForSeconds(0.6f / skillPrecision);
+            yield return new WaitForSeconds(0.5f / skillPrecision);
         }
         _rb.velocity = Vector3.forward * speed;
     }

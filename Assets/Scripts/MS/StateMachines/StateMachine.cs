@@ -5,9 +5,12 @@ using UnityEngine;
 public abstract class StateMachine
 {
     protected IState currentState;
+    public InputLockType lockType = InputLockType.UnLock;
 
     public void ChangeState(IState newState)
     {
+        if (lockType == InputLockType.Lock) return;
+
         currentState?.Exit();
 
         currentState = newState;

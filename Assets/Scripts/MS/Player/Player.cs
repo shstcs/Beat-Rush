@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem.XR;
+using UnityEngine.VFX;
 
 public class Player : MonoBehaviour
 {
@@ -20,6 +21,9 @@ public class Player : MonoBehaviour
     private PlayerStateMachine _stateMachine;
 
     [HideInInspector]
+    public VisualEffect SwordEffect;
+
+    [HideInInspector]
     public PlayerStateData CurrentStateData;
 
     public GameObject SkillPrefab;
@@ -35,6 +39,7 @@ public class Player : MonoBehaviour
         Controller = GetComponent<CharacterController>();
 
         _stateMachine = new PlayerStateMachine(this);
+        SwordEffect = GetComponentInChildren<VisualEffect>();
     }
 
     private void Start()
@@ -42,6 +47,8 @@ public class Player : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         _stateMachine.ChangeState(_stateMachine.IdleState);
         InitStat();
+
+        Managers.Player = this;
     }
     
     private void Update()
@@ -90,8 +97,8 @@ public class Player : MonoBehaviour
 
     public void Skill()
     {
-        var pos = gameObject.transform.position + new Vector3(0f, 0f, 3f);
-        Instantiate(SkillPrefab, pos, Quaternion.identity);
-        Animator.SetTrigger(AnimationData.SkillParameterHash);
+        var pos = gameObject.transform.position + new Vector3(0f, 0f, 2f);
+        var obj = Instantiate(SkillPrefab, pos, Quaternion.identity);
+        Rotate(obj.transform);
     }
 }
