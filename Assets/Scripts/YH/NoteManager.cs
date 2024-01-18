@@ -7,16 +7,21 @@ public class NoteManager : MonoBehaviour
 {
     private List<Dictionary<string, object>> _sheet;
     private int _curBar = 1;
-    [SerializeField] private SoundManager _soundManager;          //TODO : ���߿� private���� �ٲٰ� �Ŵ����� ���� ������ ����.
-    private ObjectPool _notePool;         
+    private int _maxNote = 120;
+
+    [SerializeField] private SoundManager _soundManager;          //TODO : Use SoundManager in Managers
+    private ObjectPool _notePool;
+    private float _noteTime;
+    private float _testTime = 0.3f;
 
     [Range(0f, 2f)]
     public float latency = 0.8f;
 
+    private int _feedbackCount = 0;
 
     private void Awake()
     {
-        _sheet = CSVReader.Read("test");
+        _sheet = CSVReader.Read("Sheet1");
     }
 
     private void Start()
@@ -24,36 +29,40 @@ public class NoteManager : MonoBehaviour
         Managers.Game.GameType = GameType.Play;
         _notePool = Managers.Pool;
         _notePool.SetPool();
-        StartCoroutine(CreateNote());
+        _noteTime = 60 / Managers.Game.bpm;
+
+        _soundManager.PlayClip(5);
+        StartCoroutine(CreateNewNotes());
     }
 
-    private IEnumerator CreateNote()
+    private void Update()
     {
-        yield return new WaitForSeconds(latency);
-        while (_curBar < 18)
+        if (_feedbackCount > 14)
         {
-            SetNotes(_curBar);
-            _curBar++;
-            yield return new WaitForSeconds((float)(8 * 60 / Managers.Game.bpm));        //�� ���� ��Ʈ 8�� X 1���� �ð� = 60 / 72(bpm)
+            //Debug.Log(Time.time + " " + _soundManager.PlayTime());
         }
-
-        yield return new WaitForSeconds((float)(8 * 60 / Managers.Game.bpm));
-        StartCoroutine(_soundManager.VolumeDown());       //�������� ������ ���� �ٿ�
+        _feedbackCount++;
     }
 
-    private void SetNotes(int current)
+    private IEnumerator CreateNewNotes()
     {
+        float waitTime = 0;
         for (int i = 0; i < _sheet.Count; i++)
         {
-            if ((int)_sheet[i]["curBar"] == current)
-            {
-                GameObject note = _notePool.SpawnFromPool();
-                float xPos = (float)_sheet[i]["xValue"];
-                float zPos = (float)_sheet[i]["zValue"];
-                //note.GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.black;
+            waitTime = (float)_sheet[i + 1]["curTime"] - (float)_sheet[i]["curTime"];
+            GameObject note = _notePool.SpawnFromPool();
+            note.transform.position = new Vector3((float)_sheet[i]["xValue"] + 140, 4, 42.5f);
+            yield return new WaitForSeconds(waitTime / 5 * _noteTime);
+        }
+    }
 
-                note.transform.position = new Vector3(xPos + 140, 4, zPos + 42.5f);
-            }
+    private void FeedBack()
+    {
+        Queue<GameObject> _notes = Managers.Pool.poolQueue;
+        foreach (GameObject _note in _notes)
+        {
+            if (_note.activeSelf)
+                Debug.Log(_note.transform.position.z);
         }
     }
 }

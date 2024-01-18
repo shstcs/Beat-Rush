@@ -18,7 +18,6 @@ public class Note : MonoBehaviour
     {
         _particle.Stop();
         _noteSpeed = _noteDistance / (60 / Managers.Game.bpm);
-        _curDsp = AudioSettings.dspTime;
     }
 
     private void Update()

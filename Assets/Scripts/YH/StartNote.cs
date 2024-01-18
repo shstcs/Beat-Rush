@@ -11,7 +11,7 @@ public class StartNote : Note
     {
         if (other.CompareTag("Line"))
         {
-            _soundManager.PlayClip(20 * (60 / Managers.Game.bpm) / 5 + 1.6f);
+            
             Destroy(gameObject);
         }
     }

@@ -31,4 +31,9 @@ public class SoundManager : MonoBehaviour
         Managers.Game.CallStageEnd();
     }
 
+    public float PlayTime()
+    {
+        return _audioSource.time;
+    }
+
 }
