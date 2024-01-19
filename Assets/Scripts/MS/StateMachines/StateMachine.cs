@@ -7,7 +7,7 @@ public abstract class StateMachine
     protected IState currentState;
     public InputLockType lockType = InputLockType.UnLock;
 
-    public void ChangeState(IState newState)
+    public void ChangeState(IState newState, bool ignorelockType = false)
     {
         if (lockType == InputLockType.Lock) return;
 

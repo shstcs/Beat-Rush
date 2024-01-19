@@ -2665,7 +2665,7 @@ MonoBehaviour:
     Level: 1
     Health: 10
     SkillGauge: 0
-  SkillPrefab: {fileID: 8849272554276783389, guid: 41eaced6da9bd764d954e41d19640d12,
+  SkillPrefab: {fileID: 6445826192643391251, guid: 19ad1952919114446ab32647516f23c6,
     type: 3}
 --- !u!114 &8616956480814457778
 MonoBehaviour:

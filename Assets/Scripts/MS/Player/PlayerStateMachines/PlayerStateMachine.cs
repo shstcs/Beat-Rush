@@ -10,7 +10,7 @@ public class PlayerStateMachine : StateMachine
     public PlayerWalkState WalkState { get;}
     public PlayerRunState RunState { get;}
 
-    public PlayerComboAttackState ComboAttackState { get;}
+    public PlayerAttackState attackState { get;}
     public PlayerDeathState deathState { get;}
     public PlayerSkillState skillState { get;}
     public Vector2 MoveInput { get; set; }
@@ -30,7 +30,7 @@ public class PlayerStateMachine : StateMachine
         WalkState = new PlayerWalkState(this);
         RunState = new PlayerRunState(this);
 
-        ComboAttackState = new PlayerComboAttackState(this);
+        attackState = new PlayerAttackState(this);
 
         deathState = new PlayerDeathState(this);
 
