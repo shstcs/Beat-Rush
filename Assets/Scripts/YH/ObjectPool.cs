@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
@@ -37,5 +38,19 @@ public class ObjectPool : MonoBehaviour
             return obj;
         }
         else return null;
+    }
+
+    public List<GameObject> GetActiveNotes()
+    {
+        List<GameObject> activepool = new List<GameObject>();
+        foreach (GameObject obj in poolQueue)
+        {
+            if (obj.activeSelf == true && obj.transform.position.z >= 10)
+            {
+                activepool.Add(obj);
+            }
+            activepool.OrderBy(x => x.transform.position.z).ToList();
+        }
+        return activepool;
     }
 }

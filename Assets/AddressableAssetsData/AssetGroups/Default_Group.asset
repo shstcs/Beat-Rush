@@ -16,7 +16,13 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: c5cf851708f6b8a408195b1b1dd2b5e5
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 46253119ddad232459b7139f34dc83dc
+    m_Address: Assets/@Resources/Prefabs/Note/Ghost.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoads
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 5feae7305fb988643a34ec8e75f20243, type: 2}
   m_SchemaSet:

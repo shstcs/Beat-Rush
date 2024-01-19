@@ -6,13 +6,11 @@ using UnityEngine;
 public class NoteManager : MonoBehaviour
 {
     private List<Dictionary<string, object>> _sheet;
-    private int _curBar = 1;
-    private int _maxNote = 120;
 
     [SerializeField] private SoundManager _soundManager;          //TODO : Use SoundManager in Managers
     private ObjectPool _notePool;
-    private float _noteTime;
-    private float _testTime = 0.3f;
+    private float _noteSpeed;
+    private float _startDelay = 0.3f;
 
     [Range(0f, 2f)]
     public float latency = 0.8f;
@@ -29,17 +27,16 @@ public class NoteManager : MonoBehaviour
         Managers.Game.GameType = GameType.Play;
         _notePool = Managers.Pool;
         _notePool.SetPool();
-        _noteTime = 60 / Managers.Game.bpm;
+        _noteSpeed = 5 / (60 / Managers.Game.bpm);
 
-        _soundManager.PlayClip(5);
         StartCoroutine(CreateNewNotes());
     }
 
     private void Update()
     {
-        if (_feedbackCount > 14)
+        if (_feedbackCount > 12 && _soundManager.PlayTime() > 0)
         {
-            //Debug.Log(Time.time + " " + _soundManager.PlayTime());
+            //FeedBack();
         }
         _feedbackCount++;
     }
@@ -47,22 +44,33 @@ public class NoteManager : MonoBehaviour
     private IEnumerator CreateNewNotes()
     {
         float waitTime = 0;
-        for (int i = 0; i < _sheet.Count; i++)
+        _soundManager.PlayClip(32.5f / _noteSpeed - 0.3f);
+        for (int i = 0; i < _sheet.Count - 1; i++)
         {
-            waitTime = (float)_sheet[i + 1]["curTime"] - (float)_sheet[i]["curTime"];
+            waitTime = (float)_sheet[i + 1]["noteLocation"] - (float)_sheet[i]["noteLocation"];
             GameObject note = _notePool.SpawnFromPool();
             note.transform.position = new Vector3((float)_sheet[i]["xValue"] + 140, 4, 42.5f);
-            yield return new WaitForSeconds(waitTime / 5 * _noteTime);
+            yield return new WaitForSeconds(waitTime / _noteSpeed);
         }
+        StartCoroutine(_soundManager.VolumeDown());
     }
 
     private void FeedBack()
     {
-        Queue<GameObject> _notes = Managers.Pool.poolQueue;
-        foreach (GameObject _note in _notes)
+        List<GameObject> _activeNotes = Managers.Pool.GetActiveNotes();
+        float _noteDistance = _noteSpeed * (_soundManager.PlayTime() - _startDelay);
+
+        int cnt = 0;
+        foreach (Dictionary<string, object> _noteInfo in _sheet)
         {
-            if (_note.activeSelf)
-                Debug.Log(_note.transform.position.z);
+            float curLocation = (float)_noteInfo["noteLocation"] - _noteDistance;
+            if (curLocation >= 0 && curLocation <= 32.5)
+            {
+                GameObject note = cnt < _activeNotes.Count ? _activeNotes[cnt] : _notePool.SpawnFromPool();
+                note.transform.position = new Vector3(note.transform.position.x, note.transform.position.y, curLocation + 10);
+                cnt++;
+
+            }
         }
     }
 }
