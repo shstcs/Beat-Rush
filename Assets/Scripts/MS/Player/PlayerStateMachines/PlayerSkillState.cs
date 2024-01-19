@@ -25,8 +25,8 @@ public class PlayerSkillState : PlayerBaseState
         float normalizedTime = GetNormalizeTime(stateMachine.Player.Animator, "Skill");
         if (normalizedTime >= 1f)
         {
+            stateMachine.ChangeState(stateMachine.IdleState, true);
             stateMachine.lockType = InputLockType.UnLock;
-            stateMachine.ChangeState(stateMachine.IdleState);
         }
     }
 }

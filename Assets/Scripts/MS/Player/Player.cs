@@ -97,7 +97,7 @@ public class Player : MonoBehaviour
 
     public void Skill()
     {
-        var pos = gameObject.transform.position + new Vector3(0f, 0f, 2f);
+        var pos = gameObject.transform.position + new Vector3(0f, 0f, 0.01f);
         var obj = Instantiate(SkillPrefab, pos, Quaternion.identity);
         Rotate(obj.transform);
     }

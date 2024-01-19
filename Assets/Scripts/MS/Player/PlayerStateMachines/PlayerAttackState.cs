@@ -32,6 +32,14 @@ public class PlayerAttackState : PlayerBaseState
         base.Update();
 
         CheckDie();
+
+        float normalizedTime = GetNormalizeTime(stateMachine.Player.Animator, "Attack");
+
+        if (normalizedTime >= 1f)
+        {
+                stateMachine.ChangeState(stateMachine.IdleState);
+            
+        }
     }
 
 }
