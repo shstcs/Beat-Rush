@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements.Experimental;
 
-public class UIManager:MonoBehaviour
+public class UIManager : MonoBehaviour
 {
     public void SetUI()
     {
@@ -13,7 +13,7 @@ public class UIManager:MonoBehaviour
         {
             SetStartHUD();
         }
-        else if (SceneManager.GetActiveScene().name == "StageUI_Test_Scene")
+        else if (SceneManager.GetActiveScene().name == "StageUI_Test_Scene" || SceneManager.GetActiveScene().name == "Minho")
         {
             SetStageHUD();
         }
