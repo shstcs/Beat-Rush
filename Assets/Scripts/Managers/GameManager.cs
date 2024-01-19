@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public UnityAction OnMapStart;
     public UnityAction OnStageStart;
     public UnityAction OnStageEnd;
+    public UnityAction GetKeyDown;
     #endregion
     #region Fields
     public int Combo { get; set; }

@@ -5,13 +5,30 @@ using UnityEngine.SceneManagement;
 
 public class UI_Popup_Option : MonoBehaviour
 {
+    private void OnEnable()
+    {
+        Time.timeScale = 0.0f;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
     public void LoadStage()
     {
-        SceneManager.LoadScene("StageUI_Test_Scene");
+        SceneManager.LoadScene("Minho");
     }
 
     public void LoadStart()
     {
         SceneManager.LoadScene("StartUI_Test_Scene");
+    }
+
+    public void OffOption()
+    {
+        if (SceneManager.GetActiveScene().name == "Minho" || SceneManager.GetActiveScene().name == "StageUI_Test_Scene")
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+        Time.timeScale = 1.0f;
+        gameObject.SetActive(false);
     }
 }
