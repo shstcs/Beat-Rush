@@ -28,11 +28,12 @@ public class Skill : MonoBehaviour
 
     IEnumerator SkillAttack()
     {
-        Vector3 objLocalScale = new Vector3(transform.localScale.x, 1f, 1f);
+        //Vector3 objLocalScale = new Vector3(transform.localScale.x, 1f, 1f);
+        transform.Rotate(new Vector3(0, 80f, 0));
         for (int i = 0; i < skillPrecision; i++)
         {
-            objLocalScale.x += 9f / skillPrecision;
-            transform.localScale = objLocalScale;
+            //objLocalScale.x += 9f / skillPrecision;
+            //transform.localScale = objLocalScale;
             yield return new WaitForSeconds(0.5f / skillPrecision);
         }
         _rb.velocity = Vector3.forward * speed;

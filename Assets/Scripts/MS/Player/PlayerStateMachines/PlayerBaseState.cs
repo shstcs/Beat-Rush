@@ -148,7 +148,7 @@ public class PlayerBaseState : IState
     protected virtual void OnAttack()
     {
         if (stateMachine.IsDie) return;
-        stateMachine.ChangeState(stateMachine.ComboAttackState);
+        stateMachine.ChangeState(stateMachine.attackState);
     }
 
     #endregion
