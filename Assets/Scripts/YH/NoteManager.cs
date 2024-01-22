@@ -22,7 +22,7 @@ public class NoteManager : MonoBehaviour
 
     private void Awake()
     {
-        _sheet = CSVReader.Read("Sheet1");
+        _sheet = CSVReader.Read("Assets/@Resources/Sheet1.csv");
     }
 
     private void Start()
@@ -60,14 +60,14 @@ public class NoteManager : MonoBehaviour
     private IEnumerator CreateNewNotes()
     {
         float waitTime = 0;
-        _soundManager.PlayClip(32.5f / _noteSpeed - 0.3f);
+        _soundManager.PlayClip(32.5f / _noteSpeed - _startDelay);
         _startDsp = AudioSettings.dspTime;
 
         for (int i = 0; i < _sheet.Count - 1; i++)
         {
             waitTime = (float)_sheet[i + 1]["noteLocation"] - (float)_sheet[i]["noteLocation"];
             GameObject note = _notePool.SpawnFromPool();
-            note.transform.position = new Vector3((float)_sheet[i]["xValue"] + 140, 4, 42.5f);
+            note.transform.position = new Vector3((float)_sheet[i]["xValue"] + 40, 4, 42.5f);
             yield return new WaitForSeconds(waitTime / _noteSpeed);
         }
         StartCoroutine(_soundManager.VolumeDown());
