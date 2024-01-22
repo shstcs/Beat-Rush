@@ -8,11 +8,24 @@ public class SoundManager : MonoBehaviour
     private AudioSource _audioSource;
     private AudioClip _stage1Clip;
 
+    private Dictionary<string, AudioClip> _sfx = new Dictionary<string, AudioClip>();
+
     private void Awake()
     {
         _audioSource = gameObject.AddComponent<AudioSource>();
         _stage1Clip = Resources.Load<AudioClip>("Stage1BGM");
         _audioSource.clip = _stage1Clip;
+    }
+
+    private void Start()
+    {
+        Initialized();
+    }
+
+    private void Initialized()
+    {
+        _sfx.Add("PlayerAttack", Resources.Load<AudioClip>("Sound/Effect/AttackSound"));
+        _sfx.Add("PlayerSkill", Resources.Load<AudioClip>("Sound/Effect/SkillSound"));
     }
 
     public void PlayClip(float delay)
@@ -24,7 +37,7 @@ public class SoundManager : MonoBehaviour
     {
         while (_audioSource.volume > 0)
         {
-            _audioSource.volume -= Time.deltaTime / 4;        // 4√ ø° ∞…√ƒ ¡ŸæÓµÈµµ∑œ
+            _audioSource.volume -= Time.deltaTime / 4;        // 4Ï¥àÏóê Í±∏Ï≥ê Ï§ÑÏñ¥Îì§ÎèÑÎ°ù
             Debug.Log("Volume Down");
             yield return null;
         }
@@ -36,4 +49,8 @@ public class SoundManager : MonoBehaviour
         return _audioSource.time;
     }
 
+    public void PlaySFX(string key)
+    {
+        _audioSource.PlayOneShot(_sfx[key]);
+    }
 }
