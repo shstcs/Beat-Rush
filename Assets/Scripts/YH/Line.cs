@@ -6,12 +6,6 @@ using UnityEngine;
 public class Line : MonoBehaviour
 {
     public LayerMask noteLayer;
-    private Player player;
-
-    private void Start()
-    {
-        player = Managers.Player;
-    }
     void Update()
     {
         
@@ -29,13 +23,20 @@ public class Line : MonoBehaviour
         if (colliders.Length > 0)
         {
 
-            Managers.Player.Rotate(colliders[0].transform);     //�÷��̾� ���� ȸ��
+            Managers.Player.Rotate(colliders[0].transform);     
 
-            colliders[0].GetComponent<Note>().BreakNote();      //��Ʈ ��Ȱ��ȭ
+            colliders[0].GetComponent<Note>().BreakNote();      
 
-            float distance = Mathf.Abs(transform.position.z - colliders[0].transform.position.z);   //������ ���� ���� ���
+            float distance = Mathf.Abs(transform.position.z - colliders[0].transform.position.z);
+
+            int score;
+            if (distance > 0.7f) score = 10;            //Bad
+            else if (distance > 0.5) score = 30;        //Good
+            else if (distance > 0.1) score = 50;        //Great
+            else score = 100;                           //Perfect
+
             Managers.Game.Combo++;
-            Managers.Game.AddScore((distance < 0.4 ? 50 : 30) + Managers.Game.Combo);     //������ ���� ���� �ٸ�
+            Managers.Game.AddScore(score + Managers.Game.Combo);     
 
             // Skill
             if(Managers.Player.CurrentStateData.SkillGauge < 100)

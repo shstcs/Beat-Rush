@@ -32,7 +32,6 @@ public class ObjectPool : MonoBehaviour
         if (poolQueue.Count > 0)
         {
             GameObject obj = poolQueue.Dequeue();
-            obj.SetActive(false );
             poolQueue.Enqueue(obj);
             obj.SetActive(true);
             return obj;
@@ -40,7 +39,7 @@ public class ObjectPool : MonoBehaviour
         else return null;
     }
 
-    public List<GameObject> GetActiveNotes()
+    public List<GameObject> GetActiveAliveNotes()
     {
         List<GameObject> activepool = new List<GameObject>();
         foreach (GameObject obj in poolQueue)
@@ -50,6 +49,19 @@ public class ObjectPool : MonoBehaviour
                 activepool.Add(obj);
             }
             activepool.OrderBy(x => x.transform.position.z).ToList();
+        }
+        return activepool;
+    }
+
+    public List<GameObject> GetActiveNotes()
+    {
+        List<GameObject> activepool = new List<GameObject>();
+        foreach (GameObject obj in poolQueue)
+        {
+            if (obj.activeSelf == true)
+            {
+                activepool.Add(obj);
+            }
         }
         return activepool;
     }
