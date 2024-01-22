@@ -9,7 +9,7 @@ public abstract class StateMachine
 
     public void ChangeState(IState newState, bool ignorelockType = false)
     {
-        if (lockType == InputLockType.Lock) return;
+        if (!ignorelockType && lockType == InputLockType.Lock) return;
 
         currentState?.Exit();
 

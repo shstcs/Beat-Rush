@@ -10,14 +10,16 @@ public class PlayerAttackState : PlayerBaseState
 
     public override void Enter()
     {
+        
         stateMachine.MoveSpeedModifier = 0f;
         base.Enter();
-
+        stateMachine.lockType = InputLockType.Lock;
         stateMachine.Player.Animator.SetTrigger(stateMachine.Player.AnimationData.AttackTriggerParameterHash);
         stateMachine.Player.SwordEffect.Play();
+        stateMachine.Player.SoundManager.PlaySFX("PlayerAttack");
 
         StartAnimation(stateMachine.Player.AnimationData.AttackParameterHash);
-        
+
     }
 
     public override void Exit()
@@ -25,6 +27,8 @@ public class PlayerAttackState : PlayerBaseState
         base.Exit();
 
         StopAnimation(stateMachine.Player.AnimationData.AttackParameterHash);
+
+
     }
 
     public override void Update()
@@ -34,11 +38,11 @@ public class PlayerAttackState : PlayerBaseState
         CheckDie();
 
         float normalizedTime = GetNormalizeTime(stateMachine.Player.Animator, "Attack");
-
-        if (normalizedTime >= 1f)
+        Debug.Log(normalizedTime);
+        if (normalizedTime >= 0.9f)
         {
-                stateMachine.ChangeState(stateMachine.IdleState);
-            
+            stateMachine.ChangeState(stateMachine.IdleState, true);
+            stateMachine.lockType = InputLockType.UnLock;
         }
     }
 
