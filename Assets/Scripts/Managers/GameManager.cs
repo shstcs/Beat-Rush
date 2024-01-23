@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     #endregion
     #region Fields
     public int Combo { get; set; }
-    public int Score { get; private set; }
+    public int Score { get; set; }
     public int Hp {  get; private set; }
     public float bpm = 72.55f;
     public int curNote = 0;
