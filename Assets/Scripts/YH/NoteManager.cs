@@ -8,7 +8,6 @@ public class NoteManager : MonoBehaviour
 {
     private List<Dictionary<string, object>> _sheet;
 
-    [SerializeField] private SoundManager _soundManager;          //TODO : Use SoundManager in Managers
     private ObjectPool _notePool;
     private float _noteSpeed;
     private float _startDelay = 0.3f;
@@ -30,12 +29,15 @@ public class NoteManager : MonoBehaviour
         _noteSpeed = 5 / (60 / Managers.Game.bpm);
         _curDsp = AudioSettings.dspTime;
 
+        // test
+        SoundManager.Instance.PlayBGM(BGM.Stage1);
+
         StartCoroutine(CreateNewNotes());
     }
 
     private void Update()
     {
-        if (_feedbackCount > 12 && _soundManager.PlayTime() > 0)
+        if (_feedbackCount > 12 && SoundManager.Instance.PlayTime() > 0)
         {
             FeedBack();
         }
@@ -57,7 +59,7 @@ public class NoteManager : MonoBehaviour
     private IEnumerator CreateNewNotes()
     {
         float waitTime = 0;
-        _soundManager.PlayClip(32.5f / _noteSpeed - _startDelay);
+        SoundManager.Instance.PlayClip(32.5f / _noteSpeed - _startDelay);
         _startDsp = AudioSettings.dspTime;
 
         for (int i = 0; i < _sheet.Count - 1; i++)
@@ -67,7 +69,7 @@ public class NoteManager : MonoBehaviour
             note.transform.position = new Vector3((float)_sheet[i]["xValue"] + 40, 4, 42.5f);
             yield return new WaitForSeconds(waitTime / _noteSpeed);
         }
-        StartCoroutine(_soundManager.VolumeDown());
+        StartCoroutine(SoundManager.Instance.VolumeDown());
     }
 
     private void FeedBack()
