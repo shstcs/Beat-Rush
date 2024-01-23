@@ -5,5 +5,5 @@ using UnityEngine;
 public interface IPattern
 {
     public void SetPattern();
-    public void Attack();
+    public IEnumerator Attack(float noteSpeed);
 }
