@@ -7,6 +7,7 @@ using UnityEngine;
 public class NoteManager : MonoBehaviour
 {
     private List<Dictionary<string, object>> _sheet;
+    public IMonster monster;
 
     private ObjectPool _notePool;
     private float _noteSpeed;
@@ -28,9 +29,6 @@ public class NoteManager : MonoBehaviour
         _notePool.SetPool();
         _noteSpeed = 5 / (60 / Managers.Game.bpm);
         _curDsp = AudioSettings.dspTime;
-
-        // test
-        SoundManager.Instance.PlayBGM(BGM.Stage1);
 
         StartCoroutine(CreateNewNotes());
     }
@@ -59,7 +57,7 @@ public class NoteManager : MonoBehaviour
     private IEnumerator CreateNewNotes()
     {
         float waitTime = 0;
-        SoundManager.Instance.PlayClip(32.5f / _noteSpeed - _startDelay);
+        SoundManager.Instance.DelayedPlayBGM(BGM.Stage1,32.5f / _noteSpeed - _startDelay);
         _startDsp = AudioSettings.dspTime;
 
         for (int i = 0; i < _sheet.Count - 1; i++)

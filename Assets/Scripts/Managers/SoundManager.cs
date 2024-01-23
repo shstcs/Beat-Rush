@@ -81,4 +81,11 @@ public class SoundManager : MonoBehaviour
         _audioSource.clip = _bgm[key];
         _audioSource.Play();
     }
+
+    public void DelayedPlayBGM(BGM key,float delay)
+    {
+        _audioSource.Stop();
+        _audioSource.clip = _bgm[key];
+        _audioSource.PlayDelayed(delay);
+    }
 }
