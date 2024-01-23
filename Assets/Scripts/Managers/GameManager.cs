@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,7 +16,9 @@ public class GameManager : MonoBehaviour
     public UnityAction GetKeyDown;
     #endregion
     #region Fields
+    public int[] judgeNotes = new int[5];
     public int Combo { get; set; }
+    public int MaxCombo {  get; set; }
     public int Score { get; private set; }
     public int Hp {  get; private set; }
     public float bpm = 72.55f;

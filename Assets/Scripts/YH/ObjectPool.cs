@@ -17,7 +17,6 @@ public class ObjectPool : MonoBehaviour
     }
     public void SetPool()
     {
-        _notePrefab = Resources.Load<GameObject>("Ghost");
         for (int i = 0; i < poolSize; i++)
         {
             GameObject obj = Managers.Resource.Instantiate("Assets/@Resources/Prefabs/Note/Ghost.prefab",transform);

@@ -15,9 +15,6 @@ public class NoteManager : MonoBehaviour
     private double _curDsp;
     private double _startDsp;
 
-    [Range(0f, 2f)]
-    public float latency = 0.8f;
-
     private int _feedbackCount = 0;
 
     private void Awake()

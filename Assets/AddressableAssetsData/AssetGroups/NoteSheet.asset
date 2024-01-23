@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: NoteSheet
+  m_EditorClassIdentifier: 
+  m_GroupName: NoteSheet
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 1494187cb4495f94a9c5c62506ee9e94
+  m_SerializeEntries:
+  - m_GUID: 420d9d44b0bedc045a24d0de8540a337
+    m_Address: Stage1/pattern2.csv
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoads
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 02ad54861a5e83e459807415f0d3b4ee
+    m_Address: Stage1/pattern3.csv
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoads
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6a888b8b2f3011f478ec34e1a3b9bd49
+    m_Address: Stage1/pattern1.csv
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoads
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 156adefe073d5c744937223f94d4db11
+    m_Address: Stage1/pattern4.csv
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoads
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 5feae7305fb988643a34ec8e75f20243, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 2b2fb108c7a41584e93f3d5affa8ac7c, type: 2}
+    - {fileID: 11400000, guid: 5e29f982cc9ceed469a4551533183917, type: 2}

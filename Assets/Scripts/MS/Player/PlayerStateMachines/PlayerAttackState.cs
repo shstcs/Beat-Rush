@@ -38,7 +38,7 @@ public class PlayerAttackState : PlayerBaseState
         CheckDie();
 
         float normalizedTime = GetNormalizeTime(stateMachine.Player.Animator, "Attack");
-        Debug.Log(normalizedTime);
+        //Debug.Log(normalizedTime);
         if (normalizedTime >= 0.9f)
         {
             stateMachine.ChangeState(stateMachine.IdleState, true);

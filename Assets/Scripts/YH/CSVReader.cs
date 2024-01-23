@@ -6,8 +6,8 @@ using System.Text.RegularExpressions;
 
 public class CSVReader
 {
-    static string SPLIT_RE = @",(?=(?:[^""]*""[^""]*"")*(?![^""]*""))";
-    static string LINE_SPLIT_RE = @"\r\n|\n\r|\n|\r";
+    static string SPLIT_RE = @",(?=(?:[^""]*""[^""]*"")*(?![^""]*""))";     // 쉼표로 문자열 분리
+    static string LINE_SPLIT_RE = @"\r\n|\n\r|\n|\r";                       // 엔터, 스페이스바로 문자열 분리
     static char[] TRIM_CHARS = { '\"' };
 
     public static List<Dictionary<string, object>> Read(string file)

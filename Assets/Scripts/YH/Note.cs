@@ -24,6 +24,7 @@ public class Note : MonoBehaviour
             Managers.Game.Combo = 0;
             BreakNote();
             Managers.Player.ChangeHealth(-1);
+            Managers.Game.judgeNotes[(int)Score.Miss]++;
         }
     }
 
