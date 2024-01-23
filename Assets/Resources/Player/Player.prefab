@@ -2611,9 +2611,10 @@ GameObject:
   - component: {fileID: 3166890190606636313}
   - component: {fileID: 8616956480814457778}
   - component: {fileID: 8096455978288860959}
+  - component: {fileID: 7493428323499682436}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2705,6 +2706,24 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &7493428323499682436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8182464500701605721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f9877af551a9bf42b25f996ba8bb491, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CheckRate: 0.05
+  RayDistance: 3
+  TargetLayerMask:
+    serializedVersion: 2
+    m_Bits: 128
+  promptText: {fileID: 0}
 --- !u!1 &8217305015300754216
 GameObject:
   m_ObjectHideFlags: 0
