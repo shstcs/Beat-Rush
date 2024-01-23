@@ -41,10 +41,14 @@ public class InteractionManager : MonoBehaviour
         {
             lastCheckTime = Time.time;
 
-            Ray ray = _camera.ScreenPointToRay(new Vector3(Screen.width /2, Screen.height /2));
+            Ray ray = _camera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2));
             RaycastHit hit;
 
-            if(Physics.Raycast(ray, out hit, RayDistance, TargetLayerMask))
+            Debug.DrawRay(ray.origin - new Vector3(0.1f, 0, 0), ray.direction * 20f, Color.blue);
+            Debug.DrawRay(ray.origin, ray.direction * 20f, Color.blue);
+            Debug.DrawRay(ray.origin + new Vector3(0.1f, 0, 0), ray.direction * 20f, Color.blue);
+
+            if (Physics.Raycast(ray, out hit, RayDistance, TargetLayerMask))
             {
                 if(currentInteractable == null)
                 {
