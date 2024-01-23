@@ -8,13 +8,17 @@ public class UI_Scene_Stage : MonoBehaviour
     private void Start()
     {
         Time.timeScale = 1.0f;
+        Managers.Game.Score = 0;
+        Managers.Game.Combo = 0;
+        Managers.Game.MaxCombo = 0;
         Managers.UI.SetUI();
         Managers.Game.GetKeyDown += OnOption;
+        Managers.Game.OnStageEnd += OnStageEnd;
     }
 
     private void Update()
     {
-        //¿É¼Ç Ã¢ ¿©´Â ºÎºĞÀº ³ªÁß¿¡ Input SystemÀ¸·Î Ã³¸®ÇØµµ µÉ °Í °°½À´Ï´Ù.
+        //ì˜µì…˜ ì°½ ì—¬ëŠ” ë¶€ë¶„ì€ ë‚˜ì¤‘ì— Input Systemìœ¼ë¡œ ì²˜ë¦¬í•´ë„ ë  ê²ƒ ê°™ìŠµë‹ˆë‹¤.
         if (Input.GetKeyDown(KeyCode.Escape))
             Managers.Game.GetKeyDown?.Invoke();
     }
@@ -22,6 +26,14 @@ public class UI_Scene_Stage : MonoBehaviour
     private void OnOption()
     {
         GameObject.Find("Canvas").transform.GetChild(0).gameObject.SetActive(true);
+    }
+
+    private void OnStageEnd()
+    {
+        if(Managers.Player.IsDie())
+            GameObject.Find("Canvas").transform.GetChild(2).gameObject.SetActive(true);
+        else
+            GameObject.Find("Canvas").transform.GetChild(1).gameObject.SetActive(true);
     }
 
     private void OnDisable()

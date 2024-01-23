@@ -39,6 +39,8 @@ public class Skill : MonoBehaviour
         {
             other.GetComponent<Note>().BreakNote();
             Managers.Game.Combo++;
+            if(Managers.Game.Combo > Managers.Game.MaxCombo)
+                Managers.Game.MaxCombo = Managers.Game.Combo;
             Managers.Game.AddScore(50 + Managers.Game.Combo);
         }
 

@@ -37,3 +37,7 @@ MonoBehaviour:
       <ForceTransitionTime>k__BackingField: 0
       <Force>k__BackingField: 0
       <Damage>k__BackingField: 3
+  <StateData>k__BackingField:
+    Level: 1
+    Health: 10
+    SkillGauge: 0
