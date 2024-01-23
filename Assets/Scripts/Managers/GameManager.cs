@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     public int[] judgeNotes = new int[5];
     public int Combo { get; set; }
     public int MaxCombo {  get; set; }
-    public int Score { get; private set; }
+    public int Score { get; set; }
     public int Hp {  get; private set; }
     public float bpm = 72.55f;
     public int curNote = 0;
