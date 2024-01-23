@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum InstrumentType
 {
     guitar,
     piano,
-
+    Drum,
 }
 
 public class Guitar : MonoBehaviour, IInteractable
@@ -52,6 +53,9 @@ public class Guitar : MonoBehaviour, IInteractable
 
                 case InstrumentType.piano:
                     break;
+
+                case InstrumentType.Drum:
+                    break;
             }
         }
     }
@@ -63,7 +67,7 @@ public class Guitar : MonoBehaviour, IInteractable
             particle.gameObject.SetActive(false);
             particle.Pause();
 
-            switch(type)
+            switch (type)
             {
                 case InstrumentType.guitar:
                     instrument.transform.rotation = Quaternion.Euler(0, 0, -45f);
@@ -71,18 +75,33 @@ public class Guitar : MonoBehaviour, IInteractable
 
                 case InstrumentType.piano:
                     break;
+
+                case InstrumentType.Drum:
+                    break;
             }
         }
     }
 
     public string GetInteractPrompt()
     {
-        return "Guitar";
+        return instrument.gameObject.name;
     }
 
     public void OnInteract()
     {
-        Debug.Log("Guitar 상호작용");
-        // 상호작용 구현
+        //상호작용 구현
+        switch (type)
+        {
+            case InstrumentType.guitar:
+                SceneManager.LoadScene("Minho");
+                break;
+            case InstrumentType.piano:
+                SceneManager.LoadScene("Minho");
+                break;
+            case InstrumentType.Drum:
+                SceneManager.LoadScene("Minho");
+                break;
+        }
+
     }
 }
