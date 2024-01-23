@@ -14,6 +14,7 @@ public class NoteManager : MonoBehaviour
     private float _startDelay = 0.3f;
     private double _curDsp;
     private double _startDsp;
+    private double _pauseDsp;
 
     private int _feedbackCount = 0;
 
@@ -35,12 +36,20 @@ public class NoteManager : MonoBehaviour
 
     private void Update()
     {
-        if (_feedbackCount > 12 && SoundManager.Instance.PlayTime() > 0)
+        if(Time.timeScale>0)
         {
-            FeedBack();
+            if (_feedbackCount > 12 && SoundManager.Instance.PlayTime() > 0)
+            {
+                FeedBack();
+            }
+            _feedbackCount++;
+            MoveNotes();
         }
-        _feedbackCount++;
-        MoveNotes();
+        else
+        {
+            _startDsp += AudioSettings.dspTime - _curDsp;
+        }
+        _curDsp = AudioSettings.dspTime;
     }
 
     private void MoveNotes()
@@ -51,7 +60,6 @@ public class NoteManager : MonoBehaviour
             note.gameObject.transform.position = new Vector3(note.gameObject.transform.position.x, note.gameObject.transform.position.y,
             note.gameObject.transform.position.z - movement);
         }
-        _curDsp = AudioSettings.dspTime;
     }
 
     private IEnumerator CreateNewNotes()

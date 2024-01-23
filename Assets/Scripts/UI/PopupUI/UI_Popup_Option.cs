@@ -11,6 +11,7 @@ public class UI_Popup_Option : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
+
     public void LoadStage()
     {
         SceneManager.LoadScene("Minho");
@@ -30,5 +31,6 @@ public class UI_Popup_Option : MonoBehaviour
         }
         Time.timeScale = 1.0f;
         gameObject.SetActive(false);
+        SoundManager.Instance.ContinueBGM();        //음악 재생
     }
 }
