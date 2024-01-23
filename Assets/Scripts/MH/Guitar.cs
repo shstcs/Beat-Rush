@@ -9,7 +9,7 @@ public enum InstrumentType
 
 }
 
-public class Guitar : MonoBehaviour
+public class Guitar : MonoBehaviour, IInteractable
 {
     public InstrumentType type;
     public GameObject instrument;
@@ -73,5 +73,16 @@ public class Guitar : MonoBehaviour
                     break;
             }
         }
+    }
+
+    public string GetInteractPrompt()
+    {
+        return "Guitar";
+    }
+
+    public void OnInteract()
+    {
+        Debug.Log("Guitar 상호작용");
+        // 상호작용 구현
     }
 }
