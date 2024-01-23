@@ -18,7 +18,7 @@ public class UI_Popup_Option : MonoBehaviour
 
     public void LoadStart()
     {
-        SceneManager.LoadScene("StartUI_Test_Scene");
+        SceneManager.LoadScene("Lobby");
     }
 
     public void OffOption()

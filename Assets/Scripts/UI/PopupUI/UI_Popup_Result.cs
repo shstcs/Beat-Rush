@@ -30,7 +30,7 @@ public class UI_Popup_Result : MonoBehaviour
 
     public void LoadLobby()
     {
-        SceneManager.LoadScene("LobbyUI_Test_Scene");
+        SceneManager.LoadScene("Lobby");
     }
 
     private void ClearResult()
