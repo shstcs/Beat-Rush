@@ -6,26 +6,47 @@ using UnityEngine;
 public class SoundManager : MonoBehaviour
 {
     private AudioSource _audioSource;
-    private AudioClip _stage1Clip;
+    private static SoundManager _instance;
 
-    private Dictionary<string, AudioClip> _sfx = new Dictionary<string, AudioClip>();
+    public static SoundManager Instance
+    {
+        get
+        {
+            if(_instance == null)
+            {
+                return null;
+            }
+            return _instance;
+        }
+    }
+
+    //private AudioClip _stage1Clip;
+
+    private Dictionary<SFX, AudioClip> _sfx = new Dictionary<SFX, AudioClip>();
+    private Dictionary<BGM, AudioClip> _bgm = new Dictionary<BGM, AudioClip>();
 
     private void Awake()
     {
-        _audioSource = gameObject.AddComponent<AudioSource>();
-        _stage1Clip = Resources.Load<AudioClip>("Stage1BGM");
-        _audioSource.clip = _stage1Clip;
-    }
+        if(_instance == null)
+        {
+            _instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
 
-    private void Start()
-    {
         Initialized();
+        _audioSource = gameObject.AddComponent<AudioSource>();
     }
 
     private void Initialized()
     {
-        _sfx.Add("PlayerAttack", Resources.Load<AudioClip>("Sound/Effect/AttackSound"));
-        _sfx.Add("PlayerSkill", Resources.Load<AudioClip>("Sound/Effect/SkillSound"));
+        _sfx.Add(SFX.Attack, Managers.Resource.Load<AudioClip>("AttackSound"));
+        _sfx.Add(SFX.Skill, Managers.Resource.Load<AudioClip>("SkillSound"));
+
+        _bgm.Add(BGM.Stage1, Managers.Resource.Load<AudioClip>("Stage1BGM"));
     }
 
     public void PlayClip(float delay)
@@ -49,8 +70,15 @@ public class SoundManager : MonoBehaviour
         return _audioSource.time;
     }
 
-    public void PlaySFX(string key)
+    public void PlaySFX(SFX key)
     {
         _audioSource.PlayOneShot(_sfx[key]);
+    }
+    
+    public void PlayBGM(BGM key)
+    {
+        _audioSource.Stop();
+        _audioSource.clip = _bgm[key];
+        _audioSource.Play();
     }
 }
