@@ -2,9 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum InstrumentType
+{
+    guitar,
+    piano,
+
+}
+
 public class Guitar : MonoBehaviour
 {
-    public GameObject guitar;
+    public InstrumentType type;
+    public GameObject instrument;
     public ParticleSystem particle;
     float time = 0f;
     bool rightTurn = true;
@@ -17,25 +25,33 @@ public class Guitar : MonoBehaviour
             particle.Play();
             time += Time.deltaTime;
 
-            if (rightTurn)
+            switch (type)
             {
-                guitar.transform.Rotate(0, 0, -10f * Time.deltaTime);
+                case InstrumentType.guitar:
+                    if (rightTurn)
+                    {
+                        instrument.transform.Rotate(0, 0, -20f * Time.deltaTime);
 
-                if (time >= 3f)
-                {
-                    rightTurn = !rightTurn;
-                    time = 0f;
-                }
-            }
-            else if (!rightTurn)
-            {
-                guitar.transform.Rotate(0, 0, 10f * Time.deltaTime);
+                        if (time >= 3f)
+                        {
+                            rightTurn = !rightTurn;
+                            time = 0f;
+                        }
+                    }
+                    else if (!rightTurn)
+                    {
+                        instrument.transform.Rotate(0, 0, 20f * Time.deltaTime);
 
-                if (time >= 3f)
-                {
-                    rightTurn = !rightTurn;
-                    time = 0f;
-                }
+                        if (time >= 3f)
+                        {
+                            rightTurn = !rightTurn;
+                            time = 0f;
+                        }
+                    }
+                    break;
+
+                case InstrumentType.piano:
+                    break;
             }
         }
     }
@@ -46,7 +62,16 @@ public class Guitar : MonoBehaviour
         {
             particle.gameObject.SetActive(false);
             particle.Pause();
-            guitar.transform.rotation = Quaternion.Euler(0, 0, -45f);
+
+            switch(type)
+            {
+                case InstrumentType.guitar:
+                    instrument.transform.rotation = Quaternion.Euler(0, 0, -45f);
+                    break;
+
+                case InstrumentType.piano:
+                    break;
+            }
         }
     }
 }
