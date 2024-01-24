@@ -31,6 +31,6 @@ public class UI_Popup_Option : MonoBehaviour
         }
         Time.timeScale = 1.0f;
         gameObject.SetActive(false);
-        SoundManager.Instance.ContinueBGM();        //음악 재생
+        Managers.Sound.ContinueBGM();        //음악 재생
     }
 }

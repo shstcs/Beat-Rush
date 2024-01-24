@@ -52,7 +52,7 @@ public class Stage1Monster :MonoBehaviour, IMonster
         }
         else
         {
-            StartCoroutine(SoundManager.Instance.VolumeDown());
+            StartCoroutine(Managers.Sound.VolumeDown());
         }
     }
 }

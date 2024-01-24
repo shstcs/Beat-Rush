@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerIdleState : PlayerBaseState
 {
@@ -32,7 +33,10 @@ public class PlayerIdleState : PlayerBaseState
 
         if (stateMachine.MoveInput != Vector2.zero)
         {
-            OnMove();
+            if(stateMachine.MoveSpeedModifier != baseData.RunSpeedModifier)
+                OnMove();
+            else
+                stateMachine.ChangeState(stateMachine.RunState);
             return;
         }
     }

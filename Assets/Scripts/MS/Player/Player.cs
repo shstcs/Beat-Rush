@@ -102,6 +102,6 @@ public class Player : MonoBehaviour
         var pos = gameObject.transform.position + new Vector3(0f, 0f, 0.01f);
         var obj = Instantiate(SkillPrefab, pos, Quaternion.identity);
         Rotate(obj.transform);
-        SoundManager.Instance.PlaySFX(SFX.Skill);
+        Managers.Sound.PlaySFX(SFX.Skill);
     }
 }

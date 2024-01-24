@@ -30,6 +30,7 @@ public class UI_Popup_Result : MonoBehaviour
 
     public void LoadLobby()
     {
+        Managers.Game.GameType = GameType.Main;
         SceneManager.LoadScene("Lobby");
     }
 
