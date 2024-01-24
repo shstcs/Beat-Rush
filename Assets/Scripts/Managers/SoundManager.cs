@@ -15,8 +15,11 @@ public class SoundManager : MonoBehaviour
 
     public void Initialized()
     {
+        AudioSource.volume = 0.2f;
         _sfx.Add(SFX.Attack, Managers.Resource.Load<AudioClip>("AttackSound"));
         _sfx.Add(SFX.Skill, Managers.Resource.Load<AudioClip>("SkillSound"));
+        _sfx.Add(SFX.FirstWalk, Managers.Resource.Load<AudioClip>("FirstGrassWalk"));
+        _sfx.Add(SFX.SecondWalk, Managers.Resource.Load<AudioClip>("SecondGrassWalk"));
 
         _bgm.Add(BGM.Stage1, Managers.Resource.Load<AudioClip>("Stage1BGM"));
         _bgm.Add(BGM.Lobby2, Managers.Resource.Load<AudioClip>("Lobby2"));
@@ -43,14 +46,13 @@ public class SoundManager : MonoBehaviour
         return AudioSource.time;
     }
 
-    public void PlaySFX(SFX key)
+    public void PlaySFX(SFX key, float volumeScale = 1f)
     {
-        AudioSource.PlayOneShot(_sfx[key]);
+        AudioSource.PlayOneShot(_sfx[key], volumeScale);
     }
     
     public void PlayBGM(BGM key)
     {
-        AudioSource.volume = 0.2f;
         AudioSource.Stop();
         AudioSource.clip = _bgm[key];
         AudioSource.Play();

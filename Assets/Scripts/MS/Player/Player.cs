@@ -28,8 +28,8 @@ public class Player : MonoBehaviour
 
     public GameObject SkillPrefab;
 
-   // public SoundManager SoundManager;
-    
+    // public SoundManager SoundManager;
+
     private void Awake()
     {
         Managers.Player = this;
@@ -52,7 +52,7 @@ public class Player : MonoBehaviour
 
         Managers.Player = this;
     }
-    
+
     private void Update()
     {
         _stateMachine.HandleInput();
