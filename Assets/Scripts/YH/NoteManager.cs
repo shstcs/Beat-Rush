@@ -39,7 +39,7 @@ public class NoteManager : MonoBehaviour
     {
         if (Time.timeScale > 0)
         {
-            if (_feedbackCount > 12 && SoundManager.Instance.PlayTime() > 0)
+            if (_feedbackCount > 12 && Managers.Sound.PlayTime() > 0)
             {
                 FeedBack();
             }
@@ -70,7 +70,7 @@ public class NoteManager : MonoBehaviour
     private IEnumerator CreateNewNotes()
     {
         float waitTime = 0;
-        SoundManager.Instance.DelayedPlayBGM(BGM.Stage1, 32.5f / _noteSpeed);
+        Managers.Sound.DelayedPlayBGM(BGM.Stage1,32.5f / _noteSpeed - _startDelay);
 
         for (int i = 0; i < _sheet.Count - 1; i++)
         {
@@ -82,7 +82,7 @@ public class NoteManager : MonoBehaviour
             //_monster.RandomAttack(_noteSpeed);
             //yield return new WaitForSeconds(30);
         }
-        //StartCoroutine(SoundManager.Instance.VolumeDown());
+        StartCoroutine(Managers.Sound.VolumeDown());
     }
 
     private void FeedBack()

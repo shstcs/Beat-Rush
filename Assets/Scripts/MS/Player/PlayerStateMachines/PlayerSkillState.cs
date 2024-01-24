@@ -22,11 +22,11 @@ public class PlayerSkillState : PlayerBaseState
     {
         base.Update();
 
-        float normalizedTime = GetNormalizeTime(stateMachine.Player.Animator, "Skill");
-        if (normalizedTime >= 1f)
+        AnimatorStateInfo currentInfo = stateMachine.Player.Animator.GetCurrentAnimatorStateInfo(0);
+        if (!currentInfo.IsTag("Skill") || 0.9 <= currentInfo.normalizedTime)
         {
             stateMachine.ChangeState(stateMachine.IdleState, true);
             stateMachine.lockType = InputLockType.UnLock;
-        }
+        }  
     }
 }

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Line : MonoBehaviour
 {
@@ -10,12 +11,23 @@ public class Line : MonoBehaviour
     void Update()
     {
         
-        if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Z))
-        {
-            if (Managers.Player.IsDie()) return;
+        //if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Z))
+        //{
+        //    if (Managers.Player.IsDie()) return;
 
-            CheckNotes();
-        }
+        //    CheckNotes();
+        //}
+    }
+
+    private void Start()
+    {
+        Managers.Player.Input.PlayerActions.Attack.started += OnAttackStarted;
+    }
+
+    private void OnAttackStarted(InputAction.CallbackContext context)
+    {
+        if (Managers.Player.IsDie()) return;
+        CheckNotes();
     }
 
     private void CheckNotes()

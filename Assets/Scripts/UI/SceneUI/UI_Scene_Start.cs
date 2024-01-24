@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UI_Scene_Start : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class UI_Scene_Start : MonoBehaviour
             if (count >= totalCount)
             {
                 Managers.UI.SetUI();
+                Managers.Sound.Initialized();
             }
         });
     }

@@ -30,6 +30,7 @@ public class UI_Popup_Result : MonoBehaviour
 
     public void LoadLobby()
     {
+        Managers.Game.GameType = GameType.Main;
         SceneManager.LoadScene("Lobby");
     }
 
@@ -37,5 +38,10 @@ public class UI_Popup_Result : MonoBehaviour
     {
         GameObject.Find("Score_Text").transform.GetComponent<TextMeshProUGUI>().text = Managers.Game.Score.ToString();
         GameObject.Find("Combo_Text").transform.GetComponent<TextMeshProUGUI>().text = Managers.Game.MaxCombo.ToString();
+        GameObject.Find("Perfect_Text").transform.GetComponent<TextMeshProUGUI>().text = Managers.Game.judgeNotes[(int)Score.Perfect].ToString();
+        GameObject.Find("Great_Text").transform.GetComponent<TextMeshProUGUI>().text = Managers.Game.judgeNotes[(int)Score.Great].ToString();
+        GameObject.Find("Good_Text").transform.GetComponent<TextMeshProUGUI>().text = Managers.Game.judgeNotes[(int)Score.Good].ToString();
+        GameObject.Find("Bad_Text").transform.GetComponent<TextMeshProUGUI>().text = Managers.Game.judgeNotes[(int)Score.Bad].ToString();
+        GameObject.Find("Miss_Text").transform.GetComponent<TextMeshProUGUI>().text = Managers.Game.judgeNotes[(int)Score.Miss].ToString();
     }
 }
