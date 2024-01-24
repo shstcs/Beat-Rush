@@ -33,6 +33,8 @@ public class NoteManager : MonoBehaviour
         _curDsp = AudioSettings.dspTime;
 
         StartCoroutine(CreateNewNotes());
+        Managers.Game.OnStageEnd -= Managers.Sound.StopBGM;
+        Managers.Game.OnStageEnd += Managers.Sound.StopBGM;
     }
 
     private void Update()
@@ -41,9 +43,9 @@ public class NoteManager : MonoBehaviour
         {
             if (_feedbackCount > 12 && Managers.Sound.PlayTime() > 0)
             {
-                FeedBack();
+                //FeedBack();
             }
-            else if(SoundManager.Instance.PlayTime() == 0)
+            else if(Managers.Sound.PlayTime() == 0)
             {
                 _isFeedbackStart = false;
             }
@@ -70,18 +72,21 @@ public class NoteManager : MonoBehaviour
     private IEnumerator CreateNewNotes()
     {
         float waitTime = 0;
-        Managers.Sound.DelayedPlayBGM(BGM.Stage1,32.5f / _noteSpeed - _startDelay);
+        Managers.Sound.DelayedPlayBGM(BGM.Stage1,32.5f / _noteSpeed);
 
-        for (int i = 0; i < _sheet.Count - 1; i++)
+        //for (int i = 0; i < _sheet.Count - 1; i++)
+        //{
+        //    waitTime = (float)_sheet[i + 1]["noteLocation"] - (float)_sheet[i]["noteLocation"];
+        //    GameObject note = _notePool.SpawnFromPool();
+        //    note.transform.position = new Vector3((float)_sheet[i]["xValue"] + 40, 4, 42.5f);
+        //    yield return new WaitForSeconds(waitTime / _noteSpeed);
+        //}
+        for(int i = 0; i < 4; i++)
         {
-            waitTime = (float)_sheet[i + 1]["noteLocation"] - (float)_sheet[i]["noteLocation"];
-            GameObject note = _notePool.SpawnFromPool();
-            note.transform.position = new Vector3((float)_sheet[i]["xValue"] + 40, 4, 42.5f);
-            yield return new WaitForSeconds(waitTime / _noteSpeed);
-
-            //_monster.RandomAttack(_noteSpeed);
-            //yield return new WaitForSeconds(30);
+            _monster.RandomAttack(_noteSpeed);
+            yield return new WaitForSeconds(30);
         }
+
         StartCoroutine(Managers.Sound.VolumeDown());
     }
 

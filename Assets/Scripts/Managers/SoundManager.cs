@@ -70,4 +70,9 @@ public class SoundManager : MonoBehaviour
     {
         AudioSource?.UnPause();
     }
+
+    public void StopBGM()
+    {
+        AudioSource?.Stop();
+    }
 }
