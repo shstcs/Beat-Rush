@@ -14,8 +14,8 @@ public class UI_Scene_Start : MonoBehaviour
             if (count >= totalCount)
             {
                 Managers.UI.SetUI();
+                Managers.Sound.Initialized();
             }
         });
-        Managers.Sound.Initialized();
     }
 }
