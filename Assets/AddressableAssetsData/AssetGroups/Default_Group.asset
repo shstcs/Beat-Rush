@@ -18,7 +18,7 @@ MonoBehaviour:
   m_GUID: c5cf851708f6b8a408195b1b1dd2b5e5
   m_SerializeEntries:
   - m_GUID: 46253119ddad232459b7139f34dc83dc
-    m_Address: Assets/@Resources/Prefabs/Note/Ghost.prefab
+    m_Address: Notes/Ghost.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - PreLoads
@@ -43,6 +43,12 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 63332f5ab3fc2c540a036e4c2b5e1892
     m_Address: Stage1BGM
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoads
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3aa8b6a00650676419daef68ae39f3b4
+    m_Address: Notes/Note.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - PreLoads

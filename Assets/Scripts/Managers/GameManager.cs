@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
     public int MaxCombo {  get; set; }
     public int Score { get; set; }
     public int Hp {  get; private set; }
-    public float bpm = 72.55f;
+    public float bpm = 72f;
     public int curNote = 0;
     public GameType GameType = GameType.Main;
     //private int bestScore;

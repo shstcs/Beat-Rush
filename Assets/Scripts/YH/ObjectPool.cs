@@ -19,7 +19,7 @@ public class ObjectPool : MonoBehaviour
     {
         for (int i = 0; i < poolSize; i++)
         {
-            GameObject obj = Managers.Resource.Instantiate("Assets/@Resources/Prefabs/Note/Ghost.prefab",transform);
+            GameObject obj = Managers.Resource.Instantiate("Notes/Ghost.prefab", transform);
             obj.SetActive(false);
             poolQueue.Enqueue(obj);
         }
@@ -42,7 +42,7 @@ public class ObjectPool : MonoBehaviour
         List<GameObject> activepool = new List<GameObject>();
         foreach (GameObject obj in poolQueue)
         {
-            if (obj.activeSelf == true && obj.transform.position.z >= 10)
+            if (obj.activeSelf == true)
             {
                 activepool.Add(obj);
             }

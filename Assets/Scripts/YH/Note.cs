@@ -5,7 +5,6 @@ using UnityEngine;
 public class Note : MonoBehaviour
 {
     private ParticleSystem _particle;
-    private float _noteDistance = 5;
 
     protected void Awake()
     {

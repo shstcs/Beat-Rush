@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Line : MonoBehaviour
@@ -22,6 +23,8 @@ public class Line : MonoBehaviour
         Collider[] colliders = Physics.OverlapBox(transform.position, new Vector3(10, 5, 0.01f) / 2, Quaternion.identity, noteLayer);
         if (colliders.Length > 0)
         {
+            colliders = colliders.OrderBy(collider => collider.transform.position.z).ToArray();
+
             Managers.Player.Rotate(colliders[0].transform);     
 
             float distance = Mathf.Abs(10 - colliders[0].transform.position.z);
@@ -47,7 +50,6 @@ public class Line : MonoBehaviour
                 score = 100;
                 Managers.Game.judgeNotes[(int)Score.Perfect]++;
             } 
-            Debug.Log(colliders[0].transform.position.z);
 
             colliders[0].GetComponent<Note>().BreakNote();
 

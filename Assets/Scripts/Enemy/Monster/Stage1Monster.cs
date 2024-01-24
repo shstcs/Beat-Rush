@@ -18,15 +18,19 @@ public class Stage1Monster :MonoBehaviour, IMonster
             new Pattern3(),
             new Pattern4()
         };
-    }
 
-    private void Start()
-    {
         foreach (var pattern in _patterns)
         {
             pattern.SetPattern();
         }
+
         SortPattern();
+    }
+
+    
+    private void Update()
+    {
+
     }
 
     public void SortPattern()
