@@ -7,6 +7,8 @@ public class StartButton : MonoBehaviour
 {
     public void OnStart()
     {
+        Managers.Sound.PlayBGM(BGM.Lobby2);
+        Managers.Game.GameType = GameType.Main;
         SceneManager.LoadScene("Lobby");
     }
 }

@@ -19,6 +19,7 @@ public class SoundManager : MonoBehaviour
         _sfx.Add(SFX.Skill, Managers.Resource.Load<AudioClip>("SkillSound"));
 
         _bgm.Add(BGM.Stage1, Managers.Resource.Load<AudioClip>("Stage1BGM"));
+        _bgm.Add(BGM.Lobby2, Managers.Resource.Load<AudioClip>("Lobby2"));
     }
 
     public void PlayClip(float delay)
@@ -49,6 +50,7 @@ public class SoundManager : MonoBehaviour
     
     public void PlayBGM(BGM key)
     {
+        AudioSource.volume = 0.2f;
         AudioSource.Stop();
         AudioSource.clip = _bgm[key];
         AudioSource.Play();

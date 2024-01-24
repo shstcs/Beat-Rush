@@ -9,4 +9,6 @@ public enum SFX
 public enum BGM
 {
     Stage1,
+    Lobby2,
+
 }
