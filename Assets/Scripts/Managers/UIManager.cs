@@ -17,7 +17,7 @@ public class UIManager : MonoBehaviour
         {
             SetStageHUD();
         }
-        else if (SceneManager.GetActiveScene().name == "LobbyUI_Test_Scene")
+        else if (SceneManager.GetActiveScene().name == "LobbyUI_Test_Scene" || SceneManager.GetActiveScene().name == "Lobby")
         {
             SetMapHUD();
         }
