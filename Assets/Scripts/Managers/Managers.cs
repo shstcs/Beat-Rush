@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -32,6 +33,7 @@ public class Managers : MonoBehaviour
             {
                 _instance = gameObject.AddComponent<Managers>();
             }
+            Sound.AudioSource = gameObject.AddComponent<AudioSource>();
             DontDestroyOnLoad(gameObject);
         }
     }
@@ -42,10 +44,12 @@ public class Managers : MonoBehaviour
     private ResourceManager _resource = new();
     private ObjectPool _pool = new();
     private Player _player = new();
+    private SoundManager _sound = new();
 
     public static UIManager UI => Instance?._ui;
     public static GameManager Game => Instance?._game;
     public static ResourceManager Resource => Instance?._resource;
+    public static SoundManager Sound => Instance?._sound;
     public static ObjectPool Pool
     {
         get { return Instance._pool; }
