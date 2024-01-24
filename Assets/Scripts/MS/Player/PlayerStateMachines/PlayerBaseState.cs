@@ -40,7 +40,8 @@ public class PlayerBaseState : IState
     {
         if (_gameManager.GameType == GameType.Play)
             stateMachine.MoveInput = Vector2.zero;
-        Move();
+        else
+            Move();
     }
 
 
@@ -129,7 +130,7 @@ public class PlayerBaseState : IState
 
     protected virtual void OnRunStarted(InputAction.CallbackContext context)
     {
-
+        stateMachine.ChangeState(stateMachine.RunState);
     }
 
     #endregion

@@ -24,7 +24,6 @@ public class PlayerWalkState : PlayerBaseState
 
     protected override void OnRunStarted(InputAction.CallbackContext context)
     {
-        base.OnRunStarted(context);
         stateMachine.ChangeState(stateMachine.RunState);
     }
 

@@ -16,7 +16,7 @@ public class PlayerAttackState : PlayerBaseState
         stateMachine.lockType = InputLockType.Lock;
         stateMachine.Player.Animator.SetTrigger(stateMachine.Player.AnimationData.AttackTriggerParameterHash);
         stateMachine.Player.SwordEffect.Play();
-        SoundManager.Instance.PlaySFX(SFX.Attack);
+        Managers.Sound.PlaySFX(SFX.Attack);
 
         StartAnimation(stateMachine.Player.AnimationData.AttackParameterHash);
 
@@ -36,10 +36,8 @@ public class PlayerAttackState : PlayerBaseState
         base.Update();
 
         CheckDie();
-
-        float normalizedTime = GetNormalizeTime(stateMachine.Player.Animator, "Attack");
-        //Debug.Log(normalizedTime);
-        if (normalizedTime >= 0.9f)
+        AnimatorStateInfo currentInfo = stateMachine.Player.Animator.GetCurrentAnimatorStateInfo(0);
+        if (!currentInfo.IsTag("Attack") || 0.9 <= currentInfo.normalizedTime)
         {
             stateMachine.ChangeState(stateMachine.IdleState, true);
             stateMachine.lockType = InputLockType.UnLock;
