@@ -8,13 +8,13 @@ public class Pattern1 : IPattern
     private double _startDsp;
     private float _startDelay = 0.3f;
     private float _noteSpeed = 6;
+    private bool _isFeedbackStart;
     public void SetPattern()
     {
         _pattern = CSVReader.Read("Stage1/pattern1.csv");
-        _startDsp = AudioSettings.dspTime;
     }
 
-    public IEnumerator Attack(float noteSpeed)
+    public IEnumerator Attack()
     {
         float waitTime = 0;
         _startDsp = AudioSettings.dspTime;
@@ -23,29 +23,33 @@ public class Pattern1 : IPattern
         {
             waitTime = (float)_pattern[i + 1]["noteLocation"] - (float)_pattern[i]["noteLocation"];
             GameObject note = Managers.Pool.SpawnFromPool();
-            note.transform.position = new Vector3((float)_pattern[i]["xValue"] + 40, 4, 42.5f);
-            yield return new WaitForSeconds(waitTime / noteSpeed);
+            note.transform.position = new Vector3((float)_pattern[i]["xValue"] + 40, 4, 43.5f);
+            yield return new WaitForSeconds(waitTime / _noteSpeed);
         }
     }
 
-    public void FeedBack()
+    public void Feedback()
     {
+        if (!_isFeedbackStart)
+        {
+            _startDsp = AudioSettings.dspTime;
+            _isFeedbackStart = true;
+        }
+
         List<GameObject> _activeNotes = Managers.Pool.GetActiveAliveNotes();
-        float _noteDistance = _noteSpeed * ((float)(AudioSettings.dspTime - _startDsp) - _startDelay);
+        float _noteDistance = _noteSpeed * (float)(AudioSettings.dspTime - _startDsp) + _startDelay;
 
         int cnt = 0;
-        
-        for (int i = 0; i < _activeNotes.Count; i++)
+        for (int i = Managers.Game.curNote; i < Managers.Game.curNote + _activeNotes.Count; i++)
         {
             float curLocation = (float)_pattern[i]["noteLocation"] - _noteDistance;
-            if (curLocation >= 0 && curLocation <= 32.5)
-            {
-                GameObject note = cnt < _activeNotes.Count ? _activeNotes[cnt] : Managers.Pool.SpawnFromPool();
-                note.transform.position = new Vector3(note.transform.position.x, note.transform.position.y, curLocation + 10);
-                cnt++;
-
-            }
-            else if (curLocation > 32.5) break;
+            GameObject note = _activeNotes[cnt++];
+            note.transform.position = new Vector3(note.transform.position.x, note.transform.position.y, curLocation + 42.5f);
         }
+    }
+
+    public void Pause()
+    {
+        _isFeedbackStart = false;
     }
 }
