@@ -71,7 +71,7 @@ public class NoteManager : MonoBehaviour
 
     private IEnumerator CreateNewNotes()
     {
-        float waitTime = 0;
+        //float waitTime = 0;
         Managers.Sound.DelayedPlayBGM(BGM.Stage1,32.5f / _noteSpeed);
 
         //for (int i = 0; i < _sheet.Count - 1; i++)
@@ -83,8 +83,9 @@ public class NoteManager : MonoBehaviour
         //}
         for(int i = 0; i < 4; i++)
         {
-            _monster.RandomAttack(_noteSpeed);
-            yield return new WaitForSeconds(30);
+            _monster.RandomAttack();
+            yield return new WaitForSeconds(33.3333f);
+            Managers.Game.curNote = 0;
         }
 
         StartCoroutine(Managers.Sound.VolumeDown());
@@ -99,23 +100,14 @@ public class NoteManager : MonoBehaviour
         }
 
         List<GameObject> _activeNotes = Managers.Pool.GetActiveAliveNotes();
-        //float _noteDistance = _noteSpeed * SoundManager.Instance.PlayTime();
         float _noteDistance = _noteSpeed * (float)(AudioSettings.dspTime - _startDsp) + _startDelay;
-        Debug.Log("noteDistance : "+_noteDistance);
+        
         int cnt = 0;
         for (int i = Managers.Game.curNote; i < Managers.Game.curNote + _activeNotes.Count; i++)
         {
             float curLocation = (float)_sheet[i]["noteLocation"] - _noteDistance;
             GameObject note = _activeNotes[cnt++];
             note.transform.position = new Vector3(note.transform.position.x, note.transform.position.y, curLocation + 10);
-
-            //if (curLocation >= 0 && curLocation <= 32.5)
-            //{
-            //    GameObject note = cnt < _activeNotes.Count ? _activeNotes[cnt] : _notePool.SpawnFromPool();
-            //    note.transform.position = new Vector3(note.transform.position.x, note.transform.position.y, curLocation + 10);
-            //    cnt++;
-            //}
-            //else if (curLocation > 32.5) break;
         }
     }
 }
