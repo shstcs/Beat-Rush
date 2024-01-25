@@ -19,7 +19,7 @@ public class ObjectPool : MonoBehaviour
     {
         for (int i = 0; i < poolSize; i++)
         {
-            GameObject obj = Managers.Resource.Instantiate("Notes/Ghost.prefab", transform);
+            GameObject obj = Managers.Resource.Instantiate("Notes/Rock.prefab", transform);
             obj.SetActive(false);
             poolQueue.Enqueue(obj);
         }

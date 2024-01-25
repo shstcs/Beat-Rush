@@ -6,4 +6,5 @@ public interface IMonster
 {
     void SortPattern();
     void RandomAttack();
+    void EndStage();
 }

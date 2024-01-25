@@ -25,12 +25,13 @@ public class UI_Popup_Result : MonoBehaviour
         Managers.Game.Score = 0;
         Managers.Game.Combo = 0;
         Managers.Game.MaxCombo = 0;
+        Managers.Game.curNote = 0;
         SceneManager.LoadScene("Minho");
     }
 
     public void LoadLobby()
     {
-        Managers.Sound.PlayBGM(BGM.Lobby2);
+        Managers.Sound.LoopPlayBGM(BGM.Lobby2);
         Managers.Game.GameType = GameType.Main;
         SceneManager.LoadScene("Lobby");
     }

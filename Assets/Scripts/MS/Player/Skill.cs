@@ -5,12 +5,12 @@ using UnityEngine;
 
 public class Skill : MonoBehaviour
 {
-    public int skillPrecision = 100;
-    public float speed = 10f;
-    public float distance = 30f;
-
-
-    public LayerMask targetLayerMask;
+    [SerializeField]
+    private float speed;
+    [SerializeField]
+    private float distance;
+    [SerializeField]
+    private LayerMask targetLayerMask;
 
     private Rigidbody _rb;
 
