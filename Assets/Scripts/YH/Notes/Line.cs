@@ -8,16 +8,6 @@ using UnityEngine.InputSystem;
 public class Line : MonoBehaviour
 {
     public LayerMask noteLayer;
-    void Update()
-    {
-        
-        //if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Z))
-        //{
-        //    if (Managers.Player.IsDie()) return;
-
-        //    CheckNotes();
-        //}
-    }
 
     private void Start()
     {
