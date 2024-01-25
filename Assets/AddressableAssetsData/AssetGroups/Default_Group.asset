@@ -47,12 +47,6 @@ MonoBehaviour:
     m_SerializedLabels:
     - PreLoads
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 3aa8b6a00650676419daef68ae39f3b4
-    m_Address: Notes/Note.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - PreLoads
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e5534b302742c0f4faa73b0bf2129584
     m_Address: Lobby2
     m_ReadOnly: 0
@@ -67,6 +61,17 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c64cd8e4f3d70884b8058fc1a8ca65a0
     m_Address: SecondGrassWalk
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoads
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e8f52af8ac7debd419b42f8d4d7422f3
+    m_Address: Notes/Rock.obj
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c5950c0760a887742aad38c3c553c2c3
+    m_Address: Notes/Rock.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - PreLoads

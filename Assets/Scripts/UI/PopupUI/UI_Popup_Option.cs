@@ -15,11 +15,13 @@ public class UI_Popup_Option : MonoBehaviour
     public void LoadStage()
     {
         SceneManager.LoadScene("Minho");
+        Managers.Game.curNote = 0;      //노트 초기화를 위한 추가(연호)
     }
 
     public void LoadStart()
     {
         SceneManager.LoadScene("Lobby");
+        Managers.Sound.StopBGM();       //음악 중지(연호)
     }
 
     public void OffOption()

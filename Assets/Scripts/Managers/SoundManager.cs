@@ -34,7 +34,7 @@ public class SoundManager : MonoBehaviour
     {
         while (AudioSource.volume > 0)
         {
-            AudioSource.volume -= Time.deltaTime / 4;        // 4초에 걸쳐 줄어들도록
+            AudioSource.volume -= Time.deltaTime / 5;        // 4초에 걸쳐 줄어들도록
             Debug.Log("Volume Down");
             yield return null;
         }
@@ -56,6 +56,7 @@ public class SoundManager : MonoBehaviour
         AudioSource.Stop();
         AudioSource.clip = _bgm[key];
         AudioSource.Play();
+        AudioSource.loop = true;
     }
 
     public void DelayedPlayBGM(BGM key,float delay)
