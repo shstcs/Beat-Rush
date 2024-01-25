@@ -644,6 +644,8 @@ GameObject:
   - component: {fileID: 180661756}
   - component: {fileID: 180661755}
   - component: {fileID: 180661758}
+  - component: {fileID: 180661759}
+  - component: {fileID: 180661760}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -769,6 +771,40 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
+--- !u!95 &180661759
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 180661754}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ead55c5f431378c4bb5620ee79a7f602, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &180661760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 180661754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3375fe82b418939438b40ae4d3973eff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _camera: {fileID: 180661754}
 --- !u!1001 &200453211
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3070,6 +3106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7b7c7a23762b0d489f92592ff111b65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _camera: {fileID: 180661754}
 --- !u!4 &954724864 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 34ffbd6799f18024aba3caf90ef998f6,

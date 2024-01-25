@@ -1,12 +1,15 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using Random = System.Random;
 
 public class Golem : MonoBehaviour, IMonster
 {
     private Animator _animator;
+    [SerializeField] private GameObject _camera;
+    private Animator _cameraAnimator;
     private GolemAnimationData _golemAnimation = new();
 
     private IPattern[] _patterns;
@@ -17,6 +20,7 @@ public class Golem : MonoBehaviour, IMonster
     private void Awake()
     {
         _animator = GetComponent<Animator>();
+        _cameraAnimator = _camera.GetComponent<Animator>();
         _golemAnimation.Init();
 
         _patterns = new IPattern[]
@@ -69,6 +73,10 @@ public class Golem : MonoBehaviour, IMonster
 
     public void RandomAttack()           //return값으로 끝나는 신호를 줘볼까?
     {
+        if (_currentPatternIndex == 0)
+        {
+            _cameraAnimator.SetTrigger("ShowBoss");
+        }
         StartCoroutine(_patterns[_currentPatternIndex++].Attack());
         _animator.SetTrigger(_golemAnimation.GetRandomAttackHash());
         _currentFeedbackIndex++;
