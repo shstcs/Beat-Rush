@@ -66,7 +66,8 @@ public class Player : MonoBehaviour
 
     public void Rotate(Transform targetTransform)
     {
-        transform.LookAt(targetTransform);
+        var targetPos = new Vector3(targetTransform.position.x, transform.position.y, targetTransform.position.z);
+        transform.LookAt(targetPos);
     }
 
     private void InitStat()
