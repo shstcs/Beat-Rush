@@ -54,7 +54,7 @@ VisualEffect:
   m_PropertySheet:
     m_Float:
       m_Array:
-      - m_Value: 10
+      - m_Value: 4
         m_Name: slash life time
         m_Overridden: 1
     m_Vector2f:
@@ -156,9 +156,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb15abc5387e20543b8a726504509b81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillPrecision: 100
-  speed: 10
-  distance: 30
+  speed: 20
+  distance: 20
   targetLayerMask:
     serializedVersion: 2
     m_Bits: 64

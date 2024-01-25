@@ -31,7 +31,7 @@ public class UI_Popup_Result : MonoBehaviour
 
     public void LoadLobby()
     {
-        Managers.Sound.PlayBGM(BGM.Lobby2);
+        Managers.Sound.LoopPlayBGM(BGM.Lobby2);
         Managers.Game.GameType = GameType.Main;
         SceneManager.LoadScene("Lobby");
     }
