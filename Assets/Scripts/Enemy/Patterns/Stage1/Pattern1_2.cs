@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pattern2 : IPattern
+public class Pattern1_2 : IPattern
 {
     private List<Dictionary<string, object>> _pattern;
     private double _startDsp;

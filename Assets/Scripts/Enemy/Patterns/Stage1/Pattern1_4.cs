@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pattern3 : IPattern
+public class Pattern1_4 : IPattern
 {
     private List<Dictionary<string, object>> _pattern;
     private double _startDsp;
@@ -11,7 +11,7 @@ public class Pattern3 : IPattern
     public bool _isFeedbackStart;
     public void SetPattern()
     {
-        _pattern = CSVReader.Read("Stage1/pattern3.csv");
+        _pattern = CSVReader.Read("Stage1/pattern4.csv");
     }
 
     public IEnumerator Attack()

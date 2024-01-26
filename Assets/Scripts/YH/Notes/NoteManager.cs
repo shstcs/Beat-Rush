@@ -13,6 +13,11 @@ public class NoteManager : MonoBehaviour
     private float _noteSpeed;
     private double _curDsp;
 
+    [Header("StageData")]
+    private int _patternLength;
+    private float _attackDelay;
+    private BGM _bgm;
+
     private void Awake()
     {
         _monster = _monsterObject.GetComponent<IMonster>();
@@ -23,7 +28,7 @@ public class NoteManager : MonoBehaviour
         Managers.Game.GameType = GameType.Play;
         _notePool = Managers.Pool;
         _notePool.SetPool();
-        _noteSpeed = 5 / (60 / Managers.Game.bpm);
+        _noteSpeed = 5 / (60 / Managers.Game.bpm[Managers.Game.currentStage]);
         _curDsp = AudioSettings.dspTime;
 
         StartCoroutine(CreateNewNotes());
@@ -52,12 +57,17 @@ public class NoteManager : MonoBehaviour
 
     private IEnumerator CreateNewNotes()
     {
-        Managers.Sound.DelayedPlayBGM(BGM.Stage1,32.5f / _noteSpeed);
+        var data = _monster.GetPatternData();
+        _patternLength = data.length;
+        _attackDelay = data.delay;
+        _bgm = data.bgm;
 
-        for(int i = 0; i < 4; i++)
+        Managers.Sound.DelayedPlayBGM(_bgm, 32.5f / _noteSpeed);
+
+        for (int i = 0; i < _patternLength; i++)
         {
             _monster.RandomAttack();
-            yield return new WaitForSeconds(33.3333f);
+            yield return new WaitForSeconds(_attackDelay);
             Managers.Game.curNote = 0;
         }
         _monster.EndStage();

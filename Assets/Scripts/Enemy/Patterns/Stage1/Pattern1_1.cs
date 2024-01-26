@@ -2,21 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pattern4 : IPattern
+public class Pattern1_1 : IPattern
 {
     private List<Dictionary<string, object>> _pattern;
     private double _startDsp;
     private float _startDelay = 0.3f;
     private float _noteSpeed = 6;
-    public bool _isFeedbackStart;
+    private bool _isFeedbackStart;
     public void SetPattern()
     {
-        _pattern = CSVReader.Read("Stage1/pattern4.csv");
+        _pattern = CSVReader.Read("Stage1/pattern1.csv");
     }
 
     public IEnumerator Attack()
     {
         float waitTime = 0;
+        _startDsp = AudioSettings.dspTime;
 
         for (int i = 0; i < _pattern.Count - 1; i++)
         {
@@ -46,6 +47,7 @@ public class Pattern4 : IPattern
             note.transform.position = new Vector3(note.transform.position.x, note.transform.position.y, curLocation + 43.8f);
         }
     }
+
     public void Pause()
     {
         _isFeedbackStart = false;

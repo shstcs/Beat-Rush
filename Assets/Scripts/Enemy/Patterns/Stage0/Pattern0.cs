@@ -2,28 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pattern1 : IPattern
+public class Pattern0 : IPattern
 {
     private List<Dictionary<string, object>> _pattern;
     private double _startDsp;
     private float _startDelay = 0.3f;
-    private float _noteSpeed = 6;
-    private bool _isFeedbackStart;
+    private float _noteSpeed;
+    public bool _isFeedbackStart;
+
     public void SetPattern()
     {
-        _pattern = CSVReader.Read("Stage1/pattern1.csv");
+        _noteSpeed = 5 / (60 / Managers.Game.bpm[Managers.Game.currentStage]);
+        _pattern = CSVReader.Read("Tutorial/tutorial.csv");
     }
 
     public IEnumerator Attack()
     {
         float waitTime = 0;
-        _startDsp = AudioSettings.dspTime;
 
         for (int i = 0; i < _pattern.Count - 1; i++)
         {
             waitTime = (float)_pattern[i + 1]["noteLocation"] - (float)_pattern[i]["noteLocation"];
             GameObject note = Managers.Pool.SpawnFromPool();
-            note.transform.position = new Vector3((float)_pattern[i]["xValue"] + 40, 5, 43.8f);
+            note.transform.position = new Vector3((float)_pattern[i]["xValue"] - 2, 2, 42.5f + Managers.Game.delay);
             yield return new WaitForSeconds(waitTime / _noteSpeed);
         }
     }
@@ -44,7 +45,7 @@ public class Pattern1 : IPattern
         {
             float curLocation = (float)_pattern[i]["noteLocation"] - _noteDistance;
             GameObject note = _activeNotes[cnt++];
-            note.transform.position = new Vector3(note.transform.position.x, note.transform.position.y, curLocation + 43.8f);
+            note.transform.position = new Vector3(note.transform.position.x, note.transform.position.y, curLocation + 42.5f + Managers.Game.delay);
         }
     }
 
@@ -52,4 +53,5 @@ public class Pattern1 : IPattern
     {
         _isFeedbackStart = false;
     }
+
 }

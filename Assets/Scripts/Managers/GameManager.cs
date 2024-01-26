@@ -7,7 +7,7 @@ using UnityEngine.Events;
 public class GameManager : MonoBehaviour
 {
     #region UnityAction
-    [Header ("Events")]
+    [Header("Events")]
     public UnityAction OnGameStart;
     public UnityAction OnGameOver;
     public UnityAction OnMapStart;
@@ -18,10 +18,12 @@ public class GameManager : MonoBehaviour
     #region Fields
     public int[] judgeNotes = new int[5];
     public int Combo { get; set; }
-    public int MaxCombo {  get; set; }
+    public int MaxCombo { get; set; }
     public int Score { get; set; }
-    public int Hp {  get; private set; }
-    public float bpm = 72f;
+    public int Hp { get; private set; }
+    public float[] bpm = { 80f, 72f };
+    public int currentStage = 1;
+    public float delay = 2f;
     public int curNote = 0;
     public GameType GameType = GameType.Main;
     //private int bestScore;
