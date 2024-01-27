@@ -10,6 +10,7 @@ public enum SFX
 
 public enum BGM
 {
+    Stage0,
     Stage1,
     Lobby2,
 

@@ -60,20 +60,16 @@ public class SoundManager
         _sfx.Add(SFX.FirstWalk, Managers.Resource.Load<AudioClip>("FirstGrassWalk"));
         _sfx.Add(SFX.SecondWalk, Managers.Resource.Load<AudioClip>("SecondGrassWalk"));
 
+        _bgm.Add(BGM.Stage0, Managers.Resource.Load<AudioClip>("Stage0BGM"));
         _bgm.Add(BGM.Stage1, Managers.Resource.Load<AudioClip>("Stage1BGM"));
         _bgm.Add(BGM.Lobby2, Managers.Resource.Load<AudioClip>("Lobby2"));
-    }
-
-    public void PlayClip(float delay)
-    {
-        AudioSource?.PlayDelayed(delay);
     }
 
     public IEnumerator VolumeDown()
     {
         while (AudioSource.volume > 0)
         {
-            AudioSource.volume -= Time.deltaTime / 5;        // 4초에 걸쳐 줄어들도록
+            AudioSource.volume -= Time.deltaTime / 4;        // 4초에 걸쳐 줄어들도록
             Debug.Log("Volume Down");
             yield return null;
         }
@@ -114,7 +110,7 @@ public class SoundManager
 
     public void DelayedPlayBGM(BGM key, float delay)
     {
-        AudioSource.loop = false;
+        AudioSource.loop = true;
         SetBGM(key);
         AudioSource.PlayDelayed(delay);
     }

@@ -17,8 +17,8 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: c5cf851708f6b8a408195b1b1dd2b5e5
   m_SerializeEntries:
-  - m_GUID: 46253119ddad232459b7139f34dc83dc
-    m_Address: Notes/Ghost.prefab
+  - m_GUID: ad61e3de521ffdd48ac6cef882059796
+    m_Address: Notes/Cube.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - PreLoads
@@ -75,6 +75,29 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - PreLoads
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e70658846a4ca774ba09fcb23e84af95
+    m_Address: Tutorial/tutorial.csv
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoads
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d55310416bf2eac43b32f1436db9a28e
+    m_Address: Stage0BGM
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoads
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: da96dd007bde1c64db3f0efb532f1b25
+    m_Address: Notes/Fire.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoads
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6054aad5b0a41804585ef6da98d7b40b
+    m_Address: Notes/Ice.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 5feae7305fb988643a34ec8e75f20243, type: 2}

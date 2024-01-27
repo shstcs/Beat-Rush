@@ -42,6 +42,7 @@ public class Skill : MonoBehaviour
             if(Managers.Game.Combo > Managers.Game.MaxCombo)
                 Managers.Game.MaxCombo = Managers.Game.Combo;
             Managers.Game.AddScore(50 + Managers.Game.Combo);
+            Managers.Game.judgeNotes[(int)Score.Great]++;
         }
 
     }
