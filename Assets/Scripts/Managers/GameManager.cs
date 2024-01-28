@@ -21,7 +21,8 @@ public class GameManager : MonoBehaviour
     public int MaxCombo { get; set; }
     public int Score { get; set; }
     public int Hp { get; private set; }
-    public float[] bpm = { 80f, 72f };
+    public float[] bpm = { 80f, 72f, 99f };
+    public float[] noteDistance = { 5, 5, 8 };
     public int currentStage = 1;
     public float delay = 2f;
     public int curNote = 0;

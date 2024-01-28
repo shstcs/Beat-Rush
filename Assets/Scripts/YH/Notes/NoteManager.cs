@@ -28,7 +28,7 @@ public class NoteManager : MonoBehaviour
         Managers.Game.GameType = GameType.Play;
         _notePool = Managers.Pool;
         _notePool.SetPool();
-        _noteSpeed = 5 / (60 / Managers.Game.bpm[Managers.Game.currentStage]);
+        _noteSpeed = Managers.Game.noteDistance[Managers.Game.currentStage] / (60 / Managers.Game.bpm[Managers.Game.currentStage]);
         _curDsp = AudioSettings.dspTime;
 
         StartCoroutine(CreateNewNotes());
