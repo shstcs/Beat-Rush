@@ -16,9 +16,10 @@ public class UI_Popup_Result : MonoBehaviour
     private void Start()
     {
         if (Managers.Player.IsDie() == false)
-            ClearResult();
+            GameObject.Find("Result_Text").transform.GetComponent<TextMeshProUGUI>().text = "패배...";
         else
-            return;
+            GameObject.Find("Result_Text").transform.GetComponent<TextMeshProUGUI>().text = "승리!";
+        ClearResult();
     }
     public void LoadStage()
     {

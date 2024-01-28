@@ -726,7 +726,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2579024744206558448}
         m_TargetAssemblyTypeName: UI_Popup_Result, Assembly-CSharp
         m_MethodName: LoadStage
         m_Mode: 1
@@ -3254,6 +3254,7 @@ GameObject:
   - component: {fileID: 6987577122015354664}
   - component: {fileID: 124565174325666870}
   - component: {fileID: 1273609012135608292}
+  - component: {fileID: 2579024744206558448}
   m_Layer: 0
   m_Name: Stage_Result
   m_TagString: Untagged
@@ -3330,6 +3331,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2579024744206558448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6545888274521594815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f19a64f3a3e4a804dab52d07037e9f6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6612175660330657696
 GameObject:
   m_ObjectHideFlags: 0
@@ -3342,7 +3355,7 @@ GameObject:
   - component: {fileID: 4204157783363836150}
   - component: {fileID: 3515702077779018011}
   m_Layer: 5
-  m_Name: Clear
+  m_Name: Result_Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4219,7 +4232,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2579024744206558448}
         m_TargetAssemblyTypeName: UI_Popup_Result, Assembly-CSharp
         m_MethodName: LoadLobby
         m_Mode: 1
