@@ -25,6 +25,7 @@ public class Player : MonoBehaviour
 
     [HideInInspector]
     public PlayerStateData CurrentStateData;
+    public PlayerSkillData CurrentSkillData;
 
     public GameObject SkillPrefab;
 
@@ -40,10 +41,15 @@ public class Player : MonoBehaviour
             Managers.Data.LoadData();
             CurrentStateData.Health = Data.StateData.Health;
             CurrentStateData.SkillGauge = Data.StateData.SkillGauge;
+
+            CurrentSkillData.BaseSpeed = Data.SkillData.BaseSpeed;
+            CurrentSkillData.BaseDistance = Data.SkillData.BaseDistance;
+            CurrentSkillData.SpeedModifier = Data.SkillData.SpeedModifier;
+            CurrentSkillData.DistanceModifier = Data.SkillData.DistanceModifier;
         }
         else if (!Managers.Data.LoadFileCheck())
         {
-            InitStat();
+            InitData();
         }
         
         AnimationData.Initialize();
@@ -61,6 +67,9 @@ public class Player : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         _stateMachine.ChangeState(_stateMachine.IdleState);
+        InitData();
+
+        Managers.Player = this;
     }
 
     private void Update()
@@ -80,13 +89,18 @@ public class Player : MonoBehaviour
         transform.LookAt(targetPos);
     }
 
-    private void InitStat()
+    private void InitData()
     {
         CurrentStateData.Level = Data.StateData.Level;
         CurrentStateData.Exp = Data.StateData.Exp;
         CurrentStateData.Health = Data.StateData.Health;
         CurrentStateData.SkillGauge = Data.StateData.SkillGauge;
-    }
+
+        CurrentSkillData.BaseSpeed = Data.SkillData.BaseSpeed;
+        CurrentSkillData.BaseDistance = Data.SkillData.BaseDistance;
+        CurrentSkillData.SpeedModifier = Data.SkillData.SpeedModifier;
+        CurrentSkillData.DistanceModifier = Data.SkillData.DistanceModifier;
+    }  
 
     public void ChangeHealth(int amount)
     {

@@ -33,7 +33,8 @@ public class Managers : MonoBehaviour
             {
                 _instance = gameObject.AddComponent<Managers>();
             }
-            Sound.AudioSource = gameObject.AddComponent<AudioSource>();
+            Sound.AudioSourceBGM = gameObject.AddComponent<AudioSource>();
+            Sound.AudioSourceSFX = gameObject.AddComponent<AudioSource>();
             DontDestroyOnLoad(gameObject);
         }
     }

@@ -2,17 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEngine.UI.CanvasScaler;
 
 public class Skill : MonoBehaviour
 {
-    [SerializeField]
-    private float speed;
-    [SerializeField]
-    private float distance;
+    private float _speed;
+    private float _distance;
     [SerializeField]
     private LayerMask targetLayerMask;
 
     private Rigidbody _rb;
+    private GameManager _gameManager;
 
 
     private void Awake()
@@ -22,15 +22,25 @@ public class Skill : MonoBehaviour
 
     private void Start()
     {
+        _gameManager = Managers.Game;
+
+        Init();
+
         StartCoroutine(SkillAttack());
-        Destroy(gameObject, distance / speed);
+        Destroy(gameObject, _distance / _speed);
+    }
+
+    private void Init()
+    {
+        _speed = Managers.Player.CurrentSkillData.GetSpeed();
+        _distance = Managers.Player.CurrentSkillData.GetDistance();
     }
 
     IEnumerator SkillAttack()
     {
         transform.Rotate(new Vector3(0, 80f, 0));
         yield return new WaitForSeconds(0.5f);
-        _rb.velocity = Vector3.forward * speed;
+        _rb.velocity = Vector3.forward * _speed;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -38,11 +48,11 @@ public class Skill : MonoBehaviour
         if (targetLayerMask.value == (targetLayerMask.value | (1 << other.gameObject.layer)))
         {
             other.GetComponent<Note>().BreakNote();
-            Managers.Game.Combo++;
-            if(Managers.Game.Combo > Managers.Game.MaxCombo)
-                Managers.Game.MaxCombo = Managers.Game.Combo;
-            Managers.Game.AddScore(50 + Managers.Game.Combo);
-            Managers.Game.judgeNotes[(int)Score.Great]++;
+            _gameManager.Combo++;
+            if(_gameManager.Combo > _gameManager.MaxCombo)
+                _gameManager.MaxCombo = _gameManager.Combo;
+            _gameManager.AddScore(50 + _gameManager.Combo);
+            _gameManager.judgeNotes[(int)Score.Great]++;
         }
 
     }
