@@ -33,10 +33,7 @@ public class UI_Scene_Stage : MonoBehaviour
 
     private void OnStageEnd()
     {
-        if(Managers.Player.IsDie())
-            GameObject.Find("Canvas").transform.GetChild(2).gameObject.SetActive(true);
-        else
-            GameObject.Find("Canvas").transform.GetChild(1).gameObject.SetActive(true);
+        GameObject.Find("Canvas").transform.GetChild(4).gameObject.SetActive(true);
     }
 
     private void OnDisable()

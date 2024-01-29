@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 
 public class UI_Popup_Option : MonoBehaviour
@@ -11,26 +12,18 @@ public class UI_Popup_Option : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
-
-    public void LoadStage()
+    private void Update()
     {
-        SceneManager.LoadScene("Minho");
-        Managers.Game.curNote = 0;      //노트 초기화를 위한 추가(연호)
+        //옵션 창 닫는 부분은 나중에 Input System으로 처리해도 될 것 같습니다.
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            OffOption();
+        }
     }
-
-    public void LoadStart()
-    {
-        SceneManager.LoadScene("Lobby");
-        Managers.Sound.StopBGM();       //음악 중지(연호)
-    }
-
     public void OffOption()
     {
-        if (SceneManager.GetActiveScene().name == "Minho" || SceneManager.GetActiveScene().name == "StageUI_Test_Scene")
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-        }
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         Time.timeScale = 1.0f;
         gameObject.SetActive(false);
         Managers.Sound.ContinueBGM();        //음악 재생
