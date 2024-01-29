@@ -64,11 +64,11 @@ public class Line : MonoBehaviour
 
             Managers.Game.Combo++;
             Managers.Game.MaxCombo = Managers.Game.Combo > Managers.Game.MaxCombo ? Managers.Game.Combo : Managers.Game.MaxCombo;       //나중에 리팩토링
-            Managers.Game.AddScore(score + Managers.Game.Combo);     
+            Managers.Game.AddScore(score + Managers.Game.Combo);
 
             // Skill
-            if(Managers.Player.CurrentStateData.SkillGauge < 100)
-                Managers.Player.CurrentStateData.SkillGauge += 10;
+            if (Managers.Player.CurrentStateData.SkillGauge < 100)
+                Managers.Player.CurrentStateData.SkillGauge += Managers.Player.CurrentStateData.GetSkillGaugeIncrement();
         }
         else
         {

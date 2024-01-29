@@ -20,6 +20,8 @@ public class UI_HUD_Start : MonoBehaviour
     #region methods
     public void NewGame()
     {
+        Managers.Sound.LoopPlayBGM(BGM.Lobby2);
+        Managers.Game.GameType = GameType.Main;
         SceneManager.LoadScene("Lobby");
     }
     public void Continue()
