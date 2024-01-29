@@ -8,6 +8,7 @@ public class PlayerStateData
 {
     [field: Header("StateData")]
     [field: SerializeField] public int Level = 1;
+    [field: SerializeField] public int Exp = 0;
     [field: SerializeField][field: Range(0f, 10f)] public int Health = 10;
     [field: SerializeField][field: Range(0f, 100f)] public int SkillGauge = 0;
 }

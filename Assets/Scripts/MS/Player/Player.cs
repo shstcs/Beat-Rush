@@ -33,6 +33,18 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         Managers.Player = this;
+
+        if (Managers.Data.LoadFileCheck())
+        {
+            Managers.Data.LoadData();
+            CurrentStateData.Health = Data.StateData.Health;
+            CurrentStateData.SkillGauge = Data.StateData.SkillGauge;
+        }
+        else if (!Managers.Data.LoadFileCheck())
+        {
+            InitStat();
+        }
+        
         AnimationData.Initialize();
 
         Rigidbody = GetComponent<Rigidbody>();
@@ -48,9 +60,6 @@ public class Player : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         _stateMachine.ChangeState(_stateMachine.IdleState);
-        InitStat();
-
-        Managers.Player = this;
     }
 
     private void Update()
@@ -73,6 +82,7 @@ public class Player : MonoBehaviour
     private void InitStat()
     {
         CurrentStateData.Level = Data.StateData.Level;
+        CurrentStateData.Exp = Data.StateData.Exp;
         CurrentStateData.Health = Data.StateData.Health;
         CurrentStateData.SkillGauge = Data.StateData.SkillGauge;
     }

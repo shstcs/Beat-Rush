@@ -29,7 +29,7 @@ public class Managers : MonoBehaviour
         if (!_instance)
         {
             GameObject gameObject = new GameObject { name = "@Managers" };
-            if(gameObject.GetComponent<Managers>() == null )
+            if (gameObject.GetComponent<Managers>() == null)
             {
                 _instance = gameObject.AddComponent<Managers>();
             }
@@ -45,11 +45,13 @@ public class Managers : MonoBehaviour
     private ObjectPool _pool = new();
     private Player _player = new();
     private SoundManager _sound = new();
+    private DataManager _data = new();
 
     public static UIManager UI => Instance?._ui;
     public static GameManager Game => Instance?._game;
     public static ResourceManager Resource => Instance?._resource;
     public static SoundManager Sound => Instance?._sound;
+    public static DataManager Data => Instance?._data;
     public static ObjectPool Pool
     {
         get { return Instance._pool; }
