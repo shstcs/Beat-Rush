@@ -41,6 +41,60 @@ MonoBehaviour:
     m_SerializedLabels:
     - PreLoads
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b07ecac0c07a5d74e977c4741e935fdb
+    m_Address: Stage2/pattern6.csv
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoads
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1b300b459d8c2f34a988774b4e9cc959
+    m_Address: Stage2/pattern5.csv
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoads
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4029f20c45f444c49a36b04463c801e7
+    m_Address: Stage2/pattern4.csv
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoads
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 82320b7f719e8cc40b25aea8ffa5e715
+    m_Address: Stage2/pattern2.csv
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoads
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 652c2848353486141898e773094ff827
+    m_Address: Stage2/pattern1.csv
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoads
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ed4fbb28b518e7b43ae8dfad37f44f07
+    m_Address: Stage2/pattern8.csv
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoads
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cc36478d006df804db8c2d030d292890
+    m_Address: Stage2/pattern9.csv
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoads
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e47797d672a4a854fb2f1a9497dbe6fe
+    m_Address: Stage2/pattern7.csv
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoads
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: abc8d0d804b1b4049ae4f90f980d0d2c
+    m_Address: Stage2/pattern3.csv
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoads
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 5feae7305fb988643a34ec8e75f20243, type: 2}
   m_SchemaSet:

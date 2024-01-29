@@ -23,12 +23,6 @@ MonoBehaviour:
     m_SerializedLabels:
     - PreLoads
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 0dd6c8cc90f5d244784809d51f95d5a9
-    m_Address: Assets/@Resources/Sheet1.csv
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - PreLoads
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 58a39fae98de8454db8bd3790514ecc2
     m_Address: AttackSound
     m_ReadOnly: 0
@@ -97,7 +91,14 @@ MonoBehaviour:
   - m_GUID: 6054aad5b0a41804585ef6da98d7b40b
     m_Address: Notes/Ice.prefab
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - PreLoads
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6d0adcdcb355a994b9d65d53a93ede9d
+    m_Address: Stage2BGM
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoads
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 5feae7305fb988643a34ec8e75f20243, type: 2}

@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/LobbyUI_Test_Scene.unity
     guid: 14c60998becbf8d41aed1f35a1eda267
   - enabled: 1
+    path: Assets/Scenes/YH-TestStage2.unity
+    guid: aca9cc27e78a3f84da5d6c1fffacb4e1
+  - enabled: 1
     path: Assets/Scenes/StageUI_Test_Scene.unity
     guid: f0da1da9115bf124d8fe8c7e84bef3f2
   - enabled: 1

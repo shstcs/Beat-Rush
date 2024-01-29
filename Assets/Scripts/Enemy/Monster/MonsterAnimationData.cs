@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GolemAnimationData
+public class MonsterAnimationData
 {
     private string _attack1ParameterName = "Attack1";
     private string _attack2ParameterName = "Attack2";

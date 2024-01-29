@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class ObjectPool : MonoBehaviour
 {
-    private GameObject _notePrefab;
     public int poolSize = 50;
 
     public Queue<GameObject> poolQueue = new Queue<GameObject>();
@@ -24,9 +23,13 @@ public class ObjectPool : MonoBehaviour
             {
                 obj = Managers.Resource.Instantiate("Notes/Cube.prefab", transform);
             }
-            else
+            else if (Managers.Game.currentStage == 1)
             {
                 obj = Managers.Resource.Instantiate("Notes/Rock.prefab", transform);
+            }
+            else
+            {
+                obj = Managers.Resource.Instantiate("Notes/Cube.prefab", transform);
             }
             obj.SetActive(false);
             poolQueue.Enqueue(obj);

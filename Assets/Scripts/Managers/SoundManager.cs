@@ -62,6 +62,7 @@ public class SoundManager
 
         _bgm.Add(BGM.Stage0, Managers.Resource.Load<AudioClip>("Stage0BGM"));
         _bgm.Add(BGM.Stage1, Managers.Resource.Load<AudioClip>("Stage1BGM"));
+        _bgm.Add(BGM.Stage2, Managers.Resource.Load<AudioClip>("Stage2BGM"));
         _bgm.Add(BGM.Lobby2, Managers.Resource.Load<AudioClip>("Lobby2"));
     }
 
