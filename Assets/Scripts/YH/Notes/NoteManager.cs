@@ -18,9 +18,12 @@ public class NoteManager : MonoBehaviour
     private float _attackDelay;
     private BGM _bgm;
 
+    private Animator _cameraAnimator;
+
     private void Awake()
     {
         _monster = _monsterObject.GetComponent<IMonster>();
+        _cameraAnimator = Camera.main.GetComponent<Animator>();
     }
 
     private void Start()
@@ -69,7 +72,10 @@ public class NoteManager : MonoBehaviour
             _monster.RandomAttack();
             yield return new WaitForSeconds(_attackDelay);
             Managers.Game.curNote = 0;
+            if (i != _patternLength - 1) _cameraAnimator.SetTrigger("Move");
         }
+        _cameraAnimator.SetTrigger("EndMove");
+        yield return new WaitForSeconds(1f);
         _monster.EndStage();
     }
 }
