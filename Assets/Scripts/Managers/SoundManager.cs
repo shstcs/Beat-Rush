@@ -2,20 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.InputSystem;
 
 public class SoundManager
 {
     [HideInInspector]
-    public AudioSource AudioSource;
+    public AudioSource AudioSourceBGM;
+    public AudioSource AudioSourceSFX;
 
     private Dictionary<SFX, AudioClip> _sfx = new Dictionary<SFX, AudioClip>();
     private Dictionary<BGM, AudioClip> _bgm = new Dictionary<BGM, AudioClip>();
 
 
     private float _masterVolume = 1f;
-    private float _SFXVolume = 1f;
-    private float _BGMVolume = 1f;
+    private float _volumeSFX = 1f;
+    private float _volumeBGM = 1f;
 
     public float MasterVolume
     {
@@ -26,6 +28,8 @@ public class SoundManager
         set
         {
             _masterVolume = value;
+            SetVolumeBGM();
+            SetVolumeSFX();
         }
     }
 
@@ -33,11 +37,12 @@ public class SoundManager
     {
         get
         {
-            return _SFXVolume;
+            return _volumeSFX;
         }
         set
         {
-            _SFXVolume = value;
+            _volumeSFX = value;
+            SetVolumeSFX();
         }
     }
 
@@ -45,11 +50,12 @@ public class SoundManager
     {
         get
         {
-            return _BGMVolume;
+            return _volumeBGM;
         }
         set
         {
-            _BGMVolume = value;
+            _volumeBGM = value;
+            SetVolumeBGM();
         }
     }
 
@@ -67,9 +73,9 @@ public class SoundManager
 
     public IEnumerator VolumeDown()
     {
-        while (AudioSource.volume > 0)
+        while (AudioSourceBGM.volume > 0)
         {
-            AudioSource.volume -= Time.deltaTime / 4;        // 4초에 걸쳐 줄어들도록
+            AudioSourceBGM.volume -= Time.deltaTime / 4;        // 4초에 걸쳐 줄어들도록
             Debug.Log("Volume Down");
             yield return null;
         }
@@ -78,55 +84,65 @@ public class SoundManager
 
     public float PlayTime()
     {
-        return AudioSource.time;
+        return AudioSourceBGM.time;
     }
 
     public void PlaySFX(SFX key, float volumeScale = 1f)
     {
-        AudioSource.PlayOneShot(_sfx[key], volumeScale * _SFXVolume * _masterVolume);
+        AudioSourceSFX.PlayOneShot(_sfx[key], volumeScale * _volumeSFX * _masterVolume);
     }
 
     private void SetBGM(BGM key)
     {
-        AudioSource.Stop();
-        AudioSource.volume = _masterVolume * _BGMVolume;
-        AudioSource.clip = _bgm[key];
+        AudioSourceBGM.Stop();
+        AudioSourceBGM.volume = _masterVolume * _volumeBGM;
+        AudioSourceBGM.clip = _bgm[key];
     }
 
     public void PlayBGM(BGM key)
     {
-        AudioSource.loop = false;
+        AudioSourceBGM.loop = false;
         SetBGM(key);
-        AudioSource.Play();
-        AudioSource.loop = true;
+        AudioSourceBGM.Play();
+        AudioSourceBGM.loop = true;
     }
 
     public void LoopPlayBGM(BGM key)
     {
-        AudioSource.loop = true;
+        AudioSourceBGM.loop = true;
         SetBGM(key);
-        AudioSource.Play();
+        AudioSourceBGM.Play();
     }
 
     public void DelayedPlayBGM(BGM key, float delay)
     {
-        AudioSource.loop = true;
+        AudioSourceBGM.loop = true;
         SetBGM(key);
-        AudioSource.PlayDelayed(delay);
+        AudioSourceBGM.PlayDelayed(delay);
+    }
+
+    private void SetVolumeBGM()
+    {
+        AudioSourceBGM.volume = _masterVolume * _volumeBGM;
+    }
+    
+    private void SetVolumeSFX()
+    {
+        AudioSourceSFX.volume = _masterVolume * _volumeSFX;
     }
 
     public void PauseBGM()
     {
-        AudioSource?.Pause();
+        AudioSourceBGM?.Pause();
     }
 
     public void ContinueBGM()
     {
-        AudioSource?.UnPause();
+        AudioSourceBGM?.UnPause();
     }
 
     public void StopBGM()
     {
-        AudioSource?.Stop();
+        AudioSourceBGM?.Stop();
     }
 }
