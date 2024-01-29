@@ -2051,6 +2051,7 @@ GameObject:
   - component: {fileID: 451249846055615560}
   - component: {fileID: 6902138200353998179}
   - component: {fileID: 6473921208826421252}
+  - component: {fileID: 6828779573776978608}
   m_Layer: 0
   m_Name: ExpBar
   m_TagString: Untagged
@@ -2116,6 +2117,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &6828779573776978608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6364598701519506760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a2430cbf7888764899794d39487d92b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expImage: {fileID: 6473921208826421252}
+  text: {fileID: 7441239579171621771}
 --- !u!1 &6462084735468084486
 GameObject:
   m_ObjectHideFlags: 0
@@ -2830,6 +2845,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8740165232653027804, guid: f9bb26610ff073941aba3d3e63ae0a96,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8882170519696384191, guid: f9bb26610ff073941aba3d3e63ae0a96,
         type: 3}

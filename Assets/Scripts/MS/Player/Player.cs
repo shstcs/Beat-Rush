@@ -33,7 +33,8 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         Managers.Player = this;
-
+        
+        // Load 버튼을 눌렀는지 조건 추가 필요
         if (Managers.Data.LoadFileCheck())
         {
             Managers.Data.LoadData();

@@ -8,6 +8,7 @@ public class PlayerData
 {
     public int Level;
     public int Exp;
+    public int CurrentClearStage;
     public int BestScore;
 }
 
@@ -15,6 +16,9 @@ public class DataManager : MonoBehaviour
 {
     string path;
     string filename = "save";
+
+    public int CurrentClearStage = 0;
+    public int BestScore = 0;
 
     private void Awake()
     {
@@ -25,8 +29,12 @@ public class DataManager : MonoBehaviour
     {
         PlayerData playerData = new PlayerData();
 
-        Managers.Player.CurrentStateData.Level++; // Test
         playerData.Level = Managers.Player.CurrentStateData.Level;
+        playerData.Exp = Managers.Player.CurrentStateData.Exp;
+        playerData.CurrentClearStage = Managers.Player.CurrentStateData.CurrentClearStage;
+
+        playerData.BestScore = Managers.Data.BestScore;
+
         path = Application.persistentDataPath + "/";
         string data = JsonUtility.ToJson(playerData, true);
         File.WriteAllText(path + filename, data);
@@ -42,6 +50,9 @@ public class DataManager : MonoBehaviour
 
         Managers.Player.CurrentStateData.Level = playerData.Level;
         Managers.Player.CurrentStateData.Exp = playerData.Exp;
+        Managers.Player.CurrentStateData.CurrentClearStage = playerData.CurrentClearStage;
+
+        Managers.Data.BestScore = playerData.BestScore;
     }
 
     public bool LoadFileCheck()

@@ -15,6 +15,12 @@ public class UI_Popup_Result : MonoBehaviour
 
     private void Start()
     {
+        if (Managers.Game.Score > Managers.Data.BestScore)
+        {
+            Managers.Data.BestScore = Managers.Game.Score;
+            Debug.Log(Managers.Data.BestScore);
+        }
+
         if (Managers.Player.IsDie() == true)
             transform.GetChild(0).transform.GetComponent<TextMeshProUGUI>().text = "패배...";
         else

@@ -24,7 +24,14 @@ public class UI_HUD_Start : MonoBehaviour
     }
     public void Continue()
     {
-        SceneManager.LoadScene("Lobby");
+        if (!Managers.Data.LoadFileCheck())
+        {
+            Debug.Log("Load File Not Exist!!!");
+        }
+        else if (Managers.Data.LoadFileCheck())
+        {
+            SceneManager.LoadScene("Lobby");
+        }
     }
     public void Option()
     {
