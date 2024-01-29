@@ -17,8 +17,7 @@ public class DataManager : MonoBehaviour
     string path;
     string filename = "save";
 
-    public int CurrentClearStage = 0;
-    public int BestScore = 0;
+    [HideInInspector] public int BestScore;
 
     private void Awake()
     {
@@ -33,11 +32,12 @@ public class DataManager : MonoBehaviour
         playerData.Exp = Managers.Player.CurrentStateData.Exp;
         playerData.CurrentClearStage = Managers.Player.CurrentStateData.CurrentClearStage;
 
-        playerData.BestScore = Managers.Data.BestScore;
+        playerData.BestScore = PlayerPrefs.GetInt("BestScore");
 
         path = Application.persistentDataPath + "/";
         string data = JsonUtility.ToJson(playerData, true);
         File.WriteAllText(path + filename, data);
+        Debug.Log(data);
         Debug.Log("SavePath : " + path);
     }
 

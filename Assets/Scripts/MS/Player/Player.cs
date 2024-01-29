@@ -67,7 +67,7 @@ public class Player : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         _stateMachine.ChangeState(_stateMachine.IdleState);
-        InitData();
+        // InitData(); << 여기 주석달아도 되나요?
 
         Managers.Player = this;
     }

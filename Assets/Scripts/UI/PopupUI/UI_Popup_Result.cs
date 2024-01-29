@@ -17,8 +17,7 @@ public class UI_Popup_Result : MonoBehaviour
     {
         if (Managers.Game.Score > Managers.Data.BestScore)
         {
-            Managers.Data.BestScore = Managers.Game.Score;
-            Debug.Log(Managers.Data.BestScore);
+            PlayerPrefs.SetInt("BestScore", Managers.Game.Score);
         }
 
         if (Managers.Player.IsDie() == true)

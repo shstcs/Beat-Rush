@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIExpBar : MonoBehaviour
+public class UILobbyExpBar : MonoBehaviour
 {
     [SerializeField] private Image expImage;
     [SerializeField] private TextMeshProUGUI text;
