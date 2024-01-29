@@ -12,13 +12,18 @@ public class UI_Popup_Option : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
+    private void Update()
+    {
+        //옵션 창 닫는 부분은 나중에 Input System으로 처리해도 될 것 같습니다.
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            OffOption();
+        }
+    }
     public void OffOption()
     {
-        if (SceneManager.GetActiveScene().name == "Minho" || SceneManager.GetActiveScene().name == "StageUI_Test_Scene")
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-        }
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         Time.timeScale = 1.0f;
         gameObject.SetActive(false);
         Managers.Sound.ContinueBGM();        //음악 재생

@@ -13,8 +13,8 @@ public class UI_HUD_Start : MonoBehaviour
     #region MonoBehaviour
     private void Start()
     {
-        _option = GameObject.Find("UI_Option");
-        _credit = GameObject.Find("UI_Credit");
+        _option = GameObject.Find("Canvas").transform.GetChild(2).gameObject;
+        _credit = GameObject.Find("Canvas").transform.GetChild(3).gameObject;
     }
     #endregion
     #region methods

@@ -15,10 +15,10 @@ public class UI_Popup_Result : MonoBehaviour
 
     private void Start()
     {
-        if (Managers.Player.IsDie() == false)
-            GameObject.Find("Result_Text").transform.GetComponent<TextMeshProUGUI>().text = "패배...";
+        if (Managers.Player.IsDie() == true)
+            transform.GetChild(0).transform.GetComponent<TextMeshProUGUI>().text = "패배...";
         else
-            GameObject.Find("Result_Text").transform.GetComponent<TextMeshProUGUI>().text = "승리!";
+            transform.GetChild(0).transform.GetComponent<TextMeshProUGUI>().text = "승리!";
         ClearResult();
     }
     public void LoadStage()
