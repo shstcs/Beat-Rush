@@ -30,6 +30,9 @@ public class GameManager : MonoBehaviour
     public float delay = 2.1f;
     public int curNote = 0;
     public GameType GameType = GameType.Main;
+    public InputLockType lockType = InputLockType.UnLock;
+
+    public Dictionary<QuestName, QuestData> questDatas = new Dictionary<QuestName, QuestData>();
     //private int bestScore;
     #endregion
     #region Methods

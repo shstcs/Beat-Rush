@@ -13,7 +13,7 @@ public class PlayerAttackState : PlayerBaseState
         
         stateMachine.MoveSpeedModifier = 0f;
         base.Enter();
-        stateMachine.lockType = InputLockType.Lock;
+        Managers.Game.lockType = InputLockType.Lock;
         stateMachine.Player.Animator.SetTrigger(stateMachine.Player.AnimationData.AttackTriggerParameterHash);
         stateMachine.Player.SwordEffect.Play();
         Managers.Sound.PlaySFX(SFX.Attack, 0.1f);
@@ -40,7 +40,7 @@ public class PlayerAttackState : PlayerBaseState
         if (!currentInfo.IsTag("Attack") || 0.9 <= currentInfo.normalizedTime)
         {
             stateMachine.ChangeState(stateMachine.IdleState, true);
-            stateMachine.lockType = InputLockType.UnLock;
+            Managers.Game.lockType = InputLockType.UnLock;
         }
     }
 

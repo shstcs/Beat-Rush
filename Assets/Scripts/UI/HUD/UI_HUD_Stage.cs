@@ -10,7 +10,7 @@ public class UI_HUD_Stage : MonoBehaviour
     private float _skillBarMax;
     private void Start()
     {
-        _hpBarMax = 10.0f;
+        _hpBarMax = Managers.Player.CurrentStateData.GetHealth();
         _skillBarMax = 100.0f;
         Managers.Player.CurrentStateData.Health = (int)_hpBarMax;
         Managers.Player.CurrentStateData.SkillGauge = 0;

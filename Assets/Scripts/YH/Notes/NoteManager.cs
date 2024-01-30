@@ -77,5 +77,6 @@ public class NoteManager : MonoBehaviour
         _cameraAnimator.SetTrigger("EndMove");
         yield return new WaitForSeconds(1f);
         _monster.EndStage();
+        QuestManager.instance.SetQuestClear(QuestName.StageFirstComplete);
     }
 }
