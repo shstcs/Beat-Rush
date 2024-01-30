@@ -24,6 +24,7 @@ public class Note : MonoBehaviour
             BreakNote();
             Managers.Player.ChangeHealth(-1);
             Managers.Game.judgeNotes[(int)Score.Miss]++;
+            Managers.Game.curJudge = "Miss";
         }
     }
 

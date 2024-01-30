@@ -7,7 +7,7 @@ public class Pattern2_1 : IPattern
     private List<Dictionary<string, object>> _pattern;
     private double _startDsp;
     private float _startDelay = 0.3f;
-    private float _noteSpeed = 6;
+    private float _noteSpeed = 13.2f;
     public bool _isFeedbackStart;
 
     public void SetPattern()

@@ -8,6 +8,7 @@ public enum InstrumentType
     guitar,
     piano,
     Drum,
+    Metronome
 }
 
 public class Guitar : MonoBehaviour, IInteractable
@@ -56,6 +57,9 @@ public class Guitar : MonoBehaviour, IInteractable
 
                 case InstrumentType.Drum:
                     break;
+
+                case InstrumentType.Metronome:
+                    break;
             }
         }
     }
@@ -83,12 +87,13 @@ public class Guitar : MonoBehaviour, IInteractable
     }
 
     public string GetInteractPrompt()
-    {
+    {                                                                                                                                                                                                 
         return instrument.gameObject.name;
     }
 
     public void OnInteract()
     {
+        Managers.Game.InitJudgeNotes(); //판정 초기화
         //상호작용 구현
         switch (type)
         {
@@ -96,10 +101,16 @@ public class Guitar : MonoBehaviour, IInteractable
                 SceneManager.LoadScene("Minho");
                 break;
             case InstrumentType.piano:
-                SceneManager.LoadScene("Minho");
+                Managers.Game.currentStage = 2;
+                SceneManager.LoadScene("YH-TestStage2");
                 break;
             case InstrumentType.Drum:
+                Managers.Game.currentStage = 1;
                 SceneManager.LoadScene("Minho");
+                break;
+            case InstrumentType.Metronome:
+                Managers.Game.currentStage = 0;
+                SceneManager.LoadScene("Tutorial");
                 break;
         }
 

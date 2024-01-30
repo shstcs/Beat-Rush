@@ -24,5 +24,6 @@ public class UI_HUD_Stage : MonoBehaviour
         GameObject.Find("HUD_PlayerInfo").transform.GetChild(1).GetComponent<Image>().fillAmount = Managers.Player.CurrentStateData.SkillGauge / _skillBarMax;
         GameObject.Find("HUD_Combo").transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = Managers.Game.Combo.ToString();
         GameObject.Find("HUD_Score").transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = Managers.Game.Score.ToString();
+        GameObject.Find("HUD_Combo").transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = Managers.Game.curJudge;
     }
 }

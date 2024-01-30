@@ -22,7 +22,7 @@ public class Pattern1_4 : IPattern
         {
             waitTime = (float)_pattern[i + 1]["noteLocation"] - (float)_pattern[i]["noteLocation"];
             GameObject note = Managers.Pool.SpawnFromPool();
-            note.transform.position = new Vector3((float)_pattern[i]["xValue"] + 40, 5, 43.8f);
+            note.transform.position = new Vector3((float)_pattern[i]["xValue"] + 40, 5, 42.5f + Managers.Game.delay);
             yield return new WaitForSeconds(waitTime / _noteSpeed);
         }
     }
@@ -31,7 +31,7 @@ public class Pattern1_4 : IPattern
     {
         if (!_isFeedbackStart)
         {
-            _startDsp = AudioSettings.dspTime;
+            _startDsp = AudioSettings.dspTime; 
             _isFeedbackStart = true;
         }
 
@@ -43,7 +43,7 @@ public class Pattern1_4 : IPattern
         {
             float curLocation = (float)_pattern[i]["noteLocation"] - _noteDistance;
             GameObject note = _activeNotes[cnt++];
-            note.transform.position = new Vector3(note.transform.position.x, note.transform.position.y, curLocation + 43.8f);
+            note.transform.position = new Vector3(note.transform.position.x, note.transform.position.y, curLocation + 42.5f + Managers.Game.delay);
         }
     }
     public void Pause()

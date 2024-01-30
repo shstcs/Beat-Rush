@@ -6,7 +6,7 @@ public class TutorialMob : MonoBehaviour, IMonster
 {
     private IPattern _pattern;
     private int _feedbackCount;
-    private float _attackDelay = 40f;
+    private float _attackDelay = 28f;
 
     private void Awake()
     {

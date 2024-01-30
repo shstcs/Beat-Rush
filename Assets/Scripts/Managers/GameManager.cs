@@ -17,13 +17,14 @@ public class GameManager : MonoBehaviour
     #endregion
     #region Fields
     public int[] judgeNotes = new int[5];
+    public string curJudge;
     public int Combo { get; set; }
     public int MaxCombo { get; set; }
     public int Score { get; set; }
     public int Hp { get; private set; }
     public float[] bpm = { 80f, 72f, 99f };
     public float[] noteDistance = { 5, 5, 8 };
-    public int currentStage = 2;
+    public int currentStage = 1;
     public float delay = 2f;
     public int curNote = 0;
     public GameType GameType = GameType.Main;
@@ -49,6 +50,14 @@ public class GameManager : MonoBehaviour
     public void AddScore(int score)
     {
         Score += score;
+    }
+
+    public void InitJudgeNotes()
+    {
+        for(int i = 0; i < judgeNotes.Length; i++)
+        {
+            judgeNotes[i] = 0;
+        }
     }
     #endregion
 }

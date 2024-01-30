@@ -43,21 +43,25 @@ public class Line : MonoBehaviour
             {
                 score = 10;
                 Managers.Game.judgeNotes[(int)Score.Bad]++;
+                Managers.Game.curJudge = "Bad";
             }
             else if (distance > 0.5f)    //Good
             {
                 score = 30;
                 Managers.Game.judgeNotes[(int)Score.Good]++;
+                Managers.Game.curJudge = "Good";
             }
             else if (distance > 0.1f)     //Great
             {
                 score = 50;
                 Managers.Game.judgeNotes[(int)Score.Great]++;
+                Managers.Game.curJudge = "Great";
             }
             else                        //Perfect
             {
                 score = 100;
                 Managers.Game.judgeNotes[(int)Score.Perfect]++;
+                Managers.Game.curJudge = "Perfect";
             } 
 
             colliders[0].GetComponent<Note>().BreakNote();

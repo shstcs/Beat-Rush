@@ -40,7 +40,7 @@ public class FrostDragon : MonoBehaviour, IMonster
         {
             if (_feedbackCount > 12 && Time.timeScale > 0 && _currentFeedbackIndex >= 0)
             {
-                //_patterns[_currentFeedbackIndex].Feedback();
+                _patterns[_currentFeedbackIndex].Feedback();
                 _feedbackCount = 0;
             }
             if (Time.timeScale == 0)
