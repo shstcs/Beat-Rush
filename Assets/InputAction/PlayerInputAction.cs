@@ -71,6 +71,15 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Quest"",
+                    ""type"": ""Button"",
+                    ""id"": ""8c741dc2-13ef-4508-aa5a-23654073fe1f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -216,6 +225,17 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
                     ""action"": ""Interaction"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""62f2e5dd-6a16-4464-ab2e-7bb36b86cf08"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Quest"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -229,6 +249,7 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
         m_Player_Run = m_Player.FindAction("Run", throwIfNotFound: true);
         m_Player_Skill = m_Player.FindAction("Skill", throwIfNotFound: true);
         m_Player_Interaction = m_Player.FindAction("Interaction", throwIfNotFound: true);
+        m_Player_Quest = m_Player.FindAction("Quest", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -295,6 +316,7 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Run;
     private readonly InputAction m_Player_Skill;
     private readonly InputAction m_Player_Interaction;
+    private readonly InputAction m_Player_Quest;
     public struct PlayerActions
     {
         private @PlayerInputAction m_Wrapper;
@@ -304,6 +326,7 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
         public InputAction @Run => m_Wrapper.m_Player_Run;
         public InputAction @Skill => m_Wrapper.m_Player_Skill;
         public InputAction @Interaction => m_Wrapper.m_Player_Interaction;
+        public InputAction @Quest => m_Wrapper.m_Player_Quest;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -328,6 +351,9 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
             @Interaction.started += instance.OnInteraction;
             @Interaction.performed += instance.OnInteraction;
             @Interaction.canceled += instance.OnInteraction;
+            @Quest.started += instance.OnQuest;
+            @Quest.performed += instance.OnQuest;
+            @Quest.canceled += instance.OnQuest;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -347,6 +373,9 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
             @Interaction.started -= instance.OnInteraction;
             @Interaction.performed -= instance.OnInteraction;
             @Interaction.canceled -= instance.OnInteraction;
+            @Quest.started -= instance.OnQuest;
+            @Quest.performed -= instance.OnQuest;
+            @Quest.canceled -= instance.OnQuest;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -371,5 +400,6 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
         void OnRun(InputAction.CallbackContext context);
         void OnSkill(InputAction.CallbackContext context);
         void OnInteraction(InputAction.CallbackContext context);
+        void OnQuest(InputAction.CallbackContext context);
     }
 }

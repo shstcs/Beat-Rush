@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.XR;
 using UnityEngine.VFX;
 
@@ -70,6 +72,15 @@ public class Player : MonoBehaviour
         // InitData(); << 여기 주석달아도 되나요?
 
         Managers.Player = this;
+
+        Input.PlayerActions.Quest.started += OpenQuestWindow;
+    }
+
+    private void OpenQuestWindow(InputAction.CallbackContext context)
+    {
+        if (Managers.Game.GameType == GameType.Play) return;
+
+        QuestManager.instance.OpenQuest();
     }
 
     private void Update()
@@ -130,4 +141,6 @@ public class Player : MonoBehaviour
         Rotate(obj.transform);
         Managers.Sound.PlaySFX(SFX.Skill);
     }
+
+
 }

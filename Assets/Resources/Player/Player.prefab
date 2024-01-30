@@ -2677,8 +2677,18 @@ MonoBehaviour:
   SwordEffect: {fileID: 0}
   CurrentStateData:
     Level: 1
+    Exp: 0
     Health: 10
+    AdditionalHealth: 0
     SkillGauge: 0
+    SkillGaugeIncrement: 5
+    SkillGaugeModifier: 1
+    CurrentClearStage: 0
+  CurrentSkillData:
+    BaseSpeed: 20
+    BaseDistance: 20
+    SpeedModifier: 1
+    DistanceModifier: 1
   SkillPrefab: {fileID: 6445826192643391251, guid: d49c31966477ce84e80549803c09e1bb,
     type: 3}
 --- !u!114 &8616956480814457778
@@ -2732,7 +2742,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CheckRate: 0.05
-  RayDistance: 3
+  RayDistance: 15
   TargetLayerMask:
     serializedVersion: 2
     m_Bits: 128

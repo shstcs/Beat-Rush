@@ -5,11 +5,10 @@ using UnityEngine;
 public abstract class StateMachine
 {
     protected IState currentState;
-    public InputLockType lockType = InputLockType.UnLock;
 
     public void ChangeState(IState newState, bool ignorelockType = false)
     {
-        if (!ignorelockType && lockType == InputLockType.Lock) return;
+        if (!ignorelockType && Managers.Game.lockType == InputLockType.Lock) return;
 
         currentState?.Exit();
 

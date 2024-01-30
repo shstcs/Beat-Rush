@@ -11,7 +11,7 @@ public class PlayerSkillState : PlayerBaseState
 
     public override void Enter()
     {
-        stateMachine.lockType = InputLockType.Lock;
+        Managers.Game.lockType = InputLockType.Lock;
         base.Enter();
         stateMachine.Player.Animator.SetTrigger(stateMachine.Player.AnimationData.SkillParameterHash);
         stateMachine.Player.CurrentStateData.SkillGauge = 0;
@@ -26,7 +26,7 @@ public class PlayerSkillState : PlayerBaseState
         if (!currentInfo.IsTag("Skill") || 0.9 <= currentInfo.normalizedTime)
         {
             stateMachine.ChangeState(stateMachine.IdleState, true);
-            stateMachine.lockType = InputLockType.UnLock;
+            Managers.Game.lockType = InputLockType.UnLock;
         }  
     }
 }

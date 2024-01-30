@@ -9,7 +9,7 @@ public class PlayerSkillData
 {
     [field: SerializeField][field: Range(1f, 25f)] public float BaseSpeed = 20f;
     [field: SerializeField][field: Range(1f, 25f)] public float BaseDistance = 20f;
-    [field: SerializeField][field: Range(1f, 2f)] public float SpeedModifier = 1f;
+    [field: SerializeField][field: Range(0.5f, 1f)] public float SpeedModifier = 1f;
     [field: SerializeField][field: Range(1f, 2f)] public float DistanceModifier = 1f;
 
     public float GetSpeed()
@@ -19,6 +19,6 @@ public class PlayerSkillData
 
     public float GetDistance()
     {
-        return SpeedModifier * DistanceModifier;
+        return BaseDistance * DistanceModifier;
     }
 }

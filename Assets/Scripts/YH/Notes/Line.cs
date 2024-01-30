@@ -69,6 +69,10 @@ public class Line : MonoBehaviour
             Managers.Game.Combo++;
             Managers.Game.MaxCombo = Managers.Game.Combo > Managers.Game.MaxCombo ? Managers.Game.Combo : Managers.Game.MaxCombo;       //나중에 리팩토링
             Managers.Game.AddScore(score + Managers.Game.Combo);
+            if (Managers.Game.Combo == 100)
+            {
+                QuestManager.instance.SetQuestClear(QuestName.Stage100Combo);
+            }
 
             // Skill
             if (Managers.Player.CurrentStateData.SkillGauge < 100)

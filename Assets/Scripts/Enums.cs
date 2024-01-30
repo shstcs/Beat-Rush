@@ -20,3 +20,18 @@ public enum Score
     Bad,
     Miss
 }
+
+public enum QuestReward
+{
+    HealthUp,
+    SkillGaugIncrementUp,
+    SkillSpeedDown,
+    SkillExtendedDistance,
+}
+
+public enum QuestName
+{
+    TutorialComplete,
+    StageFirstComplete,
+    Stage100Combo,
+}
