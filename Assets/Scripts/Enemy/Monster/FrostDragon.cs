@@ -24,6 +24,14 @@ public class FrostDragon : MonoBehaviour, IMonster
         _patterns = new IPattern[]
         {
             new Pattern2_1(),
+            new Pattern2_2(),
+            new Pattern2_3(),
+            new Pattern2_4(),
+            new Pattern2_5(),
+            new Pattern2_6(),
+            new Pattern2_7(),
+            new Pattern2_8(),
+            new Pattern2_9()
         };
 
         foreach (var pattern in _patterns)
@@ -54,14 +62,14 @@ public class FrostDragon : MonoBehaviour, IMonster
     public void SortPattern()
     {
 
-        for (int i = _patterns.Length - 1; i > 0; i--)
-        {
-            int randomIndex = Random.Range(0, i + 1);
+        //for (int i = _patterns.Length - 1; i > 0; i--)
+        //{
+        //    int randomIndex = Random.Range(0, i + 1);
 
-            IPattern temp = _patterns[i];
-            _patterns[i] = _patterns[randomIndex];
-            _patterns[randomIndex] = temp;
-        }
+        //    IPattern temp = _patterns[i];
+        //    _patterns[i] = _patterns[randomIndex];
+        //    _patterns[randomIndex] = temp;
+        //}
 
     }
 
