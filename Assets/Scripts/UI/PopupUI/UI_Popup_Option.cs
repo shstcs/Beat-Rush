@@ -10,6 +10,7 @@ public class UI_Popup_Option : MonoBehaviour
     {
         //Time.timeScale = 0.0f;
         Cursor.lockState = CursorLockMode.None;
+        Managers.Game.lockType = InputLockType.Lock;
         Cursor.visible = true;
     }
     private void Update()
@@ -25,6 +26,7 @@ public class UI_Popup_Option : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         Time.timeScale = 1.0f;
+        Managers.Game.lockType = InputLockType.UnLock;
         gameObject.SetActive(false);
         Managers.Sound.ContinueBGM();        //음악 재생
     }
