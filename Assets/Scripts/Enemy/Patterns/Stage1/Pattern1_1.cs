@@ -6,7 +6,6 @@ public class Pattern1_1 : IPattern
 {
     private List<Dictionary<string, object>> _pattern;
     private double _startDsp;
-    private float _startDelay = 0.3f;
     private float _noteSpeed = 6;
     private bool _isFeedbackStart;
     public void SetPattern()
@@ -37,7 +36,7 @@ public class Pattern1_1 : IPattern
         }
 
         List<GameObject> _activeNotes = Managers.Pool.GetActiveAliveNotes();
-        float _noteDistance = _noteSpeed * (float)(AudioSettings.dspTime - _startDsp) + _startDelay;
+        float _noteDistance = _noteSpeed * (float)(AudioSettings.dspTime - _startDsp) + Managers.Game.StageStartDelay[1];
 
         int cnt = 0;
         for (int i = Managers.Game.curNote; i < Managers.Game.curNote + _activeNotes.Count; i++)

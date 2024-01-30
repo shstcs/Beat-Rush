@@ -62,6 +62,20 @@ public class ObjectPool : MonoBehaviour
         return activepool;
     }
 
+    public List<GameObject> GetActiveAliveNotes(int noteNum)
+    {
+        List<GameObject> activepool = new List<GameObject>();
+        foreach (GameObject obj in poolQueue)
+        {
+            if (obj.activeSelf == true && obj.GetComponent<Note>().noteNumber == noteNum)
+            {
+                activepool.Add(obj);
+            }
+            activepool.OrderBy(x => x.transform.position.z).ToList();
+        }
+        return activepool;
+    }
+
     public List<GameObject> GetActiveNotes()
     {
         List<GameObject> activepool = new List<GameObject>();

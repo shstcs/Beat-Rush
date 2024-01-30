@@ -24,8 +24,10 @@ public class GameManager : MonoBehaviour
     public int Hp { get; private set; }
     public float[] bpm = { 80f, 72f, 99f };
     public float[] noteDistance = { 5, 5, 8 };
+    public int[] curNoteInStage2 = new int[10];
+    public float[] StageStartDelay = {0, 0.5f, -1.5f, 0f };
     public int currentStage = 1;
-    public float delay = 2f;
+    public float delay = 2.1f;
     public int curNote = 0;
     public GameType GameType = GameType.Main;
     //private int bestScore;
@@ -54,7 +56,7 @@ public class GameManager : MonoBehaviour
 
     public void InitJudgeNotes()
     {
-        for(int i = 0; i < judgeNotes.Length; i++)
+        for (int i = 0; i < judgeNotes.Length; i++)
         {
             judgeNotes[i] = 0;
         }

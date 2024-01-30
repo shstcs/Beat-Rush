@@ -5,7 +5,7 @@ using UnityEngine;
 public class Note : MonoBehaviour
 {
     private ParticleSystem _particle;
-
+    public int noteNumber = 0;
     protected void Awake()
     {
         _particle = Resources.Load<ParticleSystem>("Blood Splash");
@@ -35,6 +35,7 @@ public class Note : MonoBehaviour
         _particle.Play();
         transform.position = Vector3.zero;
         Managers.Game.curNote++;
+        Managers.Game.curNoteInStage2[noteNumber]++;
         gameObject.SetActive(false);
     }
 }

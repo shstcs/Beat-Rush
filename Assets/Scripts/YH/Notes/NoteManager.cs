@@ -65,7 +65,7 @@ public class NoteManager : MonoBehaviour
         _attackDelay = data.delay;
         _bgm = data.bgm;
         Managers.Game.curNote = 0;
-        Managers.Sound.DelayedPlayBGM(_bgm, 32.5f / _noteSpeed);
+        Managers.Sound.DelayedPlayBGM(_bgm, (32.5f / _noteSpeed));
 
         for (int i = 0; i < _patternLength; i++)
         {
