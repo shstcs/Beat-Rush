@@ -7,12 +7,11 @@ public class Pattern0 : IPattern
     private List<Dictionary<string, object>> _pattern;
     private double _startDsp;
     private float _startDelay = 0.3f;
-    private float _noteSpeed;
+    private float _noteSpeed = 6.666666f;
     public bool _isFeedbackStart;
 
     public void SetPattern()
     {
-        _noteSpeed = 5 / (60 / Managers.Game.bpm[Managers.Game.currentStage]);
         _pattern = CSVReader.Read("Tutorial/tutorial.csv");
     }
 
@@ -24,7 +23,8 @@ public class Pattern0 : IPattern
         {
             waitTime = (float)_pattern[i + 1]["noteLocation"] - (float)_pattern[i]["noteLocation"];
             GameObject note = Managers.Pool.SpawnFromPool();
-            note.transform.position = new Vector3((float)_pattern[i]["xValue"] - 2, 2, 42.5f + Managers.Game.delay);
+            note.transform.position = new Vector3((float)_pattern[i]["xValue"] - 2, 0, 42.5f + Managers.Game.delay);
+            note.transform.Rotate(new Vector3(0, Random.Range(0, 360), 0));
             yield return new WaitForSeconds(waitTime / _noteSpeed);
         }
     }

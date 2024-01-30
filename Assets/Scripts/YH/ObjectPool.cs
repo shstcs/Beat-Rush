@@ -21,7 +21,7 @@ public class ObjectPool : MonoBehaviour
             GameObject obj;
             if (Managers.Game.currentStage == 0)
             {
-                obj = Managers.Resource.Instantiate("Notes/Cube.prefab", transform);
+                obj = Managers.Resource.Instantiate("Notes/Clock.prefab", transform);
             }
             else if (Managers.Game.currentStage == 1)
             {

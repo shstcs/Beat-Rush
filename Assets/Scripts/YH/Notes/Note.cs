@@ -5,10 +5,19 @@ using UnityEngine;
 public class Note : MonoBehaviour
 {
     private ParticleSystem _particle;
+    [HideInInspector]
     public int noteNumber = 0;
     protected void Awake()
     {
-        _particle = Resources.Load<ParticleSystem>("Blood Splash");
+        if(Managers.Game.currentStage == 0)
+        {
+            _particle = Resources.Load<ParticleSystem>("Spheres Explode");
+        }
+        else
+        {
+            _particle = Resources.Load<ParticleSystem>("Blood Splash");
+        }
+        
     }
 
     private void Start()

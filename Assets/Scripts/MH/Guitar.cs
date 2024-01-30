@@ -93,7 +93,7 @@ public class Guitar : MonoBehaviour, IInteractable
 
     public void OnInteract()
     {
-        Managers.Game.InitJudgeNotes(); //판정 초기화
+        Managers.Game.InitNotes(); //판정 초기화
         //상호작용 구현
         switch (type)
         {

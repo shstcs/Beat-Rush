@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RockNote : Note
+public class RotateNote : Note
 {
     private float rotationSpeed = 1f;
     protected new void Update()

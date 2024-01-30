@@ -54,11 +54,15 @@ public class GameManager : MonoBehaviour
         Score += score;
     }
 
-    public void InitJudgeNotes()
+    public void InitNotes()
     {
         for (int i = 0; i < judgeNotes.Length; i++)
         {
             judgeNotes[i] = 0;
+        }
+        for(int i = 0; i<curNoteInStage2.Length; i++)
+        {
+            curNoteInStage2[i] = 0;
         }
     }
     #endregion
