@@ -2374,18 +2374,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 677059283}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &681371392 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2521008484147880911, guid: 3dac3f76587ac5d44885df4a832b6c24,
-    type: 3}
-  m_PrefabInstance: {fileID: 788405918}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2951040fd293ae243b571c445956b6ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &684040794
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2653,79 +2641,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 731884030}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &788405918
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4177636967490962691, guid: 3dac3f76587ac5d44885df4a832b6c24,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -11.603484
-      objectReference: {fileID: 0}
-    - target: {fileID: 4177636967490962691, guid: 3dac3f76587ac5d44885df4a832b6c24,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -3.6214433
-      objectReference: {fileID: 0}
-    - target: {fileID: 4177636967490962691, guid: 3dac3f76587ac5d44885df4a832b6c24,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -4.735491
-      objectReference: {fileID: 0}
-    - target: {fileID: 4177636967490962691, guid: 3dac3f76587ac5d44885df4a832b6c24,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4177636967490962691, guid: 3dac3f76587ac5d44885df4a832b6c24,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4177636967490962691, guid: 3dac3f76587ac5d44885df4a832b6c24,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4177636967490962691, guid: 3dac3f76587ac5d44885df4a832b6c24,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4177636967490962691, guid: 3dac3f76587ac5d44885df4a832b6c24,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4177636967490962691, guid: 3dac3f76587ac5d44885df4a832b6c24,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4177636967490962691, guid: 3dac3f76587ac5d44885df4a832b6c24,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5727964987317422006, guid: 3dac3f76587ac5d44885df4a832b6c24,
-        type: 3}
-      propertyPath: m_Name
-      value: SoundManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 5727964987317422006, guid: 3dac3f76587ac5d44885df4a832b6c24,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 3dac3f76587ac5d44885df4a832b6c24, type: 3}
 --- !u!1001 &791852380
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5809,7 +5724,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _soundManager
       value: 
-      objectReference: {fileID: 681371392}
+      objectReference: {fileID: 0}
     - target: {fileID: 7047253107889205718, guid: 62456bc59fd89d645bed05796e024ee2,
         type: 3}
       propertyPath: _monsterObject
@@ -8647,8 +8562,17 @@ MonoBehaviour:
   SwordEffect: {fileID: 0}
   CurrentStateData:
     Level: 1
+    Exp: 0
     Health: 10
     SkillGauge: 0
+    SkillGaugeIncrement: 5
+    SkillGaugeModifier: 1
+    CurrentClearStage: 0
+  CurrentSkillData:
+    BaseSpeed: 20
+    BaseDistance: 20
+    SpeedModifier: 1
+    DistanceModifier: 1
   SkillPrefab: {fileID: 6445826192643391251, guid: d49c31966477ce84e80549803c09e1bb,
     type: 3}
 --- !u!4 &3201507059421249066
@@ -10771,7 +10695,6 @@ SceneRoots:
   - {fileID: 5469963961648396487}
   - {fileID: 1686861498}
   - {fileID: 960277505}
-  - {fileID: 788405918}
   - {fileID: 1545842650}
   - {fileID: 1915740589}
   - {fileID: 585039480}

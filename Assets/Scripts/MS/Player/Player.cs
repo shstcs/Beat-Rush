@@ -34,6 +34,24 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         Managers.Player = this;
+        
+        // Load 버튼을 눌렀는지 조건 추가 필요
+        if (Managers.Data.LoadFileCheck())
+        {
+            Managers.Data.LoadData();
+            CurrentStateData.Health = Data.StateData.Health;
+            CurrentStateData.SkillGauge = Data.StateData.SkillGauge;
+
+            CurrentSkillData.BaseSpeed = Data.SkillData.BaseSpeed;
+            CurrentSkillData.BaseDistance = Data.SkillData.BaseDistance;
+            CurrentSkillData.SpeedModifier = Data.SkillData.SpeedModifier;
+            CurrentSkillData.DistanceModifier = Data.SkillData.DistanceModifier;
+        }
+        else if (!Managers.Data.LoadFileCheck())
+        {
+            InitData();
+        }
+        
         AnimationData.Initialize();
 
         Rigidbody = GetComponent<Rigidbody>();
@@ -49,7 +67,7 @@ public class Player : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         _stateMachine.ChangeState(_stateMachine.IdleState);
-        InitData();
+        // InitData(); << 여기 주석달아도 되나요?
 
         Managers.Player = this;
     }
@@ -74,6 +92,7 @@ public class Player : MonoBehaviour
     private void InitData()
     {
         CurrentStateData.Level = Data.StateData.Level;
+        CurrentStateData.Exp = Data.StateData.Exp;
         CurrentStateData.Health = Data.StateData.Health;
         CurrentStateData.SkillGauge = Data.StateData.SkillGauge;
 
