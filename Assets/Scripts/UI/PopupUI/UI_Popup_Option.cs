@@ -8,7 +8,7 @@ public class UI_Popup_Option : MonoBehaviour
 {
     private void OnEnable()
     {
-        //Time.timeScale = 0.0f;
+        Time.timeScale = 0.0f;
         Cursor.lockState = CursorLockMode.None;
         Managers.Game.lockType = InputLockType.Lock;
         Cursor.visible = true;

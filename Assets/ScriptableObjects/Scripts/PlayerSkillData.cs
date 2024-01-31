@@ -21,4 +21,12 @@ public class PlayerSkillData
     {
         return BaseDistance * DistanceModifier;
     }
+
+    public void DeepCopy(PlayerSkillData data)
+    {
+        BaseSpeed = data.BaseSpeed;
+        BaseDistance = data.BaseDistance;
+        SpeedModifier = data.SpeedModifier;
+        DistanceModifier = data.DistanceModifier;
+    }
 }
