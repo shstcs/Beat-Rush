@@ -14,7 +14,7 @@ public struct Reward
     }
 }
 
-public class QuestData : MonoBehaviour
+public class QuestData
 {
     public string QuestDesc;
     public string RewardDesc;

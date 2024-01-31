@@ -19,8 +19,6 @@ public class QuestManager : MonoBehaviour
     private TextMeshProUGUI _descText;
     private TextMeshProUGUI _rewardText;
 
-    private QuestCondition _questCondition = new();
-
     private void Awake()
     {
         if (instance == null)
@@ -36,7 +34,8 @@ public class QuestManager : MonoBehaviour
 
     private void Start()
     {
-        QuestInit();
+        if (Managers.Game.questDatas.Count == 0)
+            QuestInit();
     }
 
     private void QuestInit()
@@ -46,9 +45,11 @@ public class QuestManager : MonoBehaviour
         Managers.Game.questDatas.Add(QuestName.TutorialComplete,
             new QuestData("튜토리얼 완료", "체력 + 1", new Reward(QuestReward.HealthUp, 1f)));
         Managers.Game.questDatas.Add(QuestName.StageFirstComplete,
-            new QuestData("스테이지 1회 완료", "스킬 게이지 증가량 + 20%", new Reward(QuestReward.SkillGaugIncrementUp, 0.2f)));
+            new QuestData("스테이지 1회 완료", "스킬 게이지 증가량 + 10%", new Reward(QuestReward.SkillGaugIncrementUp, 0.1f)));
         Managers.Game.questDatas.Add(QuestName.Stage100Combo,
-            new QuestData("스테이지 콤보 100회 이상", "스킬 속도 10% 감소", new Reward(QuestReward.SkillSpeedDown, -0.1f)));
+            new QuestData("스테이지 콤보 100회 이상", "스킬 속도 10% 감소", new Reward(QuestReward.SkillSpeedDown, -0.1f))); 
+        Managers.Game.questDatas.Add(QuestName.MaxHealthClear,
+            new QuestData("체력을 잃지 않고 스테이지 1회 완료", "스킬 거리 10% 증가", new Reward(QuestReward.SkillExtendedDistance, 0.1f)));
     }
 
     public void OpenQuest()

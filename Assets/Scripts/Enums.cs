@@ -23,7 +23,7 @@ public enum Score
 
 public enum QuestReward
 {
-    HealthUp,
+    HealthUp = 0,
     SkillGaugIncrementUp,
     SkillSpeedDown,
     SkillExtendedDistance,
@@ -31,7 +31,8 @@ public enum QuestReward
 
 public enum QuestName
 {
-    TutorialComplete,
+    TutorialComplete = 0,
     StageFirstComplete,
     Stage100Combo,
+    MaxHealthClear,
 }

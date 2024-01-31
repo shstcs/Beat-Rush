@@ -8,18 +8,19 @@ public class LobbySaveButton : MonoBehaviour
     private DataManager dataManager;
     private void Start()
     {
-        dataManager = FindObjectOfType<DataManager>();
+        ////dataManager = FindObjectOfType<DataManager>();
 
-        if (dataManager == null)
-        {
-            Debug.Log("DataManager not found");
-        }
+        //if (dataManager == null)
+        //{
+        //    Debug.Log("DataManager not found");
+        //}
     }
     public void OnButtonClick()
     {
-        if (dataManager != null)
-        {
-            dataManager.SaveData();
-        }
+        Managers.Data.SaveData();
+        //if (dataManager != null)
+        //{
+        //    dataManager.SaveData();
+        //}
     }
 }

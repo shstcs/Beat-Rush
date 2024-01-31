@@ -25,9 +25,6 @@ public class Player : MonoBehaviour
     [HideInInspector]
     public VisualEffect SwordEffect;
 
-    [HideInInspector]
-    public PlayerStateData CurrentStateData;
-    public PlayerSkillData CurrentSkillData;
 
     public GameObject SkillPrefab;
 
@@ -38,21 +35,21 @@ public class Player : MonoBehaviour
         Managers.Player = this;
         
         // Load 버튼을 눌렀는지 조건 추가 필요
-        if (Managers.Data.LoadFileCheck())
-        {
-            Managers.Data.LoadData();
-            CurrentStateData.Health = Data.StateData.Health;
-            CurrentStateData.SkillGauge = Data.StateData.SkillGauge;
+        //if (Managers.Data.LoadFileCheck())
+        //{
+        //    Managers.Data.LoadData();
+        //    CurrentStateData.Health = Data.StateData.Health;
+        //    CurrentStateData.SkillGauge = Data.StateData.SkillGauge;
 
-            CurrentSkillData.BaseSpeed = Data.SkillData.BaseSpeed;
-            CurrentSkillData.BaseDistance = Data.SkillData.BaseDistance;
-            CurrentSkillData.SpeedModifier = Data.SkillData.SpeedModifier;
-            CurrentSkillData.DistanceModifier = Data.SkillData.DistanceModifier;
-        }
-        else if (!Managers.Data.LoadFileCheck())
-        {
-            InitData();
-        }
+        //    CurrentSkillData.BaseSpeed = Data.SkillData.BaseSpeed;
+        //    CurrentSkillData.BaseDistance = Data.SkillData.BaseDistance;
+        //    CurrentSkillData.SpeedModifier = Data.SkillData.SpeedModifier;
+        //    CurrentSkillData.DistanceModifier = Data.SkillData.DistanceModifier;
+        //}
+        //else if (!Managers.Data.LoadFileCheck())
+        //{
+        //    InitData();
+        //}
         
         AnimationData.Initialize();
 
@@ -69,7 +66,6 @@ public class Player : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         _stateMachine.ChangeState(_stateMachine.IdleState);
-        // InitData(); << 여기 주석달아도 되나요?
 
         Managers.Player = this;
 
@@ -100,24 +96,11 @@ public class Player : MonoBehaviour
         transform.LookAt(targetPos);
     }
 
-    private void InitData()
-    {
-        CurrentStateData.Level = Data.StateData.Level;
-        CurrentStateData.Exp = Data.StateData.Exp;
-        CurrentStateData.Health = Data.StateData.Health;
-        CurrentStateData.SkillGauge = Data.StateData.SkillGauge;
-
-        CurrentSkillData.BaseSpeed = Data.SkillData.BaseSpeed;
-        CurrentSkillData.BaseDistance = Data.SkillData.BaseDistance;
-        CurrentSkillData.SpeedModifier = Data.SkillData.SpeedModifier;
-        CurrentSkillData.DistanceModifier = Data.SkillData.DistanceModifier;
-    }  
-
     public void ChangeHealth(int amount)
     {
-        CurrentStateData.Health += amount;
-        Debug.Log(CurrentStateData.Health);
-        if (CurrentStateData.Health <= 0)
+        Managers.Data.CurrentStateData.CurrentHealth += amount;
+        Debug.Log(Managers.Data.CurrentStateData.CurrentHealth);
+        if (Managers.Data.CurrentStateData.CurrentHealth <= 0)
         {
             Die();
         }

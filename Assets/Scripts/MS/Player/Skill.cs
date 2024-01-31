@@ -32,8 +32,8 @@ public class Skill : MonoBehaviour
 
     private void Init()
     {
-        _speed = Managers.Player.CurrentSkillData.GetSpeed();
-        _distance = Managers.Player.CurrentSkillData.GetDistance();
+        _speed = Managers.Data.CurrentSkillData.GetSpeed();
+        _distance = Managers.Data.CurrentSkillData.GetDistance();
     }
 
     IEnumerator SkillAttack()

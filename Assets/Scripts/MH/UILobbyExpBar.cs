@@ -19,7 +19,7 @@ public class UILobbyExpBar : MonoBehaviour
 
     public void CheckExp()
     {
-        currentExp = Managers.Player.CurrentStateData.Exp;
+        currentExp =  Managers.Data.CurrentStateData.Exp;
         text.text = currentExp.ToString() + " / " + maxExp.ToString();
 
         expImage.fillAmount = (float)currentExp / maxExp;
