@@ -402,7 +402,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BestScore: 0
-  testAA: 1
   CurrentStateData:
     Level: 1
     Exp: 0

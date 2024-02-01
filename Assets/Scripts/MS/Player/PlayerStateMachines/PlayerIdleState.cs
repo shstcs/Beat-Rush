@@ -7,7 +7,7 @@ public class PlayerIdleState : PlayerBaseState
 {
     public PlayerIdleState(PlayerStateMachine playerStateMachine) : base(playerStateMachine)
     {
-        
+
     }
 
     public override void Enter()
@@ -33,10 +33,7 @@ public class PlayerIdleState : PlayerBaseState
 
         if (stateMachine.MoveInput != Vector2.zero)
         {
-            if(stateMachine.MoveSpeedModifier != baseData.RunSpeedModifier)
-                OnMove();
-            else
-                stateMachine.ChangeState(stateMachine.RunState);
+            OnMove();
             return;
         }
     }

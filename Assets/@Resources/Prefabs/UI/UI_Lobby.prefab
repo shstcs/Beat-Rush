@@ -1064,9 +1064,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7223218676515614444}
-        m_TargetAssemblyTypeName: UI_HUD_Lobby, Assembly-CSharp
-        m_MethodName: StartStage
+      - m_Target: {fileID: 303545101822393432}
+        m_TargetAssemblyTypeName: Option_Volume, Assembly-CSharp
+        m_MethodName: ClickSoundPlay
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2401,10 +2401,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3261924717585960537}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 303545101822393432}
+        m_TargetAssemblyTypeName: Option_Volume, Assembly-CSharp
+        m_MethodName: ClickSoundPlay
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2875,6 +2875,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9bb26610ff073941aba3d3e63ae0a96, type: 3}
+--- !u!114 &303545101822393432 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4700877439027886191, guid: f9bb26610ff073941aba3d3e63ae0a96,
+    type: 3}
+  m_PrefabInstance: {fileID: 4974990733691405367}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e83ed27995a3c24290f4a01a267ca57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &5567851766005663865 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 598499469675580494, guid: f9bb26610ff073941aba3d3e63ae0a96,
