@@ -8,7 +8,7 @@ public class Pattern1_2 : IPattern
     {
         _pattern = CSVReader.Read("Stage1/pattern2.csv");
         _noteSpeed = 6;
-        _noteStartPos = new Vector3(40, 5, 42.5f);
+        _noteStartPos = new Vector3(-2, 1, 42.5f);
         _curPatternNum = 2;
         _curStage = 1;
     }

@@ -98,15 +98,15 @@ public class Guitar : MonoBehaviour, IInteractable
         switch (type)
         {
             case InstrumentType.guitar:
-                SceneManager.LoadScene("Minho");
+                SceneManager.LoadScene("Stage_1");
                 break;
             case InstrumentType.piano:
                 Managers.Game.currentStage = 2;
-                SceneManager.LoadScene("YH-TestStage2");
+                SceneManager.LoadScene("Stage_2");
                 break;
             case InstrumentType.Drum:
                 Managers.Game.currentStage = 1;
-                SceneManager.LoadScene("Minho");
+                SceneManager.LoadScene("Stage_1");
                 break;
             case InstrumentType.Metronome:
                 Managers.Game.currentStage = 0;

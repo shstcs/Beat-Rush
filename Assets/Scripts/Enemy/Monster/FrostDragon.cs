@@ -69,11 +69,11 @@ public class FrostDragon : MonoBehaviour, IMonster
         return (_patterns.Length, _attackDelay, BGM.Stage2);
     }
 
-    public void RandomAttack()           //return값으로 끝나는 신호를 줘볼까?
+    public void RandomAttack()           
     {
         if (_currentPatternIndex == 0)
         {
-            //_cameraAnimator.SetTrigger("ShowBoss");
+            _cameraAnimator.SetTrigger("ShowBoss");
         }
         StartCoroutine(_patterns[_currentPatternIndex++].Attack());
         _animator.SetTrigger(_frostDragonAnimation.GetRandomAttackHash());

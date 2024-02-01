@@ -46,7 +46,7 @@ public abstract class IPattern
         float _noteDistance = _noteSpeed * (float)(AudioSettings.dspTime - _startDsp) + _startDelay;
 
         int cnt = 0;
-        for (int i = Managers.Game.curNoteInStage[_curStage,_curPatternNum]; i < Managers.Game.curNoteInStage[_curStage, _curPatternNum] + _activeNotes.Count; i++)
+        for (int i = Managers.Game.curNoteInStage[_curStage, _curPatternNum]; i < Managers.Game.curNoteInStage[_curStage, _curPatternNum] + _activeNotes.Count; i++)
         {
             float curLocation = (float)_pattern[i]["noteLocation"] - _noteDistance;
             GameObject note = _activeNotes[cnt++];
@@ -59,7 +59,7 @@ public abstract class IPattern
         if (_isFeedbackStart)
         {
             _isFeedbackStart = false;
-            _pauseDsp = AudioSettings.dspTime - _startDsp;
+            _pauseDsp = AudioSettings.dspTime - _startDsp + 0.05f;
         }
     }
 }
