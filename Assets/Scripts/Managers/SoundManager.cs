@@ -65,11 +65,13 @@ public class SoundManager
         _sfx.Add(SFX.Skill, Managers.Resource.Load<AudioClip>("SkillSound"));
         _sfx.Add(SFX.FirstWalk, Managers.Resource.Load<AudioClip>("FirstGrassWalk"));
         _sfx.Add(SFX.SecondWalk, Managers.Resource.Load<AudioClip>("SecondGrassWalk"));
+        _sfx.Add(SFX.DefaultButton, Managers.Resource.Load<AudioClip>("DefaultButton"));
 
         _bgm.Add(BGM.Stage0, Managers.Resource.Load<AudioClip>("Stage0BGM"));
         _bgm.Add(BGM.Stage1, Managers.Resource.Load<AudioClip>("Stage1BGM"));
         _bgm.Add(BGM.Stage2, Managers.Resource.Load<AudioClip>("Stage2BGM"));
         _bgm.Add(BGM.Lobby2, Managers.Resource.Load<AudioClip>("Lobby2"));
+        _bgm.Add(BGM.StartBGM, Managers.Resource.Load<AudioClip>("StartBGM"));
     }
 
     public IEnumerator VolumeDown()

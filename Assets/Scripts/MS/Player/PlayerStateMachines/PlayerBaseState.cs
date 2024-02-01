@@ -130,7 +130,7 @@ public class PlayerBaseState : IState
 
     protected virtual void OnRunStarted(InputAction.CallbackContext context)
     {
-        stateMachine.ChangeState(stateMachine.RunState);
+        
     }
 
     #endregion

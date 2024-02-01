@@ -14,11 +14,11 @@ public class StartButton : MonoBehaviour
 
     public void OnLoad()
     {
-        if (!Managers.Data.LoadFileCheck())
+        if (!Managers.Data.LoadFileCheck("save"))
         {
             Debug.Log("Load File Not Exist!!!");
         }
-        else if (Managers.Data.LoadFileCheck())
+        else if (Managers.Data.LoadFileCheck("save"))
         {
             Managers.Sound.LoopPlayBGM(BGM.Lobby2);
             Managers.Game.GameType = GameType.Main;

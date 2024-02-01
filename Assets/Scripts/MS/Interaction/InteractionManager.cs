@@ -37,6 +37,11 @@ public class InteractionManager : MonoBehaviour
 
     private void Update()
     {
+        if (Time.timeScale == 0f)
+        {
+            promptText.gameObject.SetActive(false);
+            currentInteractable = null;
+        }
         if(Time.time - lastCheckTime > CheckRate)
         {
             lastCheckTime = Time.time;

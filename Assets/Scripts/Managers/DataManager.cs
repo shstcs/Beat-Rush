@@ -18,23 +18,31 @@ public class PlayerData
     public PlayerSkillData SkillData;
 }
 
+public class SoundData
+{
+    public float MasterVolume = 1f;
+    public float VolumeSFX = 1f;
+    public float VolumeBGM = 1f;
+}
+
 public class DataManager : MonoBehaviour
 {
     string path;
     string playerDataFileName = "save";
     string questDataFileName = "QuestSave";
+    string soundDataFileName = "SoundSave";
 
     private PlayerSO baseData;
 
     [HideInInspector] public int BestScore;
-    public int testAA = 1;
     [HideInInspector]
     public PlayerStateData CurrentStateData = new();
     [HideInInspector]
     public PlayerSkillData CurrentSkillData = new();
-
     [HideInInspector]
     public Dictionary<QuestName, QuestData> questData = new Dictionary<QuestName, QuestData>();
+    [HideInInspector]
+    public SoundData soundData;
 
     private void Awake()
     {
@@ -42,6 +50,81 @@ public class DataManager : MonoBehaviour
     }
 
     public void SaveData()
+    {
+        SavePlayerData();
+        SaveQuestData();
+        SaveSoundData();
+    }
+
+    public void LoadData()
+    {
+        LoadPlayerData();
+        LoadQuestData();
+        LoadSoundData();
+
+        //Managers.Player.CurrentStateData.Level = playerData.Level;
+        //Managers.Player.CurrentStateData.Exp = playerData.Exp;
+        //Managers.Player.CurrentStateData.CurrentClearStage = playerData.CurrentClearStage;
+
+    }
+
+    public bool LoadFileCheck(string dataFileName)
+    {
+        path = Application.persistentDataPath + "/" + dataFileName;
+        return File.Exists(path);
+    }
+
+    #region Load
+    private void LoadPlayerData()
+    {
+        if (!LoadFileCheck(playerDataFileName))
+        {
+            baseData = Managers.Resource.Load<PlayerSO>("PlayerSO");
+            CurrentStateData.DeepCopy(baseData.StateData);
+            CurrentSkillData.DeepCopy(baseData.SkillData);
+            return;
+        }
+
+        path = Application.persistentDataPath + "/";
+        Debug.Log("Load");
+        string data = File.ReadAllText(path + playerDataFileName);
+        PlayerData playerData = JsonUtility.FromJson<PlayerData>(data);
+
+        CurrentStateData = playerData.StateData;
+        CurrentSkillData = playerData.SkillData;
+
+        Managers.Data.BestScore = playerData.BestScore;
+    }
+
+    private void LoadQuestData()
+    {
+        if (!LoadFileCheck(questDataFileName)) return;
+
+        string questSaveData = File.ReadAllText(path);
+        Managers.Game.questDatas = JsonConvert.DeserializeObject<Dictionary<QuestName, QuestData>>(questSaveData);
+    }
+
+    private void LoadSoundData()
+    {
+        if (!LoadFileCheck(soundDataFileName))
+        {
+            return;
+        }
+        else
+        {
+            string data = File.ReadAllText(path);
+            soundData = JsonUtility.FromJson<SoundData>(data);
+        }
+
+        Managers.Sound.MasterVolume = soundData.MasterVolume;
+        Managers.Sound.SFXVolume = soundData.VolumeSFX;
+        Managers.Sound.BGMVolume = soundData.VolumeBGM;
+    }
+
+    #endregion
+
+    #region Save
+    private void SavePlayerData()
     {
         PlayerData playerData = new PlayerData();
 
@@ -57,65 +140,35 @@ public class DataManager : MonoBehaviour
         path = Application.persistentDataPath + "/";
         string data = JsonUtility.ToJson(playerData, true);
 
+        File.WriteAllText(path + playerDataFileName, data);
+        Debug.Log(data);
+        Debug.Log("SavePath : " + path);
+    }
+
+    private void SaveQuestData()
+    {
         questData = Managers.Game.questDatas;
 
         var questSaveData = JsonConvert.SerializeObject(questData, Formatting.Indented);
 
-        File.WriteAllText(path + playerDataFileName, data);
         File.WriteAllText(path + questDataFileName, questSaveData);
 
-        Debug.Log(data);
         Debug.Log(questSaveData);
-        Debug.Log("SavePath : " + path);
     }
 
-    public void LoadData()
+    private void SaveSoundData()
     {
-        if (!LoadFileCheck())
-        {
-            InitData();
-        }
-        else
-        {
-            path = Application.persistentDataPath + "/";
-            Debug.Log("Load");
-            string data = File.ReadAllText(path + playerDataFileName);
-            PlayerData playerData = JsonUtility.FromJson<PlayerData>(data);
+        SoundData soundData = new SoundData();
 
-            CurrentStateData = playerData.StateData;
-            CurrentSkillData = playerData.SkillData;
+        soundData.MasterVolume = Managers.Sound.MasterVolume;
+        soundData.VolumeSFX = Managers.Sound.SFXVolume;
+        soundData.VolumeBGM = Managers.Sound.BGMVolume;
 
-            Managers.Data.BestScore = playerData.BestScore;
-        }
+        string soundSaveData = JsonUtility.ToJson(soundData, true);
 
-        if (!LoadQuestFileCheck()) return;
-
-        string questSaveData = File.ReadAllText(path);
-        Managers.Game.questDatas = JsonConvert.DeserializeObject<Dictionary<QuestName, QuestData>>(questSaveData);
-
-
-        //Managers.Player.CurrentStateData.Level = playerData.Level;
-        //Managers.Player.CurrentStateData.Exp = playerData.Exp;
-        //Managers.Player.CurrentStateData.CurrentClearStage = playerData.CurrentClearStage;
-
+        File.WriteAllText(path + soundDataFileName, soundSaveData);
+        Debug.Log(soundSaveData);
     }
 
-    public bool LoadFileCheck()
-    {
-        path = Application.persistentDataPath + "/" + playerDataFileName;
-        return File.Exists(path);
-    }
-
-    private bool LoadQuestFileCheck()
-    {
-        path = Application.persistentDataPath + "/" + questDataFileName;
-        return File.Exists(path);
-    }
-
-    private void InitData()
-    {
-        baseData = Managers.Resource.Load<PlayerSO>("PlayerSO");
-        CurrentStateData.DeepCopy(baseData.StateData);
-        CurrentSkillData.DeepCopy(baseData.SkillData);
-    }
+    #endregion
 }
