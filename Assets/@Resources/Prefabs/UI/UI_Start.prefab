@@ -1691,6 +1691,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 7395574247274600288}
+        m_TargetAssemblyTypeName: Option_Volume, Assembly-CSharp
+        m_MethodName: ClickSoundPlay
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1820082746650702672
 GameObject:
   m_ObjectHideFlags: 0
@@ -2271,6 +2283,18 @@ MonoBehaviour:
       - m_Target: {fileID: 5282539274027776770}
         m_TargetAssemblyTypeName: Option_Resolution, Assembly-CSharp
         m_MethodName: FullScreen
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7395574247274600288}
+        m_TargetAssemblyTypeName: Option_Volume, Assembly-CSharp
+        m_MethodName: ClickSoundPlay
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3379,6 +3403,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 7395574247274600288}
+        m_TargetAssemblyTypeName: Option_Volume, Assembly-CSharp
+        m_MethodName: ClickSoundPlay
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3641101901362181235
 GameObject:
   m_ObjectHideFlags: 0
@@ -4006,6 +4042,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mixer: {fileID: 24100000, guid: c0c2094fb0fbc94499c437c1fb2cb726, type: 2}
+  MasterSlider: {fileID: 7267887076214425681}
+  EffectSlider: {fileID: 7317666773299369487}
+  MusicSlider: {fileID: 1680723714114873019}
 --- !u!114 &5282539274027776770
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4428,6 +4467,18 @@ MonoBehaviour:
       - m_Target: {fileID: 3948180008550767823}
         m_TargetAssemblyTypeName: UI_HUD_Start, Assembly-CSharp
         m_MethodName: Option
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7395574247274600288}
+        m_TargetAssemblyTypeName: Option_Volume, Assembly-CSharp
+        m_MethodName: ClickSoundPlay
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4916,6 +4967,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 7395574247274600288}
+        m_TargetAssemblyTypeName: Option_Volume, Assembly-CSharp
+        m_MethodName: ClickSoundPlay
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5692500658694190297
 GameObject:
   m_ObjectHideFlags: 0
@@ -5250,6 +5313,18 @@ MonoBehaviour:
       - m_Target: {fileID: 5282539274027776770}
         m_TargetAssemblyTypeName: Option_Resolution, Assembly-CSharp
         m_MethodName: MaxWindowMode
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7395574247274600288}
+        m_TargetAssemblyTypeName: Option_Volume, Assembly-CSharp
+        m_MethodName: ClickSoundPlay
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5648,6 +5723,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 7395574247274600288}
+        m_TargetAssemblyTypeName: Option_Volume, Assembly-CSharp
+        m_MethodName: ClickSoundPlay
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6583164719366984153
 GameObject:
   m_ObjectHideFlags: 0
@@ -5844,6 +5931,18 @@ MonoBehaviour:
       - m_Target: {fileID: 5282539274027776770}
         m_TargetAssemblyTypeName: Option_Resolution, Assembly-CSharp
         m_MethodName: HD
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7395574247274600288}
+        m_TargetAssemblyTypeName: Option_Volume, Assembly-CSharp
+        m_MethodName: ClickSoundPlay
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6191,6 +6290,18 @@ MonoBehaviour:
       - m_Target: {fileID: 5282539274027776770}
         m_TargetAssemblyTypeName: Option_Resolution, Assembly-CSharp
         m_MethodName: qHD
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7395574247274600288}
+        m_TargetAssemblyTypeName: Option_Volume, Assembly-CSharp
+        m_MethodName: ClickSoundPlay
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6844,6 +6955,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 7395574247274600288}
+        m_TargetAssemblyTypeName: Option_Volume, Assembly-CSharp
+        m_MethodName: ClickSoundPlay
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8489760026354459725
 GameObject:
   m_ObjectHideFlags: 0
@@ -7110,6 +7233,18 @@ MonoBehaviour:
       - m_Target: {fileID: 3948180008550767823}
         m_TargetAssemblyTypeName: UI_HUD_Start, Assembly-CSharp
         m_MethodName: ExitGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7395574247274600288}
+        m_TargetAssemblyTypeName: Option_Volume, Assembly-CSharp
+        m_MethodName: ClickSoundPlay
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

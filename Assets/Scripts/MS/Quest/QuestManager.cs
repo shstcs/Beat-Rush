@@ -47,9 +47,9 @@ public class QuestManager : MonoBehaviour
         Managers.Game.questDatas.Add(QuestName.StageFirstComplete,
             new QuestData("스테이지 1회 완료", "스킬 게이지 증가량 + 10%", new Reward(QuestReward.SkillGaugIncrementUp, 0.1f)));
         Managers.Game.questDatas.Add(QuestName.Stage100Combo,
-            new QuestData("스테이지 콤보 100회 이상", "스킬 속도 10% 감소", new Reward(QuestReward.SkillSpeedDown, -0.1f))); 
+            new QuestData("스테이지 콤보 100회 이상", "스킬 속도 - 10%", new Reward(QuestReward.SkillSpeedDown, -0.1f))); 
         Managers.Game.questDatas.Add(QuestName.MaxHealthClear,
-            new QuestData("체력을 잃지 않고 스테이지 1회 완료", "스킬 거리 10% 증가", new Reward(QuestReward.SkillExtendedDistance, 0.1f)));
+            new QuestData("체력을 잃지 않고 스테이지 1회 완료", "스킬 거리 + 10%", new Reward(QuestReward.SkillExtendedDistance, 0.1f)));
     }
 
     public void OpenQuest()

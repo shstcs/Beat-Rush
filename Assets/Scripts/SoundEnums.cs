@@ -5,6 +5,7 @@ public enum SFX
     Skill,
     FirstWalk,
     SecondWalk,
+    DefaultButton,
 }
 
 
@@ -14,5 +15,6 @@ public enum BGM
     Stage1,
     Stage2,
     Lobby2,
+    StartBGM,
 
 }
