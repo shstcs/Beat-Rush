@@ -7,6 +7,7 @@ public class Note : MonoBehaviour
     private ParticleSystem _particle;
     [HideInInspector]
     public int noteNumber = 0;
+    public int stage = 0;
     protected void Awake()
     {
         if(Managers.Game.currentStage == 0)
@@ -43,8 +44,7 @@ public class Note : MonoBehaviour
         _destroyParticle.transform.position = transform.position;
         _particle.Play();
         transform.position = Vector3.zero;
-        Managers.Game.curNote++;
-        Managers.Game.curNoteInStage2[noteNumber]++;
+        Managers.Game.curNoteInStage[stage,noteNumber]++;
         gameObject.SetActive(false);
     }
 }

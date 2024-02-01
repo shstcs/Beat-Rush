@@ -62,15 +62,6 @@ public class FrostDragon : MonoBehaviour, IMonster
     public void SortPattern()
     {
 
-        //for (int i = _patterns.Length - 1; i > 0; i--)
-        //{
-        //    int randomIndex = Random.Range(0, i + 1);
-
-        //    IPattern temp = _patterns[i];
-        //    _patterns[i] = _patterns[randomIndex];
-        //    _patterns[randomIndex] = temp;
-        //}
-
     }
 
     public (int length, float delay, BGM bgm) GetPatternData()

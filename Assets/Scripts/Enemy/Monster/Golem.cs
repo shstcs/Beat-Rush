@@ -44,16 +44,16 @@ public class Golem : MonoBehaviour, IMonster
     {
         if (Time.timeScale > 0)
         {
-            if (_feedbackCount > 12 && Time.timeScale > 0 && _currentFeedbackIndex >= 0)
+            if (_feedbackCount > 12 && _currentFeedbackIndex >= 0)
             {
                 _patterns[_currentFeedbackIndex].Feedback();
                 _feedbackCount = 0;
             }
-            if (Time.timeScale == 0)
-            {
-                _patterns[_currentFeedbackIndex].Pause();               //다시 시작할 때를 위해
-            }
             _feedbackCount++;
+        }
+        if (Time.timeScale == 0)
+        {
+            _patterns[_currentFeedbackIndex].Pause();               //다시 시작할 때를 위해
         }
     }
 
@@ -79,13 +79,16 @@ public class Golem : MonoBehaviour, IMonster
 
     public void RandomAttack()           //return값으로 끝나는 신호를 줘볼까?
     {
-        if (_currentPatternIndex == 0)
+        if(Time.timeScale != 0)
         {
-            _cameraAnimator.SetTrigger("ShowBoss");
+            if (_currentPatternIndex == 0)
+            {
+                _cameraAnimator.SetTrigger("ShowBoss");
+            }
+            StartCoroutine(_patterns[_currentPatternIndex++].Attack());
+            _animator.SetTrigger(_golemAnimation.GetRandomAttackHash());
+            _currentFeedbackIndex++;
         }
-        StartCoroutine(_patterns[_currentPatternIndex++].Attack());
-        _animator.SetTrigger(_golemAnimation.GetRandomAttackHash());
-        _currentFeedbackIndex++;
     }
 
     public void EndStage()

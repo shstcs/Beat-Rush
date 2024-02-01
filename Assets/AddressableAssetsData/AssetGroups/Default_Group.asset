@@ -77,18 +77,6 @@ MonoBehaviour:
     m_SerializedLabels:
     - PreLoads
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 2f9e7dc163581394da1e00b561eed65d
-    m_Address: Blood Splash.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - PreLoads
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 61753401622c2a947a30e2147430e97d
-    m_Address: Spheres Explode.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - PreLoads
-    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 5feae7305fb988643a34ec8e75f20243, type: 2}
   m_SchemaSet:

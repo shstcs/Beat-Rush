@@ -69,10 +69,17 @@ public class NoteManager : MonoBehaviour
 
         for (int i = 0; i < _patternLength; i++)
         {
-            _monster.RandomAttack();
-            yield return new WaitForSeconds(_attackDelay);
-            Managers.Game.curNote = 0;
-            if (i != _patternLength - 1) _cameraAnimator.SetTrigger("Move");
+            if(Time.timeScale == 0)
+            {
+                yield return null;
+            }
+            else
+            {
+                _monster.RandomAttack();
+                yield return new WaitForSeconds(_attackDelay);
+                Managers.Game.curNote = 0;
+                if (i != _patternLength - 1) _cameraAnimator.SetTrigger("Move");
+            }
         }
         _cameraAnimator.SetTrigger("EndMove");
         yield return new WaitForSeconds(1f);
