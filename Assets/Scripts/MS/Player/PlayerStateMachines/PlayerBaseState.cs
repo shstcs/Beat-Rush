@@ -157,8 +157,8 @@ public class PlayerBaseState : IState
     #region Skill
     protected virtual void OnSkillStarted(InputAction.CallbackContext context)
     {
-        if (stateMachine.IsDie) return;
-        if (stateMachine.Player.CurrentStateData.SkillGauge >= 100)
+        if (stateMachine.IsDie || Managers.Game.GameType == GameType.Main) return;
+        if (Managers.Data.CurrentStateData.SkillGauge >= 100)
         {
             stateMachine.ChangeState(stateMachine.skillState);
         }

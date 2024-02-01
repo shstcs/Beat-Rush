@@ -14,6 +14,6 @@ public class UILobbyLevel : MonoBehaviour
 
     public void CheckLevel()
     {
-        text.text = Managers.Player.CurrentStateData.Level.ToString();
+        text.text = Managers.Data.CurrentStateData.Level.ToString();
     }
 }

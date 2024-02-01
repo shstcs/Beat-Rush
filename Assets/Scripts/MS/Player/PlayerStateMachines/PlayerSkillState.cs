@@ -14,7 +14,7 @@ public class PlayerSkillState : PlayerBaseState
         Managers.Game.lockType = InputLockType.Lock;
         base.Enter();
         stateMachine.Player.Animator.SetTrigger(stateMachine.Player.AnimationData.SkillParameterHash);
-        stateMachine.Player.CurrentStateData.SkillGauge = 0;
+        Managers.Data.CurrentStateData.SkillGauge = 0;
         stateMachine.Player.Skill();
     }
 
