@@ -29,7 +29,7 @@ public class ObjectPool : MonoBehaviour
             }
             else
             {
-                obj = Managers.Resource.Instantiate("Notes/Cube.prefab", transform);
+                obj = Managers.Resource.Instantiate("Notes/Ice.prefab", transform);
             }
             obj.SetActive(false);
             poolQueue.Enqueue(obj);
