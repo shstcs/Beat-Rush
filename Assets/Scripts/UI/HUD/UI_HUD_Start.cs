@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
@@ -20,18 +21,21 @@ public class UI_HUD_Start : MonoBehaviour
     #region methods
     public void NewGame()
     {
+        Managers.Data.DeleteAllFile();
         Managers.Sound.LoopPlayBGM(BGM.Lobby2);
         Managers.Game.GameType = GameType.Main;
         SceneManager.LoadScene("Lobby");
     }
+
     public void Continue()
     {
-        if (!Managers.Data.LoadFileCheck("save"))
+        if (!Managers.Data.LoadFileCheck("PlayerSave"))
         {
             Debug.Log("Load File Not Exist!!!");
         }
-        else if (Managers.Data.LoadFileCheck("save"))
+        else
         {
+            Managers.Data.LoadData();
             SceneManager.LoadScene("Lobby");
         }
     }
@@ -46,9 +50,9 @@ public class UI_HUD_Start : MonoBehaviour
     public void Credit()
     {
         _option.SetActive(false);
-        if(_credit.activeSelf == true)
+        if (_credit.activeSelf == true)
             _credit.SetActive(false);
-        else if( _credit.activeSelf == false)
+        else if (_credit.activeSelf == false)
             _credit.SetActive(true);
     }
     public void ExitGame()

@@ -13,6 +13,7 @@ public class PlayerData
     //public int Exp;
     //public int CurrentClearStage;
     public int BestScore;
+    public float delay;
 
     public PlayerStateData StateData;
     public PlayerSkillData SkillData;
@@ -28,7 +29,7 @@ public class SoundData
 public class DataManager : MonoBehaviour
 {
     string path;
-    string playerDataFileName = "save";
+    string playerDataFileName = "PlayerSave";
     string questDataFileName = "QuestSave";
     string soundDataFileName = "SoundSave";
     string stageDataFileName = "StageSave";
@@ -79,6 +80,15 @@ public class DataManager : MonoBehaviour
         return File.Exists(path);
     }
 
+    public void DeleteAllFile()
+    {
+        path = Application.persistentDataPath;
+        if (Directory.Exists(path))
+        {
+            Directory.Delete(path, true);
+        }
+    }
+
     #region Load
     private void LoadPlayerData()
     {
@@ -99,6 +109,7 @@ public class DataManager : MonoBehaviour
         CurrentSkillData = playerData.SkillData;
 
         Managers.Data.BestScore = playerData.BestScore;
+        Managers.Game.delay = playerData.delay;
     }
 
     private void LoadQuestData()
@@ -156,6 +167,7 @@ public class DataManager : MonoBehaviour
         //playerData.CurrentClearStage = Managers.Player.CurrentStateData.CurrentClearStage;
 
         playerData.BestScore = PlayerPrefs.GetInt("BestScore");
+        playerData.delay = Managers.Game.delay;
 
         path = Application.persistentDataPath + "/";
         string data = JsonUtility.ToJson(playerData, true);

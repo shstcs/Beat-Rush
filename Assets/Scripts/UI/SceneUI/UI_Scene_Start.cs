@@ -15,7 +15,6 @@ public class UI_Scene_Start : MonoBehaviour
             {
                 Managers.UI.SetUI();
                 Managers.Sound.Initialized();
-                Managers.Data.LoadData();
                 Managers.Sound.LoopPlayBGM(BGM.StartBGM);
             }
         });
