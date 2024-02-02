@@ -8,9 +8,9 @@ public class UI_Popup_Result : MonoBehaviour
 {
     private void OnEnable()
     {
-        Time.timeScale = 0.0f;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+        Managers.Game.GameType = GameType.Main;
     }
 
     private void Start()
@@ -32,13 +32,12 @@ public class UI_Popup_Result : MonoBehaviour
         Managers.Game.Combo = 0;
         Managers.Game.MaxCombo = 0;
         Managers.Game.curNote = 0;
-        SceneManager.LoadScene("Minho");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void LoadLobby()
     {
         Managers.Sound.LoopPlayBGM(BGM.Lobby2);
-        Managers.Game.GameType = GameType.Main;
         SceneManager.LoadScene("Lobby");
     }
 
@@ -51,5 +50,12 @@ public class UI_Popup_Result : MonoBehaviour
         GameObject.Find("Good_Text").transform.GetComponent<TextMeshProUGUI>().text = Managers.Game.judgeNotes[(int)Score.Good].ToString();
         GameObject.Find("Bad_Text").transform.GetComponent<TextMeshProUGUI>().text = Managers.Game.judgeNotes[(int)Score.Bad].ToString();
         GameObject.Find("Miss_Text").transform.GetComponent<TextMeshProUGUI>().text = Managers.Game.judgeNotes[(int)Score.Miss].ToString();
+    }
+
+    private void OnDisable()
+    {
+        Time.timeScale = 1.0f;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 }
