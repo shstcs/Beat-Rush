@@ -24,6 +24,8 @@ public class UI_Popup_Option : MonoBehaviour
     public void OnLobby()
     {
         OffOption();
+        if (SceneManager.GetActiveScene().name == "Lobby")
+            return;
         SceneManager.LoadScene("Lobby");
     }
     public void OffOption()
