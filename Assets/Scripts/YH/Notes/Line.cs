@@ -39,20 +39,20 @@ public class Line : MonoBehaviour
             float distance = Mathf.Abs(10 - colliders[0].transform.position.z);
 
             int score;
-            if (distance > 0.7f)        //Bad
+            if (distance > 0.9f)        //Bad
             {
                 score = 10;
                 Managers.Game.judgeNotes[(int)Score.Bad]++;
                 Managers.Game.curJudge = "Bad";
                 Managers.Game.Combo = 0;
             }
-            else if (distance > 0.5f)    //Good
+            else if (distance > 0.6f)    //Good
             {
                 score = 30;
                 Managers.Game.judgeNotes[(int)Score.Good]++;
                 Managers.Game.curJudge = "Good";
             }
-            else if (distance > 0.1f)     //Great
+            else if (distance > 0.15f)     //Great
             {
                 score = 50;
                 Managers.Game.judgeNotes[(int)Score.Great]++;

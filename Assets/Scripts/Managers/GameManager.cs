@@ -96,16 +96,20 @@ public class GameManager : MonoBehaviour
 
     public void InitNotes()
     {
-        for (int i = 0; i < judgeNotes.Length; i++)
-        {
-            judgeNotes[i] = 0;
-        }
         for (int i = 0; i < curNoteInStage.GetLength(0); i++)
         {
             for (int j = 0; j < curNoteInStage.GetLength(1); j++)
             {
                 curNoteInStage[i, j] = 0;
             }
+        }
+    }
+
+    public void InitJudge()
+    {
+        for (int i = 0; i < judgeNotes.Length; i++)
+        {
+            judgeNotes[i] = 0;
         }
     }
 

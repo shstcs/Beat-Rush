@@ -31,11 +31,13 @@ public class UI_Popup_Result : MonoBehaviour
         Managers.Game.Score = 0;
         Managers.Game.Combo = 0;
         Managers.Game.MaxCombo = 0;
+        Managers.Game.InitJudge();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void LoadLobby()
     {
+        Managers.Game.InitJudge();
         Managers.Sound.LoopPlayBGM(BGM.Lobby2);
         SceneManager.LoadScene("Lobby");
     }
