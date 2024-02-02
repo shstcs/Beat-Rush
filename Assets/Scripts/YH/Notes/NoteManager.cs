@@ -78,15 +78,20 @@ public class NoteManager : MonoBehaviour
         _cameraAnimator.SetTrigger("EndMove");
         yield return new WaitForSeconds(1f);
         _monster.EndStage();
-
-        // 퀘스트 완료
-        QuestManager.instance.SetQuestClear(QuestName.StageFirstComplete);
-        if (Managers.Data.CurrentStateData.GetHealth() == Managers.Data.CurrentStateData.CurrentHealth)
-            QuestManager.instance.SetQuestClear(QuestName.MaxHealthClear);
     }
 
     private void ClearStageUpdate()
     {
         Managers.Player.Data.StateData.CurrentClearStage = Managers.Game.currentStage + 1;
+
+        // 데이터 저장
+        var currentStageData = Managers.Game.MaxScoreArray[Managers.Game.currentStage];
+        currentStageData.SetData(Managers.Game.Score);
+
+
+        // 퀘스트 완료
+        QuestManager.instance.SetQuestClear(QuestName.StageFirstComplete);
+        if (Managers.Data.CurrentStateData.GetHealth() == Managers.Data.CurrentStateData.CurrentHealth)
+            QuestManager.instance.SetQuestClear(QuestName.MaxHealthClear);
     }
 }

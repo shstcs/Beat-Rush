@@ -5,10 +5,10 @@ using UnityEngine.SceneManagement;
 
 public enum InstrumentType
 {
-    guitar,
-    piano,
+    Metronome = 0,
     Drum,
-    Metronome
+    piano,
+    guitar,
 }
 
 public class Guitar : MonoBehaviour, IInteractable

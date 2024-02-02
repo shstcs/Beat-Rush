@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
     public string curJudge;
     public int Combo { get; set; }
     public int MaxCombo { get; set; }
+    public StageData[] MaxScoreArray;
+
     public int Score { get; set; }
     public int Hp { get; private set; }
     public float[] bpm = { 80f, 72f, 99f };
@@ -76,6 +78,16 @@ public class GameManager : MonoBehaviour
             {
                 curNoteInStage[i, j] = 0;
             }
+        }
+    }
+
+    public void InitMaxScoreArray()
+    {
+        var stageCount = Enum.GetValues(typeof(InstrumentType)).Length;
+        MaxScoreArray = new StageData[stageCount];
+        for(int i = 0; i < stageCount; i++)
+        {
+            MaxScoreArray[i] = new StageData();
         }
     }
     #endregion
