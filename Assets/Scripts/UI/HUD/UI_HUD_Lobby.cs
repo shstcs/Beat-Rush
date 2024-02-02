@@ -13,7 +13,7 @@ public class UI_HUD_Lobby : MonoBehaviour
                 SceneManager.LoadScene("Tutorial");
                 break;
             case 1:
-                SceneManager.LoadScene("Minho");
+                SceneManager.LoadScene("Stage_1");
                 break;
             case 2:
                 SceneManager.LoadScene("Stage_2");
