@@ -31,8 +31,8 @@ public class Line : MonoBehaviour
 
             if (Managers.Game.currentStage == 0) // 싱크 조절
             {
-                Managers.Game.delay = (colliders[0].transform.position.z - 10) > 0 ?
-                    Managers.Game.delay -= 0.05f : Managers.Game.delay += 0.05f;
+                //Managers.Game.delay = (colliders[0].transform.position.z - 10) > 0 ? Managers.Game.delay -= 0.05f : Managers.Game.delay += 0.05f;
+
                 Debug.Log(Managers.Game.delay);
             }
 

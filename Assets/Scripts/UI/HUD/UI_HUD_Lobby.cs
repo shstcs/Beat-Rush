@@ -7,6 +7,19 @@ public class UI_HUD_Lobby : MonoBehaviour
 {
     public void StartStage()
     {
-        SceneManager.LoadScene("Minho");
+        switch (Managers.Game.currentStage)
+        {
+            case 0:
+                SceneManager.LoadScene("Tutorial");
+                break;
+            case 1:
+                SceneManager.LoadScene("Minho");
+                break;
+            case 2:
+                SceneManager.LoadScene("Stage_2");
+                break;
+            case 3:
+                break;
+        }
     }
 }
