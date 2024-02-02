@@ -64,7 +64,7 @@ public class GameManager : MonoBehaviour
         new Vector3(40, 1, 42.5f)
     };
     public int currentStage = 1;
-    public float delay = 2.9f;
+    public float delay = 1.5f;
     public int curNote = 0;
     public GameType GameType = GameType.Main;
     public InputLockType lockType = InputLockType.UnLock;

@@ -12,6 +12,7 @@ public class UI_Scene_Lobby : MonoBehaviour
         Managers.UI.SetUI();
         Managers.Game.GetKeyDown += OnOption;
         Managers.Game.GameType = GameType.Main;
+        Managers.Sound.LoopPlayBGM(BGM.Lobby2);
     }
     private void Update()
     {
