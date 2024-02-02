@@ -32,9 +32,12 @@ public class Note : MonoBehaviour
         {
             Managers.Game.Combo = 0;
             BreakNote();
-            Managers.Player.ChangeHealth(-1);
-            Managers.Game.judgeNotes[(int)Score.Miss]++;
             Managers.Game.curJudge = "Miss";
+            Managers.Game.judgeNotes[(int)Score.Miss]++;
+            if(Managers.Game.currentStage != 0)
+            {
+                Managers.Player.ChangeHealth(-1);
+            }
         }
     }
 

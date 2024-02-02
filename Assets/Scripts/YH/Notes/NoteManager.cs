@@ -39,6 +39,9 @@ public class NoteManager : MonoBehaviour
         Managers.Game.OnStageEnd += Managers.Sound.StopBGM;
         Managers.Game.OnStageEnd -= ClearStageUpdate;
         Managers.Game.OnStageEnd += ClearStageUpdate;
+        Managers.Game.OnStageEnd -= Managers.Game.InitNotes;
+        Managers.Game.OnStageEnd += Managers.Game.InitNotes;
+        
     }
 
     private void Update()

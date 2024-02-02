@@ -19,12 +19,21 @@ public class Guitar : MonoBehaviour, IInteractable
     float time = 0f;
     bool rightTurn = true;
 
+    private void Start()
+    {
+        particle.Stop();
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            particle.Play();
+        }
+    }
     private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            particle.gameObject.SetActive(true);
-            particle.Play();
             time += Time.deltaTime;
 
             switch (type)
@@ -68,8 +77,7 @@ public class Guitar : MonoBehaviour, IInteractable
     {
         if (other.CompareTag("Player"))
         {
-            particle.gameObject.SetActive(false);
-            particle.Pause();
+            particle.Stop();
 
             switch (type)
             {
