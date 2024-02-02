@@ -31,7 +31,7 @@ public class UI_Popup_Result : MonoBehaviour
         Managers.Game.Score = 0;
         Managers.Game.Combo = 0;
         Managers.Game.MaxCombo = 0;
-        Managers.Game.curNote = 0;
+        Managers.Game.InitNotes();
         SceneManager.LoadScene("Minho");
     }
 

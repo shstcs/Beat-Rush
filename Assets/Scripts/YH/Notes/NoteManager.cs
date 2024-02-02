@@ -82,7 +82,8 @@ public class NoteManager : MonoBehaviour
 
     private void ClearStageUpdate()
     {
-        Managers.Player.Data.StateData.CurrentClearStage = Managers.Game.currentStage + 1;
+        Managers.Player.Data.StateData.CurrentClearStage = Managers.Player.Data.StateData.CurrentClearStage < Managers.Game.currentStage + 1 ?
+            Managers.Game.currentStage + 1 : Managers.Player.Data.StateData.CurrentClearStage;
 
         // 데이터 저장
         var currentStageData = Managers.Game.MaxScoreArray[Managers.Game.currentStage];
