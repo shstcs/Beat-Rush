@@ -13,7 +13,7 @@ public class UI_HUD_Tutorial : MonoBehaviour
     }
     private void Update()
     {
-        gameObject.transform.GetChild(0).transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = Managers.Game.delay.ToString();
+        gameObject.transform.GetChild(0).transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = Managers.Game.delay.ToString("N2");
     }
     private void OnTutorialResult()
     {

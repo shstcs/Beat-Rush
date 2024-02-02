@@ -35,11 +35,8 @@ public class NoteManager : MonoBehaviour
         _curDsp = AudioSettings.dspTime;
 
         StartCoroutine(CreateNewNotes());
-        Managers.Game.OnStageEnd -= Managers.Sound.StopBGM;
         Managers.Game.OnStageEnd += Managers.Sound.StopBGM;
-        Managers.Game.OnStageEnd -= ClearStageUpdate;
         Managers.Game.OnStageEnd += ClearStageUpdate;
-        Managers.Game.OnStageEnd -= Managers.Game.InitNotes;
         Managers.Game.OnStageEnd += Managers.Game.InitNotes;
         
     }
@@ -51,6 +48,13 @@ public class NoteManager : MonoBehaviour
             MoveNotes();
         }
         _curDsp = AudioSettings.dspTime;
+    }
+
+    private void OnDestroy()
+    {
+        Managers.Game.OnStageEnd -= Managers.Sound.StopBGM;
+        Managers.Game.OnStageEnd -= Managers.Game.InitNotes;
+        Managers.Game.OnStageEnd -= ClearStageUpdate;
     }
 
     private void MoveNotes()
@@ -91,7 +95,6 @@ public class NoteManager : MonoBehaviour
         // 데이터 저장
         var currentStageData = Managers.Game.MaxScoreArray[Managers.Game.currentStage];
         currentStageData.SetData(Managers.Game.Score);
-
 
         // 퀘스트 완료
         QuestManager.instance.SetQuestClear(QuestName.StageFirstComplete);

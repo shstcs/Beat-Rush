@@ -112,8 +112,8 @@ public class SoundManager
 
     public void LoopPlayBGM(BGM key)
     {
-        AudioSourceBGM.loop = true;
         SetBGM(key);
+        AudioSourceBGM.loop = true;
         AudioSourceBGM.Play();
     }
 
