@@ -13,7 +13,7 @@ public class UI_Popup_Stagepanel : MonoBehaviour
         Managers.Game.lockType = InputLockType.Lock;
         Cursor.visible = true;
     }
-    private void Awake()
+    private void Update()
     {
         if (Managers.Game.currentStage > 0)
             currentStageName = "스테이지 " + Managers.Game.currentStage.ToString();
