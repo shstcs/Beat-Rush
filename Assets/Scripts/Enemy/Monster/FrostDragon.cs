@@ -62,15 +62,6 @@ public class FrostDragon : MonoBehaviour, IMonster
     public void SortPattern()
     {
 
-        //for (int i = _patterns.Length - 1; i > 0; i--)
-        //{
-        //    int randomIndex = Random.Range(0, i + 1);
-
-        //    IPattern temp = _patterns[i];
-        //    _patterns[i] = _patterns[randomIndex];
-        //    _patterns[randomIndex] = temp;
-        //}
-
     }
 
     public (int length, float delay, BGM bgm) GetPatternData()
@@ -78,11 +69,11 @@ public class FrostDragon : MonoBehaviour, IMonster
         return (_patterns.Length, _attackDelay, BGM.Stage2);
     }
 
-    public void RandomAttack()           //return값으로 끝나는 신호를 줘볼까?
+    public void RandomAttack()           
     {
         if (_currentPatternIndex == 0)
         {
-            //_cameraAnimator.SetTrigger("ShowBoss");
+            _cameraAnimator.SetTrigger("ShowBoss");
         }
         StartCoroutine(_patterns[_currentPatternIndex++].Attack());
         _animator.SetTrigger(_frostDragonAnimation.GetRandomAttackHash());

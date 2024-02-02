@@ -4,52 +4,18 @@ using UnityEngine;
 
 public class Pattern2_2 : IPattern
 {
-    private List<Dictionary<string, object>> _pattern;
-    private double _startDsp;
-    private float _noteSpeed = 13.2f;
-    public bool _isFeedbackStart;
-
-    public void SetPattern()
+    public override void SetPattern()
     {
         _pattern = CSVReader.Read("Stage2/pattern2.csv");
+        _noteSpeed = 13.2f;
+        _noteStartPos = new Vector3(40, 5, 42.5f);
+        _curPatternNum = 2;
+        _curStage = 2;
     }
 
-    public IEnumerator Attack()
+    public override void Feedback()
     {
-        float waitTime = 0;
-
-        for (int i = 0; i < _pattern.Count - 1; i++)
-        {
-            waitTime = (float)_pattern[i + 1]["noteLocation"] - (float)_pattern[i]["noteLocation"];
-            GameObject note = Managers.Pool.SpawnFromPool();
-            note.GetComponent<Note>().noteNumber = 2;
-            note.transform.position = new Vector3((float)_pattern[i]["xValue"] - 2, 2, 42.5f+Managers.Game.delay);
-            yield return new WaitForSeconds(waitTime / _noteSpeed);
-        }
-    }
-
-    public void Feedback()
-    {
-        if (!_isFeedbackStart)
-        {
-            _startDsp = AudioSettings.dspTime;
-            _isFeedbackStart = true;
-        }
-
-        List<GameObject> _activeNotes = Managers.Pool.GetActiveAliveNotes(2);
-        float _noteDistance = _noteSpeed * (float)(AudioSettings.dspTime - _startDsp) + Managers.Game.StageStartDelay[2];
-
-        int cnt = 0;
-        for (int i = Managers.Game.curNoteInStage2[2]; i < Managers.Game.curNoteInStage2[2] + _activeNotes.Count; i++)
-        {
-            float curLocation = (float)_pattern[i]["noteLocation"] - _noteDistance;
-            GameObject note = _activeNotes[cnt++];
-            note.transform.position = new Vector3(note.transform.position.x, note.transform.position.y, curLocation + 42.5f + Managers.Game.delay);
-        }
-    }
-
-    public void Pause()
-    {
-        _isFeedbackStart = false;
+        _startDelay = Managers.Game.StageStartDelay[2];
+        base.Feedback();
     }
 }

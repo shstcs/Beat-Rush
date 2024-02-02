@@ -381,6 +381,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 4700877439027886191}
+        m_TargetAssemblyTypeName: Option_Volume, Assembly-CSharp
+        m_MethodName: ClickSoundPlay
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1154170495101535424
 GameObject:
   m_ObjectHideFlags: 0
@@ -640,6 +652,18 @@ MonoBehaviour:
       - m_Target: {fileID: 5012226266397206777}
         m_TargetAssemblyTypeName: Option_Resolution, Assembly-CSharp
         m_MethodName: FullScreen
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4700877439027886191}
+        m_TargetAssemblyTypeName: Option_Volume, Assembly-CSharp
+        m_MethodName: ClickSoundPlay
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1717,6 +1741,18 @@ MonoBehaviour:
       - m_Target: {fileID: 5012226266397206777}
         m_TargetAssemblyTypeName: Option_Resolution, Assembly-CSharp
         m_MethodName: MaxWindowMode
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4700877439027886191}
+        m_TargetAssemblyTypeName: Option_Volume, Assembly-CSharp
+        m_MethodName: ClickSoundPlay
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3097,6 +3133,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 4700877439027886191}
+        m_TargetAssemblyTypeName: Option_Volume, Assembly-CSharp
+        m_MethodName: ClickSoundPlay
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7423677033851975105
 GameObject:
   m_ObjectHideFlags: 0
@@ -3221,6 +3269,18 @@ MonoBehaviour:
       - m_Target: {fileID: 5012226266397206777}
         m_TargetAssemblyTypeName: Option_Resolution, Assembly-CSharp
         m_MethodName: WindowMode
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4700877439027886191}
+        m_TargetAssemblyTypeName: Option_Volume, Assembly-CSharp
+        m_MethodName: ClickSoundPlay
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3669,6 +3729,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 4700877439027886191}
+        m_TargetAssemblyTypeName: Option_Volume, Assembly-CSharp
+        m_MethodName: ClickSoundPlay
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8428851370576385761
 GameObject:
   m_ObjectHideFlags: 0
@@ -3778,6 +3850,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mixer: {fileID: 24100000, guid: c0c2094fb0fbc94499c437c1fb2cb726, type: 2}
+  MasterSlider: {fileID: 1490064662289659575}
+  EffectSlider: {fileID: 7864778547857791709}
+  MusicSlider: {fileID: 9137089365376300451}
 --- !u!114 &5012226266397206777
 MonoBehaviour:
   m_ObjectHideFlags: 0

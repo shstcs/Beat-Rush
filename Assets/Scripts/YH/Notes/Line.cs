@@ -44,6 +44,7 @@ public class Line : MonoBehaviour
                 score = 10;
                 Managers.Game.judgeNotes[(int)Score.Bad]++;
                 Managers.Game.curJudge = "Bad";
+                Managers.Game.Combo = 0;
             }
             else if (distance > 0.5f)    //Good
             {
@@ -77,10 +78,6 @@ public class Line : MonoBehaviour
             // Skill
             if (Managers.Data.CurrentStateData.SkillGauge < 100)
                 Managers.Data.CurrentStateData.SkillGauge += Managers.Data.CurrentStateData.GetSkillGaugeIncrement();
-        }
-        else
-        {
-            Managers.Game.Combo = 0;
         }
     }
 

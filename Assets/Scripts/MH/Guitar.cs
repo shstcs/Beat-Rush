@@ -93,25 +93,24 @@ public class Guitar : MonoBehaviour, IInteractable
 
     public void OnInteract()
     {
-        Managers.Game.InitJudgeNotes(); //판정 초기화
+        Managers.Game.InitNotes(); //판정 초기화
         //상호작용 구현
         switch (type)
         {
             case InstrumentType.guitar:
-                Managers.Game.currentStage = 3;
-                GameObject.Find("HUD_Canvas").transform.GetChild(2).gameObject.SetActive(true);
+                SceneManager.LoadScene("Stage_1");
                 break;
             case InstrumentType.piano:
                 Managers.Game.currentStage = 2;
-                GameObject.Find("HUD_Canvas").transform.GetChild(2).gameObject.SetActive(true);
+                SceneManager.LoadScene("Stage_2");
                 break;
             case InstrumentType.Drum:
                 Managers.Game.currentStage = 1;
-                GameObject.Find("HUD_Canvas").transform.GetChild(2).gameObject.SetActive(true);
+                SceneManager.LoadScene("Stage_1");
                 break;
             case InstrumentType.Metronome:
                 Managers.Game.currentStage = 0;
-                GameObject.Find("HUD_Canvas").transform.GetChild(2).gameObject.SetActive(true);
+                SceneManager.LoadScene("Tutorial");
                 break;
         }
 

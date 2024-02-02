@@ -26,11 +26,11 @@ public class UI_HUD_Start : MonoBehaviour
     }
     public void Continue()
     {
-        if (!Managers.Data.LoadFileCheck())
+        if (!Managers.Data.LoadFileCheck("save"))
         {
             Debug.Log("Load File Not Exist!!!");
         }
-        else if (Managers.Data.LoadFileCheck())
+        else if (Managers.Data.LoadFileCheck("save"))
         {
             SceneManager.LoadScene("Lobby");
         }
@@ -59,6 +59,7 @@ public class UI_HUD_Start : MonoBehaviour
         Apllication.Quit();
 #endif
     }
+
     #endregion
 
 }

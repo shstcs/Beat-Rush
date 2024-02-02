@@ -17,12 +17,6 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: c5cf851708f6b8a408195b1b1dd2b5e5
   m_SerializeEntries:
-  - m_GUID: ad61e3de521ffdd48ac6cef882059796
-    m_Address: Notes/Cube.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - PreLoads
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 58a39fae98de8454db8bd3790514ecc2
     m_Address: AttackSound
     m_ReadOnly: 0
@@ -59,11 +53,6 @@ MonoBehaviour:
     m_SerializedLabels:
     - PreLoads
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: e8f52af8ac7debd419b42f8d4d7422f3
-    m_Address: Notes/Rock.obj
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c5950c0760a887742aad38c3c553c2c3
     m_Address: Notes/Rock.prefab
     m_ReadOnly: 0
@@ -82,18 +71,6 @@ MonoBehaviour:
     m_SerializedLabels:
     - PreLoads
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: da96dd007bde1c64db3f0efb532f1b25
-    m_Address: Notes/Fire.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - PreLoads
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 6054aad5b0a41804585ef6da98d7b40b
-    m_Address: Notes/Ice.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - PreLoads
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6d0adcdcb355a994b9d65d53a93ede9d
     m_Address: Stage2BGM
     m_ReadOnly: 0
@@ -102,6 +79,18 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 46382b3e22b29a34cba2b9dfa3b613b9
     m_Address: PlayerSO
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoads
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1b070e6e0ff849b408a0cf5c1b9dcfdf
+    m_Address: StartBGM
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoads
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 956845eb474d92f439f1853ad596da7a
+    m_Address: DefaultButton
     m_ReadOnly: 0
     m_SerializedLabels:
     - PreLoads
