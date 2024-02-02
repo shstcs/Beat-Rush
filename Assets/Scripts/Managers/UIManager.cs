@@ -13,13 +13,17 @@ public class UIManager : MonoBehaviour
         {
             SetStartHUD();
         }
-        else if (SceneManager.GetActiveScene().name == "Stage_1" || SceneManager.GetActiveScene().name == "Stage_2")
+        else if (SceneManager.GetActiveScene().name == "StageUI_Test_Scene" || SceneManager.GetActiveScene().name == "Stage_1" || SceneManager.GetActiveScene().name == "Stage_2")
         {
             SetStageHUD();
         }
         else if (SceneManager.GetActiveScene().name == "LobbyUI_Test_Scene" || SceneManager.GetActiveScene().name == "Lobby")
         {
             SetMapHUD();
+        }
+        else if(SceneManager.GetActiveScene().name == "Tutorial")
+        {
+            SetTutorialHUD();
         }
     }
 
@@ -34,5 +38,9 @@ public class UIManager : MonoBehaviour
     private void SetMapHUD()
     {
         Instantiate(Managers.Resource.Load<GameObject>($"UI_Lobby.prefab"));
+    }
+    private void SetTutorialHUD()
+    {
+        Instantiate(Managers.Resource.Load<GameObject>($"UI_Tutorial.prefab"));
     }
 }

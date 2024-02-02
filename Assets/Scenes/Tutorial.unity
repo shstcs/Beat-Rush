@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17951626, g: 0.22477704, b: 0.30639052, a: 1}
+  m_IndirectSpecularColor: {r: 0.17951591, g: 0.22477648, b: 0.30638984, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -812,6 +812,50 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1313614757
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1313614759}
+  - component: {fileID: 1313614758}
+  m_Layer: 0
+  m_Name: TutorialStage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1313614758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1313614757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 535a14c0bfb70294bbe79f51c2736e0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1313614759
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1313614757}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 749.44104, y: 501.4275, z: -1.0228221}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2996,19 +3040,6 @@ MonoBehaviour:
     deathParameterName: '@Death'
     skillParameterName: Skill
   SwordEffect: {fileID: 0}
-  CurrentStateData:
-    Level: 1
-    Exp: 0
-    Health: 10
-    SkillGauge: 0
-    SkillGaugeIncrement: 5
-    SkillGaugeModifier: 1
-    CurrentClearStage: 0
-  CurrentSkillData:
-    BaseSpeed: 20
-    BaseDistance: 20
-    SpeedModifier: 1
-    DistanceModifier: 1
   SkillPrefab: {fileID: 6445826192643391251, guid: d49c31966477ce84e80549803c09e1bb,
     type: 3}
 --- !u!1 &3187776187259475055
@@ -7113,3 +7144,4 @@ SceneRoots:
   - {fileID: 538947859}
   - {fileID: 747005207}
   - {fileID: 23366116}
+  - {fileID: 1313614759}
