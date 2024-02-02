@@ -87,6 +87,6 @@ public class NoteManager : MonoBehaviour
 
     private void ClearStageUpdate()
     {
-        Managers.Player.Data.StateData.CurrentClearStage = Managers.Game.currentStage;
+        Managers.Player.Data.StateData.CurrentClearStage = Managers.Game.currentStage + 1;
     }
 }
