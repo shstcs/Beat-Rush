@@ -15,7 +15,7 @@ public class PlayerStateData
     [field: SerializeField][field: Range(0, 100)] public int SkillGauge = 0;
     [field: SerializeField][field: Range(0, 100)] public int SkillGaugeIncrement = 5;
     [field: SerializeField][field: Range(1f, 2f)] public float SkillGaugeModifier = 1f;
-    public int CurrentClearStage = 0;
+    public int CurrentClearStage = 3;
 
     public int GetSkillGaugeIncrement()
     {

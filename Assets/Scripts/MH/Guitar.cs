@@ -87,7 +87,18 @@ public class Guitar : MonoBehaviour, IInteractable
     }
 
     public string GetInteractPrompt()
-    {                                                                                                                                                                                                 
+    {
+        switch (type)
+        {
+            case InstrumentType.Metronome:
+                return "튜토리얼";
+            case InstrumentType.Drum:
+                return "1 스테이지";
+            case InstrumentType.piano:
+                return "2 스테이지";
+            case InstrumentType.guitar:
+                return "3 스테이지";
+        }
         return instrument.gameObject.name;
     }
 
