@@ -13,7 +13,7 @@ public class UIManager : MonoBehaviour
         {
             SetStartHUD();
         }
-        else if (SceneManager.GetActiveScene().name == "StageUI_Test_Scene" || SceneManager.GetActiveScene().name == "Minho")
+        else if (SceneManager.GetActiveScene().name == "Stage_1" || SceneManager.GetActiveScene().name == "Stage_2")
         {
             SetStageHUD();
         }

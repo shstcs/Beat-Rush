@@ -26,6 +26,13 @@ public class GameManager : MonoBehaviour
     public float[] noteDistance = { 5, 5, 8 };
     public int[,] curNoteInStage = new int[4,15];
     public float[] StageStartDelay = {0, 0.5f, -1.5f, 0f };
+    public Vector3[] StageNotePos = 
+    {
+        new Vector3(-2, 0, 42.5f), 
+        new Vector3(40, 1, 42.5f),
+        new Vector3(40, 1, 42.5f),
+        new Vector3(40, 1, 42.5f)
+    };
     public int currentStage = 1;
     public float delay = 2.9f;
     public int curNote = 0;
