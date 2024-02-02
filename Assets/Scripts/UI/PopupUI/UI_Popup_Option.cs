@@ -21,6 +21,11 @@ public class UI_Popup_Option : MonoBehaviour
             OffOption();
         }
     }
+    public void OnLobby()
+    {
+        OffOption();
+        SceneManager.LoadScene("Lobby");
+    }
     public void OffOption()
     {
         Cursor.lockState = CursorLockMode.Locked;

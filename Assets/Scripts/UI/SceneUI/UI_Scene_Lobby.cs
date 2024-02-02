@@ -11,10 +11,11 @@ public class UI_Scene_Lobby : MonoBehaviour
         Time.timeScale = 1.0f;
         Managers.UI.SetUI();
         Managers.Game.GetKeyDown += OnOption;
+        Managers.Game.GameType = GameType.Main;
     }
     private void Update()
     {
-        //¿É¼Ç Ã¢ ¿©´Â ºÎºĞÀº ³ªÁß¿¡ Input SystemÀ¸·Î Ã³¸®ÇØµµ µÉ °Í °°½À´Ï´Ù.
+        //ì˜µì…˜ ì°½ ì—¬ëŠ” ë¶€ë¶„ì€ ë‚˜ì¤‘ì— Input Systemìœ¼ë¡œ ì²˜ë¦¬í•´ë„ ë  ê²ƒ ê°™ìŠµë‹ˆë‹¤.
         if (Input.GetKeyDown(KeyCode.Escape))
             Managers.Game.GetKeyDown?.Invoke();
     }
