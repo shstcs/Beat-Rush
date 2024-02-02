@@ -2,12 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class UI_Popup_Stagepanel : MonoBehaviour
 {
     private string currentStageName;
-    private Image monsterImage;
     private void OnEnable()
     {
         //Time.timeScale = 0.0f;
@@ -16,7 +14,6 @@ public class UI_Popup_Stagepanel : MonoBehaviour
         //Cursor.visible = true;
         Managers.Game.LobbyPopupCount++;
         SetText();
-        SetImage();
     }
     //private void Update()
     //{
@@ -46,19 +43,5 @@ public class UI_Popup_Stagepanel : MonoBehaviour
         gameObject.transform.GetChild(2).transform.GetChild(1).transform.GetComponent<TextMeshProUGUI>().text = scoreArray[1].ToString();
         gameObject.transform.GetChild(2).transform.GetChild(2).transform.GetComponent<TextMeshProUGUI>().text = scoreArray[2].ToString();
 
-    }
-
-    private void SetImage()
-    {
-        monsterImage = transform.GetChild(1).GetComponent<Image>();
-        if (Managers.Game.currentStage == 1)
-        {
-            monsterImage.sprite = Resources.Load<Sprite>("Stage1Image");
-        }
-        else if (Managers.Game.currentStage == 2)
-        {
-            monsterImage.sprite = Resources.Load<Sprite>("Stage2Image");
-        }
-        
     }
 }
