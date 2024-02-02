@@ -31,6 +31,7 @@ public class DataManager : MonoBehaviour
     string playerDataFileName = "save";
     string questDataFileName = "QuestSave";
     string soundDataFileName = "SoundSave";
+    string stageDataFileName = "StageSave";
 
     private PlayerSO baseData;
 
@@ -43,6 +44,8 @@ public class DataManager : MonoBehaviour
     public Dictionary<QuestName, QuestData> questData = new Dictionary<QuestName, QuestData>();
     [HideInInspector]
     public SoundData soundData;
+    [HideInInspector]
+    public StageData[] stageData = new StageData[Enum.GetValues(typeof(InstrumentType)).Length];
 
     private void Awake()
     {
@@ -54,6 +57,7 @@ public class DataManager : MonoBehaviour
         SavePlayerData();
         SaveQuestData();
         SaveSoundData();
+        SaveStageData();
     }
 
     public void LoadData()
@@ -61,6 +65,7 @@ public class DataManager : MonoBehaviour
         LoadPlayerData();
         LoadQuestData();
         LoadSoundData();
+        LoadStageData();
 
         //Managers.Player.CurrentStateData.Level = playerData.Level;
         //Managers.Player.CurrentStateData.Exp = playerData.Exp;
@@ -121,6 +126,21 @@ public class DataManager : MonoBehaviour
         Managers.Sound.BGMVolume = soundData.VolumeBGM;
     }
 
+    private void LoadStageData()
+    {
+        if (!LoadFileCheck(stageDataFileName))
+        {
+            return;
+        }
+        else
+        {
+            string data = File.ReadAllText(path);
+            stageData = JsonConvert.DeserializeObject<StageData[]>(data);
+
+            Managers.Game.MaxScoreArray = stageData;
+        }
+    }
+
     #endregion
 
     #region Save
@@ -168,6 +188,15 @@ public class DataManager : MonoBehaviour
 
         File.WriteAllText(path + soundDataFileName, soundSaveData);
         Debug.Log(soundSaveData);
+    }
+
+    private void SaveStageData()
+    {
+        stageData = Managers.Game.MaxScoreArray;
+
+        string stageSaveData = JsonConvert.SerializeObject(stageData);
+        File.WriteAllText(path + stageDataFileName, stageSaveData);
+        Debug.Log(stageSaveData);
     }
 
     #endregion

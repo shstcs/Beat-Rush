@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using TMPro.EditorUtilities;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.Events;
@@ -37,6 +38,7 @@ public class Managers : MonoBehaviour
             Sound.AudioSourceSFX = gameObject.AddComponent<AudioSource>();
             DontDestroyOnLoad(gameObject);
         }
+        Game.InitMaxScoreArray();
     }
     #endregion
     #region Fields

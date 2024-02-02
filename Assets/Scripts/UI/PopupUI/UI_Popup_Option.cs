@@ -26,6 +26,8 @@ public class UI_Popup_Option : MonoBehaviour
         OffOption();
         if (SceneManager.GetActiveScene().name == "Lobby")
             return;
+        Managers.Sound.StopBGM();
+        Managers.Sound.LoopPlayBGM(BGM.Lobby2);
         SceneManager.LoadScene("Lobby");
     }
     public void OffOption()
