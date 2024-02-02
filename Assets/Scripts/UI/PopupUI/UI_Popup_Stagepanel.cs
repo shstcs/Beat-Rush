@@ -8,10 +8,11 @@ public class UI_Popup_Stagepanel : MonoBehaviour
     private string currentStageName;
     private void OnEnable()
     {
-        Time.timeScale = 0.0f;
-        Cursor.lockState = CursorLockMode.None;
-        Managers.Game.lockType = InputLockType.Lock;
-        Cursor.visible = true;
+        //Time.timeScale = 0.0f;
+        //Cursor.lockState = CursorLockMode.None;
+        //Managers.Game.lockType = InputLockType.Lock;
+        //Cursor.visible = true;
+        Managers.Game.LobbyPopupCount++;
         SetText();
     }
     //private void Update()
@@ -26,10 +27,7 @@ public class UI_Popup_Stagepanel : MonoBehaviour
 
     private void OnDisable()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-        Time.timeScale = 1.0f;
-        Managers.Game.lockType = InputLockType.UnLock;
+        Managers.Game.LobbyPopupCount--;
     }
 
     private void SetText()

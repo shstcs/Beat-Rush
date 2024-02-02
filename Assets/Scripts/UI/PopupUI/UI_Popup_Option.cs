@@ -8,10 +8,13 @@ public class UI_Popup_Option : MonoBehaviour
 {
     private void OnEnable()
     {
-        Time.timeScale = 0.0f;
-        Cursor.lockState = CursorLockMode.None;
-        Managers.Game.lockType = InputLockType.Lock;
-        Cursor.visible = true;
+        Managers.Game.LobbyPopupCount++;
+
+        //Time.timeScale = 0.0f;
+        //Cursor.lockState = CursorLockMode.None;
+        //Managers.Game.lockType = InputLockType.Lock;
+        //Cursor.visible = true;
+
     }
     private void Update()
     {
@@ -32,11 +35,13 @@ public class UI_Popup_Option : MonoBehaviour
     }
     public void OffOption()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-        Time.timeScale = 1.0f;
-        Managers.Game.lockType = InputLockType.UnLock;
         gameObject.SetActive(false);
         Managers.Sound.ContinueBGM();        //음악 재생
+
+        Managers.Game.LobbyPopupCount--;
+        //Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.visible = false;
+        //Time.timeScale = 1.0f;
+        //Managers.Game.lockType = InputLockType.UnLock;
     }
 }

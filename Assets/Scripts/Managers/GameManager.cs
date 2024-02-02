@@ -16,6 +16,34 @@ public class GameManager : MonoBehaviour
     public UnityAction GetKeyDown;
     #endregion
     #region Fields
+    private int _lobbyPopupCount = 0;
+
+    public int LobbyPopupCount
+    {
+        get
+        {
+            return _lobbyPopupCount;
+        }
+        set
+        {
+            _lobbyPopupCount = value;
+            if (_lobbyPopupCount == 0)
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+                Time.timeScale = 1.0f;
+                Managers.Game.lockType = InputLockType.UnLock;
+            }
+            else
+            {
+                Managers.Game.lockType = InputLockType.Lock;
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
+                Time.timeScale = 0.0f;
+            }
+        }
+    }
+
     public int[] judgeNotes = new int[5];
     public string curJudge;
     public int Combo { get; set; }
@@ -26,11 +54,11 @@ public class GameManager : MonoBehaviour
     public int Hp { get; private set; }
     public float[] bpm = { 80f, 72f, 99f };
     public float[] noteDistance = { 5, 5, 8 };
-    public int[,] curNoteInStage = new int[4,15];
-    public float[] StageStartDelay = {0, 0.5f, -1.5f, 0f };
-    public Vector3[] StageNotePos = 
+    public int[,] curNoteInStage = new int[4, 15];
+    public float[] StageStartDelay = { 0, 0.5f, -1.5f, 0f };
+    public Vector3[] StageNotePos =
     {
-        new Vector3(-2, 0, 42.5f), 
+        new Vector3(-2, 0, 42.5f),
         new Vector3(40, 1, 42.5f),
         new Vector3(40, 1, 42.5f),
         new Vector3(40, 1, 42.5f)
@@ -72,9 +100,9 @@ public class GameManager : MonoBehaviour
         {
             judgeNotes[i] = 0;
         }
-        for(int i = 0; i<curNoteInStage.GetLength(0); i++)
+        for (int i = 0; i < curNoteInStage.GetLength(0); i++)
         {
-            for(int j = 0; j< curNoteInStage.GetLength(1); j++)
+            for (int j = 0; j < curNoteInStage.GetLength(1); j++)
             {
                 curNoteInStage[i, j] = 0;
             }
@@ -85,10 +113,12 @@ public class GameManager : MonoBehaviour
     {
         var stageCount = Enum.GetValues(typeof(InstrumentType)).Length;
         MaxScoreArray = new StageData[stageCount];
-        for(int i = 0; i < stageCount; i++)
+        for (int i = 0; i < stageCount; i++)
         {
             MaxScoreArray[i] = new StageData();
         }
     }
+
+
     #endregion
 }
