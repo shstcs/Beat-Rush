@@ -18,7 +18,7 @@ public class FrostDragon : MonoBehaviour, IMonster
     private void Awake()
     {
         _animator = GetComponent<Animator>();
-        //_cameraAnimator = _camera.GetComponent<Animator>();
+        _cameraAnimator = _camera.GetComponent<Animator>();
         _frostDragonAnimation.Init();
 
         _patterns = new IPattern[]
@@ -71,10 +71,6 @@ public class FrostDragon : MonoBehaviour, IMonster
 
     public void RandomAttack()           
     {
-        if (_currentPatternIndex == 0)
-        {
-            _cameraAnimator.SetTrigger("ShowBoss");
-        }
         StartCoroutine(_patterns[_currentPatternIndex++].Attack());
         _animator.SetTrigger(_frostDragonAnimation.GetRandomAttackHash());
         _currentFeedbackIndex++;

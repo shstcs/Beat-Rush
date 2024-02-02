@@ -12,6 +12,7 @@ public class NoteManager : MonoBehaviour
     private ObjectPool _notePool;
     private float _noteSpeed;
     private double _curDsp;
+    private float _pauseTime;
 
     [Header("StageData")]
     private int _patternLength;
@@ -64,7 +65,7 @@ public class NoteManager : MonoBehaviour
         _patternLength = data.length;
         _attackDelay = data.delay;
         _bgm = data.bgm;
-        Managers.Game.curNote = 0;
+        _pauseTime = Time.time;
         Managers.Sound.DelayedPlayBGM(_bgm, (32.5f / _noteSpeed));
 
         for (int i = 0; i < _patternLength; i++)
