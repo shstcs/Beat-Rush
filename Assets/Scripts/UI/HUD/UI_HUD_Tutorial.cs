@@ -20,7 +20,7 @@ public class UI_HUD_Tutorial : MonoBehaviour
         gameObject.transform.GetChild(1).gameObject.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-        gameObject.transform.GetChild(1).transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = Managers.Game.delay.ToString();
+        gameObject.transform.GetChild(1).transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = Managers.Game.delay.ToString("N2");
     }
     public void OnTutorial()
     {

@@ -76,7 +76,7 @@ public class Line : MonoBehaviour
             }
 
             // Skill
-            if (Managers.Data.CurrentStateData.SkillGauge < 100)
+            if (Managers.Data.CurrentStateData.SkillGauge < 100 && Managers.Game.currentStage != 0)
                 Managers.Data.CurrentStateData.SkillGauge += Managers.Data.CurrentStateData.GetSkillGaugeIncrement();
         }
     }

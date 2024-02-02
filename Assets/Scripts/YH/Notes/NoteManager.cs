@@ -100,5 +100,7 @@ public class NoteManager : MonoBehaviour
         QuestManager.instance.SetQuestClear(QuestName.StageFirstComplete);
         if (Managers.Data.CurrentStateData.GetHealth() == Managers.Data.CurrentStateData.CurrentHealth)
             QuestManager.instance.SetQuestClear(QuestName.MaxHealthClear);
+
+        Managers.Sound.PlaySFX(SFX.GameClear, 0.5f);
     }
 }

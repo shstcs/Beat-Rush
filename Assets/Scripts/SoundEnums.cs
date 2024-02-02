@@ -6,6 +6,7 @@ public enum SFX
     FirstWalk,
     SecondWalk,
     DefaultButton,
+    GameClear
 }
 
 

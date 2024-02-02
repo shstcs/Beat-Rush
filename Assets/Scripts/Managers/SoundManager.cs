@@ -66,6 +66,7 @@ public class SoundManager
         _sfx.Add(SFX.FirstWalk, Managers.Resource.Load<AudioClip>("FirstGrassWalk"));
         _sfx.Add(SFX.SecondWalk, Managers.Resource.Load<AudioClip>("SecondGrassWalk"));
         _sfx.Add(SFX.DefaultButton, Managers.Resource.Load<AudioClip>("DefaultButton"));
+        _sfx.Add(SFX.GameClear, Managers.Resource.Load<AudioClip>("GameClear"));
 
         _bgm.Add(BGM.Stage0, Managers.Resource.Load<AudioClip>("Stage0BGM"));
         _bgm.Add(BGM.Stage1, Managers.Resource.Load<AudioClip>("Stage1BGM"));
