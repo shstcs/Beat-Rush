@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class Note : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class Note : MonoBehaviour
     [HideInInspector]
     public int noteNumber = 0;
     public int stage = 0;
+    public bool isTrap = false;
     protected void Awake()
     {
         if(Managers.Game.currentStage == 0)
@@ -30,13 +32,22 @@ public class Note : MonoBehaviour
     {
         if (gameObject.transform.position.z < 8 && Time.timeScale > 0)
         {
-            Managers.Game.Combo = 0;
-            BreakNote();
-            Managers.Game.curJudge = "Miss";
-            Managers.Game.judgeNotes[(int)Score.Miss]++;
-            if(Managers.Game.currentStage != 0)
+            if(isTrap)
             {
-                Managers.Player.ChangeHealth(-1);
+                Managers.Game.Combo++;
+                Managers.Game.AddScore(50 + Managers.Game.Combo);
+                BreakNote();
+            }
+            else
+            {
+                Managers.Game.Combo = 0;
+                BreakNote();
+                Managers.Game.curJudge = "Miss";
+                Managers.Game.judgeNotes[(int)Score.Miss]++;
+                if (Managers.Game.currentStage != 0)
+                {
+                    Managers.Player.ChangeHealth(-1);
+                }
             }
         }
     }

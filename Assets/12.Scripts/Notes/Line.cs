@@ -36,48 +36,64 @@ public class Line : MonoBehaviour
                 Debug.Log(Managers.Game.delay);
             }
 
-            float distance = Mathf.Abs(10 - colliders[0].transform.position.z);
-
-            int score;
-            if (distance > 0.9f)        //Bad
+            if (colliders[0].GetComponent<Note>().isTrap)   // 함정노트
             {
-                score = 10;
-                Managers.Game.judgeNotes[(int)Score.Bad]++;
-                Managers.Game.curJudge = "Bad";
                 Managers.Game.Combo = 0;
-            }
-            else if (distance > 0.6f)    //Good
-            {
-                score = 30;
-                Managers.Game.judgeNotes[(int)Score.Good]++;
-                Managers.Game.curJudge = "Good";
-            }
-            else if (distance > 0.15f)     //Great
-            {
-                score = 50;
-                Managers.Game.judgeNotes[(int)Score.Great]++;
-                Managers.Game.curJudge = "Great";
-            }
-            else                        //Perfect
-            {
-                score = 100;
-                Managers.Game.judgeNotes[(int)Score.Perfect]++;
-                Managers.Game.curJudge = "Perfect";
-            } 
+                colliders[0].GetComponent<Note>().BreakNote();
 
-            colliders[0].GetComponent<Note>().BreakNote();
+                Managers.Game.curJudge = "Miss";
+                Managers.Game.judgeNotes[(int)Score.Miss]++;
 
-            Managers.Game.Combo++;
-            Managers.Game.MaxCombo = Managers.Game.Combo > Managers.Game.MaxCombo ? Managers.Game.Combo : Managers.Game.MaxCombo;       //나중에 리팩토링
-            Managers.Game.AddScore(score + Managers.Game.Combo);
-            if (Managers.Game.Combo == 100)
-            {
-                QuestManager.instance.SetQuestClear(QuestName.Stage100Combo);
+                if (Managers.Game.currentStage != 0)
+                {
+                    Managers.Player.ChangeHealth(-1);
+                }
             }
+            else                                            // 일반노트
+            {
+                float distance = Mathf.Abs(10 - colliders[0].transform.position.z);
 
-            // Skill
-            if (Managers.Data.CurrentStateData.SkillGauge < 100 && Managers.Game.currentStage != 0)
-                Managers.Data.CurrentStateData.SkillGauge += Managers.Data.CurrentStateData.GetSkillGaugeIncrement();
+                int score;
+                if (distance > 0.9f)        //Bad
+                {
+                    score = 10;
+                    Managers.Game.judgeNotes[(int)Score.Bad]++;
+                    Managers.Game.curJudge = "Bad";
+                    Managers.Game.Combo = 0;
+                }
+                else if (distance > 0.6f)    //Good
+                {
+                    score = 30;
+                    Managers.Game.judgeNotes[(int)Score.Good]++;
+                    Managers.Game.curJudge = "Good";
+                }
+                else if (distance > 0.15f)     //Great
+                {
+                    score = 50;
+                    Managers.Game.judgeNotes[(int)Score.Great]++;
+                    Managers.Game.curJudge = "Great";
+                }
+                else                        //Perfect
+                {
+                    score = 100;
+                    Managers.Game.judgeNotes[(int)Score.Perfect]++;
+                    Managers.Game.curJudge = "Perfect";
+                }
+
+                colliders[0].GetComponent<Note>().BreakNote();
+
+                Managers.Game.Combo++;
+                Managers.Game.MaxCombo = Managers.Game.Combo > Managers.Game.MaxCombo ? Managers.Game.Combo : Managers.Game.MaxCombo;       //나중에 리팩토링
+                Managers.Game.AddScore(score + Managers.Game.Combo);
+                if (Managers.Game.Combo == 100)
+                {
+                    QuestManager.instance.SetQuestClear(QuestName.Stage100Combo);
+                }
+
+                // Skill
+                if (Managers.Data.CurrentStateData.SkillGauge < 100 && Managers.Game.currentStage != 0)
+                    Managers.Data.CurrentStateData.SkillGauge += Managers.Data.CurrentStateData.GetSkillGaugeIncrement();
+            }
         }
     }
 
