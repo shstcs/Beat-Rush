@@ -10,7 +10,7 @@ public class UI_Popup_Result : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-        Managers.Game.GameType = GameType.Main;
+        Managers.Game.GameType = GameType.Lobby;
     }
 
     private void Start()

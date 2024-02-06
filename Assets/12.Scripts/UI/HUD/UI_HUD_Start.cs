@@ -23,7 +23,7 @@ public class UI_HUD_Start : MonoBehaviour
     {
         Managers.Data.DeleteAllFile();
         Managers.Sound.LoopPlayBGM(BGM.Lobby2);
-        Managers.Game.GameType = GameType.Main;
+        Managers.Game.GameType = GameType.Lobby;
         SceneManager.LoadScene("Lobby");
     }
 

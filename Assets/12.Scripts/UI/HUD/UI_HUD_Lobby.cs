@@ -7,6 +7,10 @@ public class UI_HUD_Lobby : MonoBehaviour
 {
     public void StartStage()
     {
+        Managers.Game.PlayerSpwanPosition = Managers.Player.transform.position;
+        Managers.Game.PlayerSpwanRotation = Managers.Player.transform.rotation;
+        Debug.Log(Managers.Game.PlayerSpwanPosition);
+
         switch (Managers.Game.currentStage)
         {
             case 0:

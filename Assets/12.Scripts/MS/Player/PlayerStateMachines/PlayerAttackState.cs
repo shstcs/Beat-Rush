@@ -16,7 +16,7 @@ public class PlayerAttackState : PlayerBaseState
         Managers.Game.lockType = InputLockType.Lock;
         stateMachine.Player.Animator.SetTrigger(stateMachine.Player.AnimationData.AttackTriggerParameterHash);
         stateMachine.Player.SwordEffect.Play();
-        Managers.Sound.PlaySFX(SFX.Attack, 0.1f);
+        Managers.Sound.PlaySFX(SFX.Attack, 0.05f);
 
         StartAnimation(stateMachine.Player.AnimationData.AttackParameterHash);
 

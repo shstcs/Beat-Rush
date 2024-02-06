@@ -6,12 +6,15 @@ using UnityEngine.SceneManagement;
 
 public class UI_Scene_Lobby : MonoBehaviour
 {
+    private void Awake()
+    {
+        Managers.Game.GameType = GameType.Lobby;
+    }
     private void Start()
     {
         Time.timeScale = 1.0f;
         Managers.UI.SetUI();
         Managers.Game.GetKeyDown += OnOption;
-        Managers.Game.GameType = GameType.Main;
         Managers.Sound.LoopPlayBGM(BGM.Lobby2);
     }
     private void Update()

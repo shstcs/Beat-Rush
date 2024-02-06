@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -71,7 +72,7 @@ public class QuestManager : MonoBehaviour
             else
                 questObj = Instantiate(_questPrefab, _content.transform);
 
-            questObj.GetComponent<Quest>().Data = data;
+            questObj.GetComponent<Quest>().key = datas.Key;
 
             _stateText = questObj.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
             _descText = questObj.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
@@ -99,5 +100,6 @@ public class QuestManager : MonoBehaviour
         }
 
         Managers.Game.questDatas[questName].IsClear = true;
+        Managers.Data.SaveQuestData();
     }
 }
