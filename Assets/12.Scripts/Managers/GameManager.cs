@@ -16,6 +16,11 @@ public class GameManager : MonoBehaviour
     public UnityAction GetKeyDown;
     #endregion
     #region Fields
+    public Vector3 PlayerSpwanPosition = new Vector3(43f, 0f, 14f);
+    public Quaternion PlayerSpwanRotation = Quaternion.Euler(0f, 0f, 0f);
+    public float CinemachinemVerticalAxisValue = 0f;
+    public float CinemachinemmHorizontalAxisValue = 0f;
+
     private int _lobbyPopupCount = 0;
 
     public int LobbyPopupCount
@@ -52,22 +57,23 @@ public class GameManager : MonoBehaviour
 
     public int Score { get; set; }
     public int Hp { get; private set; }
-    public float[] bpm = { 80f, 72f, 99f };
-    public float[] noteDistance = { 5, 5, 8 };
-    public int[,] curNoteInStage = new int[4, 15];
+    public float[] bpm = { 80f, 72f, 99f, 100f };
+    public float[] noteDistance = { 5, 5, 8, 8 };
+    public int[,] curNoteInStage = new int[4, 17];
     public float[] StageStartDelay = { 0, 0.5f, -1.5f, 0f };
     public Vector3[] StageNotePos =
     {
         new Vector3(-2, 0, 42.5f),
         new Vector3(40, 1, 42.5f),
         new Vector3(40, 1, 42.5f),
-        new Vector3(40, 1, 42.5f)
+        new Vector3(-2, 1, 42.5f)
     };
     public int currentStage = 1;
     public float delay = 1.5f;
     public int curNote = 0;
-    public GameType GameType = GameType.Main;
+    public GameType GameType = GameType.Lobby;
     public InputLockType lockType = InputLockType.UnLock;
+    public Rank rank = Rank.S;
 
     public Dictionary<QuestName, QuestData> questDatas = new Dictionary<QuestName, QuestData>();
     //private int bestScore;
@@ -123,6 +129,20 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
+    public void SetRank()
+    {
+        int noteCount = judgeNotes[0] + judgeNotes[1] + judgeNotes[2] + judgeNotes[3] + judgeNotes[4];
+        float rankCount = judgeNotes[0] / noteCount;
+        if (rankCount >= 0.8f && judgeNotes[3] == 0 && judgeNotes[4] == 0)
+            rank = Rank.S;
+        else if (rankCount >= 0.8f)
+            rank = Rank.A;
+        else if (rankCount >= 0.6f)
+            rank = Rank.B;
+        else if (!Managers.Player.IsDie())
+            rank = Rank.C;
+        else
+            rank = Rank.F;
+    }
     #endregion
 }

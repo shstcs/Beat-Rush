@@ -69,7 +69,6 @@ public class Golem : MonoBehaviour, IMonster
             _patterns[i] = _patterns[randomIndex];
             _patterns[randomIndex] = temp;
         }
-
     }
 
     public (int length, float delay, BGM bgm) GetPatternData()

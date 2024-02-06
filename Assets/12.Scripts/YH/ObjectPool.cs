@@ -27,9 +27,13 @@ public class ObjectPool : MonoBehaviour
             {
                 obj = Managers.Resource.Instantiate("Notes/Rock.prefab", transform);
             }
-            else
+            else if (Managers.Game.currentStage == 2)
             {
                 obj = Managers.Resource.Instantiate("Notes/Ice.prefab", transform);
+            }
+            else
+            {
+                obj = Managers.Resource.Instantiate("Notes/Fire.prefab", transform);
             }
             obj.SetActive(false);
             poolQueue.Enqueue(obj);

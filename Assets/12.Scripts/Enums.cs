@@ -2,7 +2,7 @@
 
 public enum GameType
 {
-    Main,
+    Lobby,
     Play
 }
 
@@ -35,4 +35,13 @@ public enum QuestName
     StageFirstComplete,
     Stage100Combo,
     MaxHealthClear,
+}
+
+public enum Rank
+{
+    S = 0,
+    A,
+    B,
+    C,
+    F,
 }

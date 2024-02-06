@@ -33,24 +33,7 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         Managers.Player = this;
-        
-        // Load 버튼을 눌렀는지 조건 추가 필요
-        //if (Managers.Data.LoadFileCheck())
-        //{
-        //    Managers.Data.LoadData();
-        //    CurrentStateData.Health = Data.StateData.Health;
-        //    CurrentStateData.SkillGauge = Data.StateData.SkillGauge;
 
-        //    CurrentSkillData.BaseSpeed = Data.SkillData.BaseSpeed;
-        //    CurrentSkillData.BaseDistance = Data.SkillData.BaseDistance;
-        //    CurrentSkillData.SpeedModifier = Data.SkillData.SpeedModifier;
-        //    CurrentSkillData.DistanceModifier = Data.SkillData.DistanceModifier;
-        //}
-        //else if (!Managers.Data.LoadFileCheck())
-        //{
-        //    InitData();
-        //}
-        
         AnimationData.Initialize();
 
         Rigidbody = GetComponent<Rigidbody>();
@@ -70,14 +53,16 @@ public class Player : MonoBehaviour
         Managers.Player = this;
 
         Input.PlayerActions.Quest.started += OpenQuestWindow;
+
+        if (Managers.Game.GameType == GameType.Lobby)
+        {
+            Controller.enabled = false;
+            transform.position = Managers.Game.PlayerSpwanPosition;
+            Controller.enabled = true;
+            transform.rotation = Managers.Game.PlayerSpwanRotation;
+        }
     }
 
-    private void OpenQuestWindow(InputAction.CallbackContext context)
-    {
-        if (Managers.Game.GameType == GameType.Play) return;
-
-        QuestManager.instance.OpenQuest();
-    }
 
     private void Update()
     {
@@ -90,6 +75,13 @@ public class Player : MonoBehaviour
         _stateMachine.PhysicsUpdate();
     }
 
+    private void OpenQuestWindow(InputAction.CallbackContext context)
+    {
+        if (Managers.Game.GameType == GameType.Play) return;
+
+        QuestManager.instance.OpenQuest();
+    }
+
     public void Rotate(Transform targetTransform)
     {
         var targetPos = new Vector3(targetTransform.position.x, transform.position.y, targetTransform.position.z);
@@ -99,7 +91,7 @@ public class Player : MonoBehaviour
     public void ChangeHealth(int amount)
     {
         Managers.Data.CurrentStateData.CurrentHealth += amount;
-        Debug.Log(Managers.Data.CurrentStateData.CurrentHealth);
+        //Debug.Log(Managers.Data.CurrentStateData.CurrentHealth);
         if (Managers.Data.CurrentStateData.CurrentHealth <= 0)
         {
             Die();

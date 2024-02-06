@@ -12,7 +12,6 @@ public class PlayerData
     //public int Level;
     //public int Exp;
     //public int CurrentClearStage;
-    public int BestScore;
     public float delay;
 
     public PlayerStateData StateData;
@@ -48,10 +47,6 @@ public class DataManager : MonoBehaviour
     [HideInInspector]
     public StageData[] stageData = new StageData[Enum.GetValues(typeof(InstrumentType)).Length];
 
-    private void Awake()
-    {
-        DontDestroyOnLoad(gameObject);
-    }
 
     public void SaveData()
     {
@@ -67,11 +62,6 @@ public class DataManager : MonoBehaviour
         LoadQuestData();
         LoadSoundData();
         LoadStageData();
-
-        //Managers.Player.CurrentStateData.Level = playerData.Level;
-        //Managers.Player.CurrentStateData.Exp = playerData.Exp;
-        //Managers.Player.CurrentStateData.CurrentClearStage = playerData.CurrentClearStage;
-
     }
 
     public bool LoadFileCheck(string dataFileName)
@@ -100,15 +90,13 @@ public class DataManager : MonoBehaviour
             return;
         }
 
-        path = Application.persistentDataPath + "/";
         Debug.Log("Load");
-        string data = File.ReadAllText(path + playerDataFileName);
+        string data = File.ReadAllText(path);
         PlayerData playerData = JsonUtility.FromJson<PlayerData>(data);
 
         CurrentStateData = playerData.StateData;
         CurrentSkillData = playerData.SkillData;
 
-        Managers.Data.BestScore = playerData.BestScore;
         Managers.Game.delay = playerData.delay;
     }
 
@@ -155,40 +143,34 @@ public class DataManager : MonoBehaviour
     #endregion
 
     #region Save
-    private void SavePlayerData()
+    public void SavePlayerData()
     {
         PlayerData playerData = new PlayerData();
 
         playerData.StateData = CurrentStateData;
         playerData.SkillData = CurrentSkillData;
-
-        //playerData.Level = Managers.Player.CurrentStateData.Level;
-        //playerData.Exp = Managers.Player.CurrentStateData.Exp;
-        //playerData.CurrentClearStage = Managers.Player.CurrentStateData.CurrentClearStage;
-
-        playerData.BestScore = PlayerPrefs.GetInt("BestScore");
         playerData.delay = Managers.Game.delay;
 
-        path = Application.persistentDataPath + "/";
         string data = JsonUtility.ToJson(playerData, true);
 
-        File.WriteAllText(path + playerDataFileName, data);
+        DataSave(data, playerDataFileName);
+
         Debug.Log(data);
         Debug.Log("SavePath : " + path);
     }
 
-    private void SaveQuestData()
+    public void SaveQuestData()
     {
         questData = Managers.Game.questDatas;
 
         var questSaveData = JsonConvert.SerializeObject(questData, Formatting.Indented);
 
-        File.WriteAllText(path + questDataFileName, questSaveData);
+        DataSave(questSaveData, questDataFileName);
 
         Debug.Log(questSaveData);
     }
 
-    private void SaveSoundData()
+    public void SaveSoundData()
     {
         SoundData soundData = new SoundData();
 
@@ -198,17 +180,26 @@ public class DataManager : MonoBehaviour
 
         string soundSaveData = JsonUtility.ToJson(soundData, true);
 
-        File.WriteAllText(path + soundDataFileName, soundSaveData);
+        DataSave(soundSaveData, soundDataFileName);
+
         Debug.Log(soundSaveData);
     }
 
-    private void SaveStageData()
+    public void SaveStageData()
     {
         stageData = Managers.Game.MaxScoreArray;
 
         string stageSaveData = JsonConvert.SerializeObject(stageData);
-        File.WriteAllText(path + stageDataFileName, stageSaveData);
+
+        DataSave(stageSaveData, stageDataFileName);
+
         Debug.Log(stageSaveData);
+    }
+
+    private void DataSave(string dataStr, string fileName)
+    {
+        path = Application.persistentDataPath + "/";
+        File.WriteAllText(path + fileName, dataStr);
     }
 
     #endregion

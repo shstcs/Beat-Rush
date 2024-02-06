@@ -6,26 +6,31 @@ using UnityEngine;
 public class VirtualCameraController : MonoBehaviour
 {
 
-    private CinemachineVirtualCamera _cam;
+    private CinemachinePOV _camPOV;
 
     private float _verticalAxis;
     private float _horizontalAxis;
     private void Start()
     {
-        _cam = GetComponent<CinemachineVirtualCamera>();
+        _camPOV = GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachinePOV>();
+        _camPOV.m_VerticalAxis.Value = Managers.Game.CinemachinemVerticalAxisValue;
+        _camPOV.m_HorizontalAxis.Value = Managers.Game.CinemachinemmHorizontalAxisValue;
     }
 
     private void Update()
     {
         if(Time.timeScale == 0f)
         {
-            _cam.GetCinemachineComponent<CinemachinePOV>().m_VerticalAxis.Value = _verticalAxis;
-            _cam.GetCinemachineComponent<CinemachinePOV>().m_HorizontalAxis.Value = _horizontalAxis;
+            _camPOV.m_VerticalAxis.Value = _verticalAxis;
+            _camPOV.m_HorizontalAxis.Value = _horizontalAxis;
+
+            Managers.Game.CinemachinemVerticalAxisValue = _camPOV.m_VerticalAxis.Value;
+            Managers.Game.CinemachinemmHorizontalAxisValue = _camPOV.m_HorizontalAxis.Value;
         }
         else
         {
-            _verticalAxis = _cam.GetCinemachineComponent<CinemachinePOV>().m_VerticalAxis.Value;
-            _horizontalAxis = _cam.GetCinemachineComponent<CinemachinePOV>().m_HorizontalAxis.Value;
+            _verticalAxis = _camPOV.m_VerticalAxis.Value;
+            _horizontalAxis = _camPOV.m_HorizontalAxis.Value;
         }
     }
 
