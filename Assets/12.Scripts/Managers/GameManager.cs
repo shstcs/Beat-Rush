@@ -16,6 +16,11 @@ public class GameManager : MonoBehaviour
     public UnityAction GetKeyDown;
     #endregion
     #region Fields
+    public Vector3 PlayerSpwanPosition = new Vector3(43f, 0f, 14f);
+    public Quaternion PlayerSpwanRotation = Quaternion.Euler(0f, 0f, 0f);
+    public float CinemachinemVerticalAxisValue = 0f;
+    public float CinemachinemmHorizontalAxisValue = 0f;
+
     private int _lobbyPopupCount = 0;
 
     public int LobbyPopupCount
@@ -66,8 +71,9 @@ public class GameManager : MonoBehaviour
     public int currentStage = 1;
     public float delay = 1.5f;
     public int curNote = 0;
-    public GameType GameType = GameType.Main;
+    public GameType GameType = GameType.Lobby;
     public InputLockType lockType = InputLockType.UnLock;
+    public Rank rank = Rank.S;
 
     public Dictionary<QuestName, QuestData> questDatas = new Dictionary<QuestName, QuestData>();
     //private int bestScore;
@@ -123,6 +129,20 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
+    public void SetRank()
+    {
+        int noteCount = judgeNotes[0] + judgeNotes[1] + judgeNotes[2] + judgeNotes[3] + judgeNotes[4];
+        float rankCount = judgeNotes[0] / noteCount;
+        if (rankCount >= 0.8f && judgeNotes[3] == 0 && judgeNotes[4] == 0)
+            rank = Rank.S;
+        else if (rankCount >= 0.8f)
+            rank = Rank.A;
+        else if (rankCount >= 0.6f)
+            rank = Rank.B;
+        else if (!Managers.Player.IsDie())
+            rank = Rank.C;
+        else
+            rank = Rank.F;
+    }
     #endregion
 }

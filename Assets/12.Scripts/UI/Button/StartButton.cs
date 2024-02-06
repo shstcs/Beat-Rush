@@ -8,7 +8,7 @@ public class StartButton : MonoBehaviour
     public void OnStart()
     {
         Managers.Sound.LoopPlayBGM(BGM.Lobby2);
-        Managers.Game.GameType = GameType.Main;
+        Managers.Game.GameType = GameType.Lobby;
         SceneManager.LoadScene("Lobby");
     }
 
@@ -21,7 +21,7 @@ public class StartButton : MonoBehaviour
         else if (Managers.Data.LoadFileCheck("save"))
         {
             Managers.Sound.LoopPlayBGM(BGM.Lobby2);
-            Managers.Game.GameType = GameType.Main;
+            Managers.Game.GameType = GameType.Lobby;
             SceneManager.LoadScene("Lobby");
         }
     }

@@ -24,11 +24,11 @@ public class NoteManager : MonoBehaviour
     {
         _monster = _monsterObject.GetComponent<IMonster>();
         _cameraAnimator = Camera.main.GetComponent<Animator>();
+        Managers.Game.GameType = GameType.Play;
     }
 
     private void Start()
     {
-        Managers.Game.GameType = GameType.Play;
         _notePool = Managers.Pool;
         _notePool.SetPool();
         _noteSpeed = Managers.Game.noteDistance[Managers.Game.currentStage] / (60 / Managers.Game.bpm[Managers.Game.currentStage]);

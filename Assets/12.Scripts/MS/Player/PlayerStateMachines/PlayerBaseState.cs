@@ -62,12 +62,15 @@ public class PlayerBaseState : IState
     public virtual void RemoveInputActionsCallbacks()
     {
         PlayerInput input = stateMachine.Player.Input;
-        //input.PlayerActions.Move.canceled -= OnMoveCanceled;
-        //input.PlayerActions.Run.performed -= OnRunStarted;
-        //input.PlayerActions.Run.canceled -= OnRunCaneled;
-        //input.PlayerActions.Attack.performed += OnAttackPerformed;
-        //input.PlayerActions.Attack.canceled += OnAttackCanceled;
-    }
+        input.PlayerActions.Move.canceled -= OnMoveCanceled;
+        input.PlayerActions.Run.performed -= OnRunStarted;
+        input.PlayerActions.Run.canceled -= OnRunCaneled;
+
+        input.PlayerActions.Attack.started -= OnAttackStarted;
+        input.PlayerActions.Attack.canceled -= OnAttackCanceled;
+
+        input.PlayerActions.Skill.started -= OnSkillStarted;
+    }   
 
     #region Move
 
@@ -157,7 +160,7 @@ public class PlayerBaseState : IState
     #region Skill
     protected virtual void OnSkillStarted(InputAction.CallbackContext context)
     {
-        if (stateMachine.IsDie || Managers.Game.GameType == GameType.Main) return;
+        if (stateMachine.IsDie || Managers.Game.GameType == GameType.Lobby) return;
         if (Managers.Data.CurrentStateData.SkillGauge >= 100)
         {
             stateMachine.ChangeState(stateMachine.skillState);

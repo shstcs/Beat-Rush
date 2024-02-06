@@ -12,5 +12,6 @@ public class StageData
     {
         MaxScoreArray[3] = score;
         MaxScoreArray = MaxScoreArray.OrderByDescending(n => n).ToArray();
+        Managers.Data.SaveStageData();
     }
 }
