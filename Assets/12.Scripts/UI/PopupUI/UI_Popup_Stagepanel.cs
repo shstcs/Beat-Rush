@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UI_Popup_Stagepanel : MonoBehaviour
@@ -58,5 +59,47 @@ public class UI_Popup_Stagepanel : MonoBehaviour
         {
             monsterImage.sprite = Resources.Load<Sprite>("Stage2Image");
         }
+    }
+    public void StartStage()
+    {
+        Managers.Game.PlayerSpwanPosition = Managers.Player.transform.position;
+        Managers.Game.PlayerSpwanRotation = Managers.Player.transform.rotation;
+        Debug.Log(Managers.Game.PlayerSpwanPosition);
+
+        switch (Managers.Game.currentStage)
+        {
+            case 0:
+                SceneManager.LoadScene("Tutorial");
+                break;
+            case 1:
+                Debug.Log(Managers.Data.CurrentStateData.CurrentClearStage);
+                if (Managers.Data.CurrentStateData.CurrentClearStage >= 1)
+                {
+                    SceneManager.LoadScene("Stage_1");
+                }
+                else
+                {
+                    PopupAlert();
+                }
+                break;
+            case 2:
+                Debug.Log(Managers.Data.CurrentStateData.CurrentClearStage);
+                if (Managers.Data.CurrentStateData.CurrentClearStage >= 2)
+                {
+                    SceneManager.LoadScene("Stage_2");
+                }
+                else
+                {
+                    PopupAlert();
+                }
+                break;
+            case 3:
+                break;
+        }
+    }
+
+    public void PopupAlert()
+    {
+        gameObject.transform.GetChild(5).gameObject.SetActive(true);
     }
 }

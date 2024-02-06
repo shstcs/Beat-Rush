@@ -73,6 +73,7 @@ public class GameManager : MonoBehaviour
     public int curNote = 0;
     public GameType GameType = GameType.Lobby;
     public InputLockType lockType = InputLockType.UnLock;
+    public Rank rank = Rank.S;
 
     public Dictionary<QuestName, QuestData> questDatas = new Dictionary<QuestName, QuestData>();
     //private int bestScore;
@@ -128,6 +129,20 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
+    public void SetRank()
+    {
+        int noteCount = judgeNotes[0] + judgeNotes[1] + judgeNotes[2] + judgeNotes[3] + judgeNotes[4];
+        float rankCount = judgeNotes[0] / noteCount;
+        if (rankCount >= 0.8f && judgeNotes[3] == 0 && judgeNotes[4] == 0)
+            rank = Rank.S;
+        else if (rankCount >= 0.8f)
+            rank = Rank.A;
+        else if (rankCount >= 0.6f)
+            rank = Rank.B;
+        else if (!Managers.Player.IsDie())
+            rank = Rank.C;
+        else
+            rank = Rank.F;
+    }
     #endregion
 }

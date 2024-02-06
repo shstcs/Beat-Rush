@@ -36,3 +36,12 @@ public enum QuestName
     Stage100Combo,
     MaxHealthClear,
 }
+
+public enum Rank
+{
+    S = 0,
+    A,
+    B,
+    C,
+    F,
+}

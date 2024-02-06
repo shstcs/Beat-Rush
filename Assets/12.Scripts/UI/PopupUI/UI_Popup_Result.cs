@@ -43,13 +43,19 @@ public class UI_Popup_Result : MonoBehaviour
 
     private void ClearResult()
     {
-        GameObject.Find("Score_Text").transform.GetComponent<TextMeshProUGUI>().text = Managers.Game.Score.ToString();
-        GameObject.Find("Combo_Text").transform.GetComponent<TextMeshProUGUI>().text = Managers.Game.MaxCombo.ToString();
-        GameObject.Find("Perfect_Text").transform.GetComponent<TextMeshProUGUI>().text = Managers.Game.judgeNotes[(int)Score.Perfect].ToString();
-        GameObject.Find("Great_Text").transform.GetComponent<TextMeshProUGUI>().text = Managers.Game.judgeNotes[(int)Score.Great].ToString();
-        GameObject.Find("Good_Text").transform.GetComponent<TextMeshProUGUI>().text = Managers.Game.judgeNotes[(int)Score.Good].ToString();
-        GameObject.Find("Bad_Text").transform.GetComponent<TextMeshProUGUI>().text = Managers.Game.judgeNotes[(int)Score.Bad].ToString();
-        GameObject.Find("Miss_Text").transform.GetComponent<TextMeshProUGUI>().text = Managers.Game.judgeNotes[(int)Score.Miss].ToString();
+        Managers.Game.SetRank();
+        gameObject.transform.GetChild(1).transform.GetComponent<TextMeshProUGUI>().text = Managers.Game.Score.ToString();
+        gameObject.transform.GetChild(2).transform.GetComponent<TextMeshProUGUI>().text = Managers.Game.rank.ToString();
+        gameObject.transform.GetChild(3).transform.GetComponent<TextMeshProUGUI>().text = Managers.Game.MaxCombo.ToString();
+        gameObject.transform.GetChild(4).transform.GetComponent<TextMeshProUGUI>().text = Managers.Game.judgeNotes[(int)Score.Perfect].ToString();
+        gameObject.transform.GetChild(5).transform.GetComponent<TextMeshProUGUI>().text = Managers.Game.judgeNotes[(int)Score.Great].ToString();
+        gameObject.transform.GetChild(6).transform.GetComponent<TextMeshProUGUI>().text = Managers.Game.judgeNotes[(int)Score.Good].ToString();
+        gameObject.transform.GetChild(7).transform.GetComponent<TextMeshProUGUI>().text = Managers.Game.judgeNotes[(int)Score.Bad].ToString();
+        gameObject.transform.GetChild(8).transform.GetComponent<TextMeshProUGUI>().text = Managers.Game.judgeNotes[(int)Score.Miss].ToString();
+        if (Managers.Game.judgeNotes[3] == 0 && Managers.Game.judgeNotes[4] == 0)
+        {
+            gameObject.transform.GetChild(11).gameObject.SetActive(true);
+        }
     }
 
     private void OnDisable()
