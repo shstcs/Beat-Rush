@@ -27,6 +27,11 @@ public class UI_HUD_Lobby : MonoBehaviour
                 }
                 break;
             case 3:
+                Debug.Log(Managers.Data.CurrentStateData.CurrentClearStage);
+                if (Managers.Data.CurrentStateData.CurrentClearStage >= 3)
+                {
+                    SceneManager.LoadScene("YH-TestStage2");
+                }
                 break;
         }
     }

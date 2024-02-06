@@ -513,19 +513,6 @@ MonoBehaviour:
     deathParameterName: '@Death'
     skillParameterName: Skill
   SwordEffect: {fileID: 0}
-  CurrentStateData:
-    Level: 1
-    Exp: 0
-    Health: 10
-    SkillGauge: 0
-    SkillGaugeIncrement: 5
-    SkillGaugeModifier: 1
-    CurrentClearStage: 0
-  CurrentSkillData:
-    BaseSpeed: 20
-    BaseDistance: 20
-    SpeedModifier: 1
-    DistanceModifier: 1
   SkillPrefab: {fileID: 6445826192643391251, guid: d49c31966477ce84e80549803c09e1bb,
     type: 3}
 --- !u!4 &234970411
@@ -3506,28 +3493,15 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1761577439}
-  - component: {fileID: 1761577438}
   - component: {fileID: 1761577440}
+  - component: {fileID: 1761577441}
   m_Layer: 0
-  m_Name: FrostDragon
+  m_Name: FireDragon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1761577438
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1761577437}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f66f7cf8c60e2574a878781d2ef73f60, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _camera: {fileID: 657730229}
 --- !u!4 &1761577439
 Transform:
   m_ObjectHideFlags: 0
@@ -3564,6 +3538,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1761577441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1761577437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e246e97571099748bbcbc676e0496d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _camera: {fileID: 657730229}
 --- !u!1 &1771882591
 GameObject:
   m_ObjectHideFlags: 0

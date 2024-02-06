@@ -99,7 +99,7 @@ public class Player : MonoBehaviour
     public void ChangeHealth(int amount)
     {
         Managers.Data.CurrentStateData.CurrentHealth += amount;
-        Debug.Log(Managers.Data.CurrentStateData.CurrentHealth);
+        //Debug.Log(Managers.Data.CurrentStateData.CurrentHealth);
         if (Managers.Data.CurrentStateData.CurrentHealth <= 0)
         {
             Die();

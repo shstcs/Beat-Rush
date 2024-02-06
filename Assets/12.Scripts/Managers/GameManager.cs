@@ -52,8 +52,8 @@ public class GameManager : MonoBehaviour
 
     public int Score { get; set; }
     public int Hp { get; private set; }
-    public float[] bpm = { 80f, 72f, 99f };
-    public float[] noteDistance = { 5, 5, 8 };
+    public float[] bpm = { 80f, 72f, 99f, 100f };
+    public float[] noteDistance = { 5, 5, 8, 8 };
     public int[,] curNoteInStage = new int[4, 15];
     public float[] StageStartDelay = { 0, 0.5f, -1.5f, 0f };
     public Vector3[] StageNotePos =
@@ -61,7 +61,7 @@ public class GameManager : MonoBehaviour
         new Vector3(-2, 0, 42.5f),
         new Vector3(40, 1, 42.5f),
         new Vector3(40, 1, 42.5f),
-        new Vector3(40, 1, 42.5f)
+        new Vector3(-2, 1, 42.5f)
     };
     public int currentStage = 1;
     public float delay = 1.5f;
