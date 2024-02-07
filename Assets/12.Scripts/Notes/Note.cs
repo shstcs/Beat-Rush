@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
+using UnityEngine.VFX;
 
 public class Note : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class Note : MonoBehaviour
     public int noteNumber = 0;
     public int stage = 0;
     public bool isTrap = false;
+    private VisualEffectAsset _effect;
+    private VisualEffectAsset _trapEffect;
     protected void Awake()
     {
         if(Managers.Game.currentStage == 0)
@@ -20,7 +23,9 @@ public class Note : MonoBehaviour
         {
             _particle = Resources.Load<ParticleSystem>("Blood Splash");
         }
-        
+
+        _effect = Managers.Resource.Load<VisualEffectAsset>("Fireball");
+        _trapEffect = Managers.Resource.Load<VisualEffectAsset>("Fireball_Trap");
     }
 
     private void Start()
@@ -30,14 +35,6 @@ public class Note : MonoBehaviour
 
     protected void Update()
     {
-        if (isTrap)
-        {
-            gameObject.transform.localScale = Vector3.one;
-        }
-        else
-        {
-            gameObject.transform.localScale = Vector3.one * 1.8f;
-        }
 
         if (gameObject.transform.position.z < 8 && Time.timeScale > 0)
         {
@@ -61,6 +58,11 @@ public class Note : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        StartCoroutine(nameof(ChangeColor));
+    }
+
     public void BreakNote()
     {
         ParticleSystem _destroyParticle = Instantiate(_particle);
@@ -69,5 +71,22 @@ public class Note : MonoBehaviour
         transform.position = Vector3.zero;
         Managers.Game.curNoteInStage[stage,noteNumber]++;
         gameObject.SetActive(false);
+    }
+
+    private IEnumerator ChangeColor()
+    {
+        yield return new WaitForSeconds(.5f);
+
+        if (Managers.Game.currentStage == 3)
+        {
+            if (isTrap)
+            {
+                gameObject.GetComponent<VisualEffect>().visualEffectAsset = _trapEffect;
+            }
+            else
+            {
+                gameObject.GetComponent<VisualEffect>().visualEffectAsset = _effect;
+            }
+        }
     }
 }
