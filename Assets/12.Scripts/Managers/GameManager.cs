@@ -66,7 +66,7 @@ public class GameManager : MonoBehaviour
         new Vector3(-2, 0, 42.5f),
         new Vector3(40, 1, 42.5f),
         new Vector3(40, 1, 42.5f),
-        new Vector3(-2, 1, 42.5f)
+        new Vector3(40, 1, 42.5f)
     };
     public int currentStage = 1;
     public float delay = 1.5f;
