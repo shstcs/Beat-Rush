@@ -40,4 +40,12 @@ public class UI_Scene_Stage : MonoBehaviour
     {
         Managers.Game.GetKeyDown -= OnOption;
     }
+
+    private void OnApplicationFocus(bool focus)
+    {
+        if (!focus)
+        {
+            OnOption();
+        }
+    }
 }
