@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Quest : MonoBehaviour
 {
@@ -37,6 +38,7 @@ public class Quest : MonoBehaviour
         questData.IsReceive = true;
         Managers.Data.SaveQuestData();
         Managers.Data.SavePlayerData();
+        transform.GetComponentInChildren<Image>().color = new Color(255, 255, 255, 0.7f);
     }
 }
 
