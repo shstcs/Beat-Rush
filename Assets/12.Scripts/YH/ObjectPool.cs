@@ -7,8 +7,10 @@ using UnityEngine;
 public class ObjectPool : MonoBehaviour
 {
     public int poolSize = 50;
+    public int judgePoolSize = 20;
 
     public Queue<GameObject> poolQueue = new Queue<GameObject>();
+    public Queue<GameObject> judgePoolQueue = new Queue<GameObject>();
 
     private void Awake()
     {
@@ -38,6 +40,13 @@ public class ObjectPool : MonoBehaviour
             obj.SetActive(false);
             poolQueue.Enqueue(obj);
         }
+
+        for (int i = 0; i < judgePoolSize; i++)
+        {
+            GameObject judgeObj = Managers.Resource.Instantiate("Notes/JudgeNote.prefab", transform);
+            judgeObj.SetActive(false);
+            judgePoolQueue.Enqueue(judgeObj);
+        }
     }
 
     public GameObject SpawnFromPool()
@@ -46,6 +55,18 @@ public class ObjectPool : MonoBehaviour
         {
             GameObject obj = poolQueue.Dequeue();
             poolQueue.Enqueue(obj);
+            obj.SetActive(true);
+            return obj;
+        }
+        else return null;
+    }
+
+    public GameObject SpawnFromJudgePool()
+    {
+        if (judgePoolQueue.Count > 0)
+        {
+            GameObject obj = judgePoolQueue.Dequeue();
+            judgePoolQueue.Enqueue(obj);
             obj.SetActive(true);
             return obj;
         }

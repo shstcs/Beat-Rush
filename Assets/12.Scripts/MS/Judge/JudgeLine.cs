@@ -15,10 +15,12 @@ public class JudgeLine : MonoBehaviour
     {
         if (NoteLayer.value == (NoteLayer.value |(1 << other.gameObject.layer)))
         {
-            GameObject topJudgeNote = Instantiate(JudgeNote, JudgeNoteSpwanPos);
+            GameObject topJudgeNote = Managers.Pool.SpawnFromJudgePool();
+            topJudgeNote.transform.SetParent(JudgeNoteSpwanPos);
             topJudgeNote.GetComponent<RectTransform>().anchoredPosition = new Vector2(_judgeNoteSpawnX, 0f);
 
-            GameObject bottomJudgeNote = Instantiate(JudgeNote, JudgeNoteSpwanPos);
+            GameObject bottomJudgeNote = Managers.Pool.SpawnFromJudgePool();
+            bottomJudgeNote.transform.SetParent(JudgeNoteSpwanPos);
             bottomJudgeNote.GetComponent<RectTransform>().anchoredPosition = new Vector2(-_judgeNoteSpawnX, 0f);
         }
     }
