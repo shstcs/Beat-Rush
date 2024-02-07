@@ -83,6 +83,11 @@ public class QuestManager : MonoBehaviour
             {
                 questObj.transform.GetChild(4).GetComponent<Button>().interactable = true;
             }
+            if (data.IsReceive)
+            {
+                questObj.transform.GetChild(0).GetComponent<Image>().color = new Color(255, 255, 255, 0.7f);
+            }
+
             _descText.text = data.QuestDesc;
             _rewardText.text = data.RewardDesc;
 
