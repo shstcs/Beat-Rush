@@ -30,6 +30,15 @@ public class Note : MonoBehaviour
 
     protected void Update()
     {
+        if (isTrap)
+        {
+            gameObject.transform.localScale = Vector3.one;
+        }
+        else
+        {
+            gameObject.transform.localScale = Vector3.one * 1.8f;
+        }
+
         if (gameObject.transform.position.z < 8 && Time.timeScale > 0)
         {
             if(isTrap)
