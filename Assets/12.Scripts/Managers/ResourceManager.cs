@@ -28,8 +28,8 @@ public class ResourceManager : MonoBehaviour
 
     public void LoadAsync<T>(string key, Action<T> callback = null) where T : UnityEngine.Object
     {
-        //key·Î ÀÌ¹Ì ·ÎµåµÈ ¸®¼Ò½ºÀÎÁö È®ÀÎ
-        //ÀÌ¹Ì ·ÎµåµÈ ¸®¼Ò½º¸é Äİ¹é È£Ãâ
+        //keyë¡œ ì´ë¯¸ ë¡œë“œëœ ë¦¬ì†ŒìŠ¤ì¸ì§€ í™•ì¸
+        //ì´ë¯¸ ë¡œë“œëœ ë¦¬ì†ŒìŠ¤ë©´ ì½œë°± í˜¸ì¶œ
         if(_resources.TryGetValue(key, out UnityEngine.Object resource))
         {
             callback?.Invoke(resource as T);

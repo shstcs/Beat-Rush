@@ -20,6 +20,14 @@ public class JudgeNote : MonoBehaviour
         time = _distance / (Managers.Game.noteDistance[Managers.Game.currentStage] / (60 / Managers.Game.bpm[Managers.Game.currentStage]));
     }
 
+    private void Update()
+    {
+        if(_rect.anchoredPosition == _targetVec)
+        {
+            gameObject.SetActive(false);
+        }
+    }
+
     private void FixedUpdate()
     {
         _rect.anchoredPosition = Vector3.MoveTowards(_rect.anchoredPosition, _targetVec, _judgeNoteSpawnX / time * Time.deltaTime);
