@@ -64,10 +64,15 @@ public class DataManager : MonoBehaviour
         LoadStageData();
     }
 
-    public bool LoadFileCheck(string dataFileName)
+    public bool LoadFileCheck(string dataFileName = "")
     {
         path = Application.persistentDataPath + "/" + dataFileName;
         return File.Exists(path);
+    }
+
+    public bool LoadDirCheck()
+    {
+        return Directory.Exists(Application.persistentDataPath);
     }
 
     public void DeleteAllFile()
@@ -200,6 +205,7 @@ public class DataManager : MonoBehaviour
     {
         path = Application.persistentDataPath + "/";
         File.WriteAllText(path + fileName, dataStr);
+        Debug.Log(path + fileName);
     }
 
     #endregion

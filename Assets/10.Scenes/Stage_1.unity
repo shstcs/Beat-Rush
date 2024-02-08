@@ -787,6 +787,7 @@ MonoBehaviour:
   noteLayer:
     serializedVersion: 2
     m_Bits: 64
+  CircleImage: {fileID: 1301064462}
 --- !u!65 &170875527
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4379,6 +4380,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c597288bbac3aa41b4ad24efa6df6b4, type: 3}
+--- !u!114 &1301064462 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2272018751286122468, guid: 6ae4c4c1303bf974c885d6cf89a8d6fb,
+    type: 3}
+  m_PrefabInstance: {fileID: 7187011720542595534}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1305615060
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6776,6 +6789,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ae4c4c1303bf974c885d6cf89a8d6fb, type: 3}
+--- !u!1 &7187011720542595535 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4976514933622786308, guid: 6ae4c4c1303bf974c885d6cf89a8d6fb,
+    type: 3}
+  m_PrefabInstance: {fileID: 7187011720542595534}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8373949676641366089
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6797,7 +6816,7 @@ PrefabInstance:
     - target: {fileID: 1966232526057454536, guid: 56f48f5b5f62c5a4eb542e3b4da65736,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 15
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1966232526057454536, guid: 56f48f5b5f62c5a4eb542e3b4da65736,
         type: 3}
@@ -6834,6 +6853,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2641872368851778534, guid: 56f48f5b5f62c5a4eb542e3b4da65736,
+        type: 3}
+      propertyPath: CenterNote
+      value: 
+      objectReference: {fileID: 7187011720542595535}
     - target: {fileID: 2641872368851778534, guid: 56f48f5b5f62c5a4eb542e3b4da65736,
         type: 3}
       propertyPath: JudgeNoteSpwanPos
