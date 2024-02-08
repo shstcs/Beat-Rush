@@ -13,14 +13,14 @@ public class FireDragon : MonoBehaviour, IMonster
     private int _currentPatternIndex = 0;
     private int _currentFeedbackIndex = -1;
     private int _feedbackCount;
-    private float _attackDelay = 128f / 13.2f;
+    private float _attackDelay;
 
     private void Awake()
     {
         _animator = GetComponent<Animator>();
         _cameraAnimator = _camera.GetComponent<Animator>();
         _fireDragonAnimation.Init();
-
+        _attackDelay = 128f / (Managers.Game.noteDistance[Managers.Game.currentStage] / (60 / Managers.Game.bpm[Managers.Game.currentStage]));
         _patterns = new IPattern[]
         {
             new Pattern3_1(),

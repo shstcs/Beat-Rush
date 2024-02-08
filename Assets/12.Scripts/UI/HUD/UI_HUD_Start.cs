@@ -22,14 +22,14 @@ public class UI_HUD_Start : MonoBehaviour
     public void NewGame()
     {
         Managers.Data.DeleteAllFile();
-        Managers.Sound.LoopPlayBGM(BGM.Lobby2);
+        //Managers.Sound.LoopPlayBGM(BGM.Lobby2);
         Managers.Game.GameType = GameType.Lobby;
         SceneManager.LoadScene("Lobby");
     }
 
     public void Continue()
     {
-        if (!Managers.Data.LoadFileCheck("PlayerSave"))
+        if (!Managers.Data.LoadDirCheck())
         {
             Debug.Log("Load File Not Exist!!!");
         }

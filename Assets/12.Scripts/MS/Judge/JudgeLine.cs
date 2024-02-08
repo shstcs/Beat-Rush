@@ -7,7 +7,7 @@ public class JudgeLine : MonoBehaviour
     public LayerMask NoteLayer;
     public RectTransform JudgeNoteSpwanPos;
     public GameObject JudgeNote;
-   
+
     private const float _judgeNoteSpawnX = 850f;
 
 

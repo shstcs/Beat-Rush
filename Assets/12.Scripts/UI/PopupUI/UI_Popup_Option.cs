@@ -39,9 +39,5 @@ public class UI_Popup_Option : MonoBehaviour
         Managers.Sound.ContinueBGM();        //음악 재생
 
         Managers.Game.LobbyPopupCount--;
-        //Cursor.lockState = CursorLockMode.Locked;
-        //Cursor.visible = false;
-        //Time.timeScale = 1.0f;
-        //Managers.Game.lockType = InputLockType.UnLock;
     }
 }

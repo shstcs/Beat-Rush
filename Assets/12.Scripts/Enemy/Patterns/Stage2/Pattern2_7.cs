@@ -15,7 +15,7 @@ public class Pattern2_7 : IPattern
 
     public override void Feedback()
     {
-        _startDelay = Managers.Game.StageStartDelay[7];
+        _startDelay = Managers.Game.StageStartDelay[2];
         base.Feedback();
     }
 }

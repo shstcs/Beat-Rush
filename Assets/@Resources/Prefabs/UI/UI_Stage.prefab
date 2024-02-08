@@ -762,6 +762,7 @@ GameObject:
   - component: {fileID: 7245554646999699627}
   - component: {fileID: 7570481140068309784}
   - component: {fileID: 1413753132468239979}
+  - component: {fileID: 183467244993418041}
   m_Layer: 0
   m_Name: HP_Bar
   m_TagString: Untagged
@@ -783,10 +784,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 3369854372542309453}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 30, y: 30}
-  m_SizeDelta: {x: 1000, y: 60}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 40, y: -30}
+  m_SizeDelta: {x: -80, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7570481140068309784
 CanvasRenderer:
@@ -826,6 +827,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &183467244993418041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1746493469578998841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3598dfb5fa909143b57364d0a7cc22f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  size: 0.05
+  upSizeTime: 0.4
 --- !u!1 &1854785513538122232
 GameObject:
   m_ObjectHideFlags: 0
@@ -3502,6 +3517,7 @@ GameObject:
   - component: {fileID: 2858574574023524054}
   - component: {fileID: 7624609860939358739}
   - component: {fileID: 8248845988496182575}
+  - component: {fileID: 3208848657130684837}
   m_Layer: 0
   m_Name: SKILL_Bar
   m_TagString: Untagged
@@ -3523,10 +3539,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 3369854372542309453}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 30, y: -30}
-  m_SizeDelta: {x: 1000, y: 60}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: 40, y: 30}
+  m_SizeDelta: {x: -80, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7624609860939358739
 CanvasRenderer:
@@ -3566,6 +3582,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3208848657130684837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6613056308194313175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3598dfb5fa909143b57364d0a7cc22f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  size: 0.05
+  upSizeTime: 0.2
 --- !u!1 &7166289010599449700
 GameObject:
   m_ObjectHideFlags: 0

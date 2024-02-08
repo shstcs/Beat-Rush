@@ -31,7 +31,7 @@ public class UI_Popup_Stagepanel : MonoBehaviour
 
     private void OnDisable()
     {
-        Managers.Game.LobbyPopupCount--;
+        Managers.Game.LobbyPopupCount = 0;
     }
 
     private void SetText()
@@ -97,6 +97,7 @@ public class UI_Popup_Stagepanel : MonoBehaviour
                 Debug.Log(Managers.Data.CurrentStateData.CurrentClearStage);
                 if (Managers.Data.CurrentStateData.CurrentClearStage >= 0) // 테스트를 위해
                 {
+                    Managers.Game.LobbyPopupCount = 0;
                     SceneManager.LoadScene("Stage_3");
                 }
                 else

@@ -11,6 +11,7 @@ public class UI_Popup_Result : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         Managers.Game.GameType = GameType.Lobby;
+        Time.timeScale = 1f;
     }
 
     private void Start()
@@ -32,6 +33,7 @@ public class UI_Popup_Result : MonoBehaviour
         Managers.Game.Combo = 0;
         Managers.Game.MaxCombo = 0;
         Managers.Game.InitJudge();
+        Managers.Game.InitNotes();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 

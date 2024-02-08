@@ -58,7 +58,7 @@ public class GameManager : MonoBehaviour
     public int Score { get; set; }
     public int Hp { get; private set; }
     public float[] bpm = { 80f, 72f, 99f, 100f };
-    public float[] noteDistance = { 5, 5, 8, 8 };
+    public float[] noteDistance = { 5, 8, 8, 8 };
     public int[,] curNoteInStage = new int[4, 17];
     public float[] StageStartDelay = { 0, 0.5f, -1.5f, 0f };
     public Vector3[] StageNotePos =
@@ -132,16 +132,18 @@ public class GameManager : MonoBehaviour
     public void SetRank()
     {
         int noteCount = judgeNotes[0] + judgeNotes[1] + judgeNotes[2] + judgeNotes[3] + judgeNotes[4];
+        if (noteCount == 0)
+            noteCount = 1;
         float rankCount = judgeNotes[0] / noteCount;
         if (rankCount >= 0.8f && judgeNotes[3] == 0 && judgeNotes[4] == 0)
             rank = Rank.S;
-        else if (rankCount >= 0.8f)
+        else if (rankCount >= 0.8f && judgeNotes[3] > 0 && judgeNotes[4] >0)
             rank = Rank.A;
-        else if (rankCount >= 0.6f)
+        else if (rankCount >= 0.6f && rankCount < 0.8f)
             rank = Rank.B;
-        else if (!Managers.Player.IsDie())
+        else if (rankCount < 0.6f)
             rank = Rank.C;
-        else
+        else if(Managers.Player.IsDie())
             rank = Rank.F;
     }
     #endregion

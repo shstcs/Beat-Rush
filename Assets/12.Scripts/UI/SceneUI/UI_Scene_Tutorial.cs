@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class UI_Scene_Tutorial : MonoBehaviour
 {
-    private void Start()
+    private void Awake()
     {
-        Time.timeScale = 1.0f;
         Managers.UI.SetUI();
         Managers.Game.GetKeyDown += OnOption;
+    }
+    private void Start()
+    {
+        GameObject.Find("JudgeCanvas").transform.GetChild(1).gameObject.SetActive(true);
     }
 
     private void Update()
