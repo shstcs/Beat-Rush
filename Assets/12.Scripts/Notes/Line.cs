@@ -4,10 +4,12 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class Line : MonoBehaviour
 {
     public LayerMask noteLayer;
+    public Image CircleImage;
 
     private void Start()
     {
@@ -69,18 +71,21 @@ public class Line : MonoBehaviour
                     score = 30;
                     Managers.Game.judgeNotes[(int)Score.Good]++;
                     Managers.Game.curJudge = "Good";
+                    CircleImage.GetComponent<Animator>().SetTrigger("Boom");
                 }
                 else if (distance > colliderSize * 0.3f)     //Great
                 {
                     score = 50;
                     Managers.Game.judgeNotes[(int)Score.Great]++;
                     Managers.Game.curJudge = "Great";
+                    CircleImage.GetComponent<Animator>().SetTrigger("Boom");
                 }
                 else                        //Perfect
                 {
                     score = 100;
                     Managers.Game.judgeNotes[(int)Score.Perfect]++;
                     Managers.Game.curJudge = "Perfect";
+                    CircleImage.GetComponent<Animator>().SetTrigger("Boom");
                 }
 
                 colliders[0].GetComponent<Note>().BreakNote();

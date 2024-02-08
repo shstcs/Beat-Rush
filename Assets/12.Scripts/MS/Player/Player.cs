@@ -90,6 +90,7 @@ public class Player : MonoBehaviour
 
     public void ChangeHealth(int amount)
     {
+        if (_stateMachine.IsDie) return;
         Managers.Data.CurrentStateData.CurrentHealth += amount;
         Debug.Log(Managers.Data.CurrentStateData.CurrentHealth);
         if (Managers.Data.CurrentStateData.CurrentHealth <= 0)
