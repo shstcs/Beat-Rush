@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -14,6 +15,7 @@ public class GameManager : MonoBehaviour
     public UnityAction OnStageStart;
     public UnityAction OnStageEnd;
     public UnityAction GetKeyDown;
+    public UnityAction OnCombo;
     #endregion
     #region Fields
     public Vector3 PlayerSpwanPosition = new Vector3(43f, 0f, 14f);
@@ -94,6 +96,10 @@ public class GameManager : MonoBehaviour
     public void CallStageEnd()
     {
         OnStageEnd?.Invoke();
+    }
+    public void CallCombo()
+    {
+        OnCombo?.Invoke();
     }
     public void AddScore(int score)
     {
