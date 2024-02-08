@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6982611597101165382}
   - component: {fileID: 6113904558587775246}
   - component: {fileID: 4065693103303570732}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: slash-white-yellow-bolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -156,8 +156,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb15abc5387e20543b8a726504509b81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
-  distance: 20
   targetLayerMask:
     serializedVersion: 2
     m_Bits: 64
@@ -191,7 +189,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3662496979572467538}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SkillSlash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
