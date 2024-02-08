@@ -35,25 +35,31 @@ public class Note : MonoBehaviour
 
     protected void Update()
     {
-
-        if (gameObject.transform.position.z < 8 && Time.timeScale > 0)
+        if(Time.timeScale > 0)
         {
-            if(isTrap)
+            if (gameObject.transform.position.z < 8)
             {
-                Managers.Game.Combo++;
-                Managers.Game.AddScore(50 + Managers.Game.Combo);
-                BreakNote();
-            }
-            else
-            {
-                Managers.Game.Combo = 0;
-                BreakNote();
-                Managers.Game.curJudge = "Miss";
-                Managers.Game.judgeNotes[(int)Score.Miss]++;
-                if (Managers.Game.currentStage != 0)
+                if (isTrap)
                 {
-                    Managers.Player.ChangeHealth(-1);
+                    Managers.Game.Combo++;
+                    Managers.Game.AddScore(50 + Managers.Game.Combo);
+                    BreakNote();
                 }
+                else
+                {
+                    Managers.Game.Combo = 0;
+                    BreakNote();
+                    Managers.Game.curJudge = "Miss";
+                    Managers.Game.judgeNotes[(int)Score.Miss]++;
+                    if (Managers.Game.currentStage != 0)
+                    {
+                        Managers.Player.ChangeHealth(-1);
+                    }
+                }
+            }
+            else if(gameObject.transform.position.z < 9.5 && isTrap)
+            {
+                gameObject.GetComponent<Collider>().enabled = false;
             }
         }
     }
