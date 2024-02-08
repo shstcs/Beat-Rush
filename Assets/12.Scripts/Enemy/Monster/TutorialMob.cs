@@ -6,10 +6,11 @@ public class TutorialMob : MonoBehaviour, IMonster
 {
     private IPattern _pattern;
     private int _feedbackCount;
-    private float _attackDelay = 28f;
+    private float _attackDelay;
 
     private void Awake()
     {
+        _attackDelay = 165f / (Managers.Game.noteSpeed[Managers.Game.currentStage]);
         _pattern = new Pattern0();
         _pattern.SetPattern();
     }
@@ -23,11 +24,11 @@ public class TutorialMob : MonoBehaviour, IMonster
                 _pattern.Feedback();
                 _feedbackCount = 0;
             }
-            if (Time.timeScale == 0)
-            {
-                _pattern.Pause();               //다시 시작할 때를 위해
-            }
             _feedbackCount++;
+        }
+        else
+        {
+            _pattern.Pause();               //다시 시작할 때를 위해
         }
     }
 

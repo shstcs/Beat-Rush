@@ -73,7 +73,7 @@ public class UI_Popup_Stagepanel : MonoBehaviour
                 break;
             case 1:
                 Debug.Log(Managers.Data.CurrentStateData.CurrentClearStage);
-                if (Managers.Data.CurrentStateData.CurrentClearStage >= 1)
+                if (Managers.Data.CurrentStateData.CurrentClearStage >= 0) // 테스트를 위해
                 {
                     SceneManager.LoadScene("Stage_1");
                 }

@@ -59,8 +59,9 @@ public class GameManager : MonoBehaviour
     public int Hp { get; private set; }
     public float[] bpm = { 80f, 72f, 99f, 100f };
     public float[] noteDistance = { 5, 8, 8, 8 };
+    public float[] noteSpeed = { 6.6666f, 9.6f, 13.2f, 13.3333f};
     public int[,] curNoteInStage = new int[4, 17];
-    public float[] StageStartDelay = { 0, 0.5f, -1.5f, 0f };
+    public float[] StageStartDelay = { 0, 0.5f, -2.5f, 0f };
     public Vector3[] StageNotePos =
     {
         new Vector3(-2, 0, 42.5f),
@@ -70,10 +71,13 @@ public class GameManager : MonoBehaviour
     };
     public int currentStage = 1;
     public float delay = 1.5f;
-    public int curNote = 0;
     public GameType GameType = GameType.Lobby;
     public InputLockType lockType = InputLockType.UnLock;
     public Rank rank = Rank.S;
+
+    [Header("GameMode")]
+    public GameMode mode = GameMode.normal;
+    public float speedModifier = .8f;
 
     public Dictionary<QuestName, QuestData> questDatas = new Dictionary<QuestName, QuestData>();
     //private int bestScore;

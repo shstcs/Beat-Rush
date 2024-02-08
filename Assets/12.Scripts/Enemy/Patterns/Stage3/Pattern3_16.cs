@@ -7,7 +7,7 @@ public class Pattern3_16 : IPattern
     public override void SetPattern()
     {
         _pattern = CSVReader.Read("Stage3/pattern16.csv");
-        _noteSpeed = Managers.Game.noteDistance[Managers.Game.currentStage] / (60 / Managers.Game.bpm[Managers.Game.currentStage]);
+        _stageNoteSpeed = Managers.Game.noteSpeed[Managers.Game.currentStage] * Managers.Game.speedModifier;
         _noteStartPos = Managers.Game.StageNotePos[3];
         _curPatternNum = 16;
         _curStage = 3;
