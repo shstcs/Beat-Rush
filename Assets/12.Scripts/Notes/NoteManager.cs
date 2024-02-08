@@ -67,13 +67,16 @@ public class NoteManager : MonoBehaviour
         }
     }
 
-    private IEnumerator CreateNewNotes()
+    public IEnumerator CreateNewNotes()
     {
         var data = _monster.GetPatternData();
         _patternLength = data.length;
         _attackDelay = data.delay;
         _bgm = data.bgm;
-        Managers.Sound.DelayedPlayBGM(_bgm, (32.5f / _stageNoteSpeed));
+        if(Managers.Game.currentStage != 0) 
+        {
+            Managers.Sound.DelayedPlayBGM(_bgm, (32.5f / _stageNoteSpeed));
+        }
 
         for (int i = 0; i < _patternLength; i++)
         {
