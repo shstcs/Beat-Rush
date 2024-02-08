@@ -98,6 +98,7 @@ public class Line : MonoBehaviour
                     Managers.Data.CurrentStateData.SkillGauge += Managers.Data.CurrentStateData.GetSkillGaugeIncrement();
             }
         }
+        Managers.Game.SetRank();
     }
 
 }
