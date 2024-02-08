@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
+using UnityEngine.VFX;
 
 public class Note : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class Note : MonoBehaviour
     public int noteNumber = 0;
     public int stage = 0;
     public bool isTrap = false;
+    private VisualEffectAsset _effect;
+    private VisualEffectAsset _trapEffect;
     protected void Awake()
     {
         if(Managers.Game.currentStage == 0)
@@ -20,7 +23,9 @@ public class Note : MonoBehaviour
         {
             _particle = Resources.Load<ParticleSystem>("Blood Splash");
         }
-        
+
+        _effect = Managers.Resource.Load<VisualEffectAsset>("Fireball");
+        _trapEffect = Managers.Resource.Load<VisualEffectAsset>("Fireball_Trap");
     }
 
     private void Start()
@@ -30,26 +35,38 @@ public class Note : MonoBehaviour
 
     protected void Update()
     {
-        if (gameObject.transform.position.z < 8 && Time.timeScale > 0)
+        if(Time.timeScale > 0)
         {
-            if(isTrap)
+            if (gameObject.transform.position.z < 8)
             {
-                Managers.Game.Combo++;
-                Managers.Game.AddScore(50 + Managers.Game.Combo);
-                BreakNote();
-            }
-            else
-            {
-                Managers.Game.Combo = 0;
-                BreakNote();
-                Managers.Game.curJudge = "Miss";
-                Managers.Game.judgeNotes[(int)Score.Miss]++;
-                if (Managers.Game.currentStage != 0)
+                if (isTrap)
                 {
-                    Managers.Player.ChangeHealth(-1);
+                    Managers.Game.Combo++;
+                    Managers.Game.AddScore(50 + Managers.Game.Combo);
+                    BreakNote();
+                }
+                else
+                {
+                    Managers.Game.Combo = 0;
+                    BreakNote();
+                    Managers.Game.curJudge = "Miss";
+                    Managers.Game.judgeNotes[(int)Score.Miss]++;
+                    if (Managers.Game.currentStage != 0)
+                    {
+                        Managers.Player.ChangeHealth(-1);
+                    }
                 }
             }
+            else if(gameObject.transform.position.z < 9.5 && isTrap)
+            {
+                gameObject.GetComponent<Collider>().enabled = false;
+            }
         }
+    }
+
+    private void OnEnable()
+    {
+        StartCoroutine(nameof(ChangeColor));
     }
 
     public void BreakNote()
@@ -60,5 +77,22 @@ public class Note : MonoBehaviour
         transform.position = Vector3.zero;
         Managers.Game.curNoteInStage[stage,noteNumber]++;
         gameObject.SetActive(false);
+    }
+
+    private IEnumerator ChangeColor()
+    {
+        yield return new WaitForSeconds(.5f);
+
+        if (Managers.Game.currentStage == 3)
+        {
+            if (isTrap)
+            {
+                gameObject.GetComponent<VisualEffect>().visualEffectAsset = _trapEffect;
+            }
+            else
+            {
+                gameObject.GetComponent<VisualEffect>().visualEffectAsset = _effect;
+            }
+        }
     }
 }

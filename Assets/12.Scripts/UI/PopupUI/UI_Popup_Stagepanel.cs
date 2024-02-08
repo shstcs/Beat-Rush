@@ -97,7 +97,7 @@ public class UI_Popup_Stagepanel : MonoBehaviour
                 Debug.Log(Managers.Data.CurrentStateData.CurrentClearStage);
                 if (Managers.Data.CurrentStateData.CurrentClearStage >= 0) // 테스트를 위해
                 {
-                    SceneManager.LoadScene("YH-TestStage2");
+                    SceneManager.LoadScene("Stage_3");
                 }
                 else
                 {
