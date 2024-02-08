@@ -137,9 +137,9 @@ public class GameManager : MonoBehaviour
         float rankCount = judgeNotes[0] / noteCount;
         if (rankCount >= 0.8f && judgeNotes[3] == 0 && judgeNotes[4] == 0)
             rank = Rank.S;
-        else if (rankCount >= 0.8f)
+        else if (rankCount >= 0.8f && judgeNotes[3] > 0 && judgeNotes[4] >0)
             rank = Rank.A;
-        else if (rankCount >= 0.6f)
+        else if (rankCount >= 0.6f && rankCount < 0.8f)
             rank = Rank.B;
         else if (!Managers.Player.IsDie())
             rank = Rank.C;
