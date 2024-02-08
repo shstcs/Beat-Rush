@@ -93,8 +93,11 @@ public class NoteManager : MonoBehaviour
             Managers.Game.currentStage + 1 : Managers.Data.CurrentStateData.CurrentClearStage;
 
         // 데이터 저장
-        var currentStageData = Managers.Game.MaxScoreArray[Managers.Game.currentStage];
-        currentStageData.SetData(Managers.Game.Score);
+        if (!Managers.Player.IsDie())
+        {
+            var currentStageData = Managers.Game.MaxScoreArray[Managers.Game.currentStage];
+            currentStageData.SetData(Managers.Game.Score);
+        }
 
         // 퀘스트 완료
         QuestManager.instance.SetQuestClear(QuestName.StageFirstComplete);
