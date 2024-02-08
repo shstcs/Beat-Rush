@@ -22,6 +22,11 @@ public class JudgeLine : MonoBehaviour
             GameObject bottomJudgeNote = Managers.Pool.SpawnFromJudgePool();
             bottomJudgeNote.transform.SetParent(JudgeNoteSpwanPos);
             bottomJudgeNote.GetComponent<RectTransform>().anchoredPosition = new Vector2(-_judgeNoteSpawnX, 0f);
+
+            if(Managers.Game.mode == GameMode.Sudden)
+            {
+                other.GetComponent<Note>().ShowNote();
+            }
         }
     }
 }

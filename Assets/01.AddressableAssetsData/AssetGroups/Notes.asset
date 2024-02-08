@@ -35,12 +35,6 @@ MonoBehaviour:
     m_SerializedLabels:
     - PreLoads
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: ad61e3de521ffdd48ac6cef882059796
-    m_Address: Notes/Cube.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - PreLoads
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3b560b4f8a87ec44a83ac38c26b29e88
     m_Address: Notes/Clock.prefab
     m_ReadOnly: 0

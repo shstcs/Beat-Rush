@@ -77,7 +77,7 @@ public class GameManager : MonoBehaviour
 
     [Header("GameMode")]
     public GameMode mode = GameMode.normal;
-    public float speedModifier = .8f;
+    public float speedModifier = 1.0f;
 
     public Dictionary<QuestName, QuestData> questDatas = new Dictionary<QuestName, QuestData>();
     //private int bestScore;
