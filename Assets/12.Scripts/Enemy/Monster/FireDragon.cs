@@ -20,7 +20,7 @@ public class FireDragon : MonoBehaviour, IMonster
         _animator = GetComponent<Animator>();
         _cameraAnimator = _camera.GetComponent<Animator>();
         _fireDragonAnimation.Init();
-        _attackDelay = 128f / (Managers.Game.noteDistance[Managers.Game.currentStage] / (60 / Managers.Game.bpm[Managers.Game.currentStage]));
+        _attackDelay = 128f / (Managers.Game.noteSpeed[Managers.Game.currentStage]);
         _patterns = new IPattern[]
         {
             new Pattern3_1(),
@@ -58,11 +58,11 @@ public class FireDragon : MonoBehaviour, IMonster
                 _patterns[_currentFeedbackIndex].Feedback();
                 _feedbackCount = 0;
             }
-            if (Time.timeScale == 0)
-            {
-                _patterns[_currentFeedbackIndex].Pause();               //다시 시작할 때를 위해
-            }
             _feedbackCount++;
+        }
+        else
+        {
+            _patterns[_currentFeedbackIndex].Pause();               //다시 시작할 때를 위해
         }
     }
 

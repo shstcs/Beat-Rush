@@ -11,10 +11,12 @@ public class Note : MonoBehaviour
     public int noteNumber = 0;
     public int stage = 0;
     public bool isTrap = false;
+
     private VisualEffectAsset _effect;
     private VisualEffectAsset _trapEffect;
     protected void Awake()
     {
+
         if(Managers.Game.currentStage == 0)
         {
             _particle = Resources.Load<ParticleSystem>("Spheres Explode");
@@ -67,6 +69,28 @@ public class Note : MonoBehaviour
     private void OnEnable()
     {
         StartCoroutine(nameof(ChangeColor));
+        if(Managers.Game.mode == GameMode.Sudden)
+        {
+            foreach (Transform child in transform)
+            {
+                // 자식 오브젝트 비활성화
+                child.gameObject.SetActive(false);
+            }
+        }
+    }
+
+    public void ShowNote()
+    {
+        foreach (Transform child in transform)
+        {
+            // 자식 오브젝트 활성화
+            child.gameObject.SetActive(true);
+        }
+    }
+
+    public void HideNote()
+    {
+        GetComponentInChildren<Transform>().gameObject.SetActive(false);
     }
 
     public void BreakNote()

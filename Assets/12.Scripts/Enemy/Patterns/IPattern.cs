@@ -7,7 +7,7 @@ public abstract class IPattern
     protected List<Dictionary<string, object>> _pattern;
     protected double _startDsp;
     protected double _pauseDsp;
-    protected float _noteSpeed;
+    protected float _stageNoteSpeed;
     protected float _startDelay;
     protected int _curPatternNum;
     protected int _curStage;
@@ -17,21 +17,21 @@ public abstract class IPattern
     public abstract void SetPattern();
     public virtual IEnumerator Attack()
     {
-        float waitTime = 0;
+        float waitTime;
         _startDsp = AudioSettings.dspTime;
 
         for (int i = 0; i < _pattern.Count - 1;)
         {
-            if (Time.timeScale != 0)
+            if (Time.timeScale > 0)
             {
-                waitTime = (float)_pattern[i + 1]["noteLocation"] - (float)_pattern[i]["noteLocation"];
+                waitTime = ((float)_pattern[i + 1]["noteLocation"] - (float)_pattern[i]["noteLocation"]) * Managers.Game.speedModifier;
                 GameObject note = Managers.Pool.SpawnFromPool();
                 note.GetComponent<Note>().noteNumber = _curPatternNum;
                 note.GetComponent<Note>().stage = _curStage;
                 note.GetComponent<Note>().isTrap = (float)_pattern[i]["isTrap"] != 0;
                 note.transform.position = new Vector3((float)_pattern[i]["xValue"], 0, Managers.Game.delay) + _noteStartPos;
                 i++;
-                yield return new WaitForSeconds(waitTime / _noteSpeed);
+                yield return new WaitForSeconds(waitTime / _stageNoteSpeed);
             }
         }
     }
@@ -44,12 +44,12 @@ public abstract class IPattern
         }
 
         List<GameObject> _activeNotes = Managers.Pool.GetActiveAliveNotes(_curPatternNum);
-        float _noteDistance = _noteSpeed * (float)(AudioSettings.dspTime - _startDsp) + _startDelay;
+        float _noteDistance = _stageNoteSpeed * (float)(AudioSettings.dspTime - _startDsp) + _startDelay;
 
         int cnt = 0;
         for (int i = Managers.Game.curNoteInStage[_curStage, _curPatternNum]; i < Managers.Game.curNoteInStage[_curStage, _curPatternNum] + _activeNotes.Count; i++)
         {
-            float curLocation = (float)_pattern[i]["noteLocation"] - _noteDistance;
+            float curLocation = ((float)_pattern[i]["noteLocation"] * Managers.Game.speedModifier) - _noteDistance;
             GameObject note = _activeNotes[cnt++];
             note.transform.position = new Vector3(note.transform.position.x, note.transform.position.y, curLocation + 42.5f + Managers.Game.delay);
         }

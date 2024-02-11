@@ -10,7 +10,7 @@ public class NoteManager : MonoBehaviour
     private IMonster _monster;
 
     private ObjectPool _notePool;
-    private float _noteSpeed;
+    private float _stageNoteSpeed;
     private double _curDsp;
 
     [Header("StageData")]
@@ -31,7 +31,7 @@ public class NoteManager : MonoBehaviour
     {
         _notePool = Managers.Pool;
         _notePool.SetPool();
-        _noteSpeed = Managers.Game.noteDistance[Managers.Game.currentStage] / (60 / Managers.Game.bpm[Managers.Game.currentStage]);
+        _stageNoteSpeed = Managers.Game.noteSpeed[Managers.Game.currentStage] * Managers.Game.speedModifier;
         _curDsp = AudioSettings.dspTime;
 
         StartCoroutine(CreateNewNotes());
@@ -59,7 +59,7 @@ public class NoteManager : MonoBehaviour
 
     private void MoveNotes()
     {
-        float movement = ((float)(AudioSettings.dspTime - _curDsp) * _noteSpeed);
+        float movement = ((float)(AudioSettings.dspTime - _curDsp) * _stageNoteSpeed);
         foreach (GameObject note in Managers.Pool.GetActiveNotes())
         {
             note.gameObject.transform.position = new Vector3(note.gameObject.transform.position.x, note.gameObject.transform.position.y,
@@ -67,23 +67,25 @@ public class NoteManager : MonoBehaviour
         }
     }
 
-    private IEnumerator CreateNewNotes()
+    public IEnumerator CreateNewNotes()
     {
         var data = _monster.GetPatternData();
         _patternLength = data.length;
         _attackDelay = data.delay;
         _bgm = data.bgm;
-        Managers.Sound.DelayedPlayBGM(_bgm, (32.5f / _noteSpeed));
+        if(Managers.Game.currentStage != 0) 
+        {
+            Managers.Sound.DelayedPlayBGM(_bgm, (32.5f / _stageNoteSpeed));
+        }
 
         for (int i = 0; i < _patternLength; i++)
         {
             _monster.RandomAttack();
             yield return new WaitForSeconds(_attackDelay);
-            Managers.Game.curNote = 0;
             if (i != _patternLength - 1) _cameraAnimator.SetTrigger("Move");
         }
         _cameraAnimator.SetTrigger("EndMove");
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds((32.5f / _stageNoteSpeed));
         _monster.EndStage();
     }
 
