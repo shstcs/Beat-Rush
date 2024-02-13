@@ -20,14 +20,14 @@ public class UI_HUD_Stage : MonoBehaviour
         HUD_Combo = GameObject.Find("HUD_Combo");
         HUD_PlayerInfo = GameObject.Find("HUD_PlayerInfo");
         HUD_Score = GameObject.Find("HUD_Score");
-        HUD_PlayerInfo.transform.GetChild(0).GetComponent<Image>().fillAmount = 1.0f;
-        HUD_PlayerInfo.transform.GetChild(1).GetComponent<Image>().fillAmount = 0.0f;
+        HUD_PlayerInfo.transform.GetChild(0).GetChild(0).GetComponent<Image>().fillAmount = 1.0f;
+        HUD_PlayerInfo.transform.GetChild(1).GetChild(0).GetComponent<Image>().fillAmount = 0.0f;
     }
 
     private void Update()
     {
-        HUD_PlayerInfo.transform.GetChild(0).GetComponent<Image>().fillAmount = Managers.Data.CurrentStateData.CurrentHealth / _hpBarMax;
-        HUD_PlayerInfo.transform.GetChild(1).GetComponent<Image>().fillAmount = Managers.Data.CurrentStateData.SkillGauge / _skillBarMax;
+        HUD_PlayerInfo.transform.GetChild(0).GetChild(0).GetComponent<Image>().fillAmount = Managers.Data.CurrentStateData.CurrentHealth / _hpBarMax;
+        HUD_PlayerInfo.transform.GetChild(1).GetChild(0).GetComponent<Image>().fillAmount = Managers.Data.CurrentStateData.SkillGauge / _skillBarMax;
         HUD_Combo.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = Managers.Game.Combo.ToString();
         HUD_Combo.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = Managers.Game.curJudge;
         HUD_Score.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = Managers.Game.Score.ToString();

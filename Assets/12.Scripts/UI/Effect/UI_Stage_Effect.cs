@@ -7,7 +7,12 @@ public class UI_Stage_Effect : MonoBehaviour
     private float _time = 0;
     public float size = 0.5f;
 
-    public float upSizeTime = 0.2f;
+    private float upSizeTime;
+    private void Start()
+    {
+        int curStageidx = Managers.Game.currentStage;
+        upSizeTime = (Managers.Game.bpm[curStageidx]/Managers.Game.noteDistance[curStageidx])/16;
+    }
 
     private void Update()
     {
