@@ -14,7 +14,7 @@ public class JudgeNote : MonoBehaviour
     private Image _image;
 
     private const float _judgeNoteSpawnX = 850f;
-    private const float _distance = 10.9f;
+    private const float _distance = 10.5f;
 
     private void Awake()
     {

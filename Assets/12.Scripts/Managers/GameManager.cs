@@ -23,23 +23,25 @@ public class GameManager : MonoBehaviour
     public float CinemachinemVerticalAxisValue = 0f;
     public float CinemachinemmHorizontalAxisValue = 0f;
 
-    private int _lobbyPopupCount = 0;
+    private bool _isLobbyPopup = false;
 
-    public int LobbyPopupCount
+    public bool IsLobbyPopup
     {
         get
         {
-            return _lobbyPopupCount;
+            return _isLobbyPopup;
         }
         set
         {
-            _lobbyPopupCount = value;
-            if (_lobbyPopupCount == 0)
+            _isLobbyPopup = value;
+            Debug.Log(_isLobbyPopup);
+            if (!_isLobbyPopup)
             {
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
                 Time.timeScale = 1.0f;
                 Managers.Game.lockType = InputLockType.UnLock;
+                if (Managers.Player != null) Managers.Player.ChangeIdleState();
             }
             else
             {
