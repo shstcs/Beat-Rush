@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.17, y: 2.13, z: 2.3662043}
-  m_LocalScale: {x: 1.8, y: 1.8, z: 1.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -43,7 +43,7 @@ VisualEffect:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 16691665071688655}
   m_Enabled: 1
-  m_Asset: {fileID: 8926484042661614526, guid: 8690c401c81b3fe4481ff43e5839da98, type: 3}
+  m_Asset: {fileID: 8926484042661614526, guid: 6b1c060579bb6744dac2f1b13768eb7c, type: 3}
   m_InitialEventName: OnPlay
   m_InitialEventNameOverriden: 0
   m_StartSeed: 0
@@ -170,7 +170,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.5, y: 2.5, z: 2.5}
+  m_Size: {x: 4.5, y: 4.5, z: 4.5}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &-7534704248826757298
 MonoBehaviour:

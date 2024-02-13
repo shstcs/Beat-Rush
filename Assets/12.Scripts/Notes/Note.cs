@@ -100,11 +100,6 @@ public class Note : MonoBehaviour
         }
     }
 
-    public void HideNote()
-    {
-        GetComponentInChildren<Transform>().gameObject.SetActive(false);
-    }
-
     public void BreakNote()
     {
         ParticleSystem _destroyParticle = Instantiate(_particle);
@@ -117,8 +112,7 @@ public class Note : MonoBehaviour
 
     private IEnumerator ChangeColor()
     {
-        yield return new WaitForSeconds(.5f);
-
+        yield return new WaitForSeconds(.3f);
         if (Managers.Game.currentStage == 3)
         {
             if (isTrap)
