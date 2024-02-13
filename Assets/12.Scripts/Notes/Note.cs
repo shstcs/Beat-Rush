@@ -112,7 +112,6 @@ public class Note : MonoBehaviour
 
     private IEnumerator ChangeColor()
     {
-        yield return new WaitForSeconds(.3f);
         if (Managers.Game.currentStage == 3)
         {
             if (isTrap)
@@ -124,5 +123,6 @@ public class Note : MonoBehaviour
                 gameObject.GetComponent<VisualEffect>().visualEffectAsset = _effect;
             }
         }
+        yield return null;
     }
 }
