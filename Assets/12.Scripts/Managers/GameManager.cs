@@ -73,7 +73,7 @@ public class GameManager : MonoBehaviour
         new Vector3(40, 1, 42.5f),
         new Vector3(40, 1, 42.5f)
     };
-    public int currentStage = 1;
+    public int currentStage = 0;
     public float delay = 1.5f;
     public GameType GameType = GameType.Lobby;
     public InputLockType lockType = InputLockType.UnLock;
@@ -153,7 +153,7 @@ public class GameManager : MonoBehaviour
             rank = Rank.A;
         else if (rankCount >= 0.6f && rankCount < 0.8f)
             rank = Rank.B;
-        else if (rankCount < 0.6f)
+        else if (rankCount < 0.6f && Managers.Player.IsDie()==false)
             rank = Rank.C;
         else if(Managers.Player.IsDie())
             rank = Rank.F;

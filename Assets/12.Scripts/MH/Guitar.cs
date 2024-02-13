@@ -129,6 +129,9 @@ public class Guitar : MonoBehaviour, IInteractable
                 Managers.Game.currentStage = 0;
                 break;
         }
-        GameObject.Find("HUD_Canvas").transform.GetChild(2).gameObject.SetActive(true);
+        if(type == InstrumentType.Metronome)
+            GameObject.Find("HUD_Canvas").transform.GetChild(3).gameObject.SetActive(true);
+        else
+            GameObject.Find("HUD_Canvas").transform.GetChild(2).gameObject.SetActive(true);
     }
 }

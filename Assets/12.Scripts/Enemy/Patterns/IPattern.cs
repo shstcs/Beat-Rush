@@ -25,10 +25,9 @@ public abstract class IPattern
             if (Time.timeScale > 0)
             {
                 waitTime = ((float)_pattern[i + 1]["noteLocation"] - (float)_pattern[i]["noteLocation"]) * Managers.Game.speedModifier;
-                GameObject note = Managers.Pool.SpawnFromPool();
+                GameObject note = Managers.Pool.SpawnFromPool((float)_pattern[i]["isTrap"] != 0);
                 note.GetComponent<Note>().noteNumber = _curPatternNum;
                 note.GetComponent<Note>().stage = _curStage;
-                note.GetComponent<Note>().isTrap = (float)_pattern[i]["isTrap"] != 0;
                 note.transform.position = new Vector3((float)_pattern[i]["xValue"], 0, Managers.Game.delay) + _noteStartPos;
                 i++;
                 yield return new WaitForSeconds(waitTime / _stageNoteSpeed);
