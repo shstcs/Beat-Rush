@@ -1007,6 +1007,7 @@ GameObject:
   - component: {fileID: 7564908701294355592}
   - component: {fileID: 568715965189322956}
   - component: {fileID: 4959821010647235183}
+  - component: {fileID: 4003849377515061444}
   m_Layer: 6
   m_Name: Clock
   m_TagString: Note
@@ -1058,7 +1059,7 @@ BoxCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1024
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -1081,6 +1082,27 @@ MonoBehaviour:
   noteNumber: 0
   stage: 0
   isTrap: 0
+--- !u!65 &4003849377515061444
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6976001016182396791}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2, y: 2, z: 1}
+  m_Center: {x: 0, y: 1.8, z: 0}
 --- !u!1 &7574454733299455454
 GameObject:
   m_ObjectHideFlags: 0

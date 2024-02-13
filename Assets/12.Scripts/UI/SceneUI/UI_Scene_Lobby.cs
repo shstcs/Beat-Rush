@@ -20,7 +20,7 @@ public class UI_Scene_Lobby : MonoBehaviour
     private void Update()
     {
         //옵션 창 여는 부분은 나중에 Input System으로 처리해도 될 것 같습니다.
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && !Managers.Game.IsLobbyPopup)
             Managers.Game.GetKeyDown?.Invoke();
     }
 

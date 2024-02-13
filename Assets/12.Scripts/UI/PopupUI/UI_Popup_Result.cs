@@ -8,10 +8,7 @@ public class UI_Popup_Result : MonoBehaviour
 {
     private void OnEnable()
     {
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-        Managers.Game.GameType = GameType.Lobby;
-        Time.timeScale = 1f;
+        Managers.Game.IsLobbyPopup = true;
     }
 
     private void Start()
@@ -62,8 +59,6 @@ public class UI_Popup_Result : MonoBehaviour
 
     private void OnDisable()
     {
-        Time.timeScale = 1.0f;
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        Managers.Game.IsLobbyPopup = false;
     }
 }

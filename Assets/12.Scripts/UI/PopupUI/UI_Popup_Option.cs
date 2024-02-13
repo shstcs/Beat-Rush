@@ -8,12 +8,7 @@ public class UI_Popup_Option : MonoBehaviour
 {
     private void OnEnable()
     {
-        Managers.Game.LobbyPopupCount++;
-
-        //Time.timeScale = 0.0f;
-        //Cursor.lockState = CursorLockMode.None;
-        //Managers.Game.lockType = InputLockType.Lock;
-        //Cursor.visible = true;
+        Managers.Game.IsLobbyPopup = true;
 
     }
     private void Update()
@@ -38,6 +33,6 @@ public class UI_Popup_Option : MonoBehaviour
         gameObject.SetActive(false);
         Managers.Sound.ContinueBGM();        //음악 재생
 
-        Managers.Game.LobbyPopupCount--;
+        Managers.Game.IsLobbyPopup = false;
     }
 }
