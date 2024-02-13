@@ -16,18 +16,30 @@ public class Note : MonoBehaviour
     private VisualEffectAsset _trapEffect;
     protected void Awake()
     {
-
+        GameObject particlePrefab;
         if(Managers.Game.currentStage == 0)
         {
-            _particle = Resources.Load<ParticleSystem>("Spheres Explode");
+            particlePrefab = Managers.Resource.Load<GameObject>("Spheres Explode");
+        }
+        else if(Managers.Game.currentStage == 1)
+        {
+            particlePrefab = Managers.Resource.Load<GameObject>("Blood Splash");
+        }
+        else if(Managers.Game.currentStage==2)
+        {
+            particlePrefab = Managers.Resource.Load<GameObject>("Water Splash");
         }
         else
         {
-            _particle = Resources.Load<ParticleSystem>("Blood Splash");
+            particlePrefab = Managers.Resource.Load<GameObject>("Fire Splash");
         }
+        _particle = particlePrefab.GetComponent<ParticleSystem>();
 
-        _effect = Managers.Resource.Load<VisualEffectAsset>("Fireball");
-        _trapEffect = Managers.Resource.Load<VisualEffectAsset>("Fireball_Trap");
+        if (Managers.Game.currentStage == 3)
+        {
+            _effect = Managers.Resource.Load<VisualEffectAsset>("Fireball");
+            _trapEffect = Managers.Resource.Load<VisualEffectAsset>("Fireball_Trap");
+        }
     }
 
     private void Start()
