@@ -99,6 +99,7 @@ public class NoteManager : MonoBehaviour
         {
             var currentStageData = Managers.Game.MaxScoreArray[Managers.Game.currentStage];
             currentStageData.SetData(Managers.Game.Score);
+            Managers.Data.SavePlayerData();
         }
 
         // 퀘스트 완료

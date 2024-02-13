@@ -62,6 +62,8 @@ public class QuestManager : MonoBehaviour
             return;
         }
 
+        if (Managers.Game.IsLobbyPopup) return;
+
         int index = 0;
         foreach (var datas in Managers.Game.questDatas)
         {
@@ -78,14 +80,16 @@ public class QuestManager : MonoBehaviour
             _descText = questObj.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
             _rewardText = questObj.transform.GetChild(3).GetComponent<TextMeshProUGUI>();
 
-            _stateText.text = data.IsClear ? "완료" : "도전중";
+            _stateText.text = "도전중";
             if (data.IsClear && !data.IsReceive)
             {
                 questObj.transform.GetChild(4).GetComponent<Button>().interactable = true;
+                _stateText.text = "수령 가능";
             }
             if (data.IsReceive)
             {
                 questObj.transform.GetChild(0).GetComponent<Image>().color = new Color(255, 255, 255, 0.7f);
+                _stateText.text = "수령 완료";
             }
 
             _descText.text = data.QuestDesc;

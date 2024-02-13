@@ -11,14 +11,14 @@ public class UI_Popup_Stagepanel : MonoBehaviour
     private string currentStageName;
     private void OnEnable()
     {
-        Managers.Game.LobbyPopupCount++;
+        Managers.Game.IsLobbyPopup = true;
         SetText();
         SetImage();
     }
 
     private void OnDisable()
     {
-        Managers.Game.LobbyPopupCount = 0;
+        Managers.Game.IsLobbyPopup = false;
     }
 
     private void SetText()
@@ -84,7 +84,6 @@ public class UI_Popup_Stagepanel : MonoBehaviour
                 Debug.Log(Managers.Data.CurrentStateData.CurrentClearStage);
                 if (Managers.Data.CurrentStateData.CurrentClearStage >= 0) // 테스트를 위해
                 {
-                    Managers.Game.LobbyPopupCount = 0;
                     SceneManager.LoadScene("Stage_3");
                 }
                 else

@@ -118,5 +118,8 @@ public class Player : MonoBehaviour
         Managers.Sound.PlaySFX(SFX.Skill);
     }
 
-
+    public void ChangeIdleState()
+    {
+        _stateMachine.ChangeState(_stateMachine.IdleState);
+    }
 }
