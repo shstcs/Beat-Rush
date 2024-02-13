@@ -151,7 +151,7 @@ public class GameManager : MonoBehaviour
             rank = Rank.A;
         else if (rankCount >= 0.6f && rankCount < 0.8f)
             rank = Rank.B;
-        else if (rankCount < 0.6f)
+        else if (rankCount < 0.6f && Managers.Player.IsDie()==false)
             rank = Rank.C;
         else if(Managers.Player.IsDie())
             rank = Rank.F;
