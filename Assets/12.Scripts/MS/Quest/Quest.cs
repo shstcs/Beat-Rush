@@ -36,6 +36,8 @@ public class Quest : MonoBehaviour
                 break;
         }
         questData.IsReceive = true;
+        Managers.Data.CurrentStateData.Level += 1; // 레벨 1 증가
+        Managers.Game.CallLevel();
         Managers.Data.SaveQuestData();
         Managers.Data.SavePlayerData();
         transform.GetComponentInChildren<Image>().color = new Color(255, 255, 255, 0.7f);
