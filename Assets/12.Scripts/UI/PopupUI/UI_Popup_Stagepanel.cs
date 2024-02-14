@@ -9,11 +9,14 @@ public class UI_Popup_Stagepanel : MonoBehaviour
 {
     private Image monsterImage;
     private string currentStageName;
+    private TextMeshProUGUI noteSpeed;
     private void OnEnable()
     {
         Managers.Game.IsLobbyPopup = true;
+        noteSpeed = GameObject.Find("NoteSpeed").GetComponent<TextMeshProUGUI>();
         SetText();
         SetImage();
+        GetNotespeedModifier();
     }
 
     private void OnDisable()
@@ -97,5 +100,41 @@ public class UI_Popup_Stagepanel : MonoBehaviour
     public void PopupAlert()
     {
         gameObject.transform.GetChild(5).gameObject.SetActive(true);
+    }
+
+    public void ChangeSuddenMode(bool isOn)
+    {
+        if (isOn)
+        {
+            Managers.Game.mode = GameMode.Sudden;
+        }
+        else
+        {
+            Managers.Game.mode = GameMode.normal;
+        }
+    }
+    public void IncreaseSpeed()
+    {
+        if (Managers.Game.speedModifier < 2.0f)
+        {
+            Managers.Game.speedModifier += 0.1f;
+            GetNotespeedModifier();
+        }
+        else
+            return;
+    }
+    public void DecreaseSpeed()
+    {
+        if (Managers.Game.speedModifier > 0.2f)
+        {
+            Managers.Game.speedModifier -= 0.1f;
+            GetNotespeedModifier();
+        }
+        else
+            return;
+    }
+    private void GetNotespeedModifier()
+    {
+        noteSpeed.text = Managers.Game.speedModifier.ToString("N1");
     }
 }
