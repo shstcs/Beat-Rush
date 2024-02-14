@@ -108,7 +108,6 @@ public class GameManager : MonoBehaviour
     {
         OnLevel?.Invoke();
     }
-    }
     public void CallDamaged()
     {
         OnDamaged?.Invoke();
