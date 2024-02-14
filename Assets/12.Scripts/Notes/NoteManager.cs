@@ -38,7 +38,7 @@ public class NoteManager : MonoBehaviour
         Managers.Game.OnStageEnd += Managers.Sound.StopBGM;
         Managers.Game.OnStageEnd += ClearStageUpdate;
         Managers.Game.OnStageEnd += Managers.Game.InitNotes;
-        
+
     }
 
     private void Update()
@@ -69,11 +69,13 @@ public class NoteManager : MonoBehaviour
 
     public IEnumerator CreateNewNotes()
     {
+        Managers.Sound.StopBGM();
+        yield return new WaitForSeconds(4f);
         var data = _monster.GetPatternData();
         _patternLength = data.length;
         _attackDelay = data.delay;
         _bgm = data.bgm;
-        if(Managers.Game.currentStage != 0) 
+        if (Managers.Game.currentStage != 0)
         {
             Managers.Sound.DelayedPlayBGM(_bgm, (32.5f / _stageNoteSpeed));
         }
@@ -103,10 +105,12 @@ public class NoteManager : MonoBehaviour
         }
 
         // 퀘스트 완료
-        if(Managers.Game.currentStage != 0)
+        if (Managers.Game.currentStage != 0)
+        {
             QuestManager.instance.SetQuestClear(QuestName.StageFirstComplete);
-        if (Managers.Data.CurrentStateData.GetHealth() == Managers.Data.CurrentStateData.CurrentHealth)
-            QuestManager.instance.SetQuestClear(QuestName.MaxHealthClear);
+            if (Managers.Data.CurrentStateData.GetHealth() == Managers.Data.CurrentStateData.CurrentHealth)
+                QuestManager.instance.SetQuestClear(QuestName.MaxHealthClear);
+        }
 
         Managers.Sound.PlaySFX(SFX.GameClear, 0.5f);
     }
