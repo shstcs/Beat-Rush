@@ -12,11 +12,11 @@ public class GameManager : MonoBehaviour
     public UnityAction OnGameStart;
     public UnityAction OnGameOver;
     public UnityAction OnMapStart;
-    public UnityAction OnStageStart;
     public UnityAction OnStageEnd;
     public UnityAction GetKeyDown;
     public UnityAction OnCombo;
     public UnityAction OnLevel;
+    public UnityAction OnDamaged;
     #endregion
     #region Fields
     public Vector3 PlayerSpwanPosition = new Vector3(43f, 0f, 14f);
@@ -96,10 +96,6 @@ public class GameManager : MonoBehaviour
     {
         OnGameStart?.Invoke();
     }
-    public void CallStageStart()
-    {
-        OnStageStart?.Invoke();
-    }
     public void CallStageEnd()
     {
         OnStageEnd?.Invoke();
@@ -111,6 +107,10 @@ public class GameManager : MonoBehaviour
     public void CallLevel()
     {
         OnLevel?.Invoke();
+    }
+    public void CallDamaged()
+    {
+        OnDamaged?.Invoke();
     }
     public void AddScore(int score)
     {
