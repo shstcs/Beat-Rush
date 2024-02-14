@@ -14,6 +14,8 @@ public class UI_Scene_Stage : MonoBehaviour
         Managers.UI.SetUI();
         Managers.Game.GetKeyDown += OnOption;
         Managers.Game.OnStageEnd += OnStageEnd;
+
+        Debug.Log(Managers.Game.mode.ToString());
     }
 
     private void Update()
@@ -27,6 +29,8 @@ public class UI_Scene_Stage : MonoBehaviour
 
     private void OnOption()
     {
+        if (Managers.Game.IsLobbyPopup) return;
+
         Managers.Sound.PauseBGM();           //노래 정지
         GameObject.Find("Canvas").transform.GetChild(0).gameObject.SetActive(true);
     }

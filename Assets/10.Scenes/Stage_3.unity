@@ -999,6 +999,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ObjectPool
       objectReference: {fileID: 0}
+    - target: {fileID: 4372344484872361841, guid: 1c597288bbac3aa41b4ad24efa6df6b4,
+        type: 3}
+      propertyPath: poolSize
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 5394436094511012120, guid: 1c597288bbac3aa41b4ad24efa6df6b4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2113,7 +2118,6 @@ GameObject:
   m_Component:
   - component: {fileID: 638117384}
   - component: {fileID: 638117381}
-  - component: {fileID: 638117383}
   - component: {fileID: 638117382}
   m_Layer: 0
   m_Name: Camera (No Post)
@@ -2217,14 +2221,6 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
---- !u!81 &638117383
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 638117380}
-  m_Enabled: 1
 --- !u!4 &638117384
 Transform:
   m_ObjectHideFlags: 0

@@ -11,21 +11,35 @@ public class Note : MonoBehaviour
     public int noteNumber = 0;
     public int stage = 0;
     public bool isTrap = false;
+
     private VisualEffectAsset _effect;
     private VisualEffectAsset _trapEffect;
     protected void Awake()
     {
+        GameObject particlePrefab;
         if(Managers.Game.currentStage == 0)
         {
-            _particle = Resources.Load<ParticleSystem>("Spheres Explode");
+            particlePrefab = Managers.Resource.Load<GameObject>("Spheres Explode");
+        }
+        else if(Managers.Game.currentStage == 1)
+        {
+            particlePrefab = Managers.Resource.Load<GameObject>("Blood Splash");
+        }
+        else if(Managers.Game.currentStage==2)
+        {
+            particlePrefab = Managers.Resource.Load<GameObject>("Water Splash");
         }
         else
         {
-            _particle = Resources.Load<ParticleSystem>("Blood Splash");
+            particlePrefab = Managers.Resource.Load<GameObject>("Fire Splash");
         }
+        _particle = particlePrefab.GetComponent<ParticleSystem>();
 
-        _effect = Managers.Resource.Load<VisualEffectAsset>("Fireball");
-        _trapEffect = Managers.Resource.Load<VisualEffectAsset>("Fireball_Trap");
+        if (Managers.Game.currentStage == 3)
+        {
+            _effect = Managers.Resource.Load<VisualEffectAsset>("Fireball");
+            _trapEffect = Managers.Resource.Load<VisualEffectAsset>("Fireball_Trap");
+        }
     }
 
     private void Start()
@@ -54,6 +68,7 @@ public class Note : MonoBehaviour
                     if (Managers.Game.currentStage != 0)
                     {
                         Managers.Player.ChangeHealth(-1);
+                        Managers.Game.CallDamaged();
                     }
                 }
             }
@@ -67,6 +82,24 @@ public class Note : MonoBehaviour
     private void OnEnable()
     {
         StartCoroutine(nameof(ChangeColor));
+        gameObject.GetComponent<Collider>().enabled = true;
+        if (Managers.Game.mode == GameMode.Sudden)
+        {
+            foreach (Transform child in transform)
+            {
+                // 자식 오브젝트 비활성화
+                child.gameObject.SetActive(false);
+            }
+        }
+    }
+
+    public void ShowNote()
+    {
+        foreach (Transform child in transform)
+        {
+            // 자식 오브젝트 활성화
+            child.gameObject.SetActive(true);
+        }
     }
 
     public void BreakNote()
@@ -81,18 +114,17 @@ public class Note : MonoBehaviour
 
     private IEnumerator ChangeColor()
     {
-        yield return new WaitForSeconds(.5f);
-
         if (Managers.Game.currentStage == 3)
         {
             if (isTrap)
             {
-                gameObject.GetComponent<VisualEffect>().visualEffectAsset = _trapEffect;
+                gameObject.GetComponentInChildren<VisualEffect>().visualEffectAsset = _trapEffect;
             }
             else
             {
-                gameObject.GetComponent<VisualEffect>().visualEffectAsset = _effect;
+                gameObject.GetComponentInChildren<VisualEffect>().visualEffectAsset = _effect;
             }
         }
+        yield return null;
     }
 }

@@ -9,29 +9,22 @@ public class UI_Popup_Stagepanel : MonoBehaviour
 {
     private Image monsterImage;
     private string currentStageName;
+    private TextMeshProUGUI noteSpeed;
+    private Toggle toggle;
+
     private void OnEnable()
     {
-        //Time.timeScale = 0.0f;
-        //Cursor.lockState = CursorLockMode.None;
-        //Managers.Game.lockType = InputLockType.Lock;
-        //Cursor.visible = true;
-        Managers.Game.LobbyPopupCount++;
+        Managers.Game.IsLobbyPopup = true;
+        noteSpeed = GameObject.Find("NoteSpeed").GetComponent<TextMeshProUGUI>();
+        toggle = GameObject.Find("Toggle").GetComponent<Toggle>();
         SetText();
         SetImage();
+        GetNotespeedModifier();
     }
-    //private void Update()
-    //{
-    //    if (Managers.Game.currentStage > 0)
-    //        currentStageName = "스테이지 " + Managers.Game.currentStage.ToString();
-    //    else
-    //        currentStageName = "판정 보정";
-    //    gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = currentStageName;
-    //    gameObject.transform.GetChild(2).transform.GetChild(0).transform.GetComponent<TextMeshProUGUI>().text = Managers.Data.BestScore.ToString();
-    //}
 
     private void OnDisable()
     {
-        Managers.Game.LobbyPopupCount = 0;
+        Managers.Game.IsLobbyPopup = false;
     }
 
     private void SetText()
@@ -77,7 +70,7 @@ public class UI_Popup_Stagepanel : MonoBehaviour
                 break;
             case 1:
                 Debug.Log(Managers.Data.CurrentStateData.CurrentClearStage);
-                if (Managers.Data.CurrentStateData.CurrentClearStage >= 1)
+                if (Managers.Data.CurrentStateData.CurrentClearStage >= 0) // 테스트를 위해
                 {
                     SceneManager.LoadScene("Stage_1");
                 }
@@ -101,7 +94,6 @@ public class UI_Popup_Stagepanel : MonoBehaviour
                 Debug.Log(Managers.Data.CurrentStateData.CurrentClearStage);
                 if (Managers.Data.CurrentStateData.CurrentClearStage >= 0) // 테스트를 위해
                 {
-                    Managers.Game.LobbyPopupCount = 0;
                     SceneManager.LoadScene("Stage_3");
                 }
                 else
@@ -115,5 +107,43 @@ public class UI_Popup_Stagepanel : MonoBehaviour
     public void PopupAlert()
     {
         gameObject.transform.GetChild(5).gameObject.SetActive(true);
+    }
+
+    public void ChangeSuddenMode(bool isOn)
+    {
+        if (toggle.isOn)
+        {
+            Managers.Game.mode = GameMode.Sudden;
+            Debug.Log(Managers.Game.mode.ToString());
+        }
+        else
+        {
+            Managers.Game.mode = GameMode.normal;
+            Debug.Log(Managers.Game.mode.ToString());
+        }
+    }
+    public void IncreaseSpeed()
+    {
+        if (Managers.Game.speedModifier < 2.0f)
+        {
+            Managers.Game.speedModifier += 0.1f;
+            GetNotespeedModifier();
+        }
+        else
+            return;
+    }
+    public void DecreaseSpeed()
+    {
+        if (Managers.Game.speedModifier > 0.2f)
+        {
+            Managers.Game.speedModifier -= 0.1f;
+            GetNotespeedModifier();
+        }
+        else
+            return;
+    }
+    private void GetNotespeedModifier()
+    {
+        noteSpeed.text = Managers.Game.speedModifier.ToString("N1");
     }
 }

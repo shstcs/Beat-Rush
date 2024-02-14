@@ -7,7 +7,7 @@ public class Pattern2_5 : IPattern
     public override void SetPattern()
     {
         _pattern = CSVReader.Read("Stage2/pattern5.csv");
-        _noteSpeed = 13.2f;
+        _stageNoteSpeed = Managers.Game.noteSpeed[Managers.Game.currentStage] * Managers.Game.speedModifier;
         _noteStartPos = Managers.Game.StageNotePos[2];
         _curPatternNum = 5;
         _curStage = 2;

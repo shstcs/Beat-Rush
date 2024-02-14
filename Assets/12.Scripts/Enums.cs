@@ -45,3 +45,9 @@ public enum Rank
     C,
     F,
 }
+
+public enum GameMode
+{
+    normal,
+    Sudden
+}

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -11,9 +12,11 @@ public class GameManager : MonoBehaviour
     public UnityAction OnGameStart;
     public UnityAction OnGameOver;
     public UnityAction OnMapStart;
-    public UnityAction OnStageStart;
     public UnityAction OnStageEnd;
     public UnityAction GetKeyDown;
+    public UnityAction OnCombo;
+    public UnityAction OnLevel;
+    public UnityAction OnDamaged;
     #endregion
     #region Fields
     public Vector3 PlayerSpwanPosition = new Vector3(43f, 0f, 14f);
@@ -21,23 +24,25 @@ public class GameManager : MonoBehaviour
     public float CinemachinemVerticalAxisValue = 0f;
     public float CinemachinemmHorizontalAxisValue = 0f;
 
-    private int _lobbyPopupCount = 0;
+    private bool _isLobbyPopup = false;
 
-    public int LobbyPopupCount
+    public bool IsLobbyPopup
     {
         get
         {
-            return _lobbyPopupCount;
+            return _isLobbyPopup;
         }
         set
         {
-            _lobbyPopupCount = value;
-            if (_lobbyPopupCount == 0)
+            _isLobbyPopup = value;
+            Debug.Log(_isLobbyPopup);
+            if (!_isLobbyPopup)
             {
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
                 Time.timeScale = 1.0f;
                 Managers.Game.lockType = InputLockType.UnLock;
+                if (Managers.Player != null) Managers.Player.ChangeIdleState();
             }
             else
             {
@@ -59,8 +64,9 @@ public class GameManager : MonoBehaviour
     public int Hp { get; private set; }
     public float[] bpm = { 80f, 72f, 99f, 100f };
     public float[] noteDistance = { 5, 8, 8, 8 };
+    public float[] noteSpeed = { 6.6666f, 9.6f, 13.2f, 13.3333f};
     public int[,] curNoteInStage = new int[4, 17];
-    public float[] StageStartDelay = { 0, 0.5f, -1.5f, 0f };
+    public float[] StageStartDelay = { 0, 0.5f, -1f, 0f };
     public Vector3[] StageNotePos =
     {
         new Vector3(-2, 0, 42.5f),
@@ -68,12 +74,15 @@ public class GameManager : MonoBehaviour
         new Vector3(40, 1, 42.5f),
         new Vector3(40, 1, 42.5f)
     };
-    public int currentStage = 1;
+    public int currentStage = 0;
     public float delay = 1.5f;
-    public int curNote = 0;
     public GameType GameType = GameType.Lobby;
     public InputLockType lockType = InputLockType.UnLock;
     public Rank rank = Rank.S;
+
+    [Header("GameMode")]
+    public GameMode mode = GameMode.normal;
+    public float speedModifier = 1.0f;
 
     public Dictionary<QuestName, QuestData> questDatas = new Dictionary<QuestName, QuestData>();
     //private int bestScore;
@@ -87,13 +96,21 @@ public class GameManager : MonoBehaviour
     {
         OnGameStart?.Invoke();
     }
-    public void CallStageStart()
-    {
-        OnStageStart?.Invoke();
-    }
     public void CallStageEnd()
     {
         OnStageEnd?.Invoke();
+    }
+    public void CallCombo()
+    {
+        OnCombo?.Invoke();
+    } 
+    public void CallLevel()
+    {
+        OnLevel?.Invoke();
+    }
+    public void CallDamaged()
+    {
+        OnDamaged?.Invoke();
     }
     public void AddScore(int score)
     {
@@ -134,14 +151,14 @@ public class GameManager : MonoBehaviour
         int noteCount = judgeNotes[0] + judgeNotes[1] + judgeNotes[2] + judgeNotes[3] + judgeNotes[4];
         if (noteCount == 0)
             noteCount = 1;
-        float rankCount = judgeNotes[0] / noteCount;
+        float rankCount = (float)judgeNotes[0] / noteCount;
         if (rankCount >= 0.8f && judgeNotes[3] == 0 && judgeNotes[4] == 0)
             rank = Rank.S;
         else if (rankCount >= 0.8f && judgeNotes[3] > 0 && judgeNotes[4] >0)
             rank = Rank.A;
         else if (rankCount >= 0.6f && rankCount < 0.8f)
             rank = Rank.B;
-        else if (rankCount < 0.6f)
+        else if (rankCount < 0.6f && Managers.Player.IsDie()==false)
             rank = Rank.C;
         else if(Managers.Player.IsDie())
             rank = Rank.F;

@@ -51,11 +51,14 @@ public class FrostDragon : MonoBehaviour, IMonster
                 _patterns[_currentFeedbackIndex].Feedback();
                 _feedbackCount = 0;
             }
-            if (Time.timeScale == 0)
+            _feedbackCount++;
+        }
+        else
+        {
+            if(_currentFeedbackIndex >= 0)
             {
                 _patterns[_currentFeedbackIndex].Pause();               //다시 시작할 때를 위해
             }
-            _feedbackCount++;
         }
     }
 

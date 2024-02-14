@@ -28,22 +28,19 @@ public class Line : MonoBehaviour
         if (colliders.Length > 0)
         {
             colliders = colliders.OrderBy(collider => collider.transform.position.z).ToArray();
+            Collider selectCollider = colliders[0].bounds.size.z > 2 ? colliders[0] : colliders[1];
 
-            Managers.Player.Rotate(colliders[0].transform);
+            Managers.Player.Rotate(selectCollider.transform);
 
             if (Managers.Game.currentStage == 0) // 싱크 조절
             {
-
-                Managers.Game.delay = (colliders[0].transform.position.z - 10) > 0 ? Managers.Game.delay -= 0.05f : Managers.Game.delay += 0.05f;
-                Managers.Game.delay = Managers.Game.delay -= (colliders[0].transform.position.z - 10) / 4;
-
-                Debug.Log(Managers.Game.delay);
+                Managers.Game.delay = Managers.Game.delay -= (selectCollider.transform.position.z - 10) / 4;
             }
 
-            if (colliders[0].GetComponent<Note>().isTrap)   // 함정노트
+            if (selectCollider.GetComponent<Note>().isTrap)   // 함정노트
             {
                 Managers.Game.Combo = 0;
-                colliders[0].GetComponent<Note>().BreakNote();
+                selectCollider.GetComponent<Note>().BreakNote();
 
                 Managers.Game.curJudge = "Miss";
                 Managers.Game.judgeNotes[(int)Score.Miss]++;
@@ -51,22 +48,23 @@ public class Line : MonoBehaviour
                 if (Managers.Game.currentStage != 0)
                 {
                     Managers.Player.ChangeHealth(-1);
+                    Managers.Game.CallDamaged();
                 }
             }
             else                                            // 일반노트
             {
-                float distance = Mathf.Abs(10 - colliders[0].transform.position.z);
-                float colliderSize = colliders[0].bounds.size.z / 2;
-
+                float distance = Mathf.Abs(10 - selectCollider.transform.position.z);
+                float colliderSize = selectCollider.bounds.size.z / 2;
+                Debug.Log(colliderSize);
                 int score;
-                if (distance > colliderSize * 0.8f)        //Bad
+                if (distance > colliderSize * 0.9f)        //Bad
                 {
                     score = 10;
                     Managers.Game.judgeNotes[(int)Score.Bad]++;
                     Managers.Game.curJudge = "Bad";
                     Managers.Game.Combo = 0;
                 }
-                else if (distance > colliderSize * 0.5f)    //Good
+                else if (distance > colliderSize * 0.6f)    //Good
                 {
                     score = 30;
                     Managers.Game.judgeNotes[(int)Score.Good]++;
@@ -88,11 +86,19 @@ public class Line : MonoBehaviour
                     CircleImage.GetComponent<Animator>().SetTrigger("Boom");
                 }
 
-                colliders[0].GetComponent<Note>().BreakNote();
+                selectCollider.GetComponent<Note>().BreakNote();
 
                 Managers.Game.Combo++;
                 Managers.Game.MaxCombo = Managers.Game.Combo > Managers.Game.MaxCombo ? Managers.Game.Combo : Managers.Game.MaxCombo;       //나중에 리팩토링
-                Managers.Game.AddScore(score + Managers.Game.Combo);
+                if(Managers.Game.mode == GameMode.Sudden)
+                {
+                    Managers.Game.AddScore((int)(score * Managers.Game.speedModifier * 1.5f) + Managers.Game.Combo);        //돌발모드
+                }
+                else
+                {
+                    Managers.Game.AddScore((int)(score * Managers.Game.speedModifier) + Managers.Game.Combo);               //일반모드
+                }
+                
                 if (Managers.Game.Combo == 100)
                 {
                     QuestManager.instance.SetQuestClear(QuestName.Stage100Combo);

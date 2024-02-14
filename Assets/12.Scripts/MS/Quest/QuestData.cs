@@ -25,13 +25,13 @@ public class QuestData
     public bool IsReceive;
 
 
-    public QuestData(string questDesc, string rewardDesc, Reward rewards)
+    public QuestData(string questDesc, string rewardDesc, Reward rewards, bool isClear = false)
     {
         QuestDesc = questDesc;
         RewardDesc = rewardDesc;
         Rewards = rewards;
 
-        IsClear = false;
+        IsClear = isClear;
         IsReceive = false;
     }
 }

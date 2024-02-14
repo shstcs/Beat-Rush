@@ -22,9 +22,8 @@ public class UI_HUD_Start : MonoBehaviour
     public void NewGame()
     {
         Managers.Data.DeleteAllFile();
-        //Managers.Sound.LoopPlayBGM(BGM.Lobby2);
-        Managers.Game.GameType = GameType.Lobby;
-        SceneManager.LoadScene("Lobby");
+        Managers.Game.GameType = GameType.Play;
+        SceneManager.LoadScene("Tutorial");
     }
 
     public void Continue()
