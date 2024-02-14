@@ -68,6 +68,7 @@ public class Note : MonoBehaviour
                     if (Managers.Game.currentStage != 0)
                     {
                         Managers.Player.ChangeHealth(-1);
+                        Managers.Game.CallDamaged();
                     }
                 }
             }
@@ -81,7 +82,8 @@ public class Note : MonoBehaviour
     private void OnEnable()
     {
         StartCoroutine(nameof(ChangeColor));
-        if(Managers.Game.mode == GameMode.Sudden)
+        gameObject.GetComponent<Collider>().enabled = true;
+        if (Managers.Game.mode == GameMode.Sudden)
         {
             foreach (Transform child in transform)
             {

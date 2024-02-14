@@ -33,11 +33,7 @@ public class Line : MonoBehaviour
 
             if (Managers.Game.currentStage == 0) // 싱크 조절
             {
-
-                Managers.Game.delay = (colliders[0].transform.position.z - 10) > 0 ? Managers.Game.delay -= 0.05f : Managers.Game.delay += 0.05f;
                 Managers.Game.delay = Managers.Game.delay -= (colliders[0].transform.position.z - 10) / 4;
-
-                Debug.Log(Managers.Game.delay);
             }
 
             if (colliders[0].GetComponent<Note>().isTrap)   // 함정노트
@@ -51,6 +47,7 @@ public class Line : MonoBehaviour
                 if (Managers.Game.currentStage != 0)
                 {
                     Managers.Player.ChangeHealth(-1);
+                    Managers.Game.CallDamaged();
                 }
             }
             else                                            // 일반노트
@@ -92,7 +89,15 @@ public class Line : MonoBehaviour
 
                 Managers.Game.Combo++;
                 Managers.Game.MaxCombo = Managers.Game.Combo > Managers.Game.MaxCombo ? Managers.Game.Combo : Managers.Game.MaxCombo;       //나중에 리팩토링
-                Managers.Game.AddScore(score + Managers.Game.Combo);
+                if(Managers.Game.mode == GameMode.Sudden)
+                {
+                    Managers.Game.AddScore((int)(score * Managers.Game.speedModifier * 1.5f) + Managers.Game.Combo);        //돌발모드
+                }
+                else
+                {
+                    Managers.Game.AddScore((int)(score * Managers.Game.speedModifier) + Managers.Game.Combo);               //일반모드
+                }
+                
                 if (Managers.Game.Combo == 100)
                 {
                     QuestManager.instance.SetQuestClear(QuestName.Stage100Combo);
