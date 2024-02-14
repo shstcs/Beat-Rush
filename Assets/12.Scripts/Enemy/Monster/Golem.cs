@@ -53,7 +53,10 @@ public class Golem : MonoBehaviour, IMonster
         }
         else
         {
-            _patterns[_currentFeedbackIndex].Pause();               //다시 시작할 때를 위해
+            if(_currentFeedbackIndex >= 0)
+            {
+                _patterns[_currentFeedbackIndex].Pause();               //다시 시작할 때를 위해
+            }
         }
     }
 
