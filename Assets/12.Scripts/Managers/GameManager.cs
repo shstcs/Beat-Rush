@@ -151,7 +151,7 @@ public class GameManager : MonoBehaviour
         int noteCount = judgeNotes[0] + judgeNotes[1] + judgeNotes[2] + judgeNotes[3] + judgeNotes[4];
         if (noteCount == 0)
             noteCount = 1;
-        float rankCount = judgeNotes[0] / noteCount;
+        float rankCount = (float)judgeNotes[0] / noteCount;
         if (rankCount >= 0.8f && judgeNotes[3] == 0 && judgeNotes[4] == 0)
             rank = Rank.S;
         else if (rankCount >= 0.8f && judgeNotes[3] > 0 && judgeNotes[4] >0)

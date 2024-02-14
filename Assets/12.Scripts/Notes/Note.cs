@@ -118,11 +118,11 @@ public class Note : MonoBehaviour
         {
             if (isTrap)
             {
-                gameObject.GetComponent<VisualEffect>().visualEffectAsset = _trapEffect;
+                gameObject.GetComponentInChildren<VisualEffect>().visualEffectAsset = _trapEffect;
             }
             else
             {
-                gameObject.GetComponent<VisualEffect>().visualEffectAsset = _effect;
+                gameObject.GetComponentInChildren<VisualEffect>().visualEffectAsset = _effect;
             }
         }
         yield return null;
