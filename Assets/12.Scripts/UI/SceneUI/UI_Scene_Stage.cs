@@ -14,6 +14,8 @@ public class UI_Scene_Stage : MonoBehaviour
         Managers.UI.SetUI();
         Managers.Game.GetKeyDown += OnOption;
         Managers.Game.OnStageEnd += OnStageEnd;
+
+        Debug.Log(Managers.Game.mode.ToString());
     }
 
     private void Update()

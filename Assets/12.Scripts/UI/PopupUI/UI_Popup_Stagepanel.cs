@@ -10,10 +10,13 @@ public class UI_Popup_Stagepanel : MonoBehaviour
     private Image monsterImage;
     private string currentStageName;
     private TextMeshProUGUI noteSpeed;
+    private Toggle toggle;
+
     private void OnEnable()
     {
         Managers.Game.IsLobbyPopup = true;
         noteSpeed = GameObject.Find("NoteSpeed").GetComponent<TextMeshProUGUI>();
+        toggle = GameObject.Find("Toggle").GetComponent<Toggle>();
         SetText();
         SetImage();
         GetNotespeedModifier();
@@ -104,13 +107,15 @@ public class UI_Popup_Stagepanel : MonoBehaviour
 
     public void ChangeSuddenMode(bool isOn)
     {
-        if (isOn)
+        if (toggle.isOn)
         {
             Managers.Game.mode = GameMode.Sudden;
+            Debug.Log(Managers.Game.mode.ToString());
         }
         else
         {
             Managers.Game.mode = GameMode.normal;
+            Debug.Log(Managers.Game.mode.ToString());
         }
     }
     public void IncreaseSpeed()
