@@ -35,4 +35,12 @@ public class UI_Popup_Option : MonoBehaviour
 
         Managers.Game.IsLobbyPopup = false;
     }
+    public void ExitGame()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Apllication.Quit();
+#endif
+    }
 }
