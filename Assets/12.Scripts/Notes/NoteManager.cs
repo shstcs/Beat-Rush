@@ -103,7 +103,8 @@ public class NoteManager : MonoBehaviour
         }
 
         // 퀘스트 완료
-        QuestManager.instance.SetQuestClear(QuestName.StageFirstComplete);
+        if(Managers.Game.currentStage != 0)
+            QuestManager.instance.SetQuestClear(QuestName.StageFirstComplete);
         if (Managers.Data.CurrentStateData.GetHealth() == Managers.Data.CurrentStateData.CurrentHealth)
             QuestManager.instance.SetQuestClear(QuestName.MaxHealthClear);
 

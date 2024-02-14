@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public UnityAction OnStageEnd;
     public UnityAction GetKeyDown;
     public UnityAction OnCombo;
+    public UnityAction OnLevel;
     public UnityAction OnDamaged;
     #endregion
     #region Fields
@@ -102,6 +103,11 @@ public class GameManager : MonoBehaviour
     public void CallCombo()
     {
         OnCombo?.Invoke();
+    } 
+    public void CallLevel()
+    {
+        OnLevel?.Invoke();
+    }
     }
     public void CallDamaged()
     {
