@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public UnityAction OnStageEnd;
     public UnityAction GetKeyDown;
     public UnityAction OnCombo;
+    public UnityAction OnLevel;
     #endregion
     #region Fields
     public Vector3 PlayerSpwanPosition = new Vector3(43f, 0f, 14f);
@@ -106,6 +107,10 @@ public class GameManager : MonoBehaviour
     public void CallCombo()
     {
         OnCombo?.Invoke();
+    } 
+    public void CallLevel()
+    {
+        OnLevel?.Invoke();
     }
     public void AddScore(int score)
     {

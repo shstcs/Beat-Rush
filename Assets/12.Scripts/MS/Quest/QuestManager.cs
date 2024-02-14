@@ -44,13 +44,13 @@ public class QuestManager : MonoBehaviour
         if (Managers.Game.questDatas.Count > 0) return;
 
         Managers.Game.questDatas.Add(QuestName.TutorialComplete,
-            new QuestData("튜토리얼 완료", "체력 + 1", new Reward(QuestReward.HealthUp, 1f)));
+            new QuestData("튜토리얼 완료", "체력 +1", new Reward(QuestReward.HealthUp, 1f), true));
         Managers.Game.questDatas.Add(QuestName.StageFirstComplete,
-            new QuestData("스테이지 1회 완료", "스킬 게이지 증가량 + 10%", new Reward(QuestReward.SkillGaugIncrementUp, 0.1f)));
+            new QuestData("스테이지 1회 완료", "스킬 게이지 증가량 +10%", new Reward(QuestReward.SkillGaugIncrementUp, 0.1f)));
         Managers.Game.questDatas.Add(QuestName.Stage100Combo,
-            new QuestData("스테이지 콤보 100회 이상", "스킬 속도 - 10%", new Reward(QuestReward.SkillSpeedDown, -0.1f))); 
+            new QuestData("스테이지 콤보 100회 이상", "스킬 속도 -10%", new Reward(QuestReward.SkillSpeedDown, -0.1f)));
         Managers.Game.questDatas.Add(QuestName.MaxHealthClear,
-            new QuestData("체력을 잃지 않고 스테이지 1회 완료", "스킬 거리 + 10%", new Reward(QuestReward.SkillExtendedDistance, 0.1f)));
+            new QuestData("체력을 잃지 않고 스테이지 1회 완료", "스킬 거리 +10%", new Reward(QuestReward.SkillExtendedDistance, 0.1f)));
     }
 
     public void OpenQuest()
@@ -93,7 +93,7 @@ public class QuestManager : MonoBehaviour
             }
 
             _descText.text = data.QuestDesc;
-            _rewardText.text = data.RewardDesc;
+            _rewardText.text = data.RewardDesc + "\n레벨 +1";
 
             index++;
         }

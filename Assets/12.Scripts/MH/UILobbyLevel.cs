@@ -9,7 +9,12 @@ public class UILobbyLevel : MonoBehaviour
 
     private void Start()
     {
-        CheckLevel();
+        Managers.Game.OnLevel += CheckLevel;
+    }
+
+    private void OnDestroy()
+    {
+        Managers.Game.OnLevel -= CheckLevel;
     }
 
     public void CheckLevel()

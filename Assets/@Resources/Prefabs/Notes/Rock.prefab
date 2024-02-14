@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 8987246681625626850}
   - component: {fileID: 4927620106680408394}
   - component: {fileID: 328959440796198375}
+  - component: {fileID: 8075015578194895488}
   m_Layer: 6
   m_Name: Rock
   m_TagString: Note
@@ -218,6 +219,27 @@ TrailRenderer:
   m_Autodestruct: 0
   m_Emitting: 1
   m_ApplyActiveColorSpace: 1
+--- !u!65 &8075015578194895488
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6694253327151717732}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.5, y: 1.5, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7191547528863788681
 GameObject:
   m_ObjectHideFlags: 0

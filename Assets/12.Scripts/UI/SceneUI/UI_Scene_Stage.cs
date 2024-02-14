@@ -27,7 +27,7 @@ public class UI_Scene_Stage : MonoBehaviour
 
     private void OnOption()
     {
-        if (!Managers.Game.IsLobbyPopup) return;
+        if (Managers.Game.IsLobbyPopup) return;
 
         Managers.Sound.PauseBGM();           //노래 정지
         GameObject.Find("Canvas").transform.GetChild(0).gameObject.SetActive(true);
