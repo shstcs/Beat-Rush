@@ -4,11 +4,11 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class UI_Popup_Result : MonoBehaviour
+public class UI_Popup_Result : MonoBehaviour, IPopup
 {
     private void OnEnable()
     {
-        Managers.Game.IsLobbyPopup = true;
+       Managers.Popup.CurrentPopup = this;
     }
 
     private void Start()
@@ -59,6 +59,11 @@ public class UI_Popup_Result : MonoBehaviour
 
     private void OnDisable()
     {
-        Managers.Game.IsLobbyPopup = false;
+        Managers.Popup.CurrentPopup = null;
+    }
+
+    public void OffPopup()
+    {
+        
     }
 }

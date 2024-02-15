@@ -80,6 +80,15 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Popup"",
+                    ""type"": ""Button"",
+                    ""id"": ""80cc1492-ace2-4138-a67a-0f000898e305"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -236,6 +245,17 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
                     ""action"": ""Quest"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6403b686-b27a-4950-89d1-8efa7c4fd79b"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Popup"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -250,6 +270,7 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
         m_Player_Skill = m_Player.FindAction("Skill", throwIfNotFound: true);
         m_Player_Interaction = m_Player.FindAction("Interaction", throwIfNotFound: true);
         m_Player_Quest = m_Player.FindAction("Quest", throwIfNotFound: true);
+        m_Player_Popup = m_Player.FindAction("Popup", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -317,6 +338,7 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Skill;
     private readonly InputAction m_Player_Interaction;
     private readonly InputAction m_Player_Quest;
+    private readonly InputAction m_Player_Popup;
     public struct PlayerActions
     {
         private @PlayerInputAction m_Wrapper;
@@ -327,6 +349,7 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
         public InputAction @Skill => m_Wrapper.m_Player_Skill;
         public InputAction @Interaction => m_Wrapper.m_Player_Interaction;
         public InputAction @Quest => m_Wrapper.m_Player_Quest;
+        public InputAction @Popup => m_Wrapper.m_Player_Popup;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -354,6 +377,9 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
             @Quest.started += instance.OnQuest;
             @Quest.performed += instance.OnQuest;
             @Quest.canceled += instance.OnQuest;
+            @Popup.started += instance.OnPopup;
+            @Popup.performed += instance.OnPopup;
+            @Popup.canceled += instance.OnPopup;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -376,6 +402,9 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
             @Quest.started -= instance.OnQuest;
             @Quest.performed -= instance.OnQuest;
             @Quest.canceled -= instance.OnQuest;
+            @Popup.started -= instance.OnPopup;
+            @Popup.performed -= instance.OnPopup;
+            @Popup.canceled -= instance.OnPopup;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -401,5 +430,6 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
         void OnSkill(InputAction.CallbackContext context);
         void OnInteraction(InputAction.CallbackContext context);
         void OnQuest(InputAction.CallbackContext context);
+        void OnPopup(InputAction.CallbackContext context);
     }
 }

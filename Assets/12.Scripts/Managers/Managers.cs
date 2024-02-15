@@ -49,12 +49,14 @@ public class Managers : MonoBehaviour
     private Player _player = new();
     private SoundManager _sound = new();
     private DataManager _data = new();
+    private PopupManager _popup = new();
 
     public static UIManager UI => Instance?._ui;
     public static GameManager Game => Instance?._game;
     public static ResourceManager Resource => Instance?._resource;
     public static SoundManager Sound => Instance?._sound;
     public static DataManager Data => Instance?._data;
+    public static PopupManager Popup => Instance?._popup;
     public static ObjectPool Pool
     {
         get { return Instance._pool; }

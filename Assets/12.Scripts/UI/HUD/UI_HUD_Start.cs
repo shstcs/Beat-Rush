@@ -28,7 +28,7 @@ public class UI_HUD_Start : MonoBehaviour
 
     public void Continue()
     {
-        if (!Managers.Data.LoadDirCheck())
+        if (!Managers.Data.LoadFileCheck("PlayerSave"))
         {
             Debug.Log("Load File Not Exist!!!");
         }
