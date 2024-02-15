@@ -52,6 +52,10 @@ public class UI_Popup_Stagepanel : MonoBehaviour
         {
             monsterImage.sprite = Resources.Load<Sprite>("Stage2Image");
         }
+        else if (Managers.Game.currentStage == 3)
+        {
+            monsterImage.sprite = Resources.Load<Sprite>("Stage3Image");
+        }
     }
     public void StartStage()
     {
