@@ -22,6 +22,7 @@ public class UI_Popup_Result : MonoBehaviour
             transform.GetChild(0).transform.GetComponent<TextMeshProUGUI>().text = "패배...";
         else
             transform.GetChild(0).transform.GetComponent<TextMeshProUGUI>().text = "승리!";
+
         ClearResult();
     }
     public void LoadStage()
