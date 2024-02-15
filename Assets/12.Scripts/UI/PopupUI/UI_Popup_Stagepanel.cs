@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class UI_Popup_Stagepanel : MonoBehaviour
+public class UI_Popup_Stagepanel : MonoBehaviour, IPopup
 {
     private Image monsterImage;
     private string currentStageName;
@@ -14,7 +14,7 @@ public class UI_Popup_Stagepanel : MonoBehaviour
 
     private void OnEnable()
     {
-        Managers.Game.IsLobbyPopup = true;
+        Managers.Popup.CurrentPopup = this;
         noteSpeed = GameObject.Find("NoteSpeed").GetComponent<TextMeshProUGUI>();
         toggle = GameObject.Find("Toggle").GetComponent<Toggle>();
         SetText();
@@ -24,7 +24,8 @@ public class UI_Popup_Stagepanel : MonoBehaviour
 
     private void OnDisable()
     {
-        Managers.Game.IsLobbyPopup = false;
+        //Managers.Game.IsLobbyPopup = false;
+        Managers.Popup.CurrentPopup = null;
     }
 
     private void SetText()
@@ -51,6 +52,10 @@ public class UI_Popup_Stagepanel : MonoBehaviour
         else if (Managers.Game.currentStage == 2)
         {
             monsterImage.sprite = Resources.Load<Sprite>("Stage2Image");
+        }
+        else if (Managers.Game.currentStage == 3)
+        {
+            monsterImage.sprite = Resources.Load<Sprite>("Stage3Image");
         }
     }
     public void StartStage()
@@ -141,5 +146,11 @@ public class UI_Popup_Stagepanel : MonoBehaviour
     private void GetNotespeedModifier()
     {
         noteSpeed.text = Managers.Game.speedModifier.ToString("N1");
+    }
+
+    public void OffPopup()
+    {
+        Managers.Popup.CurrentPopup = null;
+        gameObject.SetActive(false);
     }
 }

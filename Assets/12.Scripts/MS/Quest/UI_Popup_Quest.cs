@@ -2,17 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UI_Popup_Quest : MonoBehaviour
+public class UI_Popup_Quest : MonoBehaviour, IPopup
 {
     private void OnEnable()
     {
-        Managers.Game.IsLobbyPopup = true;
+        Managers.Popup.CurrentPopup = this;
     }
 
-    public void closeWindow()
+    public void OffPopup()
     {
         gameObject.SetActive(false);
+    }
 
-        Managers.Game.IsLobbyPopup = false;
+    private void OnDisable()
+    {
+        Managers.Popup.CurrentPopup = null;
     }
 }

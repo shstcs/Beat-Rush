@@ -24,36 +24,6 @@ public class GameManager : MonoBehaviour
     public float CinemachinemVerticalAxisValue = 0f;
     public float CinemachinemmHorizontalAxisValue = 0f;
 
-    private bool _isLobbyPopup = false;
-
-    public bool IsLobbyPopup
-    {
-        get
-        {
-            return _isLobbyPopup;
-        }
-        set
-        {
-            _isLobbyPopup = value;
-            Debug.Log(_isLobbyPopup);
-            if (!_isLobbyPopup)
-            {
-                Cursor.lockState = CursorLockMode.Locked;
-                Cursor.visible = false;
-                Time.timeScale = 1.0f;
-                Managers.Game.lockType = InputLockType.UnLock;
-                if (Managers.Player != null) Managers.Player.ChangeIdleState();
-            }
-            else
-            {
-                Managers.Game.lockType = InputLockType.Lock;
-                Cursor.visible = true;
-                Cursor.lockState = CursorLockMode.None;
-                Time.timeScale = 0.0f;
-            }
-        }
-    }
-
     public int[] judgeNotes = new int[5];
     public string curJudge;
     public int Combo { get; set; }
@@ -64,7 +34,7 @@ public class GameManager : MonoBehaviour
     public int Hp { get; private set; }
     public float[] bpm = { 80f, 72f, 99f, 100f };
     public float[] noteDistance = { 5, 8, 8, 8 };
-    public float[] noteSpeed = { 6.6666f, 9.6f, 13.2f, 13.3333f};
+    public float[] noteSpeed = { 6.6666f, 9.6f, 13.2f, 13.3333f };
     public int[,] curNoteInStage = new int[4, 17];
     public float[] StageStartDelay = { 0, 0.5f, -1f, 0f };
     public Vector3[] StageNotePos =
@@ -103,7 +73,7 @@ public class GameManager : MonoBehaviour
     public void CallCombo()
     {
         OnCombo?.Invoke();
-    } 
+    }
     public void CallLevel()
     {
         OnLevel?.Invoke();
@@ -154,13 +124,13 @@ public class GameManager : MonoBehaviour
         float rankCount = (float)judgeNotes[0] / noteCount;
         if (rankCount >= 0.8f && judgeNotes[3] == 0 && judgeNotes[4] == 0)
             rank = Rank.S;
-        else if (rankCount >= 0.8f && judgeNotes[3] > 0 && judgeNotes[4] >0)
+        else if (rankCount >= 0.8f && judgeNotes[3] > 0 && judgeNotes[4] > 0)
             rank = Rank.A;
         else if (rankCount >= 0.6f && rankCount < 0.8f)
             rank = Rank.B;
-        else if (rankCount < 0.6f && Managers.Player.IsDie()==false)
+        else if (rankCount < 0.6f && Managers.Player.IsDie() == false)
             rank = Rank.C;
-        else if(Managers.Player.IsDie())
+        else if (Managers.Player.IsDie())
             rank = Rank.F;
     }
     #endregion

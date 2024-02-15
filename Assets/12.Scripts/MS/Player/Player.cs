@@ -53,6 +53,7 @@ public class Player : MonoBehaviour
         Managers.Player = this;
 
         Input.PlayerActions.Quest.started += OpenQuestWindow;
+        Input.PlayerActions.Popup.started += Managers.Popup.OffPopupWindow;
 
         if (Managers.Game.GameType == GameType.Lobby)
         {
@@ -73,6 +74,12 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         _stateMachine.PhysicsUpdate();
+    }
+
+    private void OnDestroy()
+    {
+        Input.PlayerActions.Quest.started -= OpenQuestWindow;
+        Input.PlayerActions.Popup.started -= Managers.Popup.OffPopupWindow;
     }
 
     private void OpenQuestWindow(InputAction.CallbackContext context)
