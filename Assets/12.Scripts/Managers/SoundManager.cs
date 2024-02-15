@@ -130,7 +130,7 @@ public class SoundManager
     {
         AudioSourceBGM.volume = _masterVolume * _volumeBGM;
     }
-    
+
     private void SetVolumeSFX()
     {
         AudioSourceSFX.volume = _masterVolume * _volumeSFX;
@@ -144,6 +144,18 @@ public class SoundManager
     public void ContinueBGM()
     {
         AudioSourceBGM?.UnPause();
+    }    
+    public void ContinueBGM(float delay)
+    {
+        if(AudioSourceBGM.time > 0)
+        {
+            AudioSourceBGM?.UnPause();
+        }
+        else
+        {
+            AudioSourceBGM?.Stop();
+            AudioSourceBGM?.PlayDelayed(delay);
+        }
     }
 
     public void StopBGM()
