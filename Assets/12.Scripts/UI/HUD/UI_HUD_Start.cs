@@ -58,6 +58,8 @@ public class UI_HUD_Start : MonoBehaviour
     {
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
+#elif UNITY_WEBGL
+        
 #else
         Apllication.Quit();
 #endif

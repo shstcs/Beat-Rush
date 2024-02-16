@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
-using UnityEditorInternal;
 using UnityEngine;
 
 public class PlayerComboAttackState : PlayerAttackState
@@ -60,14 +59,14 @@ public class PlayerComboAttackState : PlayerAttackState
 
     //    float normalizedTime = GetNormalizeTime(stateMachine.Player.Animator, "Attack");
 
-    //    if (normalizedTime < 1f)  // ÀÌ¹Ì ¾Ö´Ï¸ŞÀÌ¼ÇÀÌ Ã³¸® Áß
+    //    if (normalizedTime < 1f)  // ì´ë¯¸ ì• ë‹ˆë©”ì´ì…˜ì´ ì²˜ë¦¬ ì¤‘
     //    {
     //        if (normalizedTime >= attackInfoData.ForceTransitionTime)
     //            ApplyForce();
     //        if (normalizedTime >= attackInfoData.ComboTransitionTime)
     //            ComboAttack();
     //    }
-    //    else // ¾Ö´Ï¸ŞÀÌ¼Ç Ã³¸® ¿Ï·á
+    //    else // ì• ë‹ˆë©”ì´ì…˜ ì²˜ë¦¬ ì™„ë£Œ
     //    {
     //        Debug.Log(alreadyApplyCombo);
     //        if (alreadyApplyCombo)

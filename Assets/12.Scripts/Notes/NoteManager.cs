@@ -1,7 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class NoteManager : MonoBehaviour
@@ -70,13 +67,13 @@ public class NoteManager : MonoBehaviour
     public IEnumerator CreateNewNotes()
     {
         Managers.Sound.StopBGM();
-        yield return new WaitForSeconds(4f);
         var data = _monster.GetPatternData();
         _patternLength = data.length;
         _attackDelay = data.delay;
         _bgm = data.bgm;
         if (Managers.Game.currentStage != 0)
         {
+            //yield return new WaitForSeconds(4f);
             Managers.Sound.DelayedPlayBGM(_bgm, (32.5f / _stageNoteSpeed));
         }
 

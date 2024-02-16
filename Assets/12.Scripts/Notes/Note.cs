@@ -81,7 +81,11 @@ public class Note : MonoBehaviour
 
     private void OnEnable()
     {
-        StartCoroutine(nameof(ChangeColor));
+        if (Managers.Game.mode == GameMode.normal)
+        {
+            ChangeColor();
+        }
+        
         gameObject.GetComponent<Collider>().enabled = true;
         if (Managers.Game.mode == GameMode.Sudden)
         {
@@ -100,6 +104,10 @@ public class Note : MonoBehaviour
             // 자식 오브젝트 활성화
             child.gameObject.SetActive(true);
         }
+        if(Managers.Game.currentStage == 3)
+        {
+            ChangeColor();
+        }
     }
 
     public void BreakNote()
@@ -112,7 +120,7 @@ public class Note : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    private IEnumerator ChangeColor()
+    private void ChangeColor()
     {
         if (Managers.Game.currentStage == 3)
         {
@@ -125,6 +133,5 @@ public class Note : MonoBehaviour
                 gameObject.GetComponentInChildren<VisualEffect>().visualEffectAsset = _effect;
             }
         }
-        yield return null;
     }
 }

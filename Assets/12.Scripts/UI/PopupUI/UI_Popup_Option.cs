@@ -46,19 +46,24 @@ public class UI_Popup_Option : MonoBehaviour, IPopup
         Managers.Popup.CurrentPopup = null;
         Managers.Sound.ContinueBGM();        //음악 재생
         gameObject.SetActive(false);
-        if(Managers.Game.GameType == GameType.Play)
+        if (Managers.Game.GameType == GameType.Play)
         {
             List<GameObject> notes = Managers.Pool.GetActiveNotes();
             float distance = 32.5f;
-            if(notes.Count > 0) distance = notes[0].transform.position.z - 12;
-            float time = distance / (Managers.Game.noteSpeed[Managers.Game.currentStage] * Managers.Game.speedModifier);
-            Managers.Sound.ContinueBGM(time);        //음악 재생
+            if (notes.Count > 0)
+            {
+                distance = notes[0].transform.position.z - 12;
+                float time = distance / (Managers.Game.noteSpeed[Managers.Game.currentStage] * Managers.Game.speedModifier);
+                Managers.Sound.ContinueBGM(time);   //음악 재생
+            }
         }
-
+    }
     public void ExitGame()
     {
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
+#elif UNITY_WEBGL
+        
 #else
         Apllication.Quit();
 #endif
