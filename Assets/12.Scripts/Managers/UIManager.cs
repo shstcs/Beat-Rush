@@ -9,15 +9,15 @@ public class UIManager : MonoBehaviour
 {
     public void SetUI()
     {
-        if (SceneManager.GetActiveScene().name == "StartUI_Test_Scene")
+        if (SceneManager.GetActiveScene().name == "Start")
         {
             SetStartHUD();
         }
-        else if (SceneManager.GetActiveScene().name == "StageUI_Test_Scene" || SceneManager.GetActiveScene().name == "Stage_1" || SceneManager.GetActiveScene().name == "Stage_2" || SceneManager.GetActiveScene().name == "Stage_3")
+        else if (SceneManager.GetActiveScene().name == "Stage_1" || SceneManager.GetActiveScene().name == "Stage_2" || SceneManager.GetActiveScene().name == "Stage_3")
         {
             SetStageHUD();
         }
-        else if (SceneManager.GetActiveScene().name == "LobbyUI_Test_Scene" || SceneManager.GetActiveScene().name == "Lobby")
+        else if (SceneManager.GetActiveScene().name == "Lobby")
         {
             SetMapHUD();
         }

@@ -13,15 +13,6 @@ public class UI_Popup_Option : MonoBehaviour, IPopup
         Managers.Player.Input.PlayerActions.Popup.started += OffOption;
     }
 
-    //private void Update()
-    //{
-    //    //옵션 창 닫는 부분은 나중에 Input System으로 처리해도 될 것 같습니다.
-    //    if (Input.GetKeyDown(KeyCode.Escape))
-    //    {
-    //        OffOption();
-    //    }
-    //}
-
     private void OnDisable()
     {
         Managers.Player.Input.PlayerActions.Popup.started -= OffOption;
@@ -29,6 +20,8 @@ public class UI_Popup_Option : MonoBehaviour, IPopup
 
     public void OnLobby()
     {
+        if (Managers.Data.CurrentStateData.CurrentClearStage < 1) return;
+
         OffWindow();
         if (SceneManager.GetActiveScene().name == "Lobby")
             return;
@@ -57,10 +50,18 @@ public class UI_Popup_Option : MonoBehaviour, IPopup
                 Managers.Sound.ContinueBGM(time);   //음악 재생
             }
         }
+        SceneManager.LoadScene("Start");
     }
+
     public void ExitGame()
     {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#elif UNITY_WEBGL
+        SceneManager.LoadScene
+#else
         Application.Quit();
+#endif
     }
 
     public void OffPopup()
