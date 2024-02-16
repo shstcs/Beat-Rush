@@ -11,10 +11,10 @@ public class UI_Scene_Lobby : MonoBehaviour
     {
         Managers.Game.GameType = GameType.Lobby;
         Managers.Game.mode = GameMode.normal;
-        Managers.Player.Input.PlayerActions.Popup.started += OnOption;
     }
     private void Start()
     {
+        Managers.Player.Input.PlayerActions.Popup.started += OnOption;
         Time.timeScale = 1.0f;
         Managers.UI.SetUI();
         //Managers.Game.GetKeyDown += OnOption;

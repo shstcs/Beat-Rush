@@ -6,12 +6,9 @@ using UnityEngine.InputSystem;
 
 public class UI_Scene_Stage : MonoBehaviour
 {
-    private void Awake()
-    {
-        Managers.Player.Input.PlayerActions.Popup.started += OnOption;
-    }
     private void Start()
     {
+        Managers.Player.Input.PlayerActions.Popup.started += OnOption;
         Time.timeScale = 1.0f;
         Managers.Game.Score = 0;
         Managers.Game.Combo = 0;

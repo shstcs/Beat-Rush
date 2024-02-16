@@ -29,11 +29,6 @@ MonoBehaviour:
     m_SerializedLabels:
     - PreLoads
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: e8f52af8ac7debd419b42f8d4d7422f3
-    m_Address: Notes/Rock.obj
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3b560b4f8a87ec44a83ac38c26b29e88
     m_Address: Notes/Clock.prefab
     m_ReadOnly: 0

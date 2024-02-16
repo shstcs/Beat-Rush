@@ -107,16 +107,6 @@ MonoBehaviour:
     m_SerializedLabels:
     - PreLoads
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 6b1c060579bb6744dac2f1b13768eb7c
-    m_Address: Fireball
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 8690c401c81b3fe4481ff43e5839da98
-    m_Address: Fireball_Trap
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ad81daa5647208c4db859c5d9a67ec6f
     m_Address: Blood Splash
     m_ReadOnly: 0

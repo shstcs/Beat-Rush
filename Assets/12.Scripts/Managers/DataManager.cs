@@ -77,10 +77,20 @@ public class DataManager : MonoBehaviour
 
     public void DeleteAllFile()
     {
-        path = Application.persistentDataPath;
-        if (Directory.Exists(path))
+        path = Application.persistentDataPath + "/";
+        if (File.Exists(path + "PlayerSave"))
         {
-            Directory.Delete(path, true);
+            File.Delete(path + "PlayerSave");
+        }
+
+        if (File.Exists(path + "QuestSave"))
+        {
+            File.Delete(path + "QuestSave");
+        }
+
+        if (File.Exists(path + "StageSave"))
+        {
+            File.Delete(path + "StageSave");
         }
     }
 

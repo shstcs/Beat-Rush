@@ -70,7 +70,7 @@ public class UI_Popup_Stagepanel : MonoBehaviour, IPopup
                 SceneManager.LoadScene("Tutorial");
                 break;
             case 1:
-                Debug.Log(Managers.Data.CurrentStateData.CurrentClearStage);
+                Debug.Log("CurrentClearState" + Managers.Data.CurrentStateData.CurrentClearStage);
                 if (Managers.Data.CurrentStateData.CurrentClearStage >= 1) // 테스트를 위해
                 {
                     SceneManager.LoadScene("Stage_1");
@@ -81,7 +81,7 @@ public class UI_Popup_Stagepanel : MonoBehaviour, IPopup
                 }
                 break;
             case 2:
-                Debug.Log(Managers.Data.CurrentStateData.CurrentClearStage);
+                Debug.Log("CurrentClearState" + Managers.Data.CurrentStateData.CurrentClearStage);
                 if (Managers.Data.CurrentStateData.CurrentClearStage >= 2)
                 {
                     SceneManager.LoadScene("Stage_2");
@@ -92,7 +92,7 @@ public class UI_Popup_Stagepanel : MonoBehaviour, IPopup
                 }
                 break;
             case 3:
-                Debug.Log(Managers.Data.CurrentStateData.CurrentClearStage);
+                Debug.Log("CurrentClearState" + Managers.Data.CurrentStateData.CurrentClearStage);
                 if (Managers.Data.CurrentStateData.CurrentClearStage >= 3) // 테스트를 위해
                 {
                     SceneManager.LoadScene("Stage_3");
