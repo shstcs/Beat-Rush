@@ -50,15 +50,17 @@ public class UI_Popup_Option : MonoBehaviour, IPopup
                 Managers.Sound.ContinueBGM(time);   //음악 재생
             }
         }
+        SceneManager.LoadScene("Start");
     }
+
     public void ExitGame()
     {
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #elif UNITY_WEBGL
-        
+        SceneManager.LoadScene
 #else
-        Apllication.Quit();
+        Application.Quit();
 #endif
     }
 
