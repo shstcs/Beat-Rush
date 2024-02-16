@@ -37,8 +37,8 @@ public class Note : MonoBehaviour
 
         if (Managers.Game.currentStage == 3)
         {
-            _effect = Managers.Resource.Load<VisualEffectAsset>("Fireball");
-            _trapEffect = Managers.Resource.Load<VisualEffectAsset>("Fireball_Trap");
+            _effect = Resources.Load<VisualEffectAsset>("Fireball");
+            _trapEffect = Resources.Load<VisualEffectAsset>("Fireball_Trap");
         }
     }
 

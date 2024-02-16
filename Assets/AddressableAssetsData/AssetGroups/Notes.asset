@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Notes
+  m_EditorClassIdentifier: 
+  m_GroupName: Notes
+  m_Data:
+    m_SerializedData: []
+  m_GUID: f6d12b3f681674f41a56887128b8ca48
+  m_SerializeEntries:
+  - m_GUID: 6054aad5b0a41804585ef6da98d7b40b
+    m_Address: Notes/Ice.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoads
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: da96dd007bde1c64db3f0efb532f1b25
+    m_Address: Notes/Fire.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoads
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e8f52af8ac7debd419b42f8d4d7422f3
+    m_Address: Notes/Rock.obj
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3b560b4f8a87ec44a83ac38c26b29e88
+    m_Address: Notes/Clock.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoads
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0d107dce92eb14049b4038330821919d
+    m_Address: Notes/JudgeNote.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoads
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 5feae7305fb988643a34ec8e75f20243, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 79e63c9a7a22c054ba958ccaf75e4f86, type: 2}
+    - {fileID: 11400000, guid: f8087eb302be2934b80cf553df1d9f51, type: 2}

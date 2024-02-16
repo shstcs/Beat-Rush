@@ -56,13 +56,7 @@ public class UI_HUD_Start : MonoBehaviour
     }
     public void ExitGame()
     {
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#elif UNITY_WEBGL
-        
-#else
-        Apllication.Quit();
-#endif
+        Application.Quit();
     }
 
     #endregion
