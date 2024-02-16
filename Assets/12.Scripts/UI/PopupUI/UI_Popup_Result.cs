@@ -4,11 +4,11 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class UI_Popup_Result : MonoBehaviour
+public class UI_Popup_Result : MonoBehaviour, IPopup
 {
     private void OnEnable()
     {
-        Managers.Game.IsLobbyPopup = true;
+       Managers.Popup.CurrentPopup = this;
     }
 
     private void Start()
@@ -22,6 +22,7 @@ public class UI_Popup_Result : MonoBehaviour
             transform.GetChild(0).transform.GetComponent<TextMeshProUGUI>().text = "패배...";
         else
             transform.GetChild(0).transform.GetComponent<TextMeshProUGUI>().text = "승리!";
+
         ClearResult();
     }
     public void LoadStage()
@@ -59,6 +60,11 @@ public class UI_Popup_Result : MonoBehaviour
 
     private void OnDisable()
     {
-        Managers.Game.IsLobbyPopup = false;
+        Managers.Popup.CurrentPopup = null;
+    }
+
+    public void OffPopup()
+    {
+        
     }
 }

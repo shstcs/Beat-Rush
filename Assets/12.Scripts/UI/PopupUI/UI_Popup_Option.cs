@@ -2,34 +2,49 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
-public class UI_Popup_Option : MonoBehaviour
+public class UI_Popup_Option : MonoBehaviour, IPopup
 {
-    private float _musicDelay;
     private void OnEnable()
     {
-        Managers.Game.IsLobbyPopup = true;
+        Managers.Popup.CurrentPopup = this;
+        Managers.Player.Input.PlayerActions.Popup.started += OffOption;
     }
-    private void Update()
+
+    //private void Update()
+    //{
+    //    //옵션 창 닫는 부분은 나중에 Input System으로 처리해도 될 것 같습니다.
+    //    if (Input.GetKeyDown(KeyCode.Escape))
+    //    {
+    //        OffOption();
+    //    }
+    //}
+
+    private void OnDisable()
     {
-        //옵션 창 닫는 부분은 나중에 Input System으로 처리해도 될 것 같습니다.
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            OffOption();
-        }
+        Managers.Player.Input.PlayerActions.Popup.started -= OffOption;
     }
+
     public void OnLobby()
     {
-        OffOption();
+        OffWindow();
         if (SceneManager.GetActiveScene().name == "Lobby")
             return;
         Managers.Sound.StopBGM();
         Managers.Sound.LoopPlayBGM(BGM.Lobby2);
         SceneManager.LoadScene("Lobby");
     }
-    public void OffOption()
+    public void OffOption(InputAction.CallbackContext context)
     {
+        OffWindow();
+    }
+
+    private void OffWindow()
+    {
+        Managers.Popup.CurrentPopup = null;
+        Managers.Sound.ContinueBGM();        //음악 재생
         gameObject.SetActive(false);
         if(Managers.Game.GameType == GameType.Play)
         {
@@ -40,8 +55,6 @@ public class UI_Popup_Option : MonoBehaviour
             Managers.Sound.ContinueBGM(time);        //음악 재생
         }
 
-        Managers.Game.IsLobbyPopup = false;
-    }
     public void ExitGame()
     {
 #if UNITY_EDITOR
@@ -49,5 +62,10 @@ public class UI_Popup_Option : MonoBehaviour
 #else
         Apllication.Quit();
 #endif
+    }
+
+    public void OffPopup()
+    {
+    
     }
 }

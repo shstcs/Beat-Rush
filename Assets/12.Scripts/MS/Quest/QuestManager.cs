@@ -57,12 +57,12 @@ public class QuestManager : MonoBehaviour
     {
         if (questWindow.activeSelf)
         {
-            questWindow.GetComponent<UI_Popup_Quest>().closeWindow();
+            questWindow.GetComponent<UI_Popup_Quest>().OffPopup();
             Managers.Sound.ContinueBGM();
             return;
         }
 
-        if (Managers.Game.IsLobbyPopup) return;
+        if (Managers.Popup.IsPopupActive()) return;
 
         int index = 0;
         foreach (var datas in Managers.Game.questDatas)
