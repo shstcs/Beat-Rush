@@ -113,7 +113,7 @@ public class DataManager : MonoBehaviour
         Managers.Game.questDatas = JsonConvert.DeserializeObject<Dictionary<QuestName, QuestData>>(questSaveData);
     }
 
-    private void LoadSoundData()
+    public void LoadSoundData()
     {
         if (!LoadFileCheck(soundDataFileName))
         {
