@@ -10,6 +10,7 @@ public class UI_Scene_Lobby : MonoBehaviour
     private void Awake()
     {
         Managers.Game.GameType = GameType.Lobby;
+        Managers.Game.mode = GameMode.normal;
         Managers.Player.Input.PlayerActions.Popup.started += OnOption;
     }
     private void Start()
