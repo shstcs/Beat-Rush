@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
+using UnityEditor.Rendering.Universal;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,6 +12,9 @@ public class QuestManager : MonoBehaviour
 
     [SerializeField]
     private GameObject questWindow;
+    [SerializeField]
+    private TextMeshProUGUI questText;
+    private int _textRowCount;
     [SerializeField]
     private GameObject _content;
     [SerializeField]
@@ -44,13 +48,17 @@ public class QuestManager : MonoBehaviour
         if (Managers.Game.questDatas.Count > 0) return;
 
         Managers.Game.questDatas.Add(QuestName.TutorialComplete,
-            new QuestData("튜토리얼 완료", "체력 +1", new Reward(QuestReward.HealthUp, 1f), true));
+            new QuestData("튜토리얼 클리어하기", "체력 +1", new Reward(QuestReward.HealthUp, 1f), true));
         Managers.Game.questDatas.Add(QuestName.StageFirstComplete,
-            new QuestData("스테이지 1회 완료", "스킬 게이지 증가량 +10%", new Reward(QuestReward.SkillGaugIncrementUp, 0.1f)));
+            new QuestData("스테이지 1회 클리어하기", "스킬 게이지 증가량 +10%", new Reward(QuestReward.SkillGaugIncrementUp, 0.1f)));
         Managers.Game.questDatas.Add(QuestName.Stage100Combo,
-            new QuestData("스테이지 콤보 100회 이상", "스킬 속도 -10%", new Reward(QuestReward.SkillSpeedDown, -0.1f)));
+            new QuestData("스테이지 콤보 100회 이상으로 클리어하기", "스킬 속도 -10%", new Reward(QuestReward.SkillSpeedDown, -0.1f)));
         Managers.Game.questDatas.Add(QuestName.MaxHealthClear,
-            new QuestData("체력을 잃지 않고 스테이지 1회 완료", "스킬 거리 +10%", new Reward(QuestReward.SkillExtendedDistance, 0.1f)));
+            new QuestData("체력을 잃지 않고 스테이지 1회 클리어하기", "스킬 거리 +10%", new Reward(QuestReward.SkillExtendedDistance, 0.1f)));
+        Managers.Game.questDatas.Add(QuestName.SpeedUpClear,
+            new QuestData("스테이지 1.5배속 이상으로 클리어하기", "스킬 게이지 증가량 +15%", new Reward(QuestReward.SkillGaugIncrementUp, 0.15f)));
+        Managers.Game.questDatas.Add(QuestName.SuddenModeClear,
+            new QuestData("스테이지 돌발모드 클리어하기", "스킬 거리 +15%", new Reward(QuestReward.SkillExtendedDistance, 0.15f)));
     }
 
     public void OpenQuest()
@@ -111,4 +119,27 @@ public class QuestManager : MonoBehaviour
         Managers.Game.questDatas[questName].IsClear = true;
         Managers.Data.SaveQuestData();
     }
+
+    public void QuestNotice()
+    {
+        QuestTextClear();
+        foreach (var datas in Managers.Game.questDatas)
+        {
+            QuestData data = datas.Value;
+            if(data.IsClear && !data.IsReceive)
+            {
+                if(_textRowCount < 3)
+                    questText.text += new string($"\"{data.QuestDesc}\" 퀘스트 보상 수령 가능!\n");
+
+                _textRowCount++;
+            }
+        }
+    }
+
+    public void QuestTextClear()
+    {
+        questText.text = "";
+        _textRowCount = 0;
+    }
+
 }

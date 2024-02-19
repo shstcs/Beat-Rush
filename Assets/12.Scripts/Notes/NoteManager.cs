@@ -104,6 +104,10 @@ public class NoteManager : MonoBehaviour
                 QuestManager.instance.SetQuestClear(QuestName.StageFirstComplete);
                 if (Managers.Data.CurrentStateData.GetHealth() == Managers.Data.CurrentStateData.CurrentHealth)
                     QuestManager.instance.SetQuestClear(QuestName.MaxHealthClear);
+                if (Managers.Game.speedModifier >= 1.5f)
+                    QuestManager.instance.SetQuestClear(QuestName.SpeedUpClear);
+                if (Managers.Game.mode == GameMode.Sudden)
+                    QuestManager.instance.SetQuestClear(QuestName.SuddenModeClear);
             }
         }
 

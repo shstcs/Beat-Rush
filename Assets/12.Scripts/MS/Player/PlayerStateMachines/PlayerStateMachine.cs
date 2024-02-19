@@ -18,7 +18,7 @@ public class PlayerStateMachine : StateMachine
     public float RotationDamping { get; private set; }
     public float MoveSpeedModifier { get; set; } = 1f;
     
-    public bool IsAttacking { get; set; }
+    public bool IsRun { get; set; }
     public bool IsDie { get; set; }
     public int ComboIndex { get; set; }
     public Transform MainCameraTransform { get; set; }
