@@ -33,8 +33,14 @@ public class PlayerIdleState : PlayerBaseState
 
         if (stateMachine.MoveInput != Vector2.zero)
         {
+
+            if (stateMachine.IsRun)
+            {
+                stateMachine.ChangeState(stateMachine.RunState);
+                return;
+            }
+
             OnMove();
-            return;
         }
     }
 }

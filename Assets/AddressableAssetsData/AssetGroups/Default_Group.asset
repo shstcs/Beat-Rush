@@ -108,25 +108,25 @@ MonoBehaviour:
     - PreLoads
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ad81daa5647208c4db859c5d9a67ec6f
-    m_Address: Blood Splash
+    m_Address: PAT1
     m_ReadOnly: 0
     m_SerializedLabels:
     - PreLoads
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: da1be7593400bb94c803cf7b6e4bf2d4
-    m_Address: Spheres Explode
+    m_Address: PAT0
     m_ReadOnly: 0
     m_SerializedLabels:
     - PreLoads
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7377f38a94f13bd43924090d4a77f29e
-    m_Address: Water Splash
+    m_Address: PAT2
     m_ReadOnly: 0
     m_SerializedLabels:
     - PreLoads
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ef6af608ca6d7fb448786695ddb8587a
-    m_Address: Fire Splash
+    m_Address: PAT3
     m_ReadOnly: 0
     m_SerializedLabels:
     - PreLoads
