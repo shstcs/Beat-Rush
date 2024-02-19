@@ -70,7 +70,7 @@ public class PlayerBaseState : IState
         input.PlayerActions.Attack.canceled -= OnAttackCanceled;
 
         input.PlayerActions.Skill.started -= OnSkillStarted;
-    }   
+    }
 
     #region Move
 
@@ -117,11 +117,6 @@ public class PlayerBaseState : IState
         return forward * stateMachine.MoveInput.y + right * stateMachine.MoveInput.x;
     }
 
-    private void OnRunCaneled(InputAction.CallbackContext context)
-    {
-        if (stateMachine.MoveInput != Vector2.zero)
-            stateMachine.ChangeState(stateMachine.WalkState);
-    }
 
     protected virtual void OnMoveCanceled(InputAction.CallbackContext context)
     {
@@ -133,7 +128,15 @@ public class PlayerBaseState : IState
 
     protected virtual void OnRunStarted(InputAction.CallbackContext context)
     {
-        
+        stateMachine.IsRun = true;
+    }
+
+    private void OnRunCaneled(InputAction.CallbackContext context)
+    {
+        stateMachine.IsRun = false;
+
+        if (stateMachine.MoveInput != Vector2.zero)
+            stateMachine.ChangeState(stateMachine.WalkState);
     }
 
     #endregion
@@ -175,7 +178,6 @@ public class PlayerBaseState : IState
 
     protected void Rotate(Vector3 moveDir)
     {
-        if (stateMachine.IsAttacking) return;
         if (moveDir != Vector3.zero)
         {
             Transform playerTransform = stateMachine.Player.transform;

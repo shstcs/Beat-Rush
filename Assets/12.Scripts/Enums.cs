@@ -35,6 +35,8 @@ public enum QuestName
     StageFirstComplete,
     Stage100Combo,
     MaxHealthClear,
+    SpeedUpClear,
+    SuddenModeClear,
 }
 
 public enum Rank

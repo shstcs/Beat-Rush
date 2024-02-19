@@ -17,5 +17,6 @@ public class UI_Popup_Quest : MonoBehaviour, IPopup
     private void OnDisable()
     {
         Managers.Popup.CurrentPopup = null;
+        QuestManager.instance.QuestNotice();
     }
 }
