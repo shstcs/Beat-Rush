@@ -17,22 +17,8 @@ public class Note : MonoBehaviour
     protected void Awake()
     {
         GameObject particlePrefab;
-        if(Managers.Game.currentStage == 0)
-        {
-            particlePrefab = Managers.Resource.Load<GameObject>("Spheres Explode");
-        }
-        else if(Managers.Game.currentStage == 1)
-        {
-            particlePrefab = Managers.Resource.Load<GameObject>("Blood Splash");
-        }
-        else if(Managers.Game.currentStage==2)
-        {
-            particlePrefab = Managers.Resource.Load<GameObject>("Water Splash");
-        }
-        else
-        {
-            particlePrefab = Managers.Resource.Load<GameObject>("Fire Splash");
-        }
+
+        particlePrefab = Managers.Resource.Load<GameObject>($"PAT{Managers.Game.currentStage}");
         _particle = particlePrefab.GetComponent<ParticleSystem>();
 
         if (Managers.Game.currentStage == 3)
@@ -49,7 +35,7 @@ public class Note : MonoBehaviour
 
     protected void Update()
     {
-        if(Time.timeScale > 0)
+        if (Time.timeScale > 0)
         {
             if (gameObject.transform.position.z < 8)
             {
@@ -72,7 +58,7 @@ public class Note : MonoBehaviour
                     }
                 }
             }
-            else if(gameObject.transform.position.z < 9.5 && isTrap)
+            else if (gameObject.transform.position.z < 9.5 && isTrap)
             {
                 gameObject.GetComponent<Collider>().enabled = false;
             }
@@ -85,7 +71,7 @@ public class Note : MonoBehaviour
         {
             ChangeColor();
         }
-        
+
         gameObject.GetComponent<Collider>().enabled = true;
         if (Managers.Game.mode == GameMode.Sudden)
         {
@@ -104,7 +90,7 @@ public class Note : MonoBehaviour
             // 자식 오브젝트 활성화
             child.gameObject.SetActive(true);
         }
-        if(Managers.Game.currentStage == 3)
+        if (Managers.Game.currentStage == 3)
         {
             ChangeColor();
         }
@@ -116,7 +102,7 @@ public class Note : MonoBehaviour
         _destroyParticle.transform.position = transform.position;
         _particle.Play();
         transform.position = Vector3.zero;
-        Managers.Game.curNoteInStage[stage,noteNumber]++;
+        Managers.Game.curNoteInStage[stage, noteNumber]++;
         gameObject.SetActive(false);
     }
 

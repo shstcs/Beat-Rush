@@ -22,6 +22,19 @@ public class Line : MonoBehaviour
         CheckNotes();
     }
 
+    private void MissNote()
+    {
+        Managers.Game.curJudge = "Miss";
+        Managers.Game.judgeNotes[(int)Score.Miss]++;
+        Managers.Game.Combo = 0;
+
+        if (Managers.Game.currentStage != 0)
+        {
+            Managers.Player.ChangeHealth(-1);
+            Managers.Game.CallDamaged();
+        }
+    }
+
     private void CheckNotes()
     {
         Collider[] colliders = Physics.OverlapBox(transform.position, new Vector3(10, 5, 0.01f) / 2, Quaternion.identity, noteLayer);
@@ -39,39 +52,35 @@ public class Line : MonoBehaviour
 
             if (selectCollider.GetComponent<Note>().isTrap)   // 함정노트
             {
-                Managers.Game.Combo = 0;
                 selectCollider.GetComponent<Note>().BreakNote();
 
-                Managers.Game.curJudge = "Miss";
-                Managers.Game.judgeNotes[(int)Score.Miss]++;
-
-                if (Managers.Game.currentStage != 0)
-                {
-                    Managers.Player.ChangeHealth(-1);
-                    Managers.Game.CallDamaged();
-                }
+                MissNote();
             }
             else                                            // 일반노트
             {
                 float distance = Mathf.Abs(10 - selectCollider.transform.position.z);
                 float colliderSize = selectCollider.bounds.size.z / 2;
-                Debug.Log(colliderSize);
                 int score;
-                if (distance > colliderSize * 0.9f)        //Bad
+                if (distance > colliderSize * 0.8f)        //Miss
+                {
+                    score = 0;
+                    MissNote();
+                }
+                else if (distance > colliderSize * 0.7f)        //Bad
                 {
                     score = 10;
                     Managers.Game.judgeNotes[(int)Score.Bad]++;
                     Managers.Game.curJudge = "Bad";
                     Managers.Game.Combo = 0;
                 }
-                else if (distance > colliderSize * 0.6f)    //Good
+                else if (distance > colliderSize * 0.5f)    //Good
                 {
                     score = 30;
                     Managers.Game.judgeNotes[(int)Score.Good]++;
                     Managers.Game.curJudge = "Good";
                     CircleImage.GetComponent<Animator>().SetTrigger("Boom");
                 }
-                else if (distance > colliderSize * 0.3f)     //Great
+                else if (distance > colliderSize * 0.2f)     //Great
                 {
                     score = 50;
                     Managers.Game.judgeNotes[(int)Score.Great]++;
@@ -90,7 +99,7 @@ public class Line : MonoBehaviour
 
                 Managers.Game.Combo++;
                 Managers.Game.MaxCombo = Managers.Game.Combo > Managers.Game.MaxCombo ? Managers.Game.Combo : Managers.Game.MaxCombo;       //나중에 리팩토링
-                if(Managers.Game.mode == GameMode.Sudden)
+                if (Managers.Game.mode == GameMode.Sudden)
                 {
                     Managers.Game.AddScore((int)(score * Managers.Game.speedModifier * 1.5f) + Managers.Game.Combo);        //돌발모드
                 }
@@ -98,7 +107,7 @@ public class Line : MonoBehaviour
                 {
                     Managers.Game.AddScore((int)(score * Managers.Game.speedModifier) + Managers.Game.Combo);               //일반모드
                 }
-                
+
                 if (Managers.Game.Combo == 100)
                 {
                     QuestManager.instance.SetQuestClear(QuestName.Stage100Combo);
@@ -109,6 +118,14 @@ public class Line : MonoBehaviour
                     Managers.Data.CurrentStateData.SkillGauge += Managers.Data.CurrentStateData.GetSkillGaugeIncrement();
             }
         }
+        //else                          // 허공 칼질시 피격처리. 안하는게 나을 것 같음.
+        //{
+        //    if (Managers.Game.currentStage != 0)
+        //    {
+        //        Managers.Player.ChangeHealth(-1);
+        //        Managers.Game.CallDamaged();
+        //    }
+        //}
         Managers.Game.SetRank();
     }
 
