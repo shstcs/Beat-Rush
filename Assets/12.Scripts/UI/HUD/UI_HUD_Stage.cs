@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -27,6 +28,9 @@ public class UI_HUD_Stage : MonoBehaviour
         HUD_PlayerInfo.transform.GetChild(0).GetChild(0).GetComponent<Image>().fillAmount = 1.0f;
         HUD_PlayerInfo.transform.GetChild(1).GetChild(0).GetComponent<Image>().fillAmount = 0.0f;
         Managers.Game.OnDamaged += DamagePanel;
+
+        if (Managers.Game.currentStage == 3)
+            gameObject.transform.GetChild(0).GetChild(6).gameObject.SetActive(true);
     }
 
     private void Update()
