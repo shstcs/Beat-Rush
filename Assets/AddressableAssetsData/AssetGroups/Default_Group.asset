@@ -1,0 +1,235 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Default_Group
+  m_EditorClassIdentifier: 
+  m_GroupName: Default_Group
+  m_Data:
+    m_SerializedData: []
+  m_GUID: c5cf851708f6b8a408195b1b1dd2b5e5
+  m_SerializeEntries:
+  - m_GUID: 58a39fae98de8454db8bd3790514ecc2
+    m_Address: AttackSound
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoads
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 88eb01d9243fd194db6105f1a5216395
+    m_Address: SkillSound
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoads
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 63332f5ab3fc2c540a036e4c2b5e1892
+    m_Address: Stage1BGM
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoads
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e5534b302742c0f4faa73b0bf2129584
+    m_Address: Lobby2
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoads
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3f83500299ddacd46a2972c2486de5c6
+    m_Address: FirstGrassWalk
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoads
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c64cd8e4f3d70884b8058fc1a8ca65a0
+    m_Address: SecondGrassWalk
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoads
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c5950c0760a887742aad38c3c553c2c3
+    m_Address: Notes/Rock.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoads
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e70658846a4ca774ba09fcb23e84af95
+    m_Address: Tutorial/tutorial.csv
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoads
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d55310416bf2eac43b32f1436db9a28e
+    m_Address: Stage0BGM
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoads
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6d0adcdcb355a994b9d65d53a93ede9d
+    m_Address: Stage2BGM
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoads
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 46382b3e22b29a34cba2b9dfa3b613b9
+    m_Address: PlayerSO
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoads
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1b070e6e0ff849b408a0cf5c1b9dcfdf
+    m_Address: StartBGM
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoads
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 956845eb474d92f439f1853ad596da7a
+    m_Address: DefaultButton
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoads
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 292665b14d6326b4ebc20da4769446c5
+    m_Address: GameClear
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoads
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 173d8d0e6dc7cfa4981824cfee918c19
+    m_Address: Stage3BGM
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoads
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ad81daa5647208c4db859c5d9a67ec6f
+    m_Address: Blood Splash
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoads
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: da1be7593400bb94c803cf7b6e4bf2d4
+    m_Address: Spheres Explode
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoads
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7377f38a94f13bd43924090d4a77f29e
+    m_Address: Water Splash
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoads
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ef6af608ca6d7fb448786695ddb8587a
+    m_Address: Fire Splash
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoads
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a680bff28a527ac4da9482c965769b9c
+    m_Address: Stage3/pattern1.csv
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoads
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c030055acfb26de47a49126771795af4
+    m_Address: Stage3/pattern2.csv
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoads
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f36f76e547675b741b7eb2ff03b5706f
+    m_Address: Stage3/pattern3.csv
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoads
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b2b8a8963f43cd543a98315a7ceaabb8
+    m_Address: Stage3/pattern4.csv
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoads
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0b0ccf77e3cf7f8479f3d72983e0e933
+    m_Address: Stage3/pattern5.csv
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoads
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2272ab10a61c7f04cb010457c1c6bbbb
+    m_Address: Stage3/pattern6.csv
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoads
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ce4ed078fbced4b4390f85346c598acc
+    m_Address: Stage3/pattern7.csv
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoads
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f3254da248f21f7449b70d1ccd07715f
+    m_Address: Stage3/pattern8.csv
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoads
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6001b26f0b3bd3847b7e110c05fec4d8
+    m_Address: Stage3/pattern9.csv
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoads
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fb518d911a199bd4dabac3f3590472a5
+    m_Address: Stage3/pattern10.csv
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoads
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5a7794750e89f2442a9834af27b3e48f
+    m_Address: Stage3/pattern11.csv
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoads
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: db7ca871a35aad44893491481d187f14
+    m_Address: Stage3/pattern12.csv
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoads
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bb1a92c3af385a941b3dd034e043db0c
+    m_Address: Stage3/pattern13.csv
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoads
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 65da11e3018ba2b4bbcd7db5688ccf15
+    m_Address: Stage3/pattern14.csv
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoads
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a381f585ae879894ead57c2af191ad7d
+    m_Address: Stage3/pattern15.csv
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoads
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 79ddd778e61e67b45a588f8784edc9d6
+    m_Address: Stage3/pattern16.csv
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoads
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 5feae7305fb988643a34ec8e75f20243, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 6bf3fe798d231b346ae00a9a69f6fc90, type: 2}
+    - {fileID: 11400000, guid: 50193483e71dcd048898dd12413d3dca, type: 2}

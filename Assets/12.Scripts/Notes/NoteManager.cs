@@ -90,23 +90,21 @@ public class NoteManager : MonoBehaviour
 
     private void ClearStageUpdate()
     {
-        Managers.Data.CurrentStateData.CurrentClearStage = Managers.Data.CurrentStateData.CurrentClearStage < Managers.Game.currentStage + 1 ?
-            Managers.Game.currentStage + 1 : Managers.Data.CurrentStateData.CurrentClearStage;
-
         // 데이터 저장
         if (!Managers.Player.IsDie())
         {
+            Managers.Data.CurrentStateData.CurrentClearStage = Managers.Data.CurrentStateData.CurrentClearStage < Managers.Game.currentStage + 1 ?
+                Managers.Game.currentStage + 1 : Managers.Data.CurrentStateData.CurrentClearStage;
             var currentStageData = Managers.Game.MaxScoreArray[Managers.Game.currentStage];
             currentStageData.SetData(Managers.Game.Score);
             Managers.Data.SavePlayerData();
-        }
-
-        // 퀘스트 완료
-        if (Managers.Game.currentStage != 0)
-        {
-            QuestManager.instance.SetQuestClear(QuestName.StageFirstComplete);
-            if (Managers.Data.CurrentStateData.GetHealth() == Managers.Data.CurrentStateData.CurrentHealth)
-                QuestManager.instance.SetQuestClear(QuestName.MaxHealthClear);
+            // 퀘스트 완료
+            if (Managers.Game.currentStage != 0)
+            {
+                QuestManager.instance.SetQuestClear(QuestName.StageFirstComplete);
+                if (Managers.Data.CurrentStateData.GetHealth() == Managers.Data.CurrentStateData.CurrentHealth)
+                    QuestManager.instance.SetQuestClear(QuestName.MaxHealthClear);
+            }
         }
 
         Managers.Sound.PlaySFX(SFX.GameClear, 0.5f);
