@@ -71,9 +71,8 @@ public class NoteManager : MonoBehaviour
         _patternLength = data.length;
         _attackDelay = data.delay;
         _bgm = data.bgm;
-        if (Managers.Game.currentStage != 0)
+        if (Managers.Game.currentStage != 0 && Managers.Game.currentStage != 3)
         {
-            //yield return new WaitForSeconds(4f);
             Managers.Sound.DelayedPlayBGM(_bgm, (32.5f / _stageNoteSpeed));
         }
 
