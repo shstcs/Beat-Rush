@@ -39,6 +39,7 @@ public class FireDragon : MonoBehaviour, IMonster
             new Pattern3_14(),
             new Pattern3_15(),
             new Pattern3_16(),
+            new Pattern3_17()
         };
 
         foreach (var pattern in _patterns)

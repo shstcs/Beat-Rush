@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     public UnityAction OnCombo;
     public UnityAction OnLevel;
     public UnityAction OnDamaged;
+    public UnityAction OnContinue;
     #endregion
     #region Fields
     public Vector3 PlayerSpwanPosition = new Vector3(43f, 0f, 14f);
@@ -36,7 +37,7 @@ public class GameManager : MonoBehaviour
     public float[] noteDistance = { 5, 8, 8, 8 };
     public float[] noteSpeed = { 6.6666f, 9.6f, 13.2f, 13.3333f };
     public int[,] curNoteInStage = new int[4, 17];
-    public float[] StageStartDelay = { 0, 0, -1.5f, 0f };
+    public float[] StageStartDelay = { 0, 0, -2.5f, 0f };
     public Vector3[] StageNotePos =
     {
         new Vector3(-2, 0, 42.5f),
@@ -82,6 +83,10 @@ public class GameManager : MonoBehaviour
     {
         OnDamaged?.Invoke();
     }
+    public void CallContinue()
+    {
+        OnContinue?.Invoke();
+    }
     public void AddScore(int score)
     {
         Score += score;
@@ -97,7 +102,6 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-
     public void InitJudge()
     {
         for (int i = 0; i < judgeNotes.Length; i++)
@@ -115,7 +119,6 @@ public class GameManager : MonoBehaviour
             MaxScoreArray[i] = new StageData();
         }
     }
-
     public void SetRank()
     {
         int noteCount = judgeNotes[0] + judgeNotes[1] + judgeNotes[2] + judgeNotes[3] + judgeNotes[4];

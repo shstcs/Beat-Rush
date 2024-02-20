@@ -11,7 +11,7 @@ public interface IPopup
 public class PopupManager
 {
     private IPopup _currentPopup;
-
+    public float pauseTime = 3f;
     public IPopup CurrentPopup
     {
         set
@@ -58,5 +58,34 @@ public class PopupManager
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         Time.timeScale = 0.0f;
+    }
+
+    public IEnumerator DelayContinue()
+    {
+        Time.timeScale = 0;
+        float startRealTime = Time.realtimeSinceStartup;
+        while (Time.realtimeSinceStartup - startRealTime < 3f)
+        {
+            pauseTime = Time.realtimeSinceStartup - startRealTime;
+            yield return null;
+        }
+        Continue();
+    }
+
+    private void Continue()
+    {
+        List<GameObject> notes = Managers.Pool.GetActiveNotes();
+        float distance = 32.5f;
+        if (notes.Count > 0)
+        {
+            distance = notes[0].transform.position.z - 12;
+            float time = distance / (Managers.Game.noteSpeed[Managers.Game.currentStage] * Managers.Game.speedModifier);
+            Managers.Sound.ContinueBGM(time);   //음악 재생
+        }
+        else
+        {
+            Managers.Sound.ContinueBGM();
+        }
+        Time.timeScale = 1;
     }
 }
