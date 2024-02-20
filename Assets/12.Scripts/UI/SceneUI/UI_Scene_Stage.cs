@@ -14,19 +14,9 @@ public class UI_Scene_Stage : MonoBehaviour
         Managers.Game.Combo = 0;
         Managers.Game.MaxCombo = 0;
         Managers.UI.SetUI();
-        //Managers.Game.GetKeyDown += OnOption;
         Managers.Game.OnStageEnd += OnStageEnd;
 
         Debug.Log(Managers.Game.mode.ToString());
-    }
-
-    private void Update()
-    {
-        //옵션 창 여는 부분은 나중에 Input System으로 처리해도 될 것 같습니다.
-        //if (Input.GetKeyDown(KeyCode.Escape))
-        //{
-        //    Managers.Game.GetKeyDown?.Invoke();
-        //}
     }
 
     private void OnOption(InputAction.CallbackContext context)
@@ -44,8 +34,8 @@ public class UI_Scene_Stage : MonoBehaviour
 
     private void OnDisable()
     {
-        //Managers.Game.GetKeyDown -= OnOption;
         Managers.Player.Input.PlayerActions.Popup.started -= OnOption;
+        Managers.Game.OnStageEnd -= OnStageEnd;
     }
 
     private void OnApplicationFocus(bool focus)
