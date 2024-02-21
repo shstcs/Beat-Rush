@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class UI_Popup_Result : MonoBehaviour, IPopup
 {
@@ -16,6 +17,7 @@ public class UI_Popup_Result : MonoBehaviour, IPopup
         if (Managers.Game.Score > Managers.Data.BestScore)
         {
             PlayerPrefs.SetInt("BestScore", Managers.Game.Score);
+            gameObject.transform.GetChild(12).gameObject.SetActive(true);
         }
 
         if (Managers.Player.IsDie() == true)
