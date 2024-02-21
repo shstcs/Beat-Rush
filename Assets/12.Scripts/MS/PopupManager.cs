@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -63,12 +64,27 @@ public class PopupManager
     public IEnumerator DelayContinue()
     {
         Time.timeScale = 0;
+        GameObject timer = GameObject.Find("Canvas").transform.GetChild(7).gameObject;
+        timer.SetActive(true);
         float startRealTime = Time.realtimeSinceStartup;
         while (Time.realtimeSinceStartup - startRealTime < 3f)
         {
             pauseTime = Time.realtimeSinceStartup - startRealTime;
+            if( pauseTime >= 2.0f && pauseTime < 3.0f )
+            {
+                timer.GetComponent<TextMeshProUGUI>().text = 1.ToString();
+            }
+            else if(pauseTime >= 1.0f && pauseTime < 2.0f)
+            {
+                timer.GetComponent<TextMeshProUGUI>().text = 2.ToString();
+            }
+            else if (pauseTime >= 0.0f && pauseTime < 1.0f)
+            {
+                timer.GetComponent<TextMeshProUGUI>().text = 3.ToString();
+            }
             yield return null;
         }
+        timer.SetActive(false);
         Continue();
     }
 

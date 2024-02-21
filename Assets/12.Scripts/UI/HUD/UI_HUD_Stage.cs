@@ -14,7 +14,6 @@ public class UI_HUD_Stage : MonoBehaviour
     private GameObject HUD_PlayerInfo;
     private GameObject HUD_Score;
     private Image damagePanel;
-    private TextMeshProUGUI _pauseTimer;
     private Coroutine damaged;
     private void Start()
     {
@@ -25,7 +24,6 @@ public class UI_HUD_Stage : MonoBehaviour
         HUD_Combo = gameObject.transform.GetChild(0).GetChild(2).gameObject;
         HUD_PlayerInfo = gameObject.transform.GetChild(0).GetChild(1).gameObject;
         HUD_Score = gameObject.transform.GetChild(0).GetChild(3).gameObject;
-        _pauseTimer = gameObject.transform.GetChild(0).GetChild(7).GetComponent<TextMeshProUGUI>();
         damagePanel = gameObject.transform.GetChild(0).GetChild(5).GetComponent<Image>();
         HUD_PlayerInfo.transform.GetChild(0).GetChild(0).GetComponent<Image>().fillAmount = 1.0f;
         HUD_PlayerInfo.transform.GetChild(1).GetChild(0).GetComponent<Image>().fillAmount = 0.0f;
@@ -71,6 +69,7 @@ public class UI_HUD_Stage : MonoBehaviour
 
         damagePanel.enabled = false;
     }
+
     private void OnDisable()
     {
         StopAllCoroutines();

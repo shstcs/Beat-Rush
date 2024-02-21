@@ -1,23 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class UI_Blink_Effect : MonoBehaviour
 {
     private float _time;
-
-    private void Update()
+    private void OnEnable()
     {
-        if(_time < 0.5f)
+        BlinkUI();
+    }
+    private void BlinkUI()
+    {
+        StartCoroutine(OnBlinkUI());
+    }
+    private IEnumerator OnBlinkUI()
+    {
+        _time = Time.realtimeSinceStartup;
+        float _blinktime;
+        while (Time.realtimeSinceStartup - _time < 2f)
         {
-            GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1 - _time);
+            _blinktime = Time.realtimeSinceStartup - _time;
+            if (_blinktime < 0.5f)
+            {
+                GetComponent<TextMeshProUGUI>().color = new Color(0, 0, 0, 1 - _blinktime);
+            }
+            else if(_blinktime >=1f)
+            {
+                _time = Time.realtimeSinceStartup;
+            }    
+            else
+            {
+                GetComponent<TextMeshProUGUI>().color = new Color(0, 0, 0, _blinktime);
+            }
+            yield return null;
         }
-        else
-        {
-            GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, _time);
-            if (_time > 1f)
-                _time = 0;
-        }
-        _time += 0.01f;
     }
 }
