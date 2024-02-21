@@ -35,7 +35,7 @@ public class NoteManager : MonoBehaviour
         Managers.Game.OnStageEnd += Managers.Sound.StopBGM;
         Managers.Game.OnStageEnd += ClearStageUpdate;
         Managers.Game.OnStageEnd += Managers.Game.InitNotes;
-        Managers.Game.OnContinue += DelayContinued;
+        Managers.Game.OnContinue += Managers.Game.currentStage == 0 ? Managers.Sound.ContinueBGM : DelayContinued;
     }
 
     private void Update()
@@ -52,7 +52,7 @@ public class NoteManager : MonoBehaviour
         Managers.Game.OnStageEnd -= Managers.Sound.StopBGM;
         Managers.Game.OnStageEnd -= Managers.Game.InitNotes;
         Managers.Game.OnStageEnd -= ClearStageUpdate;
-        Managers.Game.OnContinue -= DelayContinued;
+        Managers.Game.OnContinue -= Managers.Game.currentStage == 0 ? Managers.Sound.ContinueBGM : DelayContinued;
     }
 
     private void MoveNotes()
