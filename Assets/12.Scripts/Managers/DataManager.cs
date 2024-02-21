@@ -106,7 +106,7 @@ public class DataManager : MonoBehaviour
         }
 
         Debug.Log("Load");
-        string data = File.ReadAllText(path);
+        string data = DataLoad(path);
         PlayerData playerData = JsonUtility.FromJson<PlayerData>(data);
 
         CurrentStateData = playerData.StateData;
@@ -119,8 +119,8 @@ public class DataManager : MonoBehaviour
     {
         if (!LoadFileCheck(questDataFileName)) return;
 
-        string questSaveData = File.ReadAllText(path);
-        Managers.Game.questDatas = JsonConvert.DeserializeObject<Dictionary<QuestName, QuestData>>(questSaveData);
+        string questData = DataLoad(path);
+        Managers.Game.questDatas = JsonConvert.DeserializeObject<Dictionary<QuestName, QuestData>>(questData);
     }
 
     public void LoadSoundData()
@@ -131,8 +131,8 @@ public class DataManager : MonoBehaviour
         }
         else
         {
-            string data = File.ReadAllText(path);
-            soundData = JsonUtility.FromJson<SoundData>(data);
+            string soundData = DataLoad(path);
+            this.soundData = JsonUtility.FromJson<SoundData>(soundData);
         }
 
         Managers.Sound.MasterVolume = soundData.MasterVolume;
@@ -148,11 +148,19 @@ public class DataManager : MonoBehaviour
         }
         else
         {
-            string data = File.ReadAllText(path);
-            stageData = JsonConvert.DeserializeObject<StageData[]>(data);
+            string stageData = DataLoad(path);
+            this.stageData = JsonConvert.DeserializeObject<StageData[]>(stageData);
 
-            Managers.Game.MaxScoreArray = stageData;
+            Managers.Game.MaxScoreArray = this.stageData;
         }
+    }
+
+    private string DataLoad(string filePath)
+    {
+        string data = File.ReadAllText(filePath);
+        byte[] bytes = Convert.FromBase64String(data);
+        string decoded = System.Text.Encoding.UTF8.GetString(bytes);
+        return decoded;
     }
 
     #endregion
@@ -214,6 +222,9 @@ public class DataManager : MonoBehaviour
     private void DataSave(string dataStr, string fileName)
     {
         path = Application.persistentDataPath + "/";
+
+        byte[] bytes = System.Text.Encoding.UTF8.GetBytes(dataStr);
+        dataStr = Convert.ToBase64String(bytes);
         File.WriteAllText(path + fileName, dataStr);
         Debug.Log(path + fileName);
     }

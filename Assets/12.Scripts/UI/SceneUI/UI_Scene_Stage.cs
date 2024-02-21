@@ -30,6 +30,8 @@ public class UI_Scene_Stage : MonoBehaviour
     private void OnStageEnd()
     {
         GameObject.Find("Canvas").transform.GetChild(4).gameObject.SetActive(true);
+        if (!Managers.Player.IsUseSkill)
+            QuestManager.instance.SetQuestClear(QuestName.NoSkillStageClear);
     }
 
     private void OnDisable()
