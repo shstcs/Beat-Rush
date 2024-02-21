@@ -11,11 +11,12 @@ public class UI_Popup_TutorialResult : MonoBehaviour, IPopup
     }
     private void OnDisable()
     {
+        Managers.Game.InitJudge();
         Managers.Popup.CurrentPopup = null;
     }
 
     public void OffPopup()
     {
-
+        
     }
 }

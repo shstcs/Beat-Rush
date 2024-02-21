@@ -33,6 +33,9 @@ public class PlayerWalkState : PlayerBaseState
 
         CheckDie();
 
+        if(stateMachine.IsRun)
+            stateMachine.ChangeState(stateMachine.RunState);
+
         //CheckAttacking();
     }
 }

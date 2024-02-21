@@ -23,34 +23,31 @@ public class UI_Popup_Option : MonoBehaviour, IPopup
         if (Managers.Data.CurrentStateData.CurrentClearStage < 1) return;
 
         OffWindow();
+
         if (SceneManager.GetActiveScene().name == "Lobby")
             return;
         Managers.Sound.StopBGM();
         Managers.Sound.LoopPlayBGM(BGM.Lobby2);
         SceneManager.LoadScene("Lobby");
     }
+
     public void OffOption(InputAction.CallbackContext context)
     {
         OffWindow();
+
+        if (Managers.Game.GameType == GameType.Play)
+        {
+            Managers.Game.CallContinue();
+        }
     }
 
     private void OffWindow()
     {
         Managers.Popup.CurrentPopup = null;
-        Managers.Sound.ContinueBGM();        //음악 재생
+        //Managers.Sound.ContinueBGM();        //음악 재생
         gameObject.SetActive(false);
-        if (Managers.Game.GameType == GameType.Play)
-        {
-            List<GameObject> notes = Managers.Pool.GetActiveNotes();
-            float distance = 32.5f;
-            if (notes.Count > 0)
-            {
-                distance = notes[0].transform.position.z - 12;
-                float time = distance / (Managers.Game.noteSpeed[Managers.Game.currentStage] * Managers.Game.speedModifier);
-                Managers.Sound.ContinueBGM(time);   //음악 재생
-            }
-        }
     }
+
 
     public void ExitGame()
     {

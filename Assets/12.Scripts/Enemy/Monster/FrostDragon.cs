@@ -13,10 +13,11 @@ public class FrostDragon : MonoBehaviour, IMonster
     private int _currentPatternIndex = 0;
     private int _currentFeedbackIndex = -1;
     private int _feedbackCount;
-    private float _attackDelay = 128f / 13.2f;
+    private float _attackDelay;
 
     private void Awake()
     {
+        _attackDelay = 128f / (Managers.Game.noteSpeed[Managers.Game.currentStage]);
         _animator = GetComponent<Animator>();
         _cameraAnimator = _camera.GetComponent<Animator>();
         _frostDragonAnimation.Init();

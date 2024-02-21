@@ -20,9 +20,17 @@ public abstract class IPattern
         float waitTime;
         _startDsp = AudioSettings.dspTime;
 
-        for (int i = 0; i < _pattern.Count - 1;)
+        for (int i = 0; i < _pattern.Count;)
         {
-            waitTime = ((float)_pattern[i + 1]["noteLocation"] - (float)_pattern[i]["noteLocation"]) * Managers.Game.speedModifier;
+            if (i == _pattern.Count - 1)
+            {
+                waitTime = (128 - (float)_pattern[i]["noteLocation"]) * Managers.Game.speedModifier;
+            }
+            else
+            {
+                waitTime = ((float)_pattern[i + 1]["noteLocation"] - (float)_pattern[i]["noteLocation"]) * Managers.Game.speedModifier;
+            }
+
             GameObject note = Managers.Pool.SpawnFromPool((float)_pattern[i]["isTrap"] != 0);
             note.GetComponent<Note>().noteNumber = _curPatternNum;
             note.GetComponent<Note>().stage = _curStage;
@@ -36,6 +44,7 @@ public abstract class IPattern
         if (!_isFeedbackStart)
         {
             _startDsp = AudioSettings.dspTime - _pauseDsp;
+            Debug.Log(_curStage + " " + _curPatternNum + " " + _pauseDsp);
             _isFeedbackStart = true;
         }
 
@@ -56,7 +65,7 @@ public abstract class IPattern
         if (_isFeedbackStart)
         {
             _isFeedbackStart = false;
-            _pauseDsp = AudioSettings.dspTime - _startDsp + 0.05f;
+            _pauseDsp = AudioSettings.dspTime - _startDsp;
         }
     }
 }

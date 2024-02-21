@@ -938,11 +938,11 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 2
   windowsGamepadBackendHint: 0
-  cloudProjectId: a73bb9b2-983d-4197-806c-d55378507fa4
+  cloudProjectId: 87537715-5fdc-480f-b1f0-8bd87ca3a7a6
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: Beat Rush
-  organizationId: gamgdog
+  projectName: Beat Rush 2024-01-10_21-11-06
+  organizationId: shstcs
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}
