@@ -95,6 +95,7 @@ public class UI_Popup_Stagepanel : MonoBehaviour, IPopup
                 Debug.Log("CurrentClearState" + Managers.Data.CurrentStateData.CurrentClearStage);
                 if (Managers.Data.CurrentStateData.CurrentClearStage >= 3) // 테스트를 위해
                 {
+                    Time.timeScale = 0;
                     SceneManager.LoadScene("Stage_3");
                 }
                 else

@@ -35,7 +35,7 @@ public class NoteManager : MonoBehaviour
         Managers.Game.OnStageEnd += Managers.Sound.StopBGM;
         Managers.Game.OnStageEnd += ClearStageUpdate;
         Managers.Game.OnStageEnd += Managers.Game.InitNotes;
-
+        Managers.Game.OnContinue += DelayContinued;
     }
 
     private void Update()
@@ -52,6 +52,7 @@ public class NoteManager : MonoBehaviour
         Managers.Game.OnStageEnd -= Managers.Sound.StopBGM;
         Managers.Game.OnStageEnd -= Managers.Game.InitNotes;
         Managers.Game.OnStageEnd -= ClearStageUpdate;
+        Managers.Game.OnContinue -= DelayContinued;
     }
 
     private void MoveNotes()
@@ -71,9 +72,8 @@ public class NoteManager : MonoBehaviour
         _patternLength = data.length;
         _attackDelay = data.delay;
         _bgm = data.bgm;
-        if (Managers.Game.currentStage != 0)
+        if (Managers.Game.currentStage != 0 && Managers.Game.currentStage != 3)
         {
-            //yield return new WaitForSeconds(4f);
             Managers.Sound.DelayedPlayBGM(_bgm, (32.5f / _stageNoteSpeed));
         }
 
@@ -86,6 +86,11 @@ public class NoteManager : MonoBehaviour
         _cameraAnimator.SetTrigger("EndMove");
         yield return new WaitForSeconds((32.5f / _stageNoteSpeed));
         _monster.EndStage();
+    }
+
+    private void DelayContinued()
+    {
+        StartCoroutine(Managers.Popup.DelayContinue());
     }
 
     private void ClearStageUpdate()
