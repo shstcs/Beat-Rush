@@ -81,7 +81,6 @@ public class SoundManager
         while (AudioSourceBGM.volume > 0)
         {
             AudioSourceBGM.volume -= Time.deltaTime / 4;        // 4초에 걸쳐 줄어들도록
-            Debug.Log("Volume Down");
             yield return null;
         }
         Managers.Game.CallStageEnd();

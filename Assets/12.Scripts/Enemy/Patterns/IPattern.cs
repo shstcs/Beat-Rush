@@ -44,7 +44,7 @@ public abstract class IPattern
         if (!_isFeedbackStart)
         {
             _startDsp = AudioSettings.dspTime - _pauseDsp;
-            Debug.Log(_curStage + " " + _curPatternNum + " " + _pauseDsp);
+            //Debug.Log(_curStage + " " + _curPatternNum + " " + _pauseDsp);
             _isFeedbackStart = true;
         }
 

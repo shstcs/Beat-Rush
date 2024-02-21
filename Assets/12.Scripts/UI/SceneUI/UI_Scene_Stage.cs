@@ -15,8 +15,6 @@ public class UI_Scene_Stage : MonoBehaviour
         Managers.Game.MaxCombo = 0;
         Managers.UI.SetUI();
         Managers.Game.OnStageEnd += OnStageEnd;
-
-        Debug.Log(Managers.Game.mode.ToString());
     }
 
     private void OnOption(InputAction.CallbackContext context)
