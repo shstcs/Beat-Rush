@@ -227,8 +227,8 @@ MonoBehaviour:
     m_SerializedLabels:
     - PreLoads
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: fc5635de1ffb5ee418241c3b1a438ae6
-    m_Address: Stage3/pattern17.csv
+  - m_GUID: 4195edda46e4122439611245f546adac
+    m_Address: Quest/Quest.csv
     m_ReadOnly: 0
     m_SerializedLabels:
     - PreLoads

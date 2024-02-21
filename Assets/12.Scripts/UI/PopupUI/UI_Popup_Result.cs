@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class UI_Popup_Result : MonoBehaviour, IPopup
 {
@@ -16,6 +17,7 @@ public class UI_Popup_Result : MonoBehaviour, IPopup
         if (Managers.Game.Score > Managers.Data.BestScore)
         {
             PlayerPrefs.SetInt("BestScore", Managers.Game.Score);
+            gameObject.transform.GetChild(12).gameObject.SetActive(true);
         }
 
         if (Managers.Player.IsDie() == true)
@@ -44,6 +46,8 @@ public class UI_Popup_Result : MonoBehaviour, IPopup
     private void ClearResult()
     {
         Managers.Game.SetRank();
+        if (Managers.Game.rank == Rank.S)
+            QuestManager.instance.SetQuestClear(QuestName.SRankClear);
         gameObject.transform.GetChild(1).transform.GetComponent<TextMeshProUGUI>().text = Managers.Game.Score.ToString();
         gameObject.transform.GetChild(2).transform.GetComponent<TextMeshProUGUI>().text = Managers.Game.rank.ToString();
         gameObject.transform.GetChild(3).transform.GetComponent<TextMeshProUGUI>().text = Managers.Game.MaxCombo.ToString();

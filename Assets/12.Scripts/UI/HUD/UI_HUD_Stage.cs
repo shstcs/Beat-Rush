@@ -69,6 +69,7 @@ public class UI_HUD_Stage : MonoBehaviour
 
         damagePanel.enabled = false;
     }
+
     private void OnDisable()
     {
         StopAllCoroutines();
