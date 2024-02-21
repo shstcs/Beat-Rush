@@ -136,5 +136,10 @@ public class GameManager : MonoBehaviour
         else if (Managers.Player.IsDie())
             rank = Rank.F;
     }
+    private void OnApplicationQuit()
+    {
+        Managers.Data.SaveData();
+    }
+
     #endregion
 }

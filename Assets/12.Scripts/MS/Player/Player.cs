@@ -25,6 +25,7 @@ public class Player : MonoBehaviour
     [HideInInspector]
     public VisualEffect SwordEffect;
 
+    public bool IsUseSkill = false;
 
     public GameObject SkillPrefab;
 
@@ -69,6 +70,13 @@ public class Player : MonoBehaviour
     {
         _stateMachine.HandleInput();
         _stateMachine.Update();
+
+        Managers.Data.CurrentStateData.PlayTime += Time.unscaledDeltaTime;
+
+        if(Managers.Data.CurrentStateData.PlayTime >= 900f)
+        {
+            QuestManager.instance.SetQuestClear(QuestName.PlayTime);
+        }
     }
 
     private void FixedUpdate()
@@ -123,6 +131,7 @@ public class Player : MonoBehaviour
         var obj = Instantiate(SkillPrefab, pos, Quaternion.identity);
         Rotate(obj.transform);
         Managers.Sound.PlaySFX(SFX.Skill);
+        IsUseSkill = true;
     }
 
     public void ChangeIdleState()

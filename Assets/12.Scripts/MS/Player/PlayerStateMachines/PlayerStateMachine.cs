@@ -38,7 +38,7 @@ public class PlayerStateMachine : StateMachine
 
         MainCameraTransform = Camera.main.transform;
 
-        MoveSpeed = player.Data.BaseData.BaseSpeed;
+        MoveSpeed = player.Data.BaseData.BaseSpeed * Managers.Data.CurrentStateData.SpeedModifier;
         RotationDamping = player.Data.BaseData.BaseRotationDamping;
     }
 }

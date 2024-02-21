@@ -27,6 +27,7 @@ public enum QuestReward
     SkillGaugIncrementUp,
     SkillSpeedDown,
     SkillExtendedDistance,
+    SpeedUp,
 }
 
 public enum QuestName
@@ -37,6 +38,9 @@ public enum QuestName
     MaxHealthClear,
     SpeedUpClear,
     SuddenModeClear,
+    PlayTime,
+    NoSkillStageClear,
+    SRankClear,
 }
 
 public enum Rank
