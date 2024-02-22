@@ -14,6 +14,7 @@ public class UI_Popup_Tutorialpanel : MonoBehaviour, IPopup
         Managers.Game.PlayerSpwanPosition = Managers.Player.transform.position;
         Managers.Game.PlayerSpwanRotation = Managers.Player.transform.rotation;
         Managers.Game.speedModifier = 1;
+        Managers.Game.delay = 1.5f;
         SceneManager.LoadScene("Tutorial");
     }
     private void OnDisable()
