@@ -136,7 +136,7 @@ public class UI_Popup_Stagepanel : MonoBehaviour, IPopup
     }
     public void DecreaseSpeed()
     {
-        if (Managers.Game.speedModifier > 0.2f)
+        if (Managers.Game.speedModifier > 0.5f)
         {
             Managers.Game.speedModifier -= 0.1f;
             GetNotespeedModifier();
