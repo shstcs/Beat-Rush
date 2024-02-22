@@ -28,10 +28,10 @@ public class SoundData
 public class DataManager : MonoBehaviour
 {
     string path;
-    string playerDataFileName = "PlayerSave";
-    string questDataFileName = "QuestSave";
-    string soundDataFileName = "SoundSave";
-    string stageDataFileName = "StageSave";
+    string playerDataFileName = "PlayerSaveData";
+    string questDataFileName = "QuestSaveData";
+    string soundDataFileName = "SoundSaveData";
+    string stageDataFileName = "StageSaveData";
 
     private PlayerSO baseData;
 
@@ -91,6 +91,27 @@ public class DataManager : MonoBehaviour
         if (File.Exists(path + "StageSave"))
         {
             File.Delete(path + "StageSave");
+        }
+
+        if (File.Exists(path + "SoundSave"))
+        {
+            File.Delete(path + "SoundSave");
+        }
+
+
+        if (File.Exists(path + "PlayerSaveData"))
+        {
+            File.Delete(path + "PlayerSaveData");
+        }
+
+        if (File.Exists(path + "QuestSaveData"))
+        {
+            File.Delete(path + "QuestSaveData");
+        }
+
+        if (File.Exists(path + "StageSaveData"))
+        {
+            File.Delete(path + "StageSaveData");
         }
     }
 
