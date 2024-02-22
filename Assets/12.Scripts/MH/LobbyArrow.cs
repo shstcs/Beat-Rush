@@ -18,10 +18,12 @@ public class LobbyArrow : MonoBehaviour
         else
         {
             _target = Managers.Data.CurrentStateData.CurrentClearStage switch
-            1 => Stage1Object,
-            2 => Stage2Object,
-            3 => Stage3Object,
-        };
+            {
+                1 => Stage1Object,
+                2 => Stage2Object,
+                3 => Stage3Object,
+            };
+        }
     }
 
     private void Update()
