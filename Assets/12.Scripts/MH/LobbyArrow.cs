@@ -29,6 +29,7 @@ public class LobbyArrow : MonoBehaviour
     private void Update()
     {
         dir = _target.transform.position - transform.position;
+        dir.y = 0;
         transform.rotation = Quaternion.LookRotation(dir, transform.up);
     }
 }
