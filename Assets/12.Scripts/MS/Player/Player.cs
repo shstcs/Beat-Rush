@@ -107,7 +107,6 @@ public class Player : MonoBehaviour
     {
         if (_stateMachine.IsDie) return;
         Managers.Data.CurrentStateData.CurrentHealth += amount;
-        Debug.Log(Managers.Data.CurrentStateData.CurrentHealth);
         if (Managers.Data.CurrentStateData.CurrentHealth <= 0)
         {
             Die();

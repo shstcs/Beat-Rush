@@ -13,7 +13,7 @@ public class UI_Popup_StageWanring : MonoBehaviour, IPopup
     private void OnDisable()
     {
         Time.timeScale = 1.0f;
-        Managers.Sound.DelayedPlayBGM(BGM.Stage3, 32.5f / (Managers.Game.noteSpeed[3] * Managers.Game.speedModifier));        //음악 재생
+        Managers.Game.CallStageStart();
         Managers.Popup.CurrentPopup = null;
     }
 

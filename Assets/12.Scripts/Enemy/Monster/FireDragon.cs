@@ -56,6 +56,11 @@ public class FireDragon : MonoBehaviour, IMonster
         {
             if (_feedbackCount > 12 && _currentFeedbackIndex >= 0)
             {
+                if( _currentFeedbackIndex > 0)
+                {
+                    _patterns[_currentFeedbackIndex - 1].Feedback();
+                }
+                
                 _patterns[_currentFeedbackIndex].Feedback();
                 _feedbackCount = 0;
             }

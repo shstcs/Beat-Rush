@@ -50,7 +50,6 @@ public abstract class IPattern
 
         List<GameObject> _activeNotes = Managers.Pool.GetActiveAliveNotes(_curPatternNum);
         float _noteDistance = _stageNoteSpeed * (float)(AudioSettings.dspTime - _startDsp[_curPatternNum]) + _startDelay * Managers.Game.speedModifier;
-        Debug.Log(_noteDistance);
 
         int cnt = 0;
         for (int i = Managers.Game.curNoteInStage[_curStage, _curPatternNum]; i < Managers.Game.curNoteInStage[_curStage, _curPatternNum] + _activeNotes.Count; i++)

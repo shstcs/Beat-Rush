@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -22,6 +23,12 @@ public class NoteManager : MonoBehaviour
         _monster = _monsterObject.GetComponent<IMonster>();
         _cameraAnimator = Camera.main.GetComponent<Animator>();
         Managers.Game.GameType = GameType.Play;
+        Managers.Game.OnStageStart += Stage3Start;
+    }
+
+    private void Stage3Start()
+    {
+        StartCoroutine(CreateNewNotes());
     }
 
     private void Start()
@@ -30,8 +37,7 @@ public class NoteManager : MonoBehaviour
         _notePool.SetPool();
         _stageNoteSpeed = Managers.Game.noteSpeed[Managers.Game.currentStage] * Managers.Game.speedModifier;
         _curDsp = AudioSettings.dspTime;
-
-        StartCoroutine(CreateNewNotes());
+        if (Managers.Game.currentStage != 3) StartCoroutine(CreateNewNotes());
         Managers.Game.OnStageEnd += Managers.Sound.StopBGM;
         Managers.Game.OnStageEnd += ClearStageUpdate;
         Managers.Game.OnStageEnd += Managers.Game.InitNotes;
@@ -53,6 +59,7 @@ public class NoteManager : MonoBehaviour
         Managers.Game.OnStageEnd -= Managers.Game.InitNotes;
         Managers.Game.OnStageEnd -= ClearStageUpdate;
         Managers.Game.OnContinue -= Managers.Game.currentStage == 0 ? Managers.Sound.ContinueBGM : DelayContinued;
+        Managers.Game.OnStageStart -= Stage3Start;
     }
 
     private void MoveNotes()
@@ -60,8 +67,8 @@ public class NoteManager : MonoBehaviour
         float movement = ((float)(AudioSettings.dspTime - _curDsp) * _stageNoteSpeed);
         foreach (GameObject note in Managers.Pool.GetActiveNotes())
         {
-            note.gameObject.transform.position = new Vector3(note.gameObject.transform.position.x, note.gameObject.transform.position.y,
-            note.gameObject.transform.position.z - movement);
+            note.transform.position = new Vector3(note.gameObject.transform.position.x, note.gameObject.transform.position.y,
+            note.transform.position.z - movement);
         }
     }
 
@@ -72,7 +79,7 @@ public class NoteManager : MonoBehaviour
         _patternLength = data.length;
         _attackDelay = data.delay;
         _bgm = data.bgm;
-        if (Managers.Game.currentStage != 0 && Managers.Game.currentStage != 3)
+        if (Managers.Game.currentStage != 0)
         {
             Managers.Sound.DelayedPlayBGM(_bgm, (32.5f / _stageNoteSpeed));
         }
