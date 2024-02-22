@@ -54,7 +54,7 @@ public class FireDragon : MonoBehaviour, IMonster
     {
         if (Time.timeScale > 0)
         {
-            if (_feedbackCount > 12 && Time.timeScale > 0 && _currentFeedbackIndex >= 0)
+            if (_feedbackCount > 12 && _currentFeedbackIndex >= 0)
             {
                 _patterns[_currentFeedbackIndex].Feedback();
                 _feedbackCount = 0;
@@ -63,7 +63,7 @@ public class FireDragon : MonoBehaviour, IMonster
         }
         else
         {
-            if(_currentFeedbackIndex >= 0)
+            if (_currentFeedbackIndex >= 0)
             {
                 _patterns[_currentFeedbackIndex].Pause();               //다시 시작할 때를 위해
             }
@@ -87,7 +87,7 @@ public class FireDragon : MonoBehaviour, IMonster
         return (_patterns.Length, _attackDelay, BGM.Stage3);
     }
 
-    public void RandomAttack()           
+    public void RandomAttack()
     {
         StartCoroutine(_patterns[_currentPatternIndex++].Attack());
         _animator.SetTrigger(_fireDragonAnimation.GetRandomAttackHash());

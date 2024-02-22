@@ -18,25 +18,31 @@ MonoBehaviour:
   m_GUID: f6d12b3f681674f41a56887128b8ca48
   m_SerializeEntries:
   - m_GUID: 6054aad5b0a41804585ef6da98d7b40b
-    m_Address: Notes/Ice.prefab
+    m_Address: NOTE2
     m_ReadOnly: 0
     m_SerializedLabels:
     - PreLoads
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: da96dd007bde1c64db3f0efb532f1b25
-    m_Address: Notes/Fire.prefab
+    m_Address: NOTE3
     m_ReadOnly: 0
     m_SerializedLabels:
     - PreLoads
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3b560b4f8a87ec44a83ac38c26b29e88
-    m_Address: Notes/Clock.prefab
+    m_Address: NOTE0
     m_ReadOnly: 0
     m_SerializedLabels:
     - PreLoads
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 0d107dce92eb14049b4038330821919d
     m_Address: Notes/JudgeNote.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoads
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c5950c0760a887742aad38c3c553c2c3
+    m_Address: NOTE1
     m_ReadOnly: 0
     m_SerializedLabels:
     - PreLoads

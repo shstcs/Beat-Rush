@@ -81,16 +81,9 @@ public class Golem : MonoBehaviour, IMonster
 
     public void RandomAttack()           //return값으로 끝나는 신호를 줘볼까?
     {
-        if(Time.timeScale != 0)
-        {
-            if (_currentPatternIndex == 0)
-            {
-                _cameraAnimator.SetTrigger("ShowBoss");
-            }
             StartCoroutine(_patterns[_currentPatternIndex++].Attack());
             _animator.SetTrigger(_golemAnimation.GetRandomAttackHash());
             _currentFeedbackIndex++;
-        }
     }
 
     public void EndStage()

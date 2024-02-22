@@ -95,6 +95,108 @@ MonoBehaviour:
     m_SerializedLabels:
     - PreLoads
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a680bff28a527ac4da9482c965769b9c
+    m_Address: Stage3/pattern1.csv
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoads
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c030055acfb26de47a49126771795af4
+    m_Address: Stage3/pattern2.csv
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoads
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f36f76e547675b741b7eb2ff03b5706f
+    m_Address: Stage3/pattern3.csv
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoads
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b2b8a8963f43cd543a98315a7ceaabb8
+    m_Address: Stage3/pattern4.csv
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoads
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0b0ccf77e3cf7f8479f3d72983e0e933
+    m_Address: Stage3/pattern5.csv
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoads
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2272ab10a61c7f04cb010457c1c6bbbb
+    m_Address: Stage3/pattern6.csv
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoads
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ce4ed078fbced4b4390f85346c598acc
+    m_Address: Stage3/pattern7.csv
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoads
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f3254da248f21f7449b70d1ccd07715f
+    m_Address: Stage3/pattern8.csv
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoads
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6001b26f0b3bd3847b7e110c05fec4d8
+    m_Address: Stage3/pattern9.csv
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoads
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fb518d911a199bd4dabac3f3590472a5
+    m_Address: Stage3/pattern10.csv
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoads
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5a7794750e89f2442a9834af27b3e48f
+    m_Address: Stage3/pattern11.csv
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoads
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: db7ca871a35aad44893491481d187f14
+    m_Address: Stage3/pattern12.csv
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoads
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bb1a92c3af385a941b3dd034e043db0c
+    m_Address: Stage3/pattern13.csv
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoads
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 65da11e3018ba2b4bbcd7db5688ccf15
+    m_Address: Stage3/pattern14.csv
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoads
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a381f585ae879894ead57c2af191ad7d
+    m_Address: Stage3/pattern15.csv
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoads
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 79ddd778e61e67b45a588f8784edc9d6
+    m_Address: Stage3/pattern16.csv
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoads
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fc5635de1ffb5ee418241c3b1a438ae6
+    m_Address: Stage3/pattern17.csv
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoads
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 5feae7305fb988643a34ec8e75f20243, type: 2}
   m_SchemaSet:

@@ -54,7 +54,7 @@ public class UI_Popup_Option : MonoBehaviour, IPopup
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #elif UNITY_WEBGL
-        SceneManager.LoadScene
+        SceneManager.LoadScene("Start");
 #else
         Application.Quit();
 #endif
@@ -62,6 +62,6 @@ public class UI_Popup_Option : MonoBehaviour, IPopup
 
     public void OffPopup()
     {
-    
+        
     }
 }
