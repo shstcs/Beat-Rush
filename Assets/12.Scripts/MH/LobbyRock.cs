@@ -17,8 +17,9 @@ public class LobbyRock : MonoBehaviour
         if (collision.transform.CompareTag("Player"))
         {
             ContactPoint cp = collision.contacts[0];
-            Vector3 dir = cp.normal + new Vector3(2f, 4f, 2f);
-            rb.velocity = dir;
+            Vector3 dir = cp.normal + new Vector3(0, 1.2f, 0);
+            rb.AddForce(dir * 5,ForceMode.Impulse);
+            transform.Rotate(new Vector3(1,1,1));
         }
     }
 }
