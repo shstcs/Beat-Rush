@@ -18,7 +18,7 @@ public class Line : MonoBehaviour
 
     private void OnAttackStarted(InputAction.CallbackContext context)
     {
-        if (Managers.Player.IsDie()) return;
+        if (Managers.Player.IsDie() || Time.timeScale == 0) return;
         CheckNotes();
     }
 
