@@ -130,16 +130,19 @@ public class GameManager : MonoBehaviour
         if (noteCount == 0)
             noteCount = 1;
         float rankCount = (float)(judgeNotes[0] + judgeNotes[1]) / noteCount;
-        if (rankCount >= 0.9f && judgeNotes[3] == 0 && judgeNotes[4] == 0)
-            rank = Rank.S;
-        else if (rankCount >= 0.9f && judgeNotes[3] > 0 && judgeNotes[4] > 0)
-            rank = Rank.A;
-        else if (rankCount >= 0.6f && rankCount < 0.9f)
-            rank = Rank.B;
-        else if (rankCount < 0.6f && Managers.Player.IsDie() == false)
-            rank = Rank.C;
-        else if (Managers.Player.IsDie())
+        if (Managers.Player.IsDie())
             rank = Rank.F;
+        else
+        {
+            if (rankCount >= 0.9f && judgeNotes[3] == 0 && judgeNotes[4] == 0)
+                rank = Rank.S;
+            else if (rankCount >= 0.9f && judgeNotes[3] > 0 && judgeNotes[4] > 0)
+                rank = Rank.A;
+            else if (rankCount >= 0.6f && rankCount < 0.9f)
+                rank = Rank.B;
+            else
+                rank = Rank.C;
+        }
     }
     private void OnApplicationQuit()
     {

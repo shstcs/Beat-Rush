@@ -24,19 +24,4 @@ public class Option_Resolution : MonoBehaviour
     {
         Screen.SetResolution(1920, 1080, _isFull);
     }
-    public void FullScreen()
-    {
-        screenMode = FullScreenMode.FullScreenWindow;
-        _isFull = true;
-    }
-    public void WindowMode()
-    {
-        screenMode = FullScreenMode.Windowed;
-        _isFull = false;
-    }
-    public void MaxWindowMode()
-    {
-        screenMode = FullScreenMode.MaximizedWindow;
-        _isFull = false;
-    }
 }
