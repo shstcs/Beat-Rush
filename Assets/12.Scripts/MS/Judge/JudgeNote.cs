@@ -21,7 +21,7 @@ public class JudgeNote : MonoBehaviour
         _rect = GetComponent<RectTransform>();
         _image = GetComponent<Image>();
         //time = _distance / (Managers.Game.noteDistance[Managers.Game.currentStage] / (60 / Managers.Game.bpm[Managers.Game.currentStage]));
-        time = _distance / (Managers.Game.noteSpeed[Managers.Game.currentStage] * Managers.Game.speedModifier); //속도 배율에 따라 달라지게 수정
+        time = _distance / (Managers.Game.stageInfos[Managers.Game.currentStage].noteSpeed * Managers.Game.speedModifier); //속도 배율에 따라 달라지게 수정
     }
 
     private void Update()

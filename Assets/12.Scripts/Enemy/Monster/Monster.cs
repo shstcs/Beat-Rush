@@ -15,9 +15,9 @@ public class Monster : MonoBehaviour, IMonster
     protected virtual void Awake()
     {
         curStage = Managers.Game.currentStage;
-        _attackDelay = Managers.Game.PatternLength[curStage] / (Managers.Game.noteSpeed[curStage]);
+        _attackDelay = Managers.Game.stageInfos[curStage].PatternLength / (Managers.Game.stageInfos[curStage].noteSpeed);
 
-        for(int i = 1; i <= Managers.Game.PatternCount[curStage]; i++)
+        for(int i = 1; i <= Managers.Game.stageInfos[curStage].PatternCount; i++)
         {
             _patterns.Add(new IPattern(curStage,i));
         }

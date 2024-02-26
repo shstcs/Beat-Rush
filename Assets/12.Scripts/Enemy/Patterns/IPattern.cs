@@ -22,9 +22,9 @@ public class IPattern
         _patternAddress = $"Stage{stage}/pattern{patternNum}.csv";
         _pattern = CSVReader.Read(_patternAddress);
 
-        _stageNoteSpeed = Managers.Game.noteSpeed[Managers.Game.currentStage] * Managers.Game.speedModifier;
-        _startDelay = Managers.Game.StageStartDelay[stage];
-        _noteStartPos = Managers.Game.StageNotePos[stage];
+        _stageNoteSpeed = Managers.Game.stageInfos[stage].noteSpeed * Managers.Game.speedModifier;
+        _startDelay = Managers.Game.stageInfos[stage].StageStartDelay;
+        _noteStartPos = Managers.Game.stageInfos[stage].StageNotePos;
     }
     public IEnumerator Attack()
     {
@@ -62,7 +62,7 @@ public class IPattern
         float _noteDistance = _stageNoteSpeed * (float)(AudioSettings.dspTime - _startDsp[_curPatternNum]) + _startDelay * Managers.Game.speedModifier;
 
         int cnt = 0;
-        for (int i = Managers.Game.curNoteInStage[_curStage, _curPatternNum]; i < Managers.Game.curNoteInStage[_curStage, _curPatternNum] + _activeNotes.Count; i++)
+        for (int i = Managers.Game.stageInfos[_curStage].curNoteInStage[_curPatternNum]; i < Managers.Game.stageInfos[_curStage].curNoteInStage[_curPatternNum] + _activeNotes.Count; i++)
         {
             float curLocation = ((float)_pattern[i]["noteLocation"] * Managers.Game.speedModifier) - _noteDistance;
             GameObject note = _activeNotes[cnt++];
