@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class TutorialMob : MonoBehaviour, IMonster
@@ -11,8 +9,7 @@ public class TutorialMob : MonoBehaviour, IMonster
     private void Awake()
     {
         _attackDelay = 165f / (Managers.Game.noteSpeed[Managers.Game.currentStage]);
-        _pattern = new Pattern0();
-        _pattern.SetPattern();
+        _pattern = new IPattern(0,1);
     }
 
     private void Update()

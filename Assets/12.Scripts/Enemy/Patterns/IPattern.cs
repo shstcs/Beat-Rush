@@ -2,20 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class IPattern
+public class IPattern
 {
-    protected List<Dictionary<string, object>> _pattern;
-    protected double[] _startDsp = new double[20];
-    protected double _pauseDsp = 0;
-    protected float _stageNoteSpeed;
-    protected float _startDelay;
-    protected int _curPatternNum;
-    protected int _curStage;
-    protected Vector3 _noteStartPos;
+    private string _patternAddress;
+    private List<Dictionary<string, object>> _pattern;
+    private double[] _startDsp = new double[20];
+    private double _pauseDsp = 0;
+    private float _stageNoteSpeed;
+    private float _startDelay;
+    private int _curPatternNum;
+    private int _curStage;
+    private Vector3 _noteStartPos;
     public bool _isFeedbackStart = true;
+    public IPattern() { }
+    public IPattern(int stage, int patternNum)
+    {
+        _curStage = stage;
+        _curPatternNum = patternNum;
+        _patternAddress = $"Stage{stage}/pattern{patternNum}.csv";
+        _pattern = CSVReader.Read(_patternAddress);
 
-    public abstract void SetPattern();
-    public virtual IEnumerator Attack()
+        _stageNoteSpeed = Managers.Game.noteSpeed[Managers.Game.currentStage] * Managers.Game.speedModifier;
+        _startDelay = Managers.Game.StageStartDelay[stage];
+        _noteStartPos = Managers.Game.StageNotePos[stage];
+    }
+    public IEnumerator Attack()
     {
         float waitTime;
         _startDsp[_curPatternNum] = AudioSettings.dspTime;
@@ -39,11 +50,10 @@ public abstract class IPattern
             yield return new WaitForSeconds(waitTime / _stageNoteSpeed);
         }
     }
-    public virtual void Feedback()
+    public void Feedback()
     {
         if (!_isFeedbackStart)
         {
-            Debug.Log("Feedback On");
             _startDsp[_curPatternNum] = AudioSettings.dspTime - _pauseDsp;
             _isFeedbackStart = true;
         }
@@ -60,7 +70,7 @@ public abstract class IPattern
         }
     }
 
-    public virtual void Pause()
+    public void Pause()
     {
         
         if (_isFeedbackStart)

@@ -39,6 +39,8 @@ public class GameManager : MonoBehaviour
     public float[] noteSpeed = { 6.6666f, 9.6f, 13.2f, 13.3333f };
     public int[,] curNoteInStage = new int[4, 20];
     public float[] StageStartDelay = { 0, 0, -2.5f, -4f };
+    public float[] PatternLength = { 165f, 320f, 128f, 128f };
+    public int[] PatternCount = { 1, 4, 9, 17 };
     public Vector3[] StageNotePos =
     {
         new Vector3(-2, 0, 42.5f),

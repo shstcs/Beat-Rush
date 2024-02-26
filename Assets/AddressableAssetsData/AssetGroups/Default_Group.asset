@@ -17,12 +17,6 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: c5cf851708f6b8a408195b1b1dd2b5e5
   m_SerializeEntries:
-  - m_GUID: e70658846a4ca774ba09fcb23e84af95
-    m_Address: Tutorial/tutorial.csv
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - PreLoads
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 46382b3e22b29a34cba2b9dfa3b613b9
     m_Address: PlayerSO
     m_ReadOnly: 0

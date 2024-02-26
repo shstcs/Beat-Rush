@@ -1479,10 +1479,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 395399018}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f66f7cf8c60e2574a878781d2ef73f60, type: 3}
+  m_Script: {fileID: 11500000, guid: 38fb508a202f22e4ca444d764e5cb165, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _camera: {fileID: 180661754}
 --- !u!1001 &402821203
 PrefabInstance:
   m_ObjectHideFlags: 0

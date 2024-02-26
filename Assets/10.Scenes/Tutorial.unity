@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17951591, g: 0.22477648, b: 0.30638984, a: 1}
+  m_IndirectSpecularColor: {r: 0.17951626, g: 0.22477704, b: 0.30639052, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1048,7 +1048,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 538947859}
-  - component: {fileID: 538947858}
+  - component: {fileID: 538947860}
   m_Layer: 0
   m_Name: TutorialMob
   m_TagString: Untagged
@@ -1056,18 +1056,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &538947858
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 538947857}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02614ab858b36ae408b1eaade5bd654f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &538947859
 Transform:
   m_ObjectHideFlags: 0
@@ -1083,6 +1071,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &538947860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 538947857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38fb508a202f22e4ca444d764e5cb165, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &584505488
 GameObject:
   m_ObjectHideFlags: 0
@@ -5722,6 +5722,7 @@ MonoBehaviour:
     deathParameterName: '@Death'
     skillParameterName: Skill
   SwordEffect: {fileID: 0}
+  IsUseSkill: 0
   SkillPrefab: {fileID: 6445826192643391251, guid: d49c31966477ce84e80549803c09e1bb,
     type: 3}
 --- !u!1 &3187776187259475055
