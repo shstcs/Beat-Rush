@@ -11,7 +11,7 @@ public class UI_Stage_Effect : MonoBehaviour
     private void Start()
     {
         int curStageidx = Managers.Game.currentStage;
-        upSizeTime = (Managers.Game.bpm[curStageidx]/Managers.Game.noteDistance[curStageidx])/16;
+        upSizeTime = (Managers.Game.stageInfos[curStageidx].bpm /Managers.Game.stageInfos[curStageidx].noteDistance)/16;
     }
 
     private void Update()

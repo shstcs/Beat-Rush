@@ -102,7 +102,7 @@ public class Note : MonoBehaviour
         _destroyParticle.transform.position = transform.position;
         _particle.Play();
         transform.position = Vector3.zero;
-        Managers.Game.curNoteInStage[stage, noteNumber]++;
+        Managers.Game.stageInfos[stage].curNoteInStage[noteNumber]++;
         gameObject.SetActive(false);
     }
 

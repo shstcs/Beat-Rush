@@ -95,7 +95,7 @@ public class PopupManager
         if (notes.Count > 0)
         {
             distance = notes[0].transform.position.z - 12;
-            float time = distance / (Managers.Game.noteSpeed[Managers.Game.currentStage] * Managers.Game.speedModifier);
+            float time = distance / (Managers.Game.stageInfos[Managers.Game.currentStage].noteSpeed * Managers.Game.speedModifier);
             Managers.Sound.ContinueBGM(time);   //음악 재생
         }
         else

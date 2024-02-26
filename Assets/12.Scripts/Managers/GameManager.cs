@@ -34,17 +34,12 @@ public class GameManager : MonoBehaviour
 
     public int Score { get; set; }
     public int Hp { get; private set; }
-    public float[] bpm = { 80f, 72f, 99f, 100f };
-    public float[] noteDistance = { 5, 8, 8, 8 };
-    public float[] noteSpeed = { 6.6666f, 9.6f, 13.2f, 13.3333f };
-    public int[,] curNoteInStage = new int[4, 20];
-    public float[] StageStartDelay = { 0, 0, -2.5f, -4f };
-    public Vector3[] StageNotePos =
+    public StageInfo[] stageInfos =
     {
-        new Vector3(-2, 0, 42.5f),
-        new Vector3(40, 1, 42.5f),
-        new Vector3(40, 1, 42.5f),
-        new Vector3(40, 1, 42.5f)
+       new Stage0Info(),
+       new Stage1Info(),
+       new Stage2Info(),
+       new Stage3Info()
     };
     public int currentStage = 0;
     public float delay = 1.5f;
@@ -99,11 +94,11 @@ public class GameManager : MonoBehaviour
 
     public void InitNotes()
     {
-        for (int i = 0; i < curNoteInStage.GetLength(0); i++)
+        foreach(StageInfo info in stageInfos)
         {
-            for (int j = 0; j < curNoteInStage.GetLength(1); j++)
+            for(int i = 0; i < info.curNoteInStage.Length; i++)
             {
-                curNoteInStage[i, j] = 0;
+                info.curNoteInStage[i] = 0;
             }
         }
     }

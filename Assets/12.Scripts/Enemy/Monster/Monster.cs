@@ -1,25 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Monster : MonoBehaviour, IMonster
 {
-    private Animator _animator;
-    [SerializeField] private GameObject _camera;
-    private Animator _cameraAnimator;
-    private MonsterAnimationData _golemAnimation = new();
-
-    protected IPattern[] _patterns;
+    private List<IPattern> _patterns = new List<IPattern>();
+    private int curStage;
     private int _currentPatternIndex = 0;
     private int _currentFeedbackIndex = -1;
     private int _feedbackCount;
     private float _attackDelay;
 
-    protected void Awake()
+    protected virtual void Awake()
     {
-        _animator = GetComponent<Animator>();
-        _cameraAnimator = _camera.GetComponent<Animator>();
-        _golemAnimation.Init();
+        curStage = Managers.Game.currentStage;
+        _attackDelay = Managers.Game.stageInfos[curStage].PatternLength / (Managers.Game.stageInfos[curStage].noteSpeed);
+
+        for(int i = 1; i <= Managers.Game.stageInfos[curStage].PatternCount; i++)
+        {
+            _patterns.Add(new IPattern(curStage,i));
+        }
+
+        if(curStage != 2) SortPattern();
     }
 
     private void Update()
@@ -28,6 +31,11 @@ public class Monster : MonoBehaviour, IMonster
         {
             if (_feedbackCount > 12 && _currentFeedbackIndex >= 0)
             {
+                if (_currentFeedbackIndex > 0)
+                {
+                    _patterns[_currentFeedbackIndex - 1].Feedback();
+                }
+
                 _patterns[_currentFeedbackIndex].Feedback();
                 _feedbackCount = 0;
             }
@@ -44,34 +52,26 @@ public class Monster : MonoBehaviour, IMonster
 
     public void SortPattern()
     {
-
-        for (int i = _patterns.Length - 1; i > 0; i--)
+        for (int i = _patterns.Count - 1; i > 0; i--)
         {
             int randomIndex = Random.Range(0, i + 1);
-
-            IPattern temp = _patterns[i];
-            _patterns[i] = _patterns[randomIndex];
-            _patterns[randomIndex] = temp;
-        }
-    }
-
-    public void EndStage()
-    {
-        if (Time.timeScale != 0)
-        {
-            StartCoroutine(_patterns[_currentPatternIndex++].Attack());
-            _animator.SetTrigger(_golemAnimation.GetRandomAttackHash());
-            _currentFeedbackIndex++;
+            (_patterns[randomIndex], _patterns[i]) = (_patterns[i], _patterns[randomIndex]);
         }
     }
 
     public (int length, float delay, BGM bgm) GetPatternData()
     {
-        throw new System.NotImplementedException();
+        return (_patterns.Count, _attackDelay, (BGM)curStage);
     }
 
-    public void RandomAttack()
+    public virtual void RandomAttack()
     {
-        throw new System.NotImplementedException();
+        StartCoroutine(_patterns[_currentPatternIndex++].Attack());
+        _currentFeedbackIndex++;
+    }
+
+    public virtual void EndStage()
+    {
+        StartCoroutine(Managers.Sound.VolumeDown());
     }
 }
