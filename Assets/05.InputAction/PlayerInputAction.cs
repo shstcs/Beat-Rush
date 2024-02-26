@@ -89,6 +89,15 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""StatPopup"",
+                    ""type"": ""Button"",
+                    ""id"": ""0fbcaf7e-f1cf-44f5-8a20-b5158e8c41c2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -256,6 +265,17 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
                     ""action"": ""Popup"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""85aa228b-ab37-4c13-bbf4-d9ba4c5645c7"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""StatPopup"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -271,6 +291,7 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
         m_Player_Interaction = m_Player.FindAction("Interaction", throwIfNotFound: true);
         m_Player_Quest = m_Player.FindAction("Quest", throwIfNotFound: true);
         m_Player_Popup = m_Player.FindAction("Popup", throwIfNotFound: true);
+        m_Player_StatPopup = m_Player.FindAction("StatPopup", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -339,6 +360,7 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Interaction;
     private readonly InputAction m_Player_Quest;
     private readonly InputAction m_Player_Popup;
+    private readonly InputAction m_Player_StatPopup;
     public struct PlayerActions
     {
         private @PlayerInputAction m_Wrapper;
@@ -350,6 +372,7 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
         public InputAction @Interaction => m_Wrapper.m_Player_Interaction;
         public InputAction @Quest => m_Wrapper.m_Player_Quest;
         public InputAction @Popup => m_Wrapper.m_Player_Popup;
+        public InputAction @StatPopup => m_Wrapper.m_Player_StatPopup;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -380,6 +403,9 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
             @Popup.started += instance.OnPopup;
             @Popup.performed += instance.OnPopup;
             @Popup.canceled += instance.OnPopup;
+            @StatPopup.started += instance.OnStatPopup;
+            @StatPopup.performed += instance.OnStatPopup;
+            @StatPopup.canceled += instance.OnStatPopup;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -405,6 +431,9 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
             @Popup.started -= instance.OnPopup;
             @Popup.performed -= instance.OnPopup;
             @Popup.canceled -= instance.OnPopup;
+            @StatPopup.started -= instance.OnStatPopup;
+            @StatPopup.performed -= instance.OnStatPopup;
+            @StatPopup.canceled -= instance.OnStatPopup;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -431,5 +460,6 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
         void OnInteraction(InputAction.CallbackContext context);
         void OnQuest(InputAction.CallbackContext context);
         void OnPopup(InputAction.CallbackContext context);
+        void OnStatPopup(InputAction.CallbackContext context);
     }
 }
