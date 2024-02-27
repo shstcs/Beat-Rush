@@ -59,7 +59,7 @@ MonoBehaviour:
     m_SerializedLabels:
     - PreLoads
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: d55310416bf2eac43b32f1436db9a28e
+  - m_GUID: 584998bfdc362d640866eacd92b0bafa
     m_Address: Stage0BGM
     m_ReadOnly: 0
     m_SerializedLabels:
