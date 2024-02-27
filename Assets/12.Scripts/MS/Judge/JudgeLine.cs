@@ -15,13 +15,20 @@ public class JudgeLine : MonoBehaviour
     {
         if (NoteLayer.value == (NoteLayer.value |(1 << other.gameObject.layer)))
         {
-            GameObject topJudgeNote = Managers.Pool.SpawnFromJudgePool();
-            topJudgeNote.transform.SetParent(JudgeNoteSpwanPos);
-            topJudgeNote.GetComponent<RectTransform>().anchoredPosition = new Vector2(_judgeNoteSpawnX, 0f);
+            var note = other.gameObject.GetComponent<Note>();
+            if (note.IsJudgeNoteCreated) return;
 
-            GameObject bottomJudgeNote = Managers.Pool.SpawnFromJudgePool();
-            bottomJudgeNote.transform.SetParent(JudgeNoteSpwanPos);
-            bottomJudgeNote.GetComponent<RectTransform>().anchoredPosition = new Vector2(-_judgeNoteSpawnX, 0f);
+            note.IsJudgeNoteCreated = true;
+
+            GameObject leftJudgeNote = Managers.Pool.SpawnFromJudgePool();
+            leftJudgeNote.transform.SetParent(JudgeNoteSpwanPos);
+            leftJudgeNote.GetComponent<RectTransform>().anchoredPosition = new Vector2(_judgeNoteSpawnX, 0f);
+            note.LeftJudgeNote = leftJudgeNote;
+
+            GameObject rightJudgeNote = Managers.Pool.SpawnFromJudgePool();
+            rightJudgeNote.transform.SetParent(JudgeNoteSpwanPos);
+            rightJudgeNote.GetComponent<RectTransform>().anchoredPosition = new Vector2(-_judgeNoteSpawnX, 0f);
+            note.RightJudgeNote = rightJudgeNote;
 
             if(Managers.Game.mode == GameMode.Sudden)
             {

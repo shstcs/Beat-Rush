@@ -12,6 +12,13 @@ public class Note : MonoBehaviour
     public int stage = 0;
     public bool isTrap = false;
 
+    [HideInInspector]
+    public bool IsJudgeNoteCreated;
+    [HideInInspector]
+    public GameObject LeftJudgeNote;
+    [HideInInspector]
+    public GameObject RightJudgeNote;
+
     private VisualEffectAsset _effect;
     private VisualEffectAsset _trapEffect;
     protected void Awake()
@@ -103,6 +110,11 @@ public class Note : MonoBehaviour
         _particle.Play();
         transform.position = Vector3.zero;
         Managers.Game.stageInfos[stage].curNoteInStage[noteNumber]++;
+
+        IsJudgeNoteCreated = false;
+        LeftJudgeNote.SetActive(false);
+        RightJudgeNote.SetActive(false);
+
         gameObject.SetActive(false);
     }
 

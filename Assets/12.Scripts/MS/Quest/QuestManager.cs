@@ -73,12 +73,17 @@ public class QuestManager : MonoBehaviour
         if (Managers.Popup.IsPopupActive()) return;
 
         int index = 0;
-        foreach (var datas in Managers.Game.questDatas)
+
+        var questDataDic = Managers.Game.questDatas.OrderBy(x => x.Value.IsReceive);
+        foreach (var datas in questDataDic)
         {
             QuestData data = datas.Value;
             GameObject questObj;
             if (_content.transform.childCount > index)
+            {
                 questObj = _content.transform.GetChild(index).gameObject;
+                questObj.transform.GetChild(0).GetComponent<Image>().color = new Color(1f, 1f, 1f, 0.3f);
+            }
             else
                 questObj = Instantiate(_questPrefab, _content.transform);
 
@@ -96,7 +101,7 @@ public class QuestManager : MonoBehaviour
             }
             if (data.IsReceive)
             {
-                questObj.transform.GetChild(0).GetComponent<Image>().color = new Color(255, 255, 255, 0.7f);
+                questObj.transform.GetChild(0).GetComponent<Image>().color = new Color(1f, 1f, 1f, 0.7f);
                 _stateText.text = "수령 완료";
             }
 

@@ -15,7 +15,8 @@ public class UI_Popup_Option : MonoBehaviour, IPopup
 
     private void OnDisable()
     {
-        Managers.Player.Input.PlayerActions.Popup.started -= OffOption;
+        if (Managers.Player != null)
+            Managers.Player.Input.PlayerActions.Popup.started -= OffOption;
     }
 
     public void OnLobby()
@@ -62,6 +63,6 @@ public class UI_Popup_Option : MonoBehaviour, IPopup
 
     public void OffPopup()
     {
-        
+
     }
 }
