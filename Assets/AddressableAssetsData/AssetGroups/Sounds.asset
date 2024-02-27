@@ -60,7 +60,7 @@ MonoBehaviour:
     - PreLoads
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d55310416bf2eac43b32f1436db9a28e
-    m_Address: Stage0BGM
+    m_Address: Stage0BGM_old
     m_ReadOnly: 0
     m_SerializedLabels:
     - PreLoads
@@ -85,6 +85,12 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1b070e6e0ff849b408a0cf5c1b9dcfdf
     m_Address: StartBGM
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoads
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 584998bfdc362d640866eacd92b0bafa
+    m_Address: Stage0BGM
     m_ReadOnly: 0
     m_SerializedLabels:
     - PreLoads

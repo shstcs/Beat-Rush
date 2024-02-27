@@ -45,10 +45,10 @@ public class Line : MonoBehaviour
 
             Managers.Player.Rotate(selectCollider.transform);
 
-            if (Managers.Game.currentStage == 0) // 싱크 조절
-            {
-                Managers.Game.delay = Managers.Game.delay -= (selectCollider.transform.position.z - 10) / 4;
-            }
+            //if (Managers.Game.currentStage == 0) // 싱크 조절
+            //{
+            //    Managers.Game.delay = Managers.Game.delay -= (selectCollider.transform.position.z - 10) / 4;
+            //}
 
             if (selectCollider.GetComponent<Note>().isTrap)   // 함정노트
             {

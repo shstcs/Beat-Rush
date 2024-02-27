@@ -75,7 +75,7 @@ public class IPattern
         
         if (_isFeedbackStart)
         {
-            if (Managers.Game.Score > 0)
+            if (Managers.Game.Score >= 0)       //내가 이걸 왜 나눠놨을까..
             {
                 _isFeedbackStart = false;
                 _pauseDsp = AudioSettings.dspTime - _startDsp[_curPatternNum];

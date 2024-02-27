@@ -20,9 +20,10 @@ public class Monster : MonoBehaviour, IMonster
         for(int i = 1; i <= Managers.Game.stageInfos[curStage].PatternCount; i++)
         {
             _patterns.Add(new IPattern(curStage,i));
+            Debug.Log(curStage + " " + i);
         }
 
-        if(curStage != 2) SortPattern();
+        //if(curStage != 2) SortPattern();
     }
 
     private void Update()
