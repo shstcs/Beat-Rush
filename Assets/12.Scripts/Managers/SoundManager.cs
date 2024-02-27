@@ -61,7 +61,7 @@ public class SoundManager
 
     public void Initialized()
     {
-        _sfx.Add(SFX.Attack, Managers.Resource.Load<AudioClip>("AttackSound"));
+        _sfx.Add(SFX.Attack, Managers.Resource.Load<AudioClip>("AttackSound2"));
         _sfx.Add(SFX.Skill, Managers.Resource.Load<AudioClip>("SkillSound"));
         _sfx.Add(SFX.FirstWalk, Managers.Resource.Load<AudioClip>("FirstGrassWalk"));
         _sfx.Add(SFX.SecondWalk, Managers.Resource.Load<AudioClip>("SecondGrassWalk"));

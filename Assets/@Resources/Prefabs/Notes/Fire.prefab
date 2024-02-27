@@ -71,6 +71,9 @@ MonoBehaviour:
   noteNumber: 0
   stage: 0
   isTrap: 0
+  IsJudgeNoteCreated: 0
+  LeftJudgeNote: {fileID: 0}
+  RightJudgeNote: {fileID: 0}
 --- !u!65 &5481927561004739335
 BoxCollider:
   m_ObjectHideFlags: 0

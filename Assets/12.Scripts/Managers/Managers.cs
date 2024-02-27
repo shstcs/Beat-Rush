@@ -35,8 +35,8 @@ public class Managers : MonoBehaviour
             Sound.AudioSourceBGM = gameObject.AddComponent<AudioSource>();
             Sound.AudioSourceSFX = gameObject.AddComponent<AudioSource>();
             DontDestroyOnLoad(gameObject);
+            Game.InitMaxScoreArray();
         }
-        Game.InitMaxScoreArray();
     }
     #endregion
     #region Fields
