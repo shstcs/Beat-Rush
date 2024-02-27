@@ -89,7 +89,7 @@ MonoBehaviour:
     m_SerializedLabels:
     - PreLoads
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 9a5ed87272f17cb4f9c340dca25f575f
+  - m_GUID: 2098efaef35635248bb2985521f050f1
     m_Address: AttackSound2
     m_ReadOnly: 0
     m_SerializedLabels:
