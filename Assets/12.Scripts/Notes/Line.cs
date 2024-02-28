@@ -14,6 +14,9 @@ public class Line : MonoBehaviour
     private void Start()
     {
         Managers.Player.Input.PlayerActions.Attack.started += OnAttackStarted;
+        Managers.Player.Input.PlayerActions.Attack1.started += OnAttackStarted;
+        Managers.Player.Input.PlayerActions.Attack2.started += OnAttackStarted;
+        Managers.Player.Input.PlayerActions.Attack3.started += OnAttackStarted;
     }
 
     private void OnAttackStarted(InputAction.CallbackContext context)
