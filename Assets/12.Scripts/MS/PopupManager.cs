@@ -69,6 +69,7 @@ public class PopupManager
         float startRealTime = Time.realtimeSinceStartup;
         while (Time.realtimeSinceStartup - startRealTime < 3f)
         {
+            yield return null;
             pauseTime = Time.realtimeSinceStartup - startRealTime;
             if( pauseTime >= 2.0f && pauseTime < 3.0f )
             {
@@ -82,7 +83,6 @@ public class PopupManager
             {
                 timer.GetComponent<TextMeshProUGUI>().text = 3.ToString();
             }
-            yield return null;
         }
         timer.SetActive(false);
         Continue();

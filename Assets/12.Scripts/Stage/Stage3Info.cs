@@ -9,7 +9,7 @@ public class Stage3Info : StageInfo
         bpm = 100f;
         noteDistance = 8f;
         noteSpeed = 13.3333f;
-        StageStartDelay = -3.7f;
+        StageStartDelay = -3.5f;
         PatternLength = 128f;
         PatternCount = 17;
         StageNotePos = new Vector3(40, 1, 42.5f);
