@@ -175,7 +175,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.011893988, y: 0.9046195, z: 0.030526519}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7758953688048038423}
@@ -195,7 +195,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   noteNumber: 0
   stage: 0
-  isTrap: 0
+  mode: 0
+  IsJudgeNoteCreated: 0
+  LeftJudgeNote: {fileID: 0}
+  RightJudgeNote: {fileID: 0}
 --- !u!136 &4927620106680408394
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -215,7 +218,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 2
+  m_Radius: 2.8
   m_Height: 0
   m_Direction: 0
   m_Center: {x: 0, y: 0, z: 0}

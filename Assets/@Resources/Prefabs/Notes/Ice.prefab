@@ -29,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.9024534, y: 1.67, z: 5.1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5987111637646317921}
@@ -54,7 +54,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 4.5, y: 4.5, z: 4.5}
+  m_Size: {x: 6, y: 6, z: 6}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &-170791967758228530
 MonoBehaviour:
@@ -70,7 +70,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   noteNumber: 0
   stage: 0
-  isTrap: 0
+  mode: 0
+  IsJudgeNoteCreated: 0
+  LeftJudgeNote: {fileID: 0}
+  RightJudgeNote: {fileID: 0}
 --- !u!65 &7054735723859980724
 BoxCollider:
   m_ObjectHideFlags: 0
