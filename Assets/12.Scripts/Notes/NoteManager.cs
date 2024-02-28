@@ -37,7 +37,7 @@ public class NoteManager : MonoBehaviour
         _notePool.SetPool();
         _stageNoteSpeed = Managers.Game.stageInfos[Managers.Game.currentStage].noteSpeed * Managers.Game.speedModifier;
         _curDsp = AudioSettings.dspTime;
-        //if (Managers.Game.currentStage != 3) StartCoroutine(CreateNewNotes());
+        if (Managers.Game.currentStage == 0) StartCoroutine(CreateNewNotes());
 
         Managers.Game.OnStageEnd += Managers.Sound.StopBGM;
         Managers.Game.OnStageEnd += ClearStageUpdate;
