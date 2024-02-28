@@ -26,7 +26,7 @@ public class ObjectPool : MonoBehaviour
 
         for (int i = 0; i < judgePoolSize; i++)
         {
-            GameObject judgeObj = Managers.Resource.Instantiate("Notes/JudgeNote.prefab", transform);
+            GameObject judgeObj = Managers.Resource.Instantiate("Notes/JudgeNote2.prefab", transform);
             judgeObj.SetActive(false);
             judgePoolQueue.Enqueue(judgeObj);
         }

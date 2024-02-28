@@ -112,8 +112,10 @@ public class Note : MonoBehaviour
         Managers.Game.stageInfos[stage].curNoteInStage[noteNumber]++;
 
         IsJudgeNoteCreated = false;
-        LeftJudgeNote.SetActive(false);
-        RightJudgeNote.SetActive(false);
+        if(LeftJudgeNote != null)
+            LeftJudgeNote.SetActive(false);
+        if(LeftJudgeNote != null)
+            RightJudgeNote.SetActive(false);
 
         gameObject.SetActive(false);
     }
