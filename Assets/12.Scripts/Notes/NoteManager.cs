@@ -5,7 +5,7 @@ using UnityEngine;
 public class NoteManager : MonoBehaviour
 {
     [SerializeField] private GameObject _monsterObject;
-    private IMonster _monster;
+    private Monster _monster;
 
     private ObjectPool _notePool;
     private float _stageNoteSpeed;
@@ -20,13 +20,13 @@ public class NoteManager : MonoBehaviour
 
     private void Awake()
     {
-        _monster = _monsterObject.GetComponent<IMonster>();
+        _monster = _monsterObject.GetComponent<Monster>();
         _cameraAnimator = Camera.main.GetComponent<Animator>();
         Managers.Game.GameType = GameType.Play;
-        Managers.Game.OnStageStart += Stage3Start;
+        Managers.Game.OnStageStart += StageStart;
     }
 
-    private void Stage3Start()
+    public void StageStart()
     {
         StartCoroutine(CreateNewNotes());
     }
@@ -37,7 +37,8 @@ public class NoteManager : MonoBehaviour
         _notePool.SetPool();
         _stageNoteSpeed = Managers.Game.stageInfos[Managers.Game.currentStage].noteSpeed * Managers.Game.speedModifier;
         _curDsp = AudioSettings.dspTime;
-        if (Managers.Game.currentStage != 3) StartCoroutine(CreateNewNotes());
+        //if (Managers.Game.currentStage != 3) StartCoroutine(CreateNewNotes());
+
         Managers.Game.OnStageEnd += Managers.Sound.StopBGM;
         Managers.Game.OnStageEnd += ClearStageUpdate;
         Managers.Game.OnStageEnd += Managers.Game.InitNotes;
@@ -59,7 +60,7 @@ public class NoteManager : MonoBehaviour
         Managers.Game.OnStageEnd -= Managers.Game.InitNotes;
         Managers.Game.OnStageEnd -= ClearStageUpdate;
         Managers.Game.OnContinue -= Managers.Game.currentStage == 0 ? Managers.Sound.ContinueBGM : DelayContinued;
-        Managers.Game.OnStageStart -= Stage3Start;
+        Managers.Game.OnStageStart -= StageStart;
     }
 
     private void MoveNotes()
@@ -67,7 +68,7 @@ public class NoteManager : MonoBehaviour
         float movement = ((float)(AudioSettings.dspTime - _curDsp) * _stageNoteSpeed);
         foreach (GameObject note in Managers.Pool.GetActiveNotes())
         {
-            note.transform.position = new Vector3(note.gameObject.transform.position.x, note.gameObject.transform.position.y,
+            note.transform.position = new Vector3(note.transform.position.x, note.transform.position.y,
             note.transform.position.z - movement);
         }
     }
@@ -75,10 +76,9 @@ public class NoteManager : MonoBehaviour
     public IEnumerator CreateNewNotes()
     {
         Managers.Sound.StopBGM();
-        var data = _monster.GetPatternData();
-        _patternLength = data.length;
-        _attackDelay = data.delay;
-        _bgm = data.bgm;
+
+        (_patternLength, _attackDelay, _bgm) = _monster.GetPatternData();
+
         if (Managers.Game.currentStage != 0)
         {
             Managers.Sound.DelayedPlayBGM(_bgm, (32.5f / _stageNoteSpeed));

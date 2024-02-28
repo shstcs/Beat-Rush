@@ -16,7 +16,6 @@ public class Golem : Monster
     public override void RandomAttack()
     {
         _animator.SetTrigger(_golemAnimation.GetRandomAttackHash());
-
         base.RandomAttack();
     }
 

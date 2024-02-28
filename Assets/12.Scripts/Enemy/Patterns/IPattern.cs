@@ -13,7 +13,7 @@ public class IPattern
     private int _curPatternNum;
     private int _curStage;
     private Vector3 _noteStartPos;
-    public bool _isFeedbackStart = true;
+    public bool _isFeedbackStart;
     public IPattern() { }
     public IPattern(int stage, int patternNum)
     {
@@ -45,7 +45,7 @@ public class IPattern
             GameObject note = Managers.Pool.SpawnFromPool((float)_pattern[i]["isTrap"] != 0);
             note.GetComponent<Note>().noteNumber = _curPatternNum;
             note.GetComponent<Note>().stage = _curStage;
-            note.transform.position = new Vector3((float)_pattern[i]["xValue"], 0, (Managers.Game.delay - _startDelay) * Managers.Game.speedModifier ) + _noteStartPos;
+            note.transform.position = new Vector3((float)_pattern[i]["xValue"], 0, (Managers.Game.delay - _startDelay) * Managers.Game.speedModifier) + _noteStartPos;
             i++;
             yield return new WaitForSeconds(waitTime / _stageNoteSpeed);
         }
@@ -72,13 +72,13 @@ public class IPattern
 
     public void Pause()
     {
-        
+
         if (_isFeedbackStart)
         {
             if (Managers.Game.Score >= 0)       //내가 이걸 왜 나눠놨을까..
             {
                 _isFeedbackStart = false;
-                _pauseDsp = AudioSettings.dspTime - _startDsp[_curPatternNum];
+                _pauseDsp = AudioSettings.dspTime - _startDsp[_curPatternNum] + 0.03f;
             }
             else
             {
