@@ -18,7 +18,6 @@ public class UI_HUD_Tutorial : MonoBehaviour
     private void OnTutorialResult()
     {
         gameObject.transform.GetChild(1).gameObject.SetActive(true);
-        gameObject.transform.GetChild(1).transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = Managers.Game.delay.ToString("N2");
     }
     public void OnTutorial()
     {
