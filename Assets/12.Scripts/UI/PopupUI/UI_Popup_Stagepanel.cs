@@ -62,6 +62,7 @@ public class UI_Popup_Stagepanel : MonoBehaviour, IPopup
     {
         Managers.Game.PlayerSpwanPosition = Managers.Player.transform.position;
         Managers.Game.PlayerSpwanRotation = Managers.Player.transform.rotation;
+        Managers.Sound.StopBGM();
         Debug.Log(Managers.Game.PlayerSpwanPosition);
 
         switch (Managers.Game.currentStage)

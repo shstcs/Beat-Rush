@@ -13,7 +13,7 @@ public class UI_Popup_StageWanring : MonoBehaviour, IPopup
     private void OnDisable()
     {
         Time.timeScale = 1.0f;
-        Managers.Game.CallStageStart();
+        //Managers.Game.CallStageStart();
         Managers.Popup.CurrentPopup = null;
     }
 

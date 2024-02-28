@@ -21,8 +21,6 @@ public class Monster : MonoBehaviour, IMonster
         {
             _patterns.Add(new IPattern(curStage,i));
         }
-
-        //if(curStage != 2) SortPattern();
     }
 
     private void Update()
