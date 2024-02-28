@@ -45,6 +45,7 @@ public class Monster : MonoBehaviour, IMonster
         {
             if (_currentFeedbackIndex >= 0)
             {
+                if(_currentFeedbackIndex != 0) _patterns[_currentFeedbackIndex - 1].Pause();
                 _patterns[_currentFeedbackIndex].Pause();               //다시 시작할 때를 위해
             }
         }
