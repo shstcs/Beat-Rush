@@ -10,7 +10,7 @@ public class Note : MonoBehaviour
     [HideInInspector]
     public int noteNumber = 0;
     public int stage = 0;
-    public bool isTrap = false;
+    public float mode;
 
     [HideInInspector]
     public bool IsJudgeNoteCreated;
@@ -46,7 +46,7 @@ public class Note : MonoBehaviour
         {
             if (gameObject.transform.position.z < 8)
             {
-                if (isTrap)
+                if (mode == 1)
                 {
                     Managers.Game.Combo++;
                     Managers.Game.AddScore(50 + Managers.Game.Combo);
@@ -65,7 +65,7 @@ public class Note : MonoBehaviour
                     }
                 }
             }
-            else if (gameObject.transform.position.z < 9.5 && isTrap)
+            else if (gameObject.transform.position.z < 9.5 && mode == 1)
             {
                 gameObject.GetComponent<Collider>().enabled = false;
             }
@@ -105,6 +105,10 @@ public class Note : MonoBehaviour
 
     public void BreakNote()
     {
+        if(mode == 3)
+        {
+            Managers.Sound.PlayBGM((BGM)stage);
+        }
         ParticleSystem _destroyParticle = Instantiate(_particle);
         _destroyParticle.transform.position = transform.position;
         _particle.Play();
@@ -124,7 +128,7 @@ public class Note : MonoBehaviour
     {
         if (Managers.Game.currentStage == 3)
         {
-            if (isTrap)
+            if (mode == 1)
             {
                 gameObject.GetComponentInChildren<VisualEffect>().visualEffectAsset = _trapEffect;
             }

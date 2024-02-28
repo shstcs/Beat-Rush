@@ -81,7 +81,7 @@ public class NoteManager : MonoBehaviour
 
         if (Managers.Game.currentStage != 0)
         {
-            Managers.Sound.DelayedPlayBGM(_bgm, (32.5f / _stageNoteSpeed));
+            //Managers.Sound.DelayedPlayBGM(_bgm, (32.5f / _stageNoteSpeed));
         }
 
         for (int i = 0; i < _patternLength; i++)

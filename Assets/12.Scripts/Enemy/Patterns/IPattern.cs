@@ -42,7 +42,7 @@ public class IPattern
                 waitTime = ((float)_pattern[i + 1]["noteLocation"] - (float)_pattern[i]["noteLocation"]) * Managers.Game.speedModifier;
             }
 
-            GameObject note = Managers.Pool.SpawnFromPool((float)_pattern[i]["isTrap"] != 0);
+            GameObject note = Managers.Pool.SpawnFromPool((float)_pattern[i]["isTrap"]);
             note.GetComponent<Note>().noteNumber = _curPatternNum;
             note.GetComponent<Note>().stage = _curStage;
             note.transform.position = new Vector3((float)_pattern[i]["xValue"], 0, (Managers.Game.delay - _startDelay) * Managers.Game.speedModifier) + _noteStartPos;

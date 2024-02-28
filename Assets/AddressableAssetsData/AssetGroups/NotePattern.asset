@@ -126,7 +126,7 @@ MonoBehaviour:
     - PreLoads
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b2b8a8963f43cd543a98315a7ceaabb8
-    m_Address: Stage3/pattern4.csv
+    m_Address: Stage3/pattern3.csv
     m_ReadOnly: 0
     m_SerializedLabels:
     - PreLoads
@@ -138,7 +138,7 @@ MonoBehaviour:
     - PreLoads
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 0b0ccf77e3cf7f8479f3d72983e0e933
-    m_Address: Stage3/pattern5.csv
+    m_Address: Stage3/pattern4.csv
     m_ReadOnly: 0
     m_SerializedLabels:
     - PreLoads
@@ -150,7 +150,7 @@ MonoBehaviour:
     - PreLoads
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 2272ab10a61c7f04cb010457c1c6bbbb
-    m_Address: Stage3/pattern6.csv
+    m_Address: Stage3/pattern5.csv
     m_ReadOnly: 0
     m_SerializedLabels:
     - PreLoads
@@ -168,13 +168,13 @@ MonoBehaviour:
     - PreLoads
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f36f76e547675b741b7eb2ff03b5706f
-    m_Address: Stage3/pattern3.csv
+    m_Address: Stage3/pattern6.csv
     m_ReadOnly: 0
     m_SerializedLabels:
     - PreLoads
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f3254da248f21f7449b70d1ccd07715f
-    m_Address: Stage3/pattern8.csv
+    m_Address: Stage3/pattern14.csv
     m_ReadOnly: 0
     m_SerializedLabels:
     - PreLoads
@@ -205,24 +205,6 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e70658846a4ca774ba09fcb23e84af95
     m_Address: Stage0/pattern1.csv
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - PreLoads
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 65da11e3018ba2b4bbcd7db5688ccf15
-    m_Address: Stage3/pattern14.csv
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - PreLoads
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: a381f585ae879894ead57c2af191ad7d
-    m_Address: Stage3/pattern15.csv
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - PreLoads
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 79ddd778e61e67b45a588f8784edc9d6
-    m_Address: Stage3/pattern16.csv
     m_ReadOnly: 0
     m_SerializedLabels:
     - PreLoads

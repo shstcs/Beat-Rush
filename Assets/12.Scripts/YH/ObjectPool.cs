@@ -32,13 +32,13 @@ public class ObjectPool : MonoBehaviour
         }
     }
 
-    public GameObject SpawnFromPool(bool isTrap)
+    public GameObject SpawnFromPool(float mode)
     {
         if (poolQueue.Count > 0)
         {
             GameObject obj = poolQueue.Dequeue();
             poolQueue.Enqueue(obj);
-            obj.GetComponent<Note>().isTrap = isTrap;
+            obj.GetComponent<Note>().mode = mode;
             obj.SetActive(true);
             return obj;
         }
