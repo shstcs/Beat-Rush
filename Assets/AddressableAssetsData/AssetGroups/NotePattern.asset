@@ -209,6 +209,24 @@ MonoBehaviour:
     m_SerializedLabels:
     - PreLoads
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 65da11e3018ba2b4bbcd7db5688ccf15
+    m_Address: Stage3/pattern14.csv
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoads
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a381f585ae879894ead57c2af191ad7d
+    m_Address: Stage3/pattern15.csv
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoads
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 79ddd778e61e67b45a588f8784edc9d6
+    m_Address: Stage3/pattern16.csv
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoads
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 5feae7305fb988643a34ec8e75f20243, type: 2}
   m_SchemaSet:
