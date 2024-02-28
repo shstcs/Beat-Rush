@@ -62,7 +62,6 @@ public class UI_Popup_Stagepanel : MonoBehaviour, IPopup
     {
         Managers.Game.PlayerSpwanPosition = Managers.Player.transform.position;
         Managers.Game.PlayerSpwanRotation = Managers.Player.transform.rotation;
-        Managers.Sound.StopBGM();
         Debug.Log(Managers.Game.PlayerSpwanPosition);
 
         switch (Managers.Game.currentStage)
@@ -72,8 +71,9 @@ public class UI_Popup_Stagepanel : MonoBehaviour, IPopup
                 break;
             case 1:
                 Debug.Log("CurrentClearState" + Managers.Data.CurrentStateData.CurrentClearStage);
-                if (Managers.Data.CurrentStateData.CurrentClearStage >= 1) 
+                if (Managers.Data.CurrentStateData.CurrentClearStage >= 1)
                 {
+                    Managers.Sound.StopBGM();
                     SceneManager.LoadScene("Stage_1");
                 }
                 else
@@ -85,6 +85,7 @@ public class UI_Popup_Stagepanel : MonoBehaviour, IPopup
                 Debug.Log("CurrentClearState" + Managers.Data.CurrentStateData.CurrentClearStage);
                 if (Managers.Data.CurrentStateData.CurrentClearStage >= 2)
                 {
+                    Managers.Sound.StopBGM();
                     SceneManager.LoadScene("Stage_2");
                 }
                 else
@@ -97,6 +98,7 @@ public class UI_Popup_Stagepanel : MonoBehaviour, IPopup
                 if (Managers.Data.CurrentStateData.CurrentClearStage >= 3) 
                 {
                     Time.timeScale = 0;
+                    Managers.Sound.StopBGM();
                     SceneManager.LoadScene("Stage_3");
                 }
                 else

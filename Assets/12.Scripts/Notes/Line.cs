@@ -53,7 +53,7 @@ public class Line : MonoBehaviour
             //    Managers.Game.delay = Managers.Game.delay -= (selectCollider.transform.position.z - 10) / 4;
             //}
 
-            if (selectCollider.GetComponent<Note>().isTrap)   // 함정노트
+            if (selectCollider.GetComponent<Note>().mode == 1)   // 함정노트
             {
                 selectCollider.GetComponent<Note>().BreakNote();
 
