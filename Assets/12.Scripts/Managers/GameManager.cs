@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     public UnityAction OnLevel;
     public UnityAction OnDamaged;
     public UnityAction OnContinue;
+    public UnityAction OnCheckNote;
     #endregion
     #region Fields
     public Vector3 PlayerSpwanPosition = new Vector3(43f, 0f, 14f);
@@ -86,6 +87,10 @@ public class GameManager : MonoBehaviour
     public void CallContinue()
     {
         OnContinue?.Invoke();
+    }
+    public void CallCheckNote()
+    {
+        OnCheckNote?.Invoke();
     }
     public void AddScore(int score)
     {

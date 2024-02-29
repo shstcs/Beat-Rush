@@ -14,22 +14,26 @@ public class RhythmSet : MonoBehaviour
 
     public void IncreaseRhythmSpeed1()
     {
-        Managers.Game.delay += 0.01f;
+        if (Managers.Game.delay < 5.0f)
+            Managers.Game.delay += 0.01f;
         SetRhythm();
     }
     public void IncreaseRhythmSpeed2()
     {
-        Managers.Game.delay += 0.05f;
+        if(Managers.Game.delay < 5.0f)
+            Managers.Game.delay += 0.05f;
         SetRhythm();
     }
     public void DecreaseRhythmSpeed1()
     {
-        Managers.Game.delay -= 0.01f;
+        if (Managers.Game.delay > -3.0f)
+            Managers.Game.delay -= 0.01f;
         SetRhythm();
     }
     public void DecreaseRhythmSpeed2()
     {
-        Managers.Game.delay -= 0.05f;
+        if (Managers.Game.delay > -3.0f)
+            Managers.Game.delay -= 0.05f;
         SetRhythm();
     }
     private void SetRhythm()

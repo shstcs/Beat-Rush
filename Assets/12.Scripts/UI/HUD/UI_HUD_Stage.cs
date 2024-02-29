@@ -10,7 +10,6 @@ public class UI_HUD_Stage : MonoBehaviour
 {
     private float _hpBarMax;
     private float _skillBarMax;
-    private GameObject HUD_Combo;
     private GameObject HUD_PlayerInfo;
     private GameObject HUD_Score;
     private Image damagePanel;
@@ -21,10 +20,9 @@ public class UI_HUD_Stage : MonoBehaviour
         _skillBarMax = 100.0f;
         Managers.Data.CurrentStateData.CurrentHealth = (int)_hpBarMax;
         Managers.Data.CurrentStateData.SkillGauge = 0;
-        HUD_Combo = gameObject.transform.GetChild(0).GetChild(2).gameObject;
         HUD_PlayerInfo = gameObject.transform.GetChild(0).GetChild(1).gameObject;
-        HUD_Score = gameObject.transform.GetChild(0).GetChild(3).gameObject;
-        damagePanel = gameObject.transform.GetChild(0).GetChild(5).GetComponent<Image>();
+        HUD_Score = gameObject.transform.GetChild(0).GetChild(2).gameObject;
+        damagePanel = gameObject.transform.GetChild(0).GetChild(4).GetComponent<Image>();
         HUD_PlayerInfo.transform.GetChild(0).GetChild(0).GetComponent<Image>().fillAmount = 1.0f;
         HUD_PlayerInfo.transform.GetChild(1).GetChild(0).GetComponent<Image>().fillAmount = 0.0f;
         Managers.Game.OnDamaged += DamagePanel;
@@ -37,8 +35,6 @@ public class UI_HUD_Stage : MonoBehaviour
     {
         HUD_PlayerInfo.transform.GetChild(0).GetChild(0).GetComponent<Image>().fillAmount = Managers.Data.CurrentStateData.CurrentHealth / _hpBarMax;
         HUD_PlayerInfo.transform.GetChild(1).GetChild(0).GetComponent<Image>().fillAmount = Managers.Data.CurrentStateData.SkillGauge / _skillBarMax;
-        HUD_Combo.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = Managers.Game.Combo.ToString();
-        HUD_Combo.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = Managers.Game.curJudge;
         HUD_Score.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = Managers.Game.Score.ToString();
         HUD_Score.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = Managers.Game.rank.ToString();
     }
