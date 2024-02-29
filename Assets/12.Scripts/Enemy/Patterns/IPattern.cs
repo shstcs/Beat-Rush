@@ -13,7 +13,7 @@ public class IPattern
     private int _curPatternNum;
     private int _curStage;
     private Vector3 _noteStartPos;
-    public bool _isFeedbackStart;
+    public bool _isFeedbackStart = true;
     public IPattern() { }
     public IPattern(int stage, int patternNum)
     {
