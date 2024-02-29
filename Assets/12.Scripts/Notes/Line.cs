@@ -121,14 +121,6 @@ public class Line : MonoBehaviour
                     Managers.Data.CurrentStateData.SkillGauge += Managers.Data.CurrentStateData.GetSkillGaugeIncrement();
             }
         }
-        //else                          // 허공 칼질시 피격처리. 안하는게 나을 것 같음.
-        //{
-        //    if (Managers.Game.currentStage != 0)
-        //    {
-        //        Managers.Player.ChangeHealth(-1);
-        //        Managers.Game.CallDamaged();
-        //    }
-        //}
         Managers.Game.SetRank();
     }
 

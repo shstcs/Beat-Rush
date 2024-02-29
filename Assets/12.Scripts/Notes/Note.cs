@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,8 @@ using UnityEngine.VFX;
 public class Note : MonoBehaviour
 {
     private ParticleSystem _particle;
+    private Collider _noteCollider;
+
     [HideInInspector]
     public int noteNumber = 0;
     public int stage = 0;
@@ -24,6 +27,7 @@ public class Note : MonoBehaviour
     protected void Awake()
     {
         GameObject particlePrefab;
+        _noteCollider = GetComponent<Collider>();
 
         particlePrefab = Managers.Resource.Load<GameObject>($"PAT{Managers.Game.currentStage}");
         _particle = particlePrefab.GetComponent<ParticleSystem>();
@@ -38,13 +42,42 @@ public class Note : MonoBehaviour
     private void Start()
     {
         _particle.Stop();
+        Vector3 colliderSize = _noteCollider.bounds.size;
+        ResizeCollider(colliderSize);
+    }
+
+    private void ResizeCollider(Vector3 colliderSize)
+    {
+        BoxCollider boxCollider = _noteCollider as BoxCollider;
+        CapsuleCollider capsuleCollider = _noteCollider as CapsuleCollider;
+
+        if(capsuleCollider != null)
+        {
+            capsuleCollider.radius = colliderSize.z * Managers.Game.speedModifier;
+        }
+        if(boxCollider != null)
+        {
+            boxCollider.size = colliderSize * Managers.Game.speedModifier;
+        }
     }
 
     protected void Update()
     {
         if (Time.timeScale > 0)
         {
-            if (gameObject.transform.position.z < 8)
+            if(mode == 3)
+            {
+                if(gameObject.transform.position.z < 10)
+                {
+                    Managers.Game.Combo++;
+                    Managers.Game.AddScore(100 + Managers.Game.Combo);
+                    Managers.Game.judgeNotes[(int)Score.Perfect]++;
+                    Managers.Game.curJudge = "Perfect";
+                    Debug.Log(noteNumber);
+                    BreakNote();
+                }
+            }
+            else if (gameObject.transform.position.z < 8)
             {
                 if (mode == 1)
                 {
@@ -67,7 +100,7 @@ public class Note : MonoBehaviour
             }
             else if (gameObject.transform.position.z < 9.5 && mode == 1)
             {
-                gameObject.GetComponent<Collider>().enabled = false;
+                _noteCollider.enabled = false;
             }
         }
     }
