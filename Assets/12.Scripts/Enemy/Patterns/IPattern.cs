@@ -23,7 +23,6 @@ public class IPattern
         _pattern = CSVReader.Read(_patternAddress);
 
         _stageNoteSpeed = Managers.Game.stageInfos[stage].noteSpeed * Managers.Game.speedModifier;
-        _startDelay = Managers.Game.stageInfos[stage].StageStartDelay;
         _noteStartPos = Managers.Game.stageInfos[stage].StageNotePos;
     }
     public IEnumerator Attack()
@@ -45,7 +44,15 @@ public class IPattern
             GameObject note = Managers.Pool.SpawnFromPool((float)_pattern[i]["isTrap"]);
             note.GetComponent<Note>().noteNumber = _curPatternNum;
             note.GetComponent<Note>().stage = _curStage;
-            note.transform.position = new Vector3((float)_pattern[i]["xValue"], 0, (Managers.Game.delay - _startDelay) * Managers.Game.speedModifier) + _noteStartPos;
+            if(note.GetComponent<Note>().mode == 3)
+            {
+                note.transform.position = new Vector3((float)_pattern[i]["xValue"], 0, 0) + _noteStartPos;
+            }
+            else
+            {
+                note.transform.position = new Vector3((float)_pattern[i]["xValue"], 0, Managers.Game.delay * Managers.Game.speedModifier) + _noteStartPos;
+            }
+            
             i++;
             yield return new WaitForSeconds(waitTime / _stageNoteSpeed);
         }
@@ -59,14 +66,22 @@ public class IPattern
         }
 
         List<GameObject> _activeNotes = Managers.Pool.GetActiveAliveNotes(_curPatternNum);
-        float _noteDistance = _stageNoteSpeed * (float)(AudioSettings.dspTime - _startDsp[_curPatternNum]) + _startDelay * Managers.Game.speedModifier;
+        float _noteDistance = _stageNoteSpeed * (float)(AudioSettings.dspTime - _startDsp[_curPatternNum]);
 
         int cnt = 0;
         for (int i = Managers.Game.stageInfos[_curStage].curNoteInStage[_curPatternNum]; i < Managers.Game.stageInfos[_curStage].curNoteInStage[_curPatternNum] + _activeNotes.Count; i++)
         {
             float curLocation = ((float)_pattern[i]["noteLocation"] * Managers.Game.speedModifier) - _noteDistance;
             GameObject note = _activeNotes[cnt++];
-            note.transform.position = new Vector3(note.transform.position.x, note.transform.position.y, curLocation + 42.5f + (Managers.Game.delay * Managers.Game.speedModifier));
+            if(note.GetComponent<Note>().mode == 3 )
+            {
+                note.transform.position = new Vector3(note.transform.position.x, note.transform.position.y, curLocation + 42.5f);
+            }
+            else
+            {
+                note.transform.position = new Vector3(note.transform.position.x, note.transform.position.y, curLocation + 42.5f + Managers.Game.delay * Managers.Game.speedModifier);
+            }
+            
         }
     }
 
