@@ -28,7 +28,7 @@ public class UI_HUD_Stage : MonoBehaviour
         Managers.Game.OnDamaged += DamagePanel;
 
         if (Managers.Game.currentStage == 3)
-            gameObject.transform.GetChild(0).GetChild(6).gameObject.SetActive(true);
+            gameObject.transform.GetChild(0).GetChild(5).gameObject.SetActive(true);
     }
 
     private void Update()
