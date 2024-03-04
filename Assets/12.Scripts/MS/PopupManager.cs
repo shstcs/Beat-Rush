@@ -64,7 +64,7 @@ public class PopupManager
     public IEnumerator DelayContinue()
     {
         Time.timeScale = 0;
-        GameObject timer = GameObject.Find("Canvas").transform.GetChild(7).gameObject;
+        GameObject timer = GameObject.Find("Canvas").transform.GetChild(6).gameObject;
         timer.SetActive(true);
 
         //float startRealTime = Time.realtimeSinceStartup;
