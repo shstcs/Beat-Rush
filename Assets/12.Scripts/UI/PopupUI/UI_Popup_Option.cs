@@ -7,16 +7,20 @@ using UnityEngine.SceneManagement;
 
 public class UI_Popup_Option : MonoBehaviour, IPopup
 {
+    private float _curDelay;
     private void OnEnable()
     {
         Managers.Popup.CurrentPopup = this;
         Managers.Player.Input.PlayerActions.Popup.started += OffOption;
+        _curDelay = Managers.Game.delay;
     }
 
     private void OnDisable()
     {
         if (Managers.Player != null)
             Managers.Player.Input.PlayerActions.Popup.started -= OffOption;
+        if (_curDelay != Managers.Game.delay)
+            Managers.Data.SavePlayerData();
     }
 
     public void OnLobby()

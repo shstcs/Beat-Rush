@@ -73,6 +73,24 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""Attack4"",
+                    ""type"": ""Button"",
+                    ""id"": ""ac716623-adf8-43d0-93a6-845f71fb1869"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Attack5"",
+                    ""type"": ""Button"",
+                    ""id"": ""4c2762f5-19de-405c-8332-3a3828c70a16"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""Run"",
                     ""type"": ""Button"",
                     ""id"": ""b70861fc-9ea2-426f-9c46-aff2abc5d2be"",
@@ -292,6 +310,28 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
                     ""action"": ""Attack3"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""589bc594-18d2-4984-bd41-f8192881545c"",
+                    ""path"": ""<Keyboard>/period"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Attack4"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1465cde7-4100-4e94-9384-cca1794945fc"",
+                    ""path"": ""<Keyboard>/slash"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Attack5"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -305,6 +345,8 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
         m_Player_Attack1 = m_Player.FindAction("Attack1", throwIfNotFound: true);
         m_Player_Attack2 = m_Player.FindAction("Attack2", throwIfNotFound: true);
         m_Player_Attack3 = m_Player.FindAction("Attack3", throwIfNotFound: true);
+        m_Player_Attack4 = m_Player.FindAction("Attack4", throwIfNotFound: true);
+        m_Player_Attack5 = m_Player.FindAction("Attack5", throwIfNotFound: true);
         m_Player_Run = m_Player.FindAction("Run", throwIfNotFound: true);
         m_Player_Skill = m_Player.FindAction("Skill", throwIfNotFound: true);
         m_Player_Interaction = m_Player.FindAction("Interaction", throwIfNotFound: true);
@@ -377,6 +419,8 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Attack1;
     private readonly InputAction m_Player_Attack2;
     private readonly InputAction m_Player_Attack3;
+    private readonly InputAction m_Player_Attack4;
+    private readonly InputAction m_Player_Attack5;
     private readonly InputAction m_Player_Run;
     private readonly InputAction m_Player_Skill;
     private readonly InputAction m_Player_Interaction;
@@ -392,6 +436,8 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
         public InputAction @Attack1 => m_Wrapper.m_Player_Attack1;
         public InputAction @Attack2 => m_Wrapper.m_Player_Attack2;
         public InputAction @Attack3 => m_Wrapper.m_Player_Attack3;
+        public InputAction @Attack4 => m_Wrapper.m_Player_Attack4;
+        public InputAction @Attack5 => m_Wrapper.m_Player_Attack5;
         public InputAction @Run => m_Wrapper.m_Player_Run;
         public InputAction @Skill => m_Wrapper.m_Player_Skill;
         public InputAction @Interaction => m_Wrapper.m_Player_Interaction;
@@ -422,6 +468,12 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
             @Attack3.started += instance.OnAttack3;
             @Attack3.performed += instance.OnAttack3;
             @Attack3.canceled += instance.OnAttack3;
+            @Attack4.started += instance.OnAttack4;
+            @Attack4.performed += instance.OnAttack4;
+            @Attack4.canceled += instance.OnAttack4;
+            @Attack5.started += instance.OnAttack5;
+            @Attack5.performed += instance.OnAttack5;
+            @Attack5.canceled += instance.OnAttack5;
             @Run.started += instance.OnRun;
             @Run.performed += instance.OnRun;
             @Run.canceled += instance.OnRun;
@@ -459,6 +511,12 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
             @Attack3.started -= instance.OnAttack3;
             @Attack3.performed -= instance.OnAttack3;
             @Attack3.canceled -= instance.OnAttack3;
+            @Attack4.started -= instance.OnAttack4;
+            @Attack4.performed -= instance.OnAttack4;
+            @Attack4.canceled -= instance.OnAttack4;
+            @Attack5.started -= instance.OnAttack5;
+            @Attack5.performed -= instance.OnAttack5;
+            @Attack5.canceled -= instance.OnAttack5;
             @Run.started -= instance.OnRun;
             @Run.performed -= instance.OnRun;
             @Run.canceled -= instance.OnRun;
@@ -501,6 +559,8 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
         void OnAttack1(InputAction.CallbackContext context);
         void OnAttack2(InputAction.CallbackContext context);
         void OnAttack3(InputAction.CallbackContext context);
+        void OnAttack4(InputAction.CallbackContext context);
+        void OnAttack5(InputAction.CallbackContext context);
         void OnRun(InputAction.CallbackContext context);
         void OnSkill(InputAction.CallbackContext context);
         void OnInteraction(InputAction.CallbackContext context);

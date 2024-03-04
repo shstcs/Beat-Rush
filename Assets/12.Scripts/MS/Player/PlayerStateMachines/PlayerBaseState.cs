@@ -56,6 +56,8 @@ public class PlayerBaseState : IState
         input.PlayerActions.Attack1.started += OnAttackStarted;
         input.PlayerActions.Attack2.started += OnAttackStarted;
         input.PlayerActions.Attack3.started += OnAttackStarted;
+        input.PlayerActions.Attack4.started += OnAttackStarted;
+        input.PlayerActions.Attack5.started += OnAttackStarted;
         input.PlayerActions.Attack.canceled += OnAttackCanceled;
 
         input.PlayerActions.Skill.started += OnSkillStarted;
@@ -73,6 +75,8 @@ public class PlayerBaseState : IState
         input.PlayerActions.Attack1.started -= OnAttackStarted;
         input.PlayerActions.Attack2.started -= OnAttackStarted;
         input.PlayerActions.Attack3.started -= OnAttackStarted;
+        input.PlayerActions.Attack4.started -= OnAttackStarted;
+        input.PlayerActions.Attack5.started -= OnAttackStarted;
         input.PlayerActions.Attack.canceled -= OnAttackCanceled;
 
         input.PlayerActions.Skill.started -= OnSkillStarted;

@@ -6,9 +6,9 @@ public abstract class StateMachine
 {
     protected IState currentState;
 
-    public void ChangeState(IState newState, bool ignorelockType = false)
+    public void ChangeState(IState newState, bool ignoreLockType = false)
     {
-        if (!ignorelockType && Managers.Game.lockType == InputLockType.Lock) return;
+        if (!ignoreLockType && Managers.Game.lockType == InputLockType.Lock) return;
 
         currentState?.Exit();
 
