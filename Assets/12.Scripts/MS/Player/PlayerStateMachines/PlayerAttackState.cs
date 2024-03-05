@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerAttackState : PlayerBaseState
@@ -10,13 +8,13 @@ public class PlayerAttackState : PlayerBaseState
 
     public override void Enter()
     {
-        
+
         stateMachine.MoveSpeedModifier = 0f;
         base.Enter();
         Managers.Game.lockType = InputLockType.Lock;
         stateMachine.Player.Animator.SetTrigger(stateMachine.Player.AnimationData.AttackTriggerParameterHash);
         stateMachine.Player.SwordEffect.Play();
-        Managers.Sound.PlaySFX(SFX.Attack );
+        Managers.Sound.PlaySFX(SFX.Attack);
 
         StartAnimation(stateMachine.Player.AnimationData.AttackParameterHash);
 

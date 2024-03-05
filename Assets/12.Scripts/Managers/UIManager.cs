@@ -1,9 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Collections.Specialized;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UIElements.Experimental;
 
 public class UIManager : MonoBehaviour
 {
@@ -21,7 +17,7 @@ public class UIManager : MonoBehaviour
         {
             SetMapHUD();
         }
-        else if(SceneManager.GetActiveScene().name == "Tutorial")
+        else if (SceneManager.GetActiveScene().name == "Tutorial")
         {
             SetTutorialHUD();
         }

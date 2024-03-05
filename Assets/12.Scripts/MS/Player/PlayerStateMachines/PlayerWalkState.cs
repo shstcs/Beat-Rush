@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerWalkState : PlayerBaseState
@@ -33,7 +30,7 @@ public class PlayerWalkState : PlayerBaseState
 
         CheckDie();
 
-        if(stateMachine.IsRun)
+        if (stateMachine.IsRun)
             stateMachine.ChangeState(stateMachine.RunState);
 
         //CheckAttacking();

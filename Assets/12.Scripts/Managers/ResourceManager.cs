@@ -1,9 +1,7 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
-using UnityEngine.Events;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.ResourceManagement.ResourceLocations;
 
@@ -30,7 +28,7 @@ public class ResourceManager : MonoBehaviour
     {
         //key로 이미 로드된 리소스인지 확인
         //이미 로드된 리소스면 콜백 호출
-        if(_resources.TryGetValue(key, out UnityEngine.Object resource))
+        if (_resources.TryGetValue(key, out UnityEngine.Object resource))
         {
             callback?.Invoke(resource as T);
             return;
@@ -78,7 +76,7 @@ public class ResourceManager : MonoBehaviour
     public GameObject Instantiate(string key, Transform parent = null)
     {
         GameObject prefab = Load<GameObject>(key);
-        if(prefab == null)
+        if (prefab == null)
         {
             Debug.LogError($"[ResourceManager] Instantiate({key}): Failed to load prefab.");
             return null;

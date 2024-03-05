@@ -1,6 +1,4 @@
 using Cinemachine;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class VirtualCameraController : MonoBehaviour
@@ -19,7 +17,7 @@ public class VirtualCameraController : MonoBehaviour
 
     private void Update()
     {
-        if(Time.timeScale == 0f)
+        if (Time.timeScale == 0f)
         {
             _camPOV.m_VerticalAxis.Value = _verticalAxis;
             _camPOV.m_HorizontalAxis.Value = _horizontalAxis;

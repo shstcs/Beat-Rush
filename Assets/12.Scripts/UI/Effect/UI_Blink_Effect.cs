@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -25,10 +24,10 @@ public class UI_Blink_Effect : MonoBehaviour
             {
                 GetComponent<TextMeshProUGUI>().color = new Color(0, 0, 0, 1 - _blinktime);
             }
-            else if(_blinktime >=1f)
+            else if (_blinktime >= 1f)
             {
                 _time = Time.realtimeSinceStartup;
-            }    
+            }
             else
             {
                 GetComponent<TextMeshProUGUI>().color = new Color(0, 0, 0, _blinktime);

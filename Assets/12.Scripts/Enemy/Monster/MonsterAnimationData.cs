@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,8 +10,8 @@ public class MonsterAnimationData
     private string _dieParameterName = "Die";
 
     private List<int> _attackParameterHash = new();
-    public int TakeDamageParameterHash { get; private set ; }
-    public int DieParameterHash { get; private set ; }
+    public int TakeDamageParameterHash { get; private set; }
+    public int DieParameterHash { get; private set; }
 
     public void Init()
     {

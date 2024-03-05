@@ -1,8 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEngine.UI.CanvasScaler;
 
 public class Skill : MonoBehaviour
 {
@@ -49,7 +46,7 @@ public class Skill : MonoBehaviour
         {
             other.GetComponent<Note>().BreakNote();
             _gameManager.Combo++;
-            if(_gameManager.Combo > _gameManager.MaxCombo)
+            if (_gameManager.Combo > _gameManager.MaxCombo)
                 _gameManager.MaxCombo = _gameManager.Combo;
             _gameManager.AddScore(50 + _gameManager.Combo);
             _gameManager.judgeNotes[(int)Score.Great]++;

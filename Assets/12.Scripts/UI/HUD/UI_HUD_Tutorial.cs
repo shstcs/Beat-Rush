@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting.FullSerializer.Internal;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 

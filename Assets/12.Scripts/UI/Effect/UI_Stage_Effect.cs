@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class UI_Stage_Effect : MonoBehaviour
@@ -11,16 +9,16 @@ public class UI_Stage_Effect : MonoBehaviour
     private void Start()
     {
         int curStageidx = Managers.Game.currentStage;
-        upSizeTime = (Managers.Game.stageInfos[curStageidx].bpm /Managers.Game.stageInfos[curStageidx].noteDistance)/16;
+        upSizeTime = (Managers.Game.stageInfos[curStageidx].bpm / Managers.Game.stageInfos[curStageidx].noteDistance) / 16;
     }
 
     private void Update()
     {
-        if(_time <= upSizeTime)
+        if (_time <= upSizeTime)
         {
             transform.localScale = Vector3.one * (1 + size * _time);
         }
-        else if(_time <= upSizeTime * 2)
+        else if (_time <= upSizeTime * 2)
         {
             transform.localScale = Vector3.one * (2 * size * upSizeTime + 1 - _time * size);
         }

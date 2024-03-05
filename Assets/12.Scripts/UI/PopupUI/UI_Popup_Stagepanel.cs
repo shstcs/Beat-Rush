@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -95,7 +93,7 @@ public class UI_Popup_Stagepanel : MonoBehaviour, IPopup
                 break;
             case 3:
                 Debug.Log("CurrentClearState" + Managers.Data.CurrentStateData.CurrentClearStage);
-                if (Managers.Data.CurrentStateData.CurrentClearStage >= 3) 
+                if (Managers.Data.CurrentStateData.CurrentClearStage >= 3)
                 {
                     Time.timeScale = 0;
                     Managers.Sound.StopBGM();

@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -21,7 +18,7 @@ public class StatsPopup : MonoBehaviour
 
     private void OpenStatsPopup(InputAction.CallbackContext context)
     {
-        if(_statsPopup.activeSelf)
+        if (_statsPopup.activeSelf)
             _statsPopup.SetActive(false);
         else
             _statsPopup.SetActive(true);

@@ -1,15 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UIElements;
 
 public class UI_Popup_Result : MonoBehaviour, IPopup
 {
     private void OnEnable()
     {
-       Managers.Popup.CurrentPopup = this;
+        Managers.Popup.CurrentPopup = this;
     }
 
     private void Start()
@@ -69,6 +66,6 @@ public class UI_Popup_Result : MonoBehaviour, IPopup
 
     public void OffPopup()
     {
-        
+
     }
 }

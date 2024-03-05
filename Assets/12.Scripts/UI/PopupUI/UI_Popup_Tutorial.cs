@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class UI_Popup_Tutorial : MonoBehaviour, IPopup
@@ -18,6 +16,6 @@ public class UI_Popup_Tutorial : MonoBehaviour, IPopup
 
     public void OffPopup()
     {
-        
+
     }
 }

@@ -1,8 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.VFX;
 
 public class Note : MonoBehaviour
@@ -51,11 +47,11 @@ public class Note : MonoBehaviour
         BoxCollider boxCollider = _noteCollider as BoxCollider;
         CapsuleCollider capsuleCollider = _noteCollider as CapsuleCollider;
 
-        if(capsuleCollider != null)
+        if (capsuleCollider != null)
         {
             capsuleCollider.radius = colliderSize.z * Managers.Game.speedModifier;
         }
-        if(boxCollider != null)
+        if (boxCollider != null)
         {
             boxCollider.size = colliderSize * Managers.Game.speedModifier;
         }
@@ -65,9 +61,9 @@ public class Note : MonoBehaviour
     {
         if (Time.timeScale > 0)
         {
-            if(mode == 3)
+            if (mode == 3)
             {
-                if(gameObject.transform.position.z < 10)
+                if (gameObject.transform.position.z < 10)
                 {
                     Managers.Game.Combo++;
                     Managers.Game.AddScore(100 + Managers.Game.Combo);
@@ -138,7 +134,7 @@ public class Note : MonoBehaviour
 
     public void BreakNote()
     {
-        if(mode == 3)
+        if (mode == 3)
         {
             Managers.Sound.PlayBGM((BGM)stage);
         }
@@ -149,9 +145,9 @@ public class Note : MonoBehaviour
         Managers.Game.stageInfos[stage].curNoteInStage[noteNumber]++;
 
         IsJudgeNoteCreated = false;
-        if(LeftJudgeNote != null)
+        if (LeftJudgeNote != null)
             LeftJudgeNote.SetActive(false);
-        if(LeftJudgeNote != null)
+        if (LeftJudgeNote != null)
             RightJudgeNote.SetActive(false);
 
         gameObject.SetActive(false);

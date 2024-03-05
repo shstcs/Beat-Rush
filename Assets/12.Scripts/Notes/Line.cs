@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -111,11 +108,6 @@ public class Line : MonoBehaviour
                 else
                 {
                     Managers.Game.AddScore((int)(score * Managers.Game.speedModifier) + Managers.Game.Combo);               //일반모드
-                }
-
-                if (Managers.Game.Combo == 100)
-                {
-                    QuestManager.instance.SetQuestClear(QuestName.Stage100Combo);
                 }
 
                 // Skill

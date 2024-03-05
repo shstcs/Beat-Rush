@@ -44,7 +44,7 @@ public class IPattern
             GameObject note = Managers.Pool.SpawnFromPool((float)_pattern[i]["isTrap"]);
             note.GetComponent<Note>().noteNumber = _curPatternNum;
             note.GetComponent<Note>().stage = _curStage;
-            if(note.GetComponent<Note>().mode == 3)
+            if (note.GetComponent<Note>().mode == 3)
             {
                 note.transform.position = new Vector3((float)_pattern[i]["xValue"], 0, 0) + _noteStartPos;
             }
@@ -52,7 +52,7 @@ public class IPattern
             {
                 note.transform.position = new Vector3((float)_pattern[i]["xValue"], 0, Managers.Game.delay * Managers.Game.speedModifier) + _noteStartPos;
             }
-            
+
             i++;
             yield return new WaitForSeconds(waitTime / _stageNoteSpeed);
         }
@@ -73,7 +73,7 @@ public class IPattern
         {
             float curLocation = ((float)_pattern[i]["noteLocation"] * Managers.Game.speedModifier) - _noteDistance;
             GameObject note = _activeNotes[cnt++];
-            if(note.GetComponent<Note>().mode == 3 )
+            if (note.GetComponent<Note>().mode == 3)
             {
                 note.transform.position = new Vector3(note.transform.position.x, note.transform.position.y, curLocation + 42.5f);
             }
@@ -81,7 +81,7 @@ public class IPattern
             {
                 note.transform.position = new Vector3(note.transform.position.x, note.transform.position.y, curLocation + 42.5f + Managers.Game.delay * Managers.Game.speedModifier);
             }
-            
+
         }
     }
 

@@ -86,7 +86,7 @@ public class PopupManager
         //    yield return null;
         //}
 
-        for(int i = 3; i > 0; i--)
+        for (int i = 3; i > 0; i--)
         {
             timer.GetComponent<TextMeshProUGUI>().text = i.ToString();
             yield return new WaitForSecondsRealtime(1f);

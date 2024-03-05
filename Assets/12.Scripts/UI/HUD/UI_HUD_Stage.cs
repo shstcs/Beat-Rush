@@ -1,8 +1,5 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -40,11 +37,11 @@ public class UI_HUD_Stage : MonoBehaviour
     }
     private void DamagePanel()
     {
-        if(damaged != null)
+        if (damaged != null)
         {
             StopCoroutine(damaged);
         }
-        if(Managers.Player.IsDie())
+        if (Managers.Player.IsDie())
             damagePanel.gameObject.SetActive(false);
 
         damagePanel.enabled = true;
@@ -56,7 +53,7 @@ public class UI_HUD_Stage : MonoBehaviour
         float startAlpha = 0.3f;
         float a = startAlpha;
 
-        while(a > 0.0f)
+        while (a > 0.0f)
         {
             a -= (startAlpha / 0.3f) * Time.deltaTime;
             damagePanel.color = new Color(1.0f, 0.0f, 0.0f, a);
