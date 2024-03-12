@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -22,7 +19,7 @@ public class InteractionManager : MonoBehaviour
     private IInteractable currentInteractable;
     public LayerMask TargetLayerMask;
 
-    public TextMeshProUGUI promptText; 
+    public TextMeshProUGUI promptText;
     private Camera _camera;
 
     private Player _player;
@@ -42,7 +39,7 @@ public class InteractionManager : MonoBehaviour
             promptText.gameObject.SetActive(false);
             currentInteractable = null;
         }
-        if(Time.time - lastCheckTime > CheckRate)
+        if (Time.time - lastCheckTime > CheckRate)
         {
             lastCheckTime = Time.time;
 
@@ -55,7 +52,7 @@ public class InteractionManager : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit, RayDistance, TargetLayerMask))
             {
-                if(currentInteractable == null)
+                if (currentInteractable == null)
                 {
                     currentInteractable = hit.collider.GetComponent<IInteractable>();
                     SetPromptText();
@@ -68,7 +65,7 @@ public class InteractionManager : MonoBehaviour
             }
         }
     }
-    
+
     private void SetPromptText()
     {
         promptText.gameObject.SetActive(true);

@@ -1,9 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Audio;
-using UnityEngine.InputSystem;
 
 public class SoundManager
 {
@@ -143,10 +140,10 @@ public class SoundManager
     public void ContinueBGM()
     {
         AudioSourceBGM?.UnPause();
-    }    
+    }
     public void ContinueBGM(float delay)
     {
-        if(AudioSourceBGM.time > 0)
+        if (AudioSourceBGM.time > 0)
         {
             AudioSourceBGM?.UnPause();
         }

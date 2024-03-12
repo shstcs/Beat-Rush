@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class UI_Popup_Timer : MonoBehaviour, IPopup
@@ -18,5 +16,5 @@ public class UI_Popup_Timer : MonoBehaviour, IPopup
     {
 
     }
-    
+
 }

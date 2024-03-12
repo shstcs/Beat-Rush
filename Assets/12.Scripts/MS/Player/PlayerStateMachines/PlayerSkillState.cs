@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class PlayerSkillState : PlayerBaseState
 {
@@ -27,6 +24,6 @@ public class PlayerSkillState : PlayerBaseState
         {
             stateMachine.ChangeState(stateMachine.IdleState, true);
             Managers.Game.lockType = InputLockType.UnLock;
-        }  
+        }
     }
 }

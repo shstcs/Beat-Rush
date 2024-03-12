@@ -1,6 +1,4 @@
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Monster : MonoBehaviour, IMonster
@@ -17,9 +15,9 @@ public class Monster : MonoBehaviour, IMonster
         curStage = Managers.Game.currentStage;
         _attackDelay = Managers.Game.stageInfos[curStage].PatternLength / (Managers.Game.stageInfos[curStage].noteSpeed);
 
-        for(int i = 1; i <= Managers.Game.stageInfos[curStage].PatternCount; i++)
+        for (int i = 1; i <= Managers.Game.stageInfos[curStage].PatternCount; i++)
         {
-            _patterns.Add(new IPattern(curStage,i));
+            _patterns.Add(new IPattern(curStage, i));
         }
     }
 
@@ -43,7 +41,7 @@ public class Monster : MonoBehaviour, IMonster
         {
             if (_currentFeedbackIndex >= 0)
             {
-                if(_currentFeedbackIndex != 0) _patterns[_currentFeedbackIndex - 1].Pause();
+                if (_currentFeedbackIndex != 0) _patterns[_currentFeedbackIndex - 1].Pause();
                 _patterns[_currentFeedbackIndex].Pause();               //다시 시작할 때를 위해
             }
         }

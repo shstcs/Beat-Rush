@@ -1,7 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
 public class UI_Text_Effect : MonoBehaviour
@@ -20,8 +17,8 @@ public class UI_Text_Effect : MonoBehaviour
         float upTimeSize = size;
         while (upTimeSize > 0.0f)
         {
-            upTimeSize -= (size/0.3f) * Time.deltaTime;
-            transform.localScale = Vector3.one * (1+upTimeSize);
+            upTimeSize -= (size / 0.3f) * Time.deltaTime;
+            transform.localScale = Vector3.one * (1 + upTimeSize);
             yield return null;
         }
         transform.localScale = Vector3.one;

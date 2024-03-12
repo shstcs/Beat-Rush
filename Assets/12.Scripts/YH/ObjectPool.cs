@@ -19,7 +19,7 @@ public class ObjectPool : MonoBehaviour
         for (int i = 0; i < poolSize; i++)
         {
             GameObject obj = Managers.Resource.Instantiate($"NOTE{Managers.Game.currentStage}", transform);
-            
+
             obj.SetActive(false);
             poolQueue.Enqueue(obj);
         }

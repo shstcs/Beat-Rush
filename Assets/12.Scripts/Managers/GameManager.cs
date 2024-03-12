@@ -1,7 +1,5 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -99,9 +97,9 @@ public class GameManager : MonoBehaviour
 
     public void InitNotes()
     {
-        foreach(StageInfo info in stageInfos)
+        foreach (StageInfo info in stageInfos)
         {
-            for(int i = 0; i < info.curNoteInStage.Length; i++)
+            for (int i = 0; i < info.curNoteInStage.Length; i++)
             {
                 info.curNoteInStage[i] = 0;
             }

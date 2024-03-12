@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -20,7 +18,7 @@ public class RhythmSet : MonoBehaviour
     }
     public void IncreaseRhythmSpeed2()
     {
-        if(Managers.Game.delay < 5.0f)
+        if (Managers.Game.delay < 5.0f)
             Managers.Game.delay += 0.05f;
         SetRhythm();
     }

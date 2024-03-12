@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -19,7 +17,7 @@ public class UILobbyExpBar : MonoBehaviour
 
     public void CheckExp()
     {
-        currentExp =  Managers.Data.CurrentStateData.Exp;
+        currentExp = Managers.Data.CurrentStateData.Exp;
         text.text = currentExp.ToString() + " / " + maxExp.ToString();
 
         expImage.fillAmount = (float)currentExp / maxExp;

@@ -1,9 +1,5 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.XR;
 using UnityEngine.VFX;
 
 public class Player : MonoBehaviour
@@ -73,7 +69,7 @@ public class Player : MonoBehaviour
 
         Managers.Data.CurrentStateData.PlayTime += Time.unscaledDeltaTime;
 
-        if(Managers.Data.CurrentStateData.PlayTime >= 900f)
+        if (Managers.Data.CurrentStateData.PlayTime >= 900f)
         {
             QuestManager.instance.SetQuestClear(QuestName.PlayTime);
         }

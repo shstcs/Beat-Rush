@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public enum InstrumentType
 {
@@ -129,7 +126,7 @@ public class Instrument : MonoBehaviour, IInteractable
                 Managers.Game.currentStage = 0;
                 break;
         }
-        if(type == InstrumentType.Metronome)
+        if (type == InstrumentType.Metronome)
             GameObject.Find("HUD_Canvas").transform.GetChild(3).gameObject.SetActive(true);
         else
             GameObject.Find("HUD_Canvas").transform.GetChild(2).gameObject.SetActive(true);

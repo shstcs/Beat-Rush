@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
@@ -120,6 +119,10 @@ public class NoteManager : MonoBehaviour
                     QuestManager.instance.SetQuestClear(QuestName.SpeedUpClear);
                 if (Managers.Game.mode == GameMode.Sudden)
                     QuestManager.instance.SetQuestClear(QuestName.SuddenModeClear);
+                if (Managers.Game.MaxCombo == 100)
+                {
+                    QuestManager.instance.SetQuestClear(QuestName.Stage100Combo);
+                }
             }
         }
 
