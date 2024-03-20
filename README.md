@@ -64,11 +64,132 @@
 
 # 세부 구현 기능 소개
 ## 노트 생성
+- Csv파일을 사용하여 노트의 패턴을 저장.
+  - 단순한 구조이기에 Json보다 csv파일이 속도 면에서 효율적일 것이라고 생각.
+- 노트의 거리, 가로 위치, 노트의 종류를 저장하고 있음.
+- CsVReader라는 클래스를 만들어, List<Dictionary<string,Object>>형식으로 읽어오도록 구현.  
+ ![image](https://github.com/shstcs/Beat-Rush/assets/73222781/8de95b5a-b20a-45fd-8f84-93e2b6a079cc)
 
+## 노트 생성
+- 스테이지마다 일정 개수의 노트를 생성하여 Object Pool에 저장한다.
+- 해당 스테이지의 정보에 맞추어 코루틴을 통해 순차적으로 노트를 활성화 시켜준다.
+```
+public IEnumerator CreateNewNotes()
+{
+    (_patternLength, _attackDelay, _bgm) = _monster.GetPatternData();  //현재 스테이지 정보 읽어오기
+
+    for (int i = 0; i < _patternLength; i++)
+    {
+        _monster.RandomAttack();      //하나의 패턴 실행
+        yield return new WaitForSeconds(_attackDelay);
+        if (i != _patternLength - 1) _cameraAnimator.SetTrigger("Move");
+    }
+    _cameraAnimator.SetTrigger("EndMove");
+    yield return new WaitForSeconds((32.5f / _stageNoteSpeed));
+    _monster.EndStage();
+}
+```
+```
+public IEnumerator Attack()
+{
+    float waitTime;
+    _startDsp[_curPatternNum] = AudioSettings.dspTime;
+
+    for (int i = 0; i < _pattern.Count;)
+    {
+        waitTime = (128 - (float)_pattern[i]["noteLocation"]) * Managers.Game.speedModifier;
+
+        GameObject note = Managers.Pool.SpawnFromPool((float)_pattern[i]["isTrap"]);
+        note.GetComponent<Note>().noteNumber = _curPatternNum;
+        note.GetComponent<Note>().stage = _curStage;
+        if (note.GetComponent<Note>().mode == 3)
+        note.transform.position = new Vector3((float)_pattern[i]["xValue"], 0, Managers.Game.delay * Managers.Game.speedModifier) + _noteStartPos;
+        i++;
+
+        yield return new WaitForSeconds(waitTime / _stageNoteSpeed);
+    }
+}
+```
 ## 노트 이동
-
+- NoteManager라는 클래스에서 현재 활성화되어있는 노트들을 한번에 이동시킨다.
+- Time.deltaTime 대신 depTime을 사용한다.
+```
+private void MoveNotes()
+{
+    float movement = ((float)(AudioSettings.dspTime - _curDsp) * _stageNoteSpeed);
+    foreach (GameObject note in Managers.Pool.GetActiveNotes())
+    {
+        note.transform.position = new Vector3(note.transform.position.x, note.transform.position.y,
+        note.transform.position.z - movement);
+    }
+}
+```
 ## 노트 위치 조정
+- 환경적인 상황으로 노트가 원하는대로 생성되지 않는 경우를 대비하여 조정하도록 구현.
+- Feedback이라는 메서드를 만들어 12프레임마다 노트의 위치를 조정해줌.
+- 활성화된 노트들을 가져오는 법
+```
+public List<GameObject> GetActiveAliveNotes(int noteNum)
+{
+    List<GameObject> activepool = new List<GameObject>();
+    foreach (GameObject obj in poolQueue)
+    {
+        if (obj.activeSelf == true && obj.GetComponent<Note>().noteNumber == noteNum)
+        {
+            activepool.Add(obj);
+        }
+        activepool.OrderBy(x => x.transform.position.z).ToList();
+    }
+    return activepool;
+}
+```
+활성화 되어있으면서, 아직 판정 전인 노트들만 가져오도록 했다.
+원래는 관성적으로 Queue로 했었는데, 모든 노드에 편하게 접근하기 위해서 List로 바꾸었다.
+앞에 있는 노트부터 사용하기 위해 정렬도 해 둔다.
 
+- 위치에 맞게 깔아두는 법
+```
+public void Feedback()
+{
+    if (!_isFeedbackStart)
+    {
+        _startDsp[_curPatternNum] = AudioSettings.dspTime - _pauseDsp;
+        _isFeedbackStart = true;
+    }
+
+    List<GameObject> _activeNotes = Managers.Pool.GetActiveAliveNotes(_curPatternNum);
+    float _noteDistance = _stageNoteSpeed * (float)(AudioSettings.dspTime - _startDsp[_curPatternNum]);
+
+    int cnt = 0;
+    for (int i = Managers.Game.stageInfos[_curStage].curNoteInStage[_curPatternNum]; i < Managers.Game.stageInfos[_curStage].curNoteInStage[_curPatternNum] + _activeNotes.Count; i++)
+    {
+        float curLocation = ((float)_pattern[i]["noteLocation"] * Managers.Game.speedModifier) - _noteDistance;
+        GameObject note = _activeNotes[cnt++];
+        if (note.GetComponent<Note>().mode == 3)
+        {
+            note.transform.position = new Vector3(note.transform.position.x, note.transform.position.y, curLocation + 42.5f);
+        }
+        else
+        {
+            note.transform.position = new Vector3(note.transform.position.x, note.transform.position.y, curLocation + 42.5f + Managers.Game.delay * Managers.Game.speedModifier);
+        }
+
+    }
+}
+```
+노트가 파괴될 때마다 개수를 체크해준 후, 현재 노트부터 활성화된 노트의 수만큼 csv파일에서 값을 가져온 후,
+현재까지 지난 시간을 바탕으로 지금까지 온 거리를 계산하여 노트의 거리 - 현재 거리로 세팅해준다.
 ## 몬스터 공격
+- Monster 클래스를 상속받는 몬스터들이 스테이지마다 존재한다.
+- Strategy Pattern을 사용하여 현재 스테이지에 맞는 몬스터를 접근하도록 한다.
+```
+[SerializeField] private GameObject _monsterObject; 
 
+_monster = _monsterObject.GetComponent<Monster>();
+
+(_patternLength, _attackDelay, _bgm) = _monster.GetPatternData();
+_monster.RandomAttack();
+_monster.EndStage();
+```
 # 트러블 슈팅
+
