@@ -1,10 +1,13 @@
-![Beat Rush](https://github.com/shstcs/Beat-Rush/assets/73222781/0c086a22-529a-4d60-ac1f-fb1d919a69d3)
+[![Beat Rush](https://github.com/shstcs/Beat-Rush/assets/73222781/0c086a22-529a-4d60-ac1f-fb1d919a69d3)](https://youtu.be/ObiPRgBKTuY)
+*이미지를 클릭하면 게임 트레일러로 이어집니다*
+
 
 # 프로젝트 개요
 - Beat-Rush는 LowPoly 3D RPG One-Button 리듬게임입니다.
 - 내일배움캠프의 최종 프로젝트.
 - 2024.01 - 2024.03 ( 3 months )
-- Monster, Note, Pattern, Sync 구현 **[팀장]**  
+- Monster, Note, Pattern, Sync 구현 **[팀장]**
+- [게임 다운로드 링크](https://shstcs.itch.io/beat-rush)
 
 # 기술 스택
 ## **프레임 워크 & 언어**
@@ -63,14 +66,14 @@
 > - 구조 리팩토링
 
 # 세부 구현 기능 소개
-## 노트 생성
+## Pattern
 - Csv파일을 사용하여 노트의 패턴을 저장.
   - 단순한 구조이기에 Json보다 csv파일이 속도 면에서 효율적일 것이라고 생각.
 - 노트의 거리, 가로 위치, 노트의 종류를 저장하고 있음.
 - CsVReader라는 클래스를 만들어, List<Dictionary<string,Object>>형식으로 읽어오도록 구현.  
  ![image](https://github.com/shstcs/Beat-Rush/assets/73222781/8de95b5a-b20a-45fd-8f84-93e2b6a079cc)
 
-## 노트 생성
+## Note
 - 스테이지마다 일정 개수의 노트를 생성하여 Object Pool에 저장한다.
 - 해당 스테이지의 정보에 맞추어 코루틴을 통해 순차적으로 노트를 활성화 시켜준다.
 ```
@@ -110,7 +113,7 @@ public IEnumerator Attack()
     }
 }
 ```
-## 노트 이동
+## Note Movement
 - NoteManager라는 클래스에서 현재 활성화되어있는 노트들을 한번에 이동시킨다.
 - Time.deltaTime 대신 depTime을 사용한다.
 ```
@@ -124,7 +127,7 @@ private void MoveNotes()
     }
 }
 ```
-## 노트 위치 조정
+## Sync
 - 환경적인 상황으로 노트가 원하는대로 생성되지 않는 경우를 대비하여 조정하도록 구현.
 - Feedback이라는 메서드를 만들어 12프레임마다 노트의 위치를 조정해줌.
 - 활성화된 노트들을 가져오는 법
@@ -221,5 +224,4 @@ _monster.EndStage();
 
 
 ## 일시정지 구현
-
-## 
+- 문제 상황 : 
