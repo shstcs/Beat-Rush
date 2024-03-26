@@ -194,6 +194,7 @@ _monster = _monsterObject.GetComponent<Monster>();
 _monster.RandomAttack();
 _monster.EndStage();
 ```
+---
 # 트러블 슈팅
 ## dspTime 사용
 - 문제 상황 : 노트가 이동하는 속도가 일정하지 않는 현상이 발생.
@@ -222,6 +223,55 @@ _monster.EndStage();
 2번을 위해서 Object Pool에 새로운 메서드를 만들었다. pool에서 활성화되어있는 노트를 가져온 후에, 
 가까운 순서대로 배치해야 하므로 순서도 정렬해준 후 리턴하였다.
 
+### Feedback System 파생 문제
+- 문제 상황 : 여러 패턴이 이어져 나오는 경우 각 패턴마다 노트를 접근하기 힘듬.
+- 원인 분석 : 현재 curNote라는 변수로 노트의 개수를 세면서 진행하고 있는데 패턴이 바뀌면 개수도 초기화되어야 하므로 다른 방법이 필요함.
+- 해결 방안 : 패턴마다 변수를 따로 두어 저장하도록 구현.  
+  ```
+  public int[] curNoteInStage = new int[20];
+  ```
+  패턴의 개수만큼 배열을 만들어 각 패턴마다 대응하는 변수를 사용하도록 하였다.
+  그러기 위하여 노트가 생성될 때 해당 패턴의 번호를 정보로 가지게 하고, 파괴될 때 전달하는 식으로 구현할 수 있었다.
+  ```
+  note.GetComponent<Note>().noteNumber = _curPatternNum;  // 노트의 패턴 번호 정보 저장
+  note.GetComponent<Note>().stage = _curStage;
 
+  Managers.Game.stageInfos[stage].curNoteInStage[noteNumber]++;  // 정보에 대응하는 변수 값 조정
+  ```
 ## 일시정지 구현
-- 문제 상황 : 
+- 문제 상황 : 일시정지 후 해제하게 되면 나오던 노트들이 사라지고 체력이 깎이게 되는 현상이 발생.
+- 원인 분석 : 체력이 깎인다는 것은 노트가 지나갔다는 뜻이므로 노트의 움직임 부분. 특히 피드백시스템 부분이라고 추측. 확인 결과 dspTime의 문제임을 발견.
+  스테이지가 시작하는 순간 dspTime을 저장해놓은 후, 현재의 값에서 빼는 것으로 진행 거리를 계산하였는데 일시정지 시 time은 멈추어도 dspTime은 계속 진행되는 것이 문제였다. 따라서,  
+  dspTime 증가 -> 현재 진행거리 증가 -> 노트들의 위치가 이미 지나간 후의 위치로 이동 -> 파괴되면서 체력 감소  
+  의 과정인 것으로 파악하였다.
+- 해결 방안 : 멈춰있는 순간에는 처음 저장한 dspTime의 값이 오르도록 설정하였다. 다만 게속 더하는 연산은 낭비라고 생각하여 좀 더 효율적으로 생각해 보았다.
+  _isFeedbackStart라는 플래그를 두어 기본은 true로 두고, 멈추는 순간 false로 바꾸고 그 때의 dspTime과 시작 dspTime의 차를 따로 저장한다.(pauseDspTime)  
+  정지가 끝나고 다시 피드백을 시작하는 경우에 시작 dspTime을 현재 dspTime - pauseDepTime의 값으로 바꿔주는 식으로 구현하였다.
+```
+public void Pause()
+{
+    if (_isFeedbackStart)
+    {
+        _isFeedbackStart = false;
+        _pauseDsp = AudioSettings.dspTime - _startDsp[_curPatternNum];
+    }
+}
+
+public void Feedback()
+{
+    if (!_isFeedbackStart)
+    {
+        _startDsp[_curPatternNum] = AudioSettings.dspTime - _pauseDsp;
+        _isFeedbackStart = true;
+    }
+```
+
+### 일시정지 파생 문제
+- 문제 상황 : 첫 패턴의 싱크만 조금 빠르게 나오는 일이 반복하여 발생.
+- 원인 분석 : 첫번째 이후 패턴은 정상적으로 진행되는 것으로 보아, 초반에 실행되는 부분이면서 노트의 이동 관련이면 일단 dspTime쪽이라고 추측하였다.
+  살펴보니 시작할 때와 첫 노트가 나온 후의 시작 dspTime이 달라지는 것을 알 수 있었다. 따라서 이 부분에 관여하는 부분인 feedback을 확인하여 플래그의 초기값 문제임을 알 수 있었다.  
+  _isFeedbackStart라는 플래그가 false일경우 정지상태로 간주하여 초기 dspTime을 다시 구하게 되는데 초기값이 false여서 생기는 문제였다.
+- 해결 방안 : 초기값을 true로 변경하였다.
+```
+public bool _isFeedbackStart = true;
+```
