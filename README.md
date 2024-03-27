@@ -262,7 +262,7 @@ public void Feedback()
     if (!_isFeedbackStart)
     {
         _startDsp[_curPatternNum] = AudioSettings.dspTime - _pauseDsp;
-        _isFeedbackStart = true;
+        _isFeedbackStart = true; 
     }
 ```
 
@@ -275,3 +275,4 @@ public void Feedback()
 ```
 public bool _isFeedbackStart = true;
 ```
+
